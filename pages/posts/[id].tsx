@@ -1,12 +1,12 @@
+import type { VFC } from 'react';
 import Layout from '../../components/layout';
-import { getAllPostIds, getPostData, Post } from '../../lib/posts';
+import { getAllPostIds, getPostData, Post as PostType } from '../../lib/posts';
 import Head from 'next/head';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
-import { VFC } from 'react';
 
 type Props = {
-  post: Post;
+  post: PostType;
 }
 type Params = {
   id: string;
@@ -29,6 +29,9 @@ const Post: VFC<Props> = ({ post }) => {
   );
 };
 
+Post.displayName = 'Post';
+export default Post;
+
 export async function getStaticPaths() {
   const paths = getAllPostIds();
   return {
@@ -38,10 +41,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: Params }) {
-  const postData = await getPostData(params.id);
   return {
     props: {
-      postData,
+      post: await getPostData(params.id),
     },
   };
 }
