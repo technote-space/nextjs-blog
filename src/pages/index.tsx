@@ -1,11 +1,11 @@
 import type { VFC } from 'react';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import Layout, { siteTitle } from '@/components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData, Post } from '../lib/posts';
+import { getSortedPostsData, Post } from '@/lib/posts';
 import Link from 'next/link';
-import Date from '../components/date';
-import { pagesPath } from '../lib/$path'
+import Date from '@/components/date';
+import { pagesPath } from '@/lib/$path'
 
 type Props = {
   allPostsData: Post[];
