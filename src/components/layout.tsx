@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import { pagesPath } from '../lib/$path';
 
 type Props = {
   isHome?: boolean;
@@ -45,7 +46,7 @@ const Layout: FC<Props> = ({ children, isHome }) => {
           </>
         ) : (
           <>
-            <Link href="/">
+            <Link href={pagesPath.$url()}>
               <a>
                 <Image
                   priority
@@ -58,7 +59,7 @@ const Layout: FC<Props> = ({ children, isHome }) => {
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href="/">
+              <Link href={pagesPath.$url()}>
                 <a className={utilStyles.colorInherit}>{name}</a>
               </Link>
             </h2>
@@ -68,7 +69,7 @@ const Layout: FC<Props> = ({ children, isHome }) => {
       <main>{children}</main>
       {!isHome && (
         <div className={styles.backToHome}>
-          <Link href="/">
+          <Link href={pagesPath.$url()}>
             <a>← Back to home</a>
           </Link>
         </div>

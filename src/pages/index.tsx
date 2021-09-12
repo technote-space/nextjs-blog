@@ -5,6 +5,7 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData, Post } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
+import { pagesPath } from '../lib/$path'
 
 type Props = {
   allPostsData: Post[];
@@ -28,7 +29,7 @@ const Home: VFC<Props> = ({ allPostsData }) => {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
+              <Link href={pagesPath.posts._id(id).$url()}>
                 <a>{title}</a>
               </Link>
               <br/>

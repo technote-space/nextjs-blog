@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
+    "dev": "run-p dev:*",
+    "dev:next": "next dev",
+    "dev:path": "pathpida --watch",
+    "build": "pathpida && next build && next export",
     "start": "next start",
     "lint": "next lint",
     "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit",
@@ -28,6 +30,8 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "http-server": "^13.0.1",
+    "npm-run-all": "^4.1.5",
+    "pathpida": "^0.17.0",
     "typescript": "^4.4.3"
   }
 }
