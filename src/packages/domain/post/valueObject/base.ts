@@ -7,16 +7,26 @@ export default function Base<Input, Output, Inner = Output>() {
   }
 
   abstract class Base {
-    private value?: Inner;
+    private __value?: Inner;
 
     protected constructor() {
     }
 
-    protected abstract process(value: Input): Inner;
+    protected abstract fromInput(value: Input): Inner;
 
     protected abstract getName(): string;
 
     protected abstract validate(value: Input): string[] | undefined;
+
+    protected toOutput(value: Inner): Output {
+      return value as never;
+    }
+
+    public get value(): Output {
+      return this.toOutput(this.__value!);
+    }
+
+    public abstract compare(value: this): number;
 
     public static create<T extends Base>(this: BaseStatic<T>, value: Input): Base {
       const instance = new this();
@@ -24,14 +34,14 @@ export default function Base<Input, Output, Inner = Output>() {
       if (errors?.length) {
         throw new ValidationException(instance.getName(), errors);
       }
-      instance.value = instance.process(value);
+      instance.__value = instance.fromInput(value);
 
       return instance;
     }
 
     public static reconstruct<T extends Base>(this: BaseStatic<T>, value: Input): Base {
       const instance = new this();
-      instance.value = instance.process(value);
+      instance.__value = instance.fromInput(value);
 
       return instance;
     }

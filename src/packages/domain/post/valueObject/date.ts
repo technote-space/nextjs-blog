@@ -3,7 +3,7 @@ import isDate from 'validator/lib/isDate';
 import Base from '$/domain/post/valueObject/base';
 
 export default abstract class Date extends Base<string, dayjs.Dayjs>() {
-  protected process(value: string) {
+  protected fromInput(value: string) {
     return dayjs(value);
   }
 
@@ -13,5 +13,17 @@ export default abstract class Date extends Base<string, dayjs.Dayjs>() {
     }
 
     return undefined;
+  }
+
+  public compare(value: this): number {
+    if (this.value.isBefore(value.value)) {
+      return -1;
+    }
+
+    if (this.value.isAfter(value.value)) {
+      return 1;
+    }
+
+    return 0;
   }
 }
