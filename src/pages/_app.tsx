@@ -1,10 +1,8 @@
-import type { VFC } from 'react';
-import type { AppProps } from 'next/app';
-import '../styles/global.css';
+import 'reflect-metadata';
+import '^/config/registry';
+import type { IAppService } from '$/domain/app';
+import { container } from 'tsyringe';
 
-const App: VFC<AppProps> = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
-};
+const App = (container.resolve('IAppService') as IAppService).create();
 
-App.displayName = 'App';
 export default App;

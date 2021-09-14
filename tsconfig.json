@@ -20,8 +20,12 @@
     "baseUrl": "./src",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"]
-    }
+      "@/lib/*": ["lib/*"],
+      "$/*": ["packages/*"],
+      "^/*": ["./*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "next-env.d.ts",

@@ -1,35 +1,12 @@
-import type { VFC } from 'react';
-import Layout from '../../components/layout';
-import { getAllPostIds, getPostData, Post as PostType } from '../../lib/posts';
-import Head from 'next/head';
-import Date from '../../components/date';
-import utilStyles from '../../styles/utils.module.css';
+import type { IPostPage } from '$/domain/pages/post';
+import { getAllPostIds, getPostData } from '@/lib/posts';
+import { container } from 'tsyringe';
 
-type Props = {
-  post: PostType;
-}
 type Params = {
   id: string;
 }
 
-const Post: VFC<Props> = ({ post }) => {
-  return (
-    <Layout>
-      <Head>
-        <title>{post.title}</title>
-      </Head>
-      <article>
-        <h1 className={utilStyles.headingXl}>{post.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date date={post.date}/>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }}/>
-      </article>
-    </Layout>
-  );
-};
-
-Post.displayName = 'Post';
+const Post = (container.resolve('IPostPage') as IPostPage).create();
 export default Post;
 
 export async function getStaticPaths() {
