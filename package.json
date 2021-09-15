@@ -43,6 +43,8 @@
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-unused-imports": "^1.1.4",
     "http-server": "^13.0.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",

@@ -9,4 +9,7 @@ module.exports = {
     loader: 'akamai',
     path: '/',
   },
+  eslint: {
+    dirs: ['src/pages', 'src/packages', 'src/components']
+  }
 }
