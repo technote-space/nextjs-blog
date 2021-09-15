@@ -1,5 +1,5 @@
 import isInt from 'validator/lib/isInt';
-import Base from '$/domain/post/valueObject/base';
+import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class Int extends Base<number | string, number>() {
   protected fromInput(value: number | string) {
@@ -10,7 +10,7 @@ export default abstract class Int extends Base<number | string, number>() {
     return parseInt(value);
   }
 
-  protected validate(value: number | string): string[] | undefined {
+  public validate(value: number | string): string[] | undefined {
     if (typeof value === 'string' && !isInt(value)) {
       return ['整数の形式が正しくありません'];
     }

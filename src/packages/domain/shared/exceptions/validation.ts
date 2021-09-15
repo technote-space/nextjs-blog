@@ -1,5 +1,13 @@
+type ValidationError = {
+  name: string;
+  errors: string[];
+};
+export type ValidationErrors = {
+  [id: string]: ValidationError
+};
+
 export default class ValidationException extends Error {
-  public constructor(private target: string, private errors?: string[]) {
-    super(errors?.join(', '));
+  public constructor(public readonly errors?: ValidationErrors) {
+    super('バリデーションエラーが発生しました');
   }
 }

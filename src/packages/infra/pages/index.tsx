@@ -1,10 +1,12 @@
-import type { IIndexPage, Props } from '$/domain/pages';
+import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
 import type { ILayoutComponent } from '$/domain/app/layout';
+import type { IPostManager } from '$/domain/post/manager';
 import { memo } from 'react';
 import Link from 'next/link';
 import { pagesPath } from '@/lib/$path';
 import Date from '@/components/date';
 import { singleton, inject } from 'tsyringe';
+import { fromEntity, toEntity } from '$/domain/post/dto/post';
 
 @singleton()
 export class IndexPage implements IIndexPage {
@@ -26,14 +28,14 @@ export class IndexPage implements IIndexPage {
         <section>
           <h2>Blog</h2>
           <ul>
-            {posts.map(({ id, date, title }) => (
-              <li key={id}>
-                <Link href={pagesPath.posts._id(id).$url()}>
-                  <a>{title}</a>
+            {posts.map(post => toEntity(post)).map((post) => (
+              <li key={post.getId().value}>
+                <Link href={pagesPath.posts._id(post.getId().value).$url()}>
+                  <a>{post.getTitle().value}</a>
                 </Link>
                 <br/>
                 <small>
-                  <Date date={date}/>
+                  <Date date={post.getCreatedAt().value}/>
                 </small>
               </li>
             ))}
@@ -44,5 +46,19 @@ export class IndexPage implements IIndexPage {
     component.displayName = 'IndexPage';
 
     return component;
+  }
+}
+
+@singleton()
+export class IndexPageProps implements IIndexPageProps {
+  public constructor(
+    @inject('IPostManager') private postManager: IPostManager,
+  ) {
+  }
+
+  public async getStaticProps(): Promise<Props> {
+    return {
+      posts: (await this.postManager.all()).map(post => fromEntity(post)),
+    };
   }
 }

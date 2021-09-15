@@ -1,26 +1,15 @@
-import type { IPostPage } from '$/domain/pages/post';
-import { getAllPostIds, getPostData } from '@/lib/posts';
+import type { GetStaticProps, GetStaticPaths } from 'next';
+import type { IPostPage, IPostPageProps, Props, Params } from '$/domain/pages/post';
 import { container } from 'tsyringe';
 
-type Params = {
-  id: string;
-}
+export default (container.resolve('IPostPage') as IPostPage).create();
 
-const Post = (container.resolve('IPostPage') as IPostPage).create();
-export default Post;
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  return (container.resolve('IPostPageProps') as IPostPageProps).getStaticPaths();
+};
 
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   return {
-    paths,
-    fallback: false,
+    props: await (container.resolve('IPostPageProps') as IPostPageProps).getStaticProps(params),
   };
-}
-
-export async function getStaticProps({ params }: { params: Params }) {
-  return {
-    props: {
-      post: await getPostData(params.id),
-    },
-  };
-}
+};

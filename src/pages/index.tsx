@@ -1,15 +1,11 @@
-import type { IIndexPage } from '$/domain/pages';
-import { getSortedPostsData } from '@/lib/posts';
+import type { GetStaticProps } from 'next';
+import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
 import { container } from 'tsyringe';
 
-const Home = (container.resolve('IIndexPage') as IIndexPage).create();
-export default Home;
+export default (container.resolve('IIndexPage') as IIndexPage).create();
 
-export async function getStaticProps() {
-  const posts = getSortedPostsData();
+export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
-    props: {
-      posts,
-    },
+    props: await (container.resolve('IIndexPageProps') as IIndexPageProps).getStaticProps(),
   };
-}
+};

@@ -11,7 +11,6 @@ export abstract class BaseComponent<P = {}> implements IComponent<P> {
   protected abstract getComponent(): VFC<P>;
 
   public render(props?: P, children?: ReactNode): ReactElement {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const Component = this.__component as VFC<PropsWithChildren<any>>;
     return <Component {...props}>
       {children}

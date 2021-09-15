@@ -1,8 +1,16 @@
-import Base from '$/domain/post/valueObject/base';
+import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class Text extends Base<number | string, string>() {
   protected fromInput(value: number | string) {
-    return `${value}`;
+    if (typeof value === 'number') {
+      return `${value}`;
+    }
+
+    if (value) {
+      return value;
+    }
+
+    return '';
   }
 
   protected getValidationMinLength(): number | undefined {
@@ -13,12 +21,17 @@ export default abstract class Text extends Base<number | string, string>() {
     return undefined;
   }
 
-  protected validate(value: number | string): string[] | undefined {
+  public validate(value: number | string): string[] | undefined {
     const text = this.fromInput(value);
     const results: string[] = [];
-    const min = this.getValidationMinLength();
-    if (min && text.length < min) {
-      results.push(`${min}文字より長く入力してください`);
+
+    if (!text.length) {
+      results.push('値を指定してください');
+    } else {
+      const min = this.getValidationMinLength();
+      if (min && text.length < min) {
+        results.push(`${min}文字より長く入力してください`);
+      }
     }
 
     const max = this.getValidationMaxLength();
