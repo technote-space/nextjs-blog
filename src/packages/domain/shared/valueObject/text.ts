@@ -1,7 +1,7 @@
 import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class Text extends Base<number | string, string>() {
-  protected fromInput(value: number | string) {
+  protected fromInput(value: number | string): string {
     if (typeof value === 'number') {
       return `${value}`;
     }

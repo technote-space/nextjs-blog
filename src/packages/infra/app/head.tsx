@@ -1,8 +1,9 @@
 import type { IHeadComponent } from '$/domain/app/head';
-import { memo } from 'react';
+import type { VFC } from 'react';
 import NextHead from 'next/head';
-import { BaseComponent } from '$/infra/shared/component';
+import { memo } from 'react';
 import { singleton } from 'tsyringe';
+import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
 export class HeadComponent extends BaseComponent implements IHeadComponent {
@@ -10,7 +11,7 @@ export class HeadComponent extends BaseComponent implements IHeadComponent {
     super();
   }
 
-  protected getComponent() {
+  protected getComponent(): VFC {
     const component = memo(() => {
       return <NextHead>
         <meta name="viewport" content="initial-scale=1, width=device-width"/>

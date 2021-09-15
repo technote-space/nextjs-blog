@@ -2,8 +2,8 @@ import type { Post } from '$/domain/post/entity/post';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
-import Source from '$/domain/post/valueObject/source';
 import { singleton, inject } from 'tsyringe';
+import Source from '$/domain/post/valueObject/source';
 
 @singleton()
 export class PostFactory implements IPostFactory {

@@ -1,11 +1,11 @@
-import type { ReactElement, ReactNode } from 'react';
 import type { ITheme, Props } from '$/domain/app/theme';
 import type { GlobalStyleProps } from '@chakra-ui/theme-tools';
-import { memo } from 'react';
+import type { VFC } from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
-import { BaseComponent } from '$/infra/shared/component';
+import { memo } from 'react';
 import { singleton } from 'tsyringe';
+import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
 export class Theme extends BaseComponent<Props> implements ITheme {
@@ -40,7 +40,7 @@ export class Theme extends BaseComponent<Props> implements ITheme {
     },
   });
 
-  protected getComponent() {
+  protected getComponent(): VFC<Props> {
     const component = memo(({ children }) => {
       return <ChakraProvider theme={this.theme}>
         {children}

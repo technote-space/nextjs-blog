@@ -2,7 +2,7 @@ import isNumeric from 'validator/lib/isNumeric';
 import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class Float extends Base<number | string, number>() {
-  protected fromInput(value: number | string) {
+  protected fromInput(value: number | string): number {
     if (typeof value === 'number') {
       return value;
     }

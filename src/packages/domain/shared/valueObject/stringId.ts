@@ -1,7 +1,7 @@
 import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class StringId extends Base<number | string, string>() {
-  protected fromInput(value: number | string) {
+  protected fromInput(value: number | string): string {
     return `${value}`;
   }
 

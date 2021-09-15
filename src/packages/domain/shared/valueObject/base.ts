@@ -1,5 +1,5 @@
 // to avoid "Static members cannot reference class type parameters." error
-export default function Base<Input, Output, Inner = Output>() {
+export default function Base<Input, Output, Inner = Output>() { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
   interface BaseStatic<T extends Base> {
     new(): T;
   }

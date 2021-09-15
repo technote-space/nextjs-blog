@@ -15,7 +15,7 @@ export default class Id extends Base<IdProps, string, IdPropsInner>() {
     return '記事ID';
   }
 
-  protected fromInput(value: IdProps) {
+  protected fromInput(value: IdProps): IdPropsInner {
     if (typeof value === 'string') {
       const split = value.split('-');
       const source = split.shift();

@@ -1,8 +1,8 @@
 import { Post } from '$/domain/post/entity/post';
-import Id from '$/domain/post/valueObject/id';
-import Title from '$/domain/post/valueObject/title';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
+import Id from '$/domain/post/valueObject/id';
+import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 
 export type PostDTO = {

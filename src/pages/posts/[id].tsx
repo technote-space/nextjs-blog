@@ -1,5 +1,5 @@
-import type { GetStaticProps, GetStaticPaths } from 'next';
 import type { IPostPage, IPostPageProps, Props, Params } from '$/domain/pages/post';
+import type { GetStaticProps, GetStaticPaths } from 'next';
 import { container } from 'tsyringe';
 
 export default (container.resolve('IPostPage') as IPostPage).create();

@@ -1,10 +1,11 @@
 import type { ILayoutComponent, Props } from '$/domain/app/layout';
 import type { IFooterComponent } from '$/domain/app/layout/footer';
 import type { IHeaderComponent } from '$/domain/app/layout/header';
-import { memo } from 'react';
-import { BaseComponent } from '$/infra/shared/component';
-import { singleton, inject } from 'tsyringe';
+import type { VFC } from 'react';
 import Link from 'next/link';
+import { memo } from 'react';
+import { singleton, inject } from 'tsyringe';
+import { BaseComponent } from '$/infra/shared/component';
 import { pagesPath } from '@/lib/$path';
 
 @singleton()
@@ -16,7 +17,7 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
     super();
   }
 
-  protected getComponent() {
+  protected getComponent(): VFC<Props> {
     const component = memo(({ children, isHome }: Props) => {
       return <div>
         {this.headerComponent.render({})}

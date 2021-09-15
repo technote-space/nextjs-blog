@@ -1,4 +1,3 @@
 import type { IComponent } from '$/domain/shared/component';
 
-export interface IHeaderComponent extends IComponent {
-}
+export type IHeaderComponent = IComponent

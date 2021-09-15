@@ -1,12 +1,13 @@
-import type { IPostPage, Props, Params, Paths, IPostPageProps } from '$/domain/pages/post';
 import type { ILayoutComponent } from '$/domain/app/layout';
+import type { IPostPage, Props, Params, Paths, IPostPageProps } from '$/domain/pages/post';
 import type { IPostManager } from '$/domain/post/manager';
+import type { VFC } from 'react';
 import { memo } from 'react';
-import Date from '@/components/date';
+import { singleton, inject } from 'tsyringe';
+import { fromEntity, toEntity } from '$/domain/post/dto/post';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
-import { fromEntity, toEntity } from '$/domain/post/dto/post';
-import { singleton, inject } from 'tsyringe';
+import Date from '@/components/date';
 
 @singleton()
 export class PostPage implements IPostPage {
@@ -15,7 +16,7 @@ export class PostPage implements IPostPage {
   ) {
   }
 
-  public create() {
+  public create(): VFC<Props> {
     const component = memo(({ post }: Props) => {
       const entity = toEntity(post);
       return this.layoutComponent.render({}, <article>

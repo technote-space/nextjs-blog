@@ -1,9 +1,9 @@
-import Base from '$/domain/shared/entity/base';
-import Id from '$/domain/post/valueObject/id';
-import Title from '$/domain/post/valueObject/title';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
+import Id from '$/domain/post/valueObject/id';
+import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
+import Base from '$/domain/shared/entity/base';
 
 export class Post extends Base() {
   private id?: Id;

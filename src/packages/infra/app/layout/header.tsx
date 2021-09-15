@@ -1,7 +1,8 @@
 import type { IHeaderComponent } from '$/domain/app/layout/header';
+import type { VFC } from 'react';
 import { memo } from 'react';
-import { BaseComponent } from '$/infra/shared/component';
 import { singleton } from 'tsyringe';
+import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
 export class HeaderComponent extends BaseComponent implements IHeaderComponent {
@@ -9,7 +10,7 @@ export class HeaderComponent extends BaseComponent implements IHeaderComponent {
     super();
   }
 
-  protected getComponent() {
+  protected getComponent(): VFC {
     const component = memo(() => {
       return <header>
         Tech blog

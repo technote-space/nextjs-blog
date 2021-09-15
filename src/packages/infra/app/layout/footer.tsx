@@ -1,7 +1,8 @@
 import type { IFooterComponent } from '$/domain/app/layout/footer';
+import type { VFC } from 'react';
 import { memo } from 'react';
-import { BaseComponent } from '$/infra/shared/component';
 import { singleton } from 'tsyringe';
+import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
 export class FooterComponent extends BaseComponent implements IFooterComponent {
@@ -9,7 +10,7 @@ export class FooterComponent extends BaseComponent implements IFooterComponent {
     super();
   }
 
-  protected getComponent() {
+  protected getComponent(): VFC {
     const component = memo(() => {
       return <footer>
         <div>

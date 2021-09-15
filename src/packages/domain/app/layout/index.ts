@@ -1,9 +1,8 @@
-import type { PropsWithChildren } from 'react';
 import type { IComponent } from '$/domain/shared/component';
+import type { PropsWithChildren } from 'react';
 
 export type Props = PropsWithChildren<{
   isHome?: boolean;
 }>;
 
-export interface ILayoutComponent extends IComponent<Props> {
-}
+export type ILayoutComponent = IComponent<Props>

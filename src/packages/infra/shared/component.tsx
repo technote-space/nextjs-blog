@@ -1,6 +1,7 @@
-import type { VFC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 import type { IComponent } from '$/domain/shared/component';
+import type { VFC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export abstract class BaseComponent<P = {}> implements IComponent<P> {
   private readonly __component: VFC<P>;
 
@@ -11,6 +12,7 @@ export abstract class BaseComponent<P = {}> implements IComponent<P> {
   protected abstract getComponent(): VFC<P>;
 
   public render(props?: P, children?: ReactNode): ReactElement {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const Component = this.__component as VFC<PropsWithChildren<any>>;
     return <Component {...props}>
       {children}

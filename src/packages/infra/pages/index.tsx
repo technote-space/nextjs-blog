@@ -1,12 +1,13 @@
-import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
 import type { ILayoutComponent } from '$/domain/app/layout';
+import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
 import type { IPostManager } from '$/domain/post/manager';
-import { memo } from 'react';
+import type { VFC } from 'react';
 import Link from 'next/link';
-import { pagesPath } from '@/lib/$path';
-import Date from '@/components/date';
+import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import { fromEntity, toEntity } from '$/domain/post/dto/post';
+import Date from '@/components/date';
+import { pagesPath } from '@/lib/$path';
 
 @singleton()
 export class IndexPage implements IIndexPage {
@@ -15,7 +16,7 @@ export class IndexPage implements IIndexPage {
   ) {
   }
 
-  public create() {
+  public create(): VFC<Props> {
     const component = memo(({ posts }: Props) => {
       return this.layoutComponent.render({ isHome: true }, <>
         <section>

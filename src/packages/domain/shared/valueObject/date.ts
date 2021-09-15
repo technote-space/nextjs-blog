@@ -4,7 +4,7 @@ import Base from '$/domain/shared/valueObject/base';
 
 // Inner type = string: consider serialization
 export default abstract class Date extends Base<dayjs.ConfigType, dayjs.Dayjs, string>() {
-  protected fromInput(value: dayjs.ConfigType) {
+  protected fromInput(value: dayjs.ConfigType): string {
     return dayjs(value).toISOString();
   }
 

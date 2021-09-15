@@ -1,5 +1,5 @@
-import type { IPage, Paths as SharedPaths } from '$/domain/shared/page';
 import type { PostDTO } from '$/domain/post/dto/post';
+import type { IPage, Paths as SharedPaths } from '$/domain/shared/page';
 
 export type Props = {
   post: PostDTO;
@@ -9,8 +9,7 @@ export type Params = {
 };
 export type Paths = SharedPaths<Params>;
 
-export interface IPostPage extends IPage<Props> {
-}
+export type IPostPage = IPage<Props>
 
 export interface IPostPageProps {
   getStaticPaths(): Promise<Paths>;
