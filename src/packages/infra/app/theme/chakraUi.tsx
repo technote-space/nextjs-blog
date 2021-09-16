@@ -8,7 +8,7 @@ import { singleton } from 'tsyringe';
 import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
-export class Theme extends BaseComponent<Props> implements ITheme {
+export class ChakraUiTheme extends BaseComponent<Props> implements ITheme {
   public constructor() {
     super();
   }

@@ -6,8 +6,8 @@ export default {
   title: 'Date',
   component: Date,
   argTypes: {
-    date: { control: 'date' },
-    format: { control: 'text' },
+    date: { control: { type: 'date' } },
+    format: { control: { type: 'text' } },
   },
 } as ComponentMeta<typeof Date>;
 
