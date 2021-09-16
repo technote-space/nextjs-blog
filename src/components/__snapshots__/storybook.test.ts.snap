@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Date Default 1`] = `
+Array [
+  <time
+    dateTime="2000-11-22T00:00:00.000Z"
+  >
+    2000/11/22
+  </time>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Date Format 1`] = `
+Array [
+  <time
+    dateTime="2000-11-22T00:00:00.000Z"
+  >
+    2000年11月22日
+  </time>,
+  <span />,
+]
+`;
