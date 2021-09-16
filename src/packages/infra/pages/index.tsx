@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import { fromEntity, toEntity } from '$/domain/post/dto/post';
-import Date from '@/components/date';
+import Date from '@/components/Date';
 import { pagesPath } from '@/lib/$path';
 
 @singleton()

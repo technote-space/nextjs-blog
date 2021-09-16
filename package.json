@@ -13,7 +13,9 @@
     "typecheck": "tsc --noEmit",
     "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit",
     "serve": "cd out && http-server -o",
-    "prepare": "husky install && pathpida"
+    "prepare": "husky install && pathpida",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
@@ -36,10 +38,15 @@
     "@babel/plugin-proposal-decorators": "^7.15.4",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
     "@types/node": "^16.9.1",
     "@types/react": "^17.0.21",
     "@types/validator": "^13.6.3",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "babel-loader": "^8.2.2",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",

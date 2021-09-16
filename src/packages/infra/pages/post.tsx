@@ -7,7 +7,7 @@ import { singleton, inject } from 'tsyringe';
 import { fromEntity, toEntity } from '$/domain/post/dto/post';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
-import Date from '@/components/date';
+import Date from '@/components/Date';
 
 @singleton()
 export class PostPage implements IPostPage {
