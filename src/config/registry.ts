@@ -9,7 +9,7 @@ import { IndexPage, IndexPageProps } from '$/infra/pages';
 import { PostPage, PostPageProps } from '$/infra/pages/post';
 import { PostFactory } from '$/infra/post/factory';
 import { PostManager } from '$/infra/post/manager';
-import { MarkdownPostRepository } from '$/infra/post/repository/markdownPost';
+import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
 
 container.registerSingleton('ITheme', ChakraUiTheme);
 container.registerSingleton('IFooterComponent', FooterComponent);
