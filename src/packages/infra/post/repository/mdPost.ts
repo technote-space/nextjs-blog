@@ -6,6 +6,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import { singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
+import { PostDetail } from '$/domain/post/entity/postDetail';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Id from '$/domain/post/valueObject/id';
@@ -63,7 +64,6 @@ export class MarkdownPostRepository implements IPostRepository {
         id: post.id,
       }),
       Title.create(post.title),
-      Content.create(post.contentHtml),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     ));
@@ -80,7 +80,7 @@ export class MarkdownPostRepository implements IPostRepository {
     }, Promise.resolve([] as Id[]));
   }
 
-  public async fetch(id: Id): Promise<Post> {
+  public async fetch(id: Id): Promise<PostDetail> {
     const fullPath = path.join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
     const fileContents = await promises.readFile(fullPath, 'utf8');
     const matterResult = matter(fileContents);
@@ -94,7 +94,7 @@ export class MarkdownPostRepository implements IPostRepository {
       .process(matterResult.content);
     post.contentHtml = processedContent.toString();
 
-    return Post.reconstruct(
+    return PostDetail.reconstruct(
       id,
       Title.create(post.title),
       Content.create(post.contentHtml),

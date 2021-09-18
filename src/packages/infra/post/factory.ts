@@ -1,4 +1,5 @@
 import type { Post } from '$/domain/post/entity/post';
+import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
@@ -25,7 +26,7 @@ export class PostFactory implements IPostFactory {
     return this.postRepositories[source.value].getIds();
   }
 
-  public fetch(id: Id): Promise<Post> {
+  public fetch(id: Id): Promise<PostDetail> {
     return this.postRepositories[id.source.value].fetch(id);
   }
 }

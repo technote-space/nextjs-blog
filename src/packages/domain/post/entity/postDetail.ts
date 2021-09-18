@@ -1,18 +1,21 @@
+import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Id from '$/domain/post/valueObject/id';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import Base from '$/domain/shared/entity/base';
 
-export class Post extends Base() {
+export class PostDetail extends Base() {
   private id?: Id;
   private title!: Title;
+  private content!: Content;
   private createdAt!: CreatedAt;
   private updatedAt?: UpdatedAt;
 
-  public static create(title: Title): Post | never {
+  public static create(title: Title, content: Content): PostDetail | never {
     const instance = new this();
     instance.title = title;
+    instance.content = content;
     instance.createdAt = CreatedAt.create(undefined);
     instance.updatedAt = UpdatedAt.create(undefined);
     instance.validate();
@@ -20,10 +23,11 @@ export class Post extends Base() {
     return instance;
   }
 
-  public static reconstruct(id: Id, title: Title, createdAt: CreatedAt, updatedAt?: UpdatedAt): Post {
+  public static reconstruct(id: Id, title: Title, content: Content, createdAt: CreatedAt, updatedAt?: UpdatedAt): PostDetail {
     const instance = new this();
     instance.id = id;
     instance.title = title;
+    instance.content = content;
     instance.createdAt = createdAt;
     instance.updatedAt = updatedAt;
 
@@ -37,6 +41,10 @@ export class Post extends Base() {
 
   public getTitle(): Title {
     return this.title;
+  }
+
+  public getContent(): Content {
+    return this.content;
   }
 
   public getCreatedAt(): CreatedAt {

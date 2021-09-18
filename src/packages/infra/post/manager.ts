@@ -1,4 +1,5 @@
 import type { Post } from '$/domain/post/entity/post';
+import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostFactory } from '$/domain/post/factory';
 import type Id from '$/domain/post/valueObject/id';
 import { singleton, inject } from 'tsyringe';
@@ -23,7 +24,7 @@ export class PostManager implements IPostManager {
     }, Promise.resolve([] as Id[]));
   }
 
-  public async fetch(id: Id): Promise<Post> {
+  public async fetch(id: Id): Promise<PostDetail> {
     return this.postFactory.fetch(id);
   }
 }

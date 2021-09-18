@@ -1,26 +1,27 @@
-import { Post } from '$/domain/post/entity/post';
+import type { PostDTO } from '$/domain/post/dto/post';
+import { PostDetail } from '$/domain/post/entity/postDetail';
+import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Id from '$/domain/post/valueObject/id';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 
-export type PostDTO = {
-  id: string;
-  title: string;
-  createdAt: string;
-  updatedAt: string | null;
+export type PostDetailDTO = PostDTO & {
+  content: string;
 }
 
-export const fromEntity = (post: Post): PostDTO => ({
+export const fromEntity = (post: PostDetail): PostDetailDTO => ({
   id: post.getId().value,
   title: post.getTitle().value,
+  content: post.getContent().value,
   createdAt: post.getCreatedAt().value.toISOString(),
   updatedAt: post.getUpdatedAt()?.value.toISOString() ?? null,
 });
 
-export const toEntity = (post: PostDTO): Post => Post.reconstruct(
+export const toEntity = (post: PostDetailDTO): PostDetail => PostDetail.reconstruct(
   Id.create(post.id),
   Title.create(post.title),
+  Content.create(post.content),
   CreatedAt.create(post.createdAt),
   post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
 );

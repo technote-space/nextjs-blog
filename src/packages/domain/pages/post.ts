@@ -1,8 +1,8 @@
-import type { PostDTO } from '$/domain/post/dto/post';
+import type { PostDetailDTO } from '$/domain/post/dto/postDetail';
 import type { IPage, Paths as SharedPaths } from '$/domain/shared/page';
 
 export type Props = {
-  post: PostDTO;
+  post: PostDetailDTO;
 };
 export type Params = {
   id: string;
