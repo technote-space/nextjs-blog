@@ -3,6 +3,7 @@
 exports[`Storyshots Date Default 1`] = `
 Array [
   <time
+    className="css-0"
     dateTime="2000-11-22T00:00:00.000Z"
   >
     2000/11/22
@@ -14,10 +15,22 @@ Array [
 exports[`Storyshots Date Format 1`] = `
 Array [
   <time
+    className="css-0"
     dateTime="2000-11-22T00:00:00.000Z"
   >
     2000年11月22日
   </time>,
+  <span />,
+]
+`;
+
+exports[`Storyshots MainHeading Default 1`] = `
+Array [
+  <h2
+    className="css-0"
+  >
+    Hello World!
+  </h2>,
   <span />,
 ]
 `;
