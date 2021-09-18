@@ -2541,6 +2541,14 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz"
   integrity sha512-Myxw//kzromB9yWgS8qYGuGVf91oBUUJpNvy5eM50sqvmKLbKjwLxohJnkWGTeeI9v9IBMtPLxz5Gc60FIfvCA==
 
+"@selderee/plugin-htmlparser2@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@selderee/plugin-htmlparser2/-/plugin-htmlparser2-0.6.0.tgz#27e994afd1c2cb647ceb5406a185a5574188069d"
+  integrity sha512-J3jpy002TyBjd4N/p6s+s90eX42H2eRhK3SbsZuvTDv977/E8p2U3zikdiehyJja66do7FlxLomZLPlvl2/xaA==
+  dependencies:
+    domhandler "^4.2.0"
+    selderee "^0.6.0"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz"
@@ -3464,6 +3472,11 @@
   resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-5.1.2.tgz"
   integrity sha512-h4lTMgMJctJybDp8CQrxTUiiYmedihHWkjnF/8Pxseu2S6Nlfcy8kwboQ8yejh456rP2yWoEVm1sS/FVsfM48w==
 
+"@types/html-to-text@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@types/html-to-text/-/html-to-text-8.0.1.tgz#e449513df2283b1adedc85bdc2f6b7187f32972a"
+  integrity sha512-0B/OifmJYmk5r9z9+KJtGWOF0LEjbTN4D2QeCh+mAw81JkJwC83NvNWUZFEqRT5PpnjX7vX0ab1SMGcwCs3Lag==
+
 "@types/is-function@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/is-function/-/is-function-1.0.1.tgz"
@@ -3666,6 +3679,11 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
+
+"@types/remove-markdown@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@types/remove-markdown/-/remove-markdown-0.3.1.tgz#82bc3664c313f50f7c77f1bb59935f567689dc63"
+  integrity sha512-JpJNEJEsmmltyL2LdE8KRjJ0L2ad5vgLibqNj85clohT9AyTrfN6jvHxStPshDkmtcL/ShFu0p2tbY7DBS1mqQ==
 
 "@types/scheduler@*":
   version "0.16.2"
@@ -6164,6 +6182,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+discontinuous-range@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/discontinuous-range/-/discontinuous-range-1.0.0.tgz#e38331f0844bba49b9a9cb71c771585aab1bc65a"
+  integrity sha1-44Mx8IRLukm5qctxx3FYWqsbxlo=
+
 doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz"
@@ -8010,6 +8033,18 @@ html-tags@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
+
+html-to-text@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/html-to-text/-/html-to-text-8.0.0.tgz#5848681a5a38d657a7bb58cf5006d1c29fe64ce3"
+  integrity sha512-fEtul1OerF2aMEV+Wpy+Ue20tug134jOY1GIudtdqZi7D0uTudB2tVJBKfVhTL03dtqeJoF8gk8EPX9SyMEvLg==
+  dependencies:
+    "@selderee/plugin-htmlparser2" "^0.6.0"
+    deepmerge "^4.2.2"
+    he "^1.2.0"
+    htmlparser2 "^6.1.0"
+    minimist "^1.2.5"
+    selderee "^0.6.0"
 
 html-void-elements@^1.0.0:
   version "1.0.5"
@@ -10443,6 +10478,11 @@ mockdate@^3.0.5:
   resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-3.0.5.tgz"
   integrity sha512-iniQP4rj1FhBdBYS/+eQv7j1tadJ9lJtdzgOpvsOHng/GbcDh2Fhdeq+ZRldrPYdXvCyfFUmFeEwEGXZB5I/AQ==
 
+moo@^0.5.0, moo@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/moo/-/moo-0.5.1.tgz#7aae7f384b9b09f620b6abf6f74ebbcd1b65dbc4"
+  integrity sha512-I1mnb5xn4fO80BH9BLcF0yLypy2UKl+Cb01Fu0hJRkJjlCRtxZMWkTdAtDd5ZqCOxtCkhmRwyI57vWT+1iZ67w==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz"
@@ -10530,6 +10570,16 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+
+nearley@^2.20.1:
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.20.1.tgz#246cd33eff0d012faf197ff6774d7ac78acdd474"
+  integrity sha512-+Mc8UaAebFzgV+KpI5n7DasuuQCHA89dmwm7JXw3TV43ukfNQ9DnBH3Mdb2g/I4Fdxc26pwimBWvjIw0UAILSQ==
+  dependencies:
+    commander "^2.19.0"
+    moo "^0.5.0"
+    railroad-diagrams "^1.0.0"
+    randexp "0.4.6"
 
 negotiator@0.6.2:
   version "0.6.2"
@@ -11160,6 +11210,14 @@ parse5@6.0.1, parse5@^6.0.0:
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
+parseley@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/parseley/-/parseley-0.7.0.tgz#9949e3a0ed05c5072adb04f013c2810cf49171a8"
+  integrity sha512-xyOytsdDu077M3/46Am+2cGXEKM9U9QclBDv7fimY7e+BBlxh2JcBp2mgNsmkyA9uvgyTjVzDi7cP1v4hcFxbw==
+  dependencies:
+    moo "^0.5.1"
+    nearley "^2.20.1"
+
 parseurl@~1.3.2, parseurl@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz"
@@ -11732,10 +11790,23 @@ quick-lru@^4.0.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
+railroad-diagrams@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
+  integrity sha1-635iZ1SN3t+4mcG5Dlc3RVnN234=
+
 ramda@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
+
+randexp@0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/randexp/-/randexp-0.4.6.tgz#e986ad5e5e31dae13ddd6f7b3019aa7c87f60ca3"
+  integrity sha512-80WNmd9DA0tmZrw9qQa62GPPWfuXJknrmVmLcxvq4uZBdYqb1wYoKTmnlGUchvVWe0XiLupYkBoXVOxz3C8DYQ==
+  dependencies:
+    discontinuous-range "1.0.0"
+    ret "~0.1.10"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
@@ -12332,6 +12403,11 @@ remark@^14.0.1:
     remark-stringify "^10.0.0"
     unified "^10.0.0"
 
+remove-markdown@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/remove-markdown/-/remove-markdown-0.3.0.tgz#5e4b667493a93579728f3d52ecc1db9ca505dc98"
+  integrity sha1-XktmdJOpNXlyjz1S7MHbnKUF3Jg=
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz"
@@ -12596,6 +12672,13 @@ secure-compare@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/secure-compare/-/secure-compare-3.0.1.tgz"
   integrity sha1-8aAymzCLIh+uN7mXTz1XjQypmeM=
+
+selderee@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/selderee/-/selderee-0.6.0.tgz#f3bee66cfebcb6f33df98e4a1df77388b42a96f7"
+  integrity sha512-ibqWGV5aChDvfVdqNYuaJP/HnVBhlRGSRrlbttmlMpHcLuTqqbMH36QkSs9GEgj5M88JDYLI8eyP94JaQ8xRlg==
+  dependencies:
+    parseley "^0.7.0"
 
 semver-compare@^1.0.0:
   version "1.0.0"

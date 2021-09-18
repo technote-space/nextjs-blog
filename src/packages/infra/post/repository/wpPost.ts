@@ -1,10 +1,12 @@
 import type { IPostRepository } from '$/domain/post/repository/post';
+import { convert } from 'html-to-text';
 import mysql from 'serverless-mysql';
 import { singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
+import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import Source from '$/domain/post/valueObject/source';
 import Title from '$/domain/post/valueObject/title';
@@ -16,10 +18,8 @@ type PostData = {
   post_date: string;
   post_modified: string;
   post_title: string;
-};
-type PostDetailData = PostData & {
   post_content: string;
-}
+};
 
 @singleton()
 export class WordPressPostRepository implements IPostRepository {
@@ -43,7 +43,7 @@ export class WordPressPostRepository implements IPostRepository {
 
   public async all(): Promise<Post[]> {
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT post_name, post_date, post_modified, post_title
+      SELECT post_name, post_date, post_modified, post_title, post_content
       FROM wp_posts
       WHERE post_type = ? && post_status = ?
     `, ['post', 'publish']);
@@ -55,6 +55,7 @@ export class WordPressPostRepository implements IPostRepository {
         id: result.post_name,
       }),
       Title.create(result.post_title),
+      Excerpt.create(convert(result.post_content, { wordwrap: null })),
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
     ));
@@ -75,7 +76,7 @@ export class WordPressPostRepository implements IPostRepository {
   }
 
   public async fetch(id: Id): Promise<PostDetail> {
-    const results = await this.mysql.query<Array<PostDetailData>>(`
+    const results = await this.mysql.query<Array<PostData>>(`
       SELECT post_name, post_date, post_modified, post_title, post_content
       FROM wp_posts
       WHERE post_type = ? && post_status = ? && post_name = ?

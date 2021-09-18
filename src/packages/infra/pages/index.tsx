@@ -34,6 +34,9 @@ export class IndexPage implements IIndexPage {
                 <Link href={pagesPath.posts._id(post.getId().value).$url()}>
                   <a>{post.getTitle().value}</a>
                 </Link>
+                <div>
+                  {post.getExcerpt().value}
+                </div>
                 <br/>
                 <small>
                   <Date date={post.getCreatedAt().value}/>

@@ -4,11 +4,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import removeMd from 'remove-markdown';
 import { singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
+import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import Source from '$/domain/post/valueObject/source';
 import Title from '$/domain/post/valueObject/title';
@@ -43,6 +45,7 @@ export class MarkdownPostRepository implements IPostRepository {
     return {
       id,
       createdAt: result.data.date,
+      contentHtml: result.content,
       ...result.data,
     };
   }
@@ -64,6 +67,7 @@ export class MarkdownPostRepository implements IPostRepository {
         id: post.id,
       }),
       Title.create(post.title),
+      Excerpt.create(removeMd(post.contentHtml)),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     ));

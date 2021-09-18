@@ -6,7 +6,7 @@ import Id from '$/domain/post/valueObject/id';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 
-export type PostDetailDTO = PostDTO & {
+export type PostDetailDTO = Omit<PostDTO, 'excerpt'> & {
   content: string;
 }
 
