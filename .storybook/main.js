@@ -1,8 +1,8 @@
 const path = require('path');
 const toPath = (_path) => path.join(process.cwd(), _path);
-const {TsconfigPathsPlugin} = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
+  core: { builder: "storybook-builder-vite" },
   "stories": [
     "../src/components/Introduction.stories.mdx",
     "../src/**/*.stories.mdx",
@@ -15,19 +15,11 @@ module.exports = {
     "@storybook/addon-actions",
     "@storybook/addon-links",
   ],
-  webpackFinal: async (config) => {
+  viteFinal: async (config) => {
     return {
       ...config,
-      node: {
-        fs: 'empty'
-      },
       resolve: {
         ...config.resolve,
-        plugins: [
-          new TsconfigPathsPlugin({
-            configFile: path.resolve(__dirname, '../tsconfig.json')
-          }),
-        ],
         alias: {
           ...config.resolve.alias,
           "@emotion/core": toPath("node_modules/@emotion/react"),
@@ -35,5 +27,5 @@ module.exports = {
         },
       },
     }
-  }
+  },
 }
