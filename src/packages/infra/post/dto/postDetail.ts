@@ -1,4 +1,4 @@
-import type { PostDTO } from '$/domain/post/dto/post';
+import type { PostDTO } from '$/infra/post/dto/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';

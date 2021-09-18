@@ -4,9 +4,9 @@ import type { IPostManager } from '$/domain/post/manager';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
-import { fromEntity, toEntity } from '$/domain/post/dto/postDetail';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
+import { fromEntity, toEntity } from '$/infra/post/dto/postDetail';
 import Date from '@/components/Date';
 
 @singleton()
