@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import { ChakraUiTheme } from '$/infra/app/theme/chakraUi';
+import './registry.theme';
 import { FooterComponent } from '$/infra/app/layout/footer';
 import { HeaderComponent } from '$/infra/app/layout/header';
 import { LayoutComponent } from '$/infra/app/layout';
@@ -12,7 +12,6 @@ import { PostManager } from '$/infra/post/manager';
 import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
 import { WordPressPostRepository } from '$/infra/post/repository/wpPost';
 
-container.registerSingleton('ITheme', ChakraUiTheme);
 container.registerSingleton('IFooterComponent', FooterComponent);
 container.registerSingleton('IHeaderComponent', HeaderComponent);
 container.registerSingleton('ILayoutComponent', LayoutComponent);
