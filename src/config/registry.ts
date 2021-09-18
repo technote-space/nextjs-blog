@@ -10,6 +10,7 @@ import { PostPage, PostPageProps } from '$/infra/pages/post';
 import { PostFactory } from '$/infra/post/factory';
 import { PostManager } from '$/infra/post/manager';
 import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
+import { WordPressPostRepository } from '$/infra/post/repository/wpPost';
 
 container.registerSingleton('ITheme', ChakraUiTheme);
 container.registerSingleton('IFooterComponent', FooterComponent);
@@ -21,6 +22,7 @@ container.registerSingleton('IPostFactory', PostFactory);
 container.registerSingleton('IPostManager', PostManager);
 container.registerInstance('postRepositories', {
   'md': container.resolve(MarkdownPostRepository),
+  'wp': container.resolve(WordPressPostRepository),
 });
 
 // pages

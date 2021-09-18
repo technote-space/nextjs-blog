@@ -32,6 +32,7 @@
     "reflect-metadata": "^0.1.13",
     "remark": "^14.0.1",
     "remark-html": "^14.0.1",
+    "serverless-mysql": "^1.5.4",
     "tsyringe": "^4.6.0",
     "validator": "^13.6.0"
   },
