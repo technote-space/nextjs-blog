@@ -9,6 +9,7 @@ import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import Source from '$/domain/post/valueObject/source';
+import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
@@ -19,6 +20,8 @@ type PostData = {
   post_modified: string;
   post_title: string;
   post_content: string;
+  thumbnail_id?: string;
+  thumbnail?: string;
 };
 
 @singleton()
@@ -43,10 +46,24 @@ export class WordPressPostRepository implements IPostRepository {
 
   public async all(): Promise<Post[]> {
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT post_name, post_date, post_modified, post_title, post_content
+      SELECT wp_posts.post_name,
+             wp_posts.post_date,
+             wp_posts.post_modified,
+             wp_posts.post_title,
+             wp_posts.post_content,
+             wp_postmeta.meta_value as thumbnail_id
       FROM wp_posts
-      WHERE post_type = ? && post_status = ?
-    `, ['post', 'publish']);
+             LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
+      WHERE wp_posts.post_type = ? && wp_posts.post_status = ?
+    `, ['_thumbnail_id', 'post', 'publish']);
+
+    const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
+    const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
+      SELECT ID, guid
+      FROM wp_posts
+      WHERE ID in (${(new Array<string>(thumbnailIds.length)).fill('?').join(',')})
+    `, thumbnailIds)).map(({ ID, guid }) => ({ [ID]: guid }))) : {};
+
     await this.mysql.end();
 
     return results.map(result => Post.reconstruct(
@@ -56,6 +73,7 @@ export class WordPressPostRepository implements IPostRepository {
       }),
       Title.create(result.post_title),
       Excerpt.create(convert(result.post_content, { wordwrap: null })),
+      result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
     ));
@@ -77,10 +95,18 @@ export class WordPressPostRepository implements IPostRepository {
 
   public async fetch(id: Id): Promise<PostDetail> {
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT post_name, post_date, post_modified, post_title, post_content
+      SELECT wp_posts.post_name,
+             wp_posts.post_date,
+             wp_posts.post_modified,
+             wp_posts.post_title,
+             wp_posts.post_content,
+             thumbnail.guid as thumbnail
       FROM wp_posts
-      WHERE post_type = ? && post_status = ? && post_name = ?
-    `, ['post', 'publish', id.postId]);
+             LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
+             LEFT JOIN wp_posts thumbnail on thumbnail.ID = wp_postmeta.meta_value
+      WHERE wp_posts.post_type = ? && wp_posts.post_status = ? && wp_posts.post_name = ?
+    `, ['_thumbnail_id', 'post', 'publish', id.postId]);
+
     await this.mysql.end();
 
     if (!results.length) {
@@ -91,6 +117,7 @@ export class WordPressPostRepository implements IPostRepository {
       id,
       Title.create(results[0].post_title),
       Content.create(results[0].post_content),
+      results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),
     );

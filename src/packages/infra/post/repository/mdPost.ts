@@ -68,6 +68,7 @@ export class MarkdownPostRepository implements IPostRepository {
       }),
       Title.create(post.title),
       Excerpt.create(removeMd(post.contentHtml)),
+      undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     ));
@@ -102,6 +103,7 @@ export class MarkdownPostRepository implements IPostRepository {
       id,
       Title.create(post.title),
       Content.create(post.contentHtml),
+      undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     );

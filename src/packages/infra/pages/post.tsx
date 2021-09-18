@@ -20,6 +20,7 @@ export class PostPage implements IPostPage {
     const component = memo(({ post }: Props) => {
       const entity = toEntity(post);
       return this.layoutComponent.render({}, <article>
+        {entity.getThumbnail() && <img src={entity.getThumbnail()?.value} alt="thumbnail"/>}
         <h1>{entity.getTitle().value}</h1>
         <div>
           <Date date={entity.getCreatedAt().value}/>

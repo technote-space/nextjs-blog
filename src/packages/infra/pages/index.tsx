@@ -31,6 +31,7 @@ export class IndexPage implements IIndexPage {
           <ul>
             {posts.map(post => toEntity(post)).map((post) => (
               <li key={post.getId().value}>
+                {post.getThumbnail() && <img src={post.getThumbnail()?.value} alt="thumbnail"/>}
                 <Link href={pagesPath.posts._id(post.getId().value).$url()}>
                   <a>{post.getTitle().value}</a>
                 </Link>
