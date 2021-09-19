@@ -12,6 +12,10 @@ const defaultProps: Props = {
 };
 
 const Thumbnail: VFC<Props> = (props) => {
+  if (!props.src) {
+    return null;
+  }
+
   // eslint-disable-next-line jsx-a11y/alt-text
   return <Image {...defaultProps} {...props} />;
 };
