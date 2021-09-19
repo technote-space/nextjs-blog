@@ -1,6 +1,7 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
+import { memo } from 'react';
 import Date from '@/components/date/Date';
 import MainHeading from '@/components/heading/MainHeading';
 import SubHeading from '@/components/heading/SubHeading';
@@ -39,4 +40,4 @@ const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ..
 };
 
 Card.displayName = 'Card';
-export default Card;
+export default memo(Card);

@@ -1,6 +1,7 @@
 import type { FlexProps } from '@chakra-ui/react';
 import type { VFC } from 'react';
 import { Flex as ChakraUiFlex } from '@chakra-ui/react';
+import { memo } from 'react';
 
 type Props = FlexProps;
 
@@ -11,4 +12,4 @@ const Flex: VFC<Props> = (props) => {
 };
 
 Flex.displayName = 'Flex';
-export default Flex;
+export default memo(Flex);

@@ -1,6 +1,7 @@
 import type { BoxProps } from '@chakra-ui/react';
 import type { VFC } from 'react';
 import { Box as ChakraUiBox } from '@chakra-ui/react';
+import { memo } from 'react';
 
 type Props = BoxProps;
 
@@ -11,4 +12,4 @@ const Box: VFC<Props> = (props) => {
 };
 
 Box.displayName = 'Box';
-export default Box;
+export default memo(Box);

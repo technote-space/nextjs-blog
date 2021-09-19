@@ -17,3 +17,14 @@ export const Default = Template.bind({});
 Default.args = {
   src: 'https://placehold.jp/150x150.png',
 };
+
+export const SetSize = Template.bind({});
+SetSize.args = {
+  src: 'https://placehold.jp/150x150.png',
+  width: 300,
+  height: 180,
+};
+
+
+export const NoSrc = Template.bind({});
+NoSrc.args = {};

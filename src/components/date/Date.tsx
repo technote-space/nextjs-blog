@@ -1,6 +1,7 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
+import { memo } from 'react';
 import { wrap } from '@/components/wrap';
 
 type Props = StyleProps & {
@@ -20,4 +21,4 @@ const Date: VFC<Props> = ({ date, format, ...props }) => {
 };
 
 Date.displayName = 'Date';
-export default Date;
+export default memo(Date);

@@ -1,6 +1,7 @@
 import type { ImageProps } from '@chakra-ui/react';
 import type { VFC } from 'react';
 import { Image } from '@chakra-ui/react';
+import { memo } from 'react';
 
 type Props = ImageProps;
 
@@ -33,4 +34,4 @@ const Thumbnail: VFC<Props> = (props) => {
 };
 
 Thumbnail.displayName = 'Thumbnail';
-export default Thumbnail;
+export default memo(Thumbnail);
