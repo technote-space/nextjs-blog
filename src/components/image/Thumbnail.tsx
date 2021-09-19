@@ -7,8 +7,8 @@ type Props = ImageProps;
 const defaultProps: Props = {
   alt: 'thumbnail',
   objectFit: 'cover',
-  htmlWidth: 150,
-  htmlHeight: 150,
+  width: 150,
+  height: 150,
   loading: 'lazy',
   flexShrink: 0,
 };
@@ -16,6 +16,8 @@ const defaultProps: Props = {
 const processProps = (props: Props) => {
   return {
     ...props,
+    htmlWidth: props.htmlWidth ?? (typeof props.width === 'number' ? props.width : Array.isArray(props.width) ? (props.width[0] as number) : undefined),
+    htmlHeight: props.htmlHeight ?? (typeof props.height === 'number' ? props.height : Array.isArray(props.height) ? (props.height[0] as number) : undefined),
     width: props.width ?? props.htmlWidth,
     height: props.height ?? props.htmlHeight,
   };
