@@ -2,14 +2,11 @@ import type { ILayoutComponent } from '$/domain/app/layout';
 import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
 import type { IPostManager } from '$/domain/post/manager';
 import type { VFC } from 'react';
-import Link from 'next/link';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
+import Card from '$/infra/pages/components/Card';
 import { fromEntity, toEntity } from '$/infra/post/dto/post';
-import Date from '@/components/date/Date';
-import MainHeading from '@/components/heading/MainHeading';
-import SubHeading from '@/components/heading/SubHeading';
-import Thumbnail from '@/components/image/Thumbnail';
+import List from '@/components/layout/List';
 import { pagesPath } from '@/lib/$path';
 
 @singleton()
@@ -21,36 +18,20 @@ export class IndexPage implements IIndexPage {
 
   public create(): VFC<Props> {
     const component = memo(({ posts }: Props) => {
-      return this.layoutComponent.render({ isHome: true }, <>
-        <section>
-          <p>[Your Self Introduction]</p>
-          <p>
-            (This is a sample website - you’ll be building a site like this in{' '}
-            <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-          </p>
-        </section>
-        <section>
-          <h2>Blog</h2>
-          <ul>
-            {posts.map(post => toEntity(post)).map((post) => (
-              <li key={post.getId().value}>
-                <Link href={pagesPath.posts._id(post.getId().value).$url()}>
-                  <a>
-                    <Thumbnail src={post.getThumbnail()?.value} />
-                    <MainHeading>
-                      {post.getTitle().value}
-                    </MainHeading>
-                    <SubHeading>
-                      {post.getExcerpt().value}
-                    </SubHeading>
-                    <Date date={post.getCreatedAt().value}/>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </>);
+      return this.layoutComponent.render({ isHome: true }, <List>
+        {posts.map(post => toEntity(post)).map((post) => (
+          <List.Item key={post.getId().value}>
+            <Card
+              url={pagesPath.posts._id(post.getId().value).$url()}
+              thumbnail={post.getThumbnail()?.value}
+              title={post.getTitle().value}
+              excerpt={post.getExcerpt().value}
+              createdAt={post.getCreatedAt().value}
+              m={4}
+            />
+          </List.Item>
+        ))}
+      </List>);
     });
     component.displayName = 'IndexPage';
 

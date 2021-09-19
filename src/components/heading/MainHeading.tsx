@@ -7,6 +7,7 @@ type Props = StyleProps;
 
 const defaultProps: Props = {
   fontSize: '1.5em',
+  lineHeight: '1.2em',
   color: colors.text,
 };
 

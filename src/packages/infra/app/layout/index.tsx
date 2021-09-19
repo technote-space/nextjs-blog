@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import { BaseComponent } from '$/infra/shared/component';
+import Box from '@/components/layout/Box';
 import { pagesPath } from '@/lib/$path';
 
 @singleton()
@@ -19,7 +20,7 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
 
   protected getComponent(): VFC<Props> {
     const component = memo(({ children, isHome }: Props) => {
-      return <div>
+      return <Box mx="auto" maxW={1000}>
         {this.headerComponent.render({})}
         <main>
           <div>
@@ -32,7 +33,7 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
           </div>}
         </main>
         {this.footerComponent.render({})}
-      </div>;
+      </Box>;
     });
     component.displayName = 'LayoutComponent';
 
