@@ -16,6 +16,7 @@ import Source from '$/domain/post/valueObject/source';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
+import Thumbnail from '$/domain/post/valueObject/thumbnail';
 
 type MaybePost = {
   id: string;
@@ -24,8 +25,9 @@ type MaybePost = {
   updatedAt?: string;
   title?: string;
   contentHtml?: string;
+  thumbnail?: string;
 };
-type PostData = Required<Omit<MaybePost, 'updatedAt'>> & Pick<MaybePost, 'updatedAt'>;
+type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>> & Pick<MaybePost, 'updatedAt' | 'thumbnail'>;
 
 @singleton()
 export class MarkdownPostRepository implements IPostRepository {
@@ -68,7 +70,7 @@ export class MarkdownPostRepository implements IPostRepository {
       }),
       Title.create(post.title),
       Excerpt.create(removeMd(post.contentHtml)),
-      undefined,
+      post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     ));
@@ -103,7 +105,7 @@ export class MarkdownPostRepository implements IPostRepository {
       id,
       Title.create(post.title),
       Content.create(post.contentHtml),
-      undefined,
+      post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     );
