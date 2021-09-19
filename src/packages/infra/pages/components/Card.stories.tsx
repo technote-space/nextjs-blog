@@ -17,7 +17,6 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  url: 'https://example.com',
   thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩わがはいは猫である',
   excerpt: '吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...',
@@ -25,14 +24,12 @@ Default.args = {
 
 export const NoThumbnail = Template.bind({});
 NoThumbnail.args = {
-  url: 'https://example.com',
   title: '吾輩わがはいは猫である',
   excerpt: '吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...',
 };
 
 export const Short = Template.bind({});
 Short.args = {
-  url: 'https://example.com',
   thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩わがはいは猫である',
   excerpt: '吾輩わがはいは猫である。',
@@ -40,7 +37,6 @@ Short.args = {
 
 export const Long = Template.bind({});
 Long.args = {
-  url: 'https://example.com',
   thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ',
   excerpt: '吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...',
