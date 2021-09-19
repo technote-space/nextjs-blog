@@ -19,9 +19,11 @@ container.registerSingleton('IHeadComponent', HeadComponent);
 container.registerSingleton('IAppService', AppService);
 container.registerSingleton('IPostFactory', PostFactory);
 container.registerSingleton('IPostManager', PostManager);
+container.registerSingleton('MarkdownPostRepository', MarkdownPostRepository);
+container.registerSingleton('WordPressPostRepository', WordPressPostRepository);
 container.registerInstance('postRepositories', {
-  'md': container.resolve(MarkdownPostRepository),
-  'wp': container.resolve(WordPressPostRepository),
+  'md': 'MarkdownPostRepository',
+  'wp': 'WordPressPostRepository',
 });
 
 // pages
