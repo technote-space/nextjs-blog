@@ -1,4 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import { storybookArgTypes } from '@/components/wrap';
 import SubHeading from './SubHeading';
 
 export default {
@@ -6,6 +7,7 @@ export default {
   component: SubHeading,
   argTypes: {
     children: { control: { type: 'text' } },
+    ...storybookArgTypes,
   },
 } as ComponentMeta<typeof SubHeading>;
 

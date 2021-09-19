@@ -1,4 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import { storybookArgTypes } from '@/components/wrap';
 import Date from './Date';
 
 export default {
@@ -7,6 +8,7 @@ export default {
   argTypes: {
     date: { control: { type: 'date' } },
     format: { control: { type: 'text' } },
+    ...storybookArgTypes,
   },
 } as ComponentMeta<typeof Date>;
 
