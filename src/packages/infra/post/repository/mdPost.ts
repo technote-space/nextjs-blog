@@ -13,10 +13,10 @@ import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import Source from '$/domain/post/valueObject/source';
+import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
-import Thumbnail from '$/domain/post/valueObject/thumbnail';
 
 type MaybePost = {
   id: string;

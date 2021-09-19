@@ -7,6 +7,9 @@ import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import { fromEntity, toEntity } from '$/infra/post/dto/post';
 import Date from '@/components/date/Date';
+import MainHeading from '@/components/heading/MainHeading';
+import SubHeading from '@/components/heading/SubHeading';
+import Thumbnail from '@/components/image/Thumbnail';
 import { pagesPath } from '@/lib/$path';
 
 @singleton()
@@ -31,17 +34,18 @@ export class IndexPage implements IIndexPage {
           <ul>
             {posts.map(post => toEntity(post)).map((post) => (
               <li key={post.getId().value}>
-                {post.getThumbnail() && <img src={post.getThumbnail()?.value} alt="thumbnail"/>}
                 <Link href={pagesPath.posts._id(post.getId().value).$url()}>
-                  <a>{post.getTitle().value}</a>
+                  <a>
+                    <Thumbnail src={post.getThumbnail()?.value} />
+                    <MainHeading>
+                      {post.getTitle().value}
+                    </MainHeading>
+                    <SubHeading>
+                      {post.getExcerpt().value}
+                    </SubHeading>
+                    <Date date={post.getCreatedAt().value}/>
+                  </a>
                 </Link>
-                <div>
-                  {post.getExcerpt().value}
-                </div>
-                <br/>
-                <small>
-                  <Date date={post.getCreatedAt().value}/>
-                </small>
               </li>
             ))}
           </ul>
