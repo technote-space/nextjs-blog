@@ -1,4 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import { storybookArgTypes } from '@/components/wrap';
 import Card from './Card';
 
 export default {
@@ -10,6 +11,7 @@ export default {
     title: { control: { type: 'text' } },
     excerpt: { control: { type: 'text' } },
     createdAt: { control: { type: 'date' } },
+    ...storybookArgTypes,
   },
 } as ComponentMeta<typeof Card>;
 

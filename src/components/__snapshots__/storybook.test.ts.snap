@@ -1,5 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Box Default 1`] = `
+Array [
+  <div
+    className="css-0"
+  >
+    Hello World!
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Card Default 1`] = `
+Array [
+  <div
+    className="css-1epue0w"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-14svrxw"
+      height={100}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={150}
+    />
+    <div
+      className="css-xg5s6b"
+    >
+      <h2
+        className="css-ojsz5g"
+      >
+        吾輩わがはいは猫である
+      </h2>
+      <h3
+        className="css-he5ni6"
+      >
+        吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+      </h3>
+      <time
+        className="css-s2uf1z"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Card Long 1`] = `
+Array [
+  <div
+    className="css-1epue0w"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-14svrxw"
+      height={100}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={150}
+    />
+    <div
+      className="css-xg5s6b"
+    >
+      <h2
+        className="css-ojsz5g"
+      >
+        吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ
+      </h2>
+      <h3
+        className="css-he5ni6"
+      >
+        吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+      </h3>
+      <time
+        className="css-s2uf1z"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Card No Thumbnail 1`] = `
+Array [
+  <div
+    className="css-1epue0w"
+  >
+    <div
+      className="css-xg5s6b"
+    >
+      <h2
+        className="css-ojsz5g"
+      >
+        吾輩わがはいは猫である
+      </h2>
+      <h3
+        className="css-he5ni6"
+      >
+        吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+      </h3>
+      <time
+        className="css-s2uf1z"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Card Short 1`] = `
+Array [
+  <div
+    className="css-1epue0w"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-14svrxw"
+      height={100}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={150}
+    />
+    <div
+      className="css-xg5s6b"
+    >
+      <h2
+        className="css-ojsz5g"
+      >
+        吾輩わがはいは猫である
+      </h2>
+      <h3
+        className="css-he5ni6"
+      >
+        吾輩わがはいは猫である。
+      </h3>
+      <time
+        className="css-s2uf1z"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Date Default 1`] = `
 Array [
   <time
@@ -24,13 +179,117 @@ Array [
 ]
 `;
 
+exports[`Storyshots Flex Default 1`] = `
+Array [
+  <div
+    className="css-k008qs"
+  >
+    Hello World!
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots List Empty 1`] = `
+Array [
+  <ul
+    className="css-155za0w"
+    role="list"
+  />,
+  <span />,
+]
+`;
+
+exports[`Storyshots List Multiple Items 1`] = `
+Array [
+  <ul
+    className="css-155za0w"
+    role="list"
+  >
+    <li
+      className="css-0"
+    >
+      吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+    </li>
+    <li
+      className="css-0"
+    >
+      吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+    </li>
+    <li
+      className="css-0"
+    >
+      吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+    </li>
+  </ul>,
+  <span />,
+]
+`;
+
+exports[`Storyshots List One Item 1`] = `
+Array [
+  <ul
+    className="css-155za0w"
+    role="list"
+  >
+    <li
+      className="css-0"
+    >
+      吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかも...
+    </li>
+  </ul>,
+  <span />,
+]
+`;
+
 exports[`Storyshots MainHeading Default 1`] = `
 Array [
   <h2
-    className="css-0"
+    className="css-9z3fyc"
   >
     Hello World!
   </h2>,
+  <span />,
+]
+`;
+
+exports[`Storyshots SubHeading Default 1`] = `
+Array [
+  <h3
+    className="css-he5ni6"
+  >
+    Hello World!
+  </h3>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Thumbnail Default 1`] = `
+Array [
+  <img
+    alt="thumbnail"
+    className="chakra-image css-1sv9k7u"
+    height={150}
+    loading="lazy"
+    src="https://placehold.jp/150x150.png"
+    width={150}
+  />,
+  <span />,
+]
+`;
+
+exports[`Storyshots Thumbnail No Src 1`] = `<span />`;
+
+exports[`Storyshots Thumbnail Set Size 1`] = `
+Array [
+  <img
+    alt="thumbnail"
+    className="chakra-image css-9yxp9o"
+    height={180}
+    loading="lazy"
+    src="https://placehold.jp/150x150.png"
+    width={300}
+  />,
   <span />,
 ]
 `;
