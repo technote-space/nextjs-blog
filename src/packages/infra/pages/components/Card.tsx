@@ -22,6 +22,14 @@ const defaultProps: StyleProps = {
   backgroundColor: 'white',
   cursor: 'pointer',
   alignItems: 'center',
+  boxSizing: 'border-box',
+  transitionDuration: '0.3s',
+  transform: 'auto-gpu',
+  _hover: {
+    backgroundColor: '#faffff',
+    boxShadow: '0 2px 6px #ccc',
+    translateY: -1,
+  }
 };
 
 const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) => {

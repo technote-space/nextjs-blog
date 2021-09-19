@@ -20,17 +20,17 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
 
   protected getComponent(): VFC<Props> {
     const component = memo(({ children, isHome }: Props) => {
-      return <Box mx="auto" maxW={1000}>
+      return <Box>
         {this.headerComponent.render({})}
         <main>
-          <div>
+          <Box mx="auto" maxW={1000}>
             {children}
-          </div>
-          {!isHome && <div>
+          </Box>
+          {!isHome && <Box mx="auto" maxW={1000}>
             <Link href={pagesPath.$url()}>
               <a>← Back to home</a>
             </Link>
-          </div>}
+          </Box>}
         </main>
         {this.footerComponent.render({})}
       </Box>;
