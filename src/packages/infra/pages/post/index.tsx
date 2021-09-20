@@ -6,9 +6,8 @@ import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
+import Article from '$/infra/pages/post/components/Article';
 import { fromEntity, toEntity } from '$/infra/post/dto/postDetail';
-import Date from '@/components/date/Date';
-import CoverImage from '@/components/image/CoverImage';
 
 @singleton()
 export class PostPage implements IPostPage {
@@ -20,15 +19,13 @@ export class PostPage implements IPostPage {
   public create(): VFC<Props> {
     const component = memo(({ post }: Props) => {
       const entity = toEntity(post);
-      return this.layoutComponent.render({}, <article>
-        <CoverImage src={entity.getThumbnail()?.value} backgroundColor={post.dominantColor}>
-          <h1>{entity.getTitle().value}</h1>
-        </CoverImage>
-        <div>
-          <Date date={entity.getCreatedAt().value}/>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: entity.getContent().value }}/>
-      </article>);
+      return this.layoutComponent.render({}, <Article
+        thumbnail={entity.getThumbnail()?.value}
+        backgroundColor={post.dominantColor}
+        title={entity.getTitle().value}
+        createdAt={entity.getCreatedAt().value}
+        content={entity.getContent().value}
+      />);
     });
     component.displayName = 'PostPage';
 
