@@ -1,0 +1,165 @@
+.article {
+  font-size: 1.15em;
+
+  p {
+    line-height: 1.8;
+    margin: 1.2em 0;
+  }
+
+  h2 {
+    font-size: 2em;
+    padding: 25px;
+  }
+
+  dl {
+    margin: 1em 0;
+  }
+
+  dd {
+    margin-left: 40px;
+  }
+
+  ul li,
+  ol li {
+    margin: 0.2em;
+  }
+
+  ul ul, ul ol,
+  ol ul,
+  ol ol {
+    margin: 0;
+  }
+
+  .wp-block-gallery ul {
+    padding-left: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.25;
+    font-weight: bold;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 2.4em 0 1em;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 20px;
+    padding: 9px 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+    padding: 25px;
+    background-color: #e1f1ff;
+    border-radius: 2px;
+    border-bottom: #1A94DA solid 4px;
+  }
+
+  h3 {
+    border-left: 7px solid #1A94DA;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-size: 22px;
+    padding: 12px 20px;
+  }
+
+  h4 {
+    border-top: 2px solid #ddf;
+    border-bottom: 2px solid #ddf;
+  }
+
+  h5 {
+    border-bottom: 2px solid #ddf;
+  }
+
+  h6 {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .column-wrap h1, .column-wrap h2, .column-wrap h3, .column-wrap h4, .column-wrap h5, .column-wrap h6 {
+    margin-top: 0;
+  }
+
+  a {
+    color: #1967d2;
+    text-decoration: underline;
+
+    &:visited {
+      color: #9967d2;
+    }
+
+    &:hover {
+      color: #e53900;
+    }
+  }
+
+  ol, ul {
+    margin: 1em 0;
+    padding-left: 40px;
+  }
+
+  hr {
+    color: #eee;
+  }
+
+  table {
+    margin-bottom: 20px;
+    max-width: 100%;
+    width: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  table th {
+    background-color: #f5f6f7;
+  }
+
+  table tr:nth-of-type(2n+1) {
+    background-color: #fafbfc;
+  }
+
+  table th,
+  table td {
+    border: 1px solid #eee;
+    padding: 0.4em 1.2em 0.4em 0.6em;
+  }
+
+  .scrollable-table {
+    -webkit-overflow-scrolling: touch;
+
+    table {
+      border-collapse: collapse;
+      max-width: none;
+    }
+
+    th {
+      background-color: #eee;
+    }
+
+    th,
+    td {
+      border: solid 1px #ccc;
+      padding: 3px 5px;
+      white-space: nowrap;
+    }
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    margin-bottom: 1em;
+  }
+}
+
+

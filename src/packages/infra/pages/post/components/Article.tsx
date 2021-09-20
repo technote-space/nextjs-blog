@@ -4,6 +4,8 @@ import { memo } from 'react';
 import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
+import { wrap } from '@/components/wrap';
+import styles from './Article.module.scss';
 
 type Props = {
   thumbnail?: string;
@@ -14,7 +16,7 @@ type Props = {
 };
 
 const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content }) => {
-  return <article>
+  return <wrap.article backgroundColor="white" p={6} boxShadow="0 0 8px #ccc">
     <header>
       <Date
         date={createdAt}
@@ -28,8 +30,8 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
         <h1>{title}</h1>
       </CoverImage>
     </header>
-    <Box my={8} fontSize="1.15em" lineHeight={2} dangerouslySetInnerHTML={{ __html: content }}/>
-  </article>;
+    <Box className={styles.article} my={8} dangerouslySetInnerHTML={{ __html: content }}/>
+  </wrap.article>;
 };
 
 Article.displayName = 'Article';
