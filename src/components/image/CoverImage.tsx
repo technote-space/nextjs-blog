@@ -1,0 +1,73 @@
+import type { BoxProps, ImageProps } from '@chakra-ui/react';
+import type { FC } from 'react';
+import { Box, Image } from '@chakra-ui/react';
+
+type Props = ImageProps & {
+  innerProps?: BoxProps
+};
+
+const defaultProps: ImageProps = {
+  alt: 'thumbnail',
+  objectFit: 'contain',
+  width: '100%',
+  height: 260,
+  loading: 'lazy',
+  flexShrink: 0,
+  filter: 'blur(5px)',
+  opacity: 0.5,
+};
+
+const getImageProps = (props: Props): ImageProps => {
+  return {
+    ...props,
+    htmlWidth: props.htmlWidth ?? (typeof props.width === 'number' ? props.width : Array.isArray(props.width) ? (props.width[0] as number) : undefined),
+    htmlHeight: props.htmlHeight ?? (typeof props.height === 'number' ? props.height : Array.isArray(props.height) ? (props.height[0] as number) : undefined),
+    width: props.width ?? props.htmlWidth,
+    height: props.height ?? props.htmlHeight,
+  };
+};
+
+const getBoxProps = (props: Props): BoxProps => {
+  return {
+    width: props.width ?? props.htmlWidth,
+    height: props.height ?? props.htmlHeight,
+    backgroundColor: '#ccc',
+    opacity: props.opacity,
+    filter: props.filter,
+  };
+};
+
+const getInnerBoxProps = (innerProps?: BoxProps): BoxProps => {
+  return {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'auto',
+    translateX: '-50%',
+    translateY: '-50%',
+    fontSize: '1.8em',
+    fontWeight: 'bold',
+    color: '#545454',
+    textShadow: '2px 2px 5px whitesmoke',
+    width: '85%',
+    ...innerProps,
+  };
+};
+
+const CoverImage: FC<Props> = ({ children, innerProps, ...props }) => {
+  if (!props.src) {
+    return <Box position="relative">
+      <Box {...getBoxProps({ ...defaultProps, ...props })} />
+      <Box {...getInnerBoxProps(innerProps)}>{children}</Box>
+    </Box>;
+  }
+
+  // eslint-disable-next-line jsx-a11y/alt-text
+  return <Box position="relative">
+    <Image {...getImageProps({ ...defaultProps, ...props })} />
+    <Box {...getInnerBoxProps(innerProps)}>{children}</Box>
+  </Box>;
+};
+
+CoverImage.displayName = 'CoverImage';
+export default CoverImage;

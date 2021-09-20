@@ -8,6 +8,7 @@ import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 import { fromEntity, toEntity } from '$/infra/post/dto/postDetail';
 import Date from '@/components/date/Date';
+import CoverImage from '@/components/image/CoverImage';
 
 @singleton()
 export class PostPage implements IPostPage {
@@ -20,8 +21,9 @@ export class PostPage implements IPostPage {
     const component = memo(({ post }: Props) => {
       const entity = toEntity(post);
       return this.layoutComponent.render({}, <article>
-        {entity.getThumbnail() && <img src={entity.getThumbnail()?.value} alt="thumbnail"/>}
-        <h1>{entity.getTitle().value}</h1>
+        <CoverImage src={entity.getThumbnail()?.value} backgroundColor={post.dominantColor}>
+          <h1>{entity.getTitle().value}</h1>
+        </CoverImage>
         <div>
           <Date date={entity.getCreatedAt().value}/>
         </div>
@@ -56,7 +58,7 @@ export class PostPageProps implements IPostPageProps {
     }
 
     return {
-      post: fromEntity(await this.postManager.fetch(Id.create(params.id))),
+      post: await fromEntity(await this.postManager.fetch(Id.create(params.id))),
     };
   }
 }

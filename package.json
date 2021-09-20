@@ -26,6 +26,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "dayjs": "^1.10.7",
+    "fast-average-color-node": "^1.0.3",
     "framer-motion": "^4",
     "gray-matter": "^4.0.3",
     "html-to-text": "^8.0.0",
