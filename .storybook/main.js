@@ -18,9 +18,6 @@ module.exports = {
   webpackFinal: async (config) => {
     return {
       ...config,
-      node: {
-        fs: 'empty'
-      },
       resolve: {
         ...config.resolve,
         plugins: [
