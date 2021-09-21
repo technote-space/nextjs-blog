@@ -221,4 +221,15 @@
   }
 }
 
+.back {
+  color: #1967d2;
+  text-decoration: underline;
 
+  &:visited {
+    color: #9967d2;
+  }
+
+  &:hover {
+    color: #e53900;
+  }
+}

@@ -41,9 +41,9 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
     <SRLWrapper>
       <Box className={styles.article} dangerouslySetInnerHTML={{ __html: content }}/>
     </SRLWrapper>
-    <Box mx="auto" maxW={1000}>
+    <Box>
       <Link href={pagesPath.$url()}>
-        <a>← Back to home</a>
+        <a className={styles.back}>トップページに戻る</a>
       </Link>
     </Box>
   </wrap.article>;
