@@ -116,7 +116,7 @@ export class WordPressPostRepository implements IPostRepository {
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      Content.create(results[0].post_content),
+      Content.create(results[0].post_content.replace(/\r\n/g, '<br />')),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),
