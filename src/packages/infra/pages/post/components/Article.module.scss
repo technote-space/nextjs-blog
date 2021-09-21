@@ -219,6 +219,10 @@
   a > img {
     display: block;
   }
+
+  * {
+    overflow: auto;
+  }
 }
 
 .back {
