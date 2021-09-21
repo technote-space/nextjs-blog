@@ -7,27 +7,25 @@ import { wrap } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type Props = StyleProps & {
-  title: string;
+  author: string;
 }
 
 const defaultProps: StyleProps = {
   justifyContent: 'center',
   p: 8,
-  mb: 5,
-  letterSpacing: 8,
-  fontSize: '2.2em',
+  mt: 5,
   boxShadow: '0 0 5px #ccc',
 };
 
-const Header: VFC<Props> = ({ title, ...props }) => {
-  return <wrap.header backgroundColor="white">
+const Footer: VFC<Props> = ({ author, ...props }) => {
+  return <wrap.footer backgroundColor="white">
     <Flex {...defaultProps} {...props}>
       <Link href={pagesPath.$url()}>
-        <a>{title}</a>
+        <a>©{(new Date()).getFullYear()} {author}</a>
       </Link>
     </Flex>
-  </wrap.header>;
+  </wrap.footer>;
 };
 
-Header.displayName = 'Header';
-export default memo(Header);
+Footer.displayName = 'Footer';
+export default memo(Footer);

@@ -6,4 +6,5 @@ export const postSources = [
 ];
 export const settings: Settings = {
   blogTitle: 'Technote',
+  author: 'Technote',
 };
