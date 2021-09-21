@@ -2,6 +2,7 @@ import type { VFC } from 'react';
 import dayjs from 'dayjs';
 import Prism from 'prismjs';
 import { memo, useEffect } from 'react';
+import { SRLWrapper } from 'simple-react-lightbox';
 import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
@@ -35,7 +36,9 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
         <h1>{title}</h1>
       </CoverImage>
     </header>
-    <Box className={styles.article} my={8} dangerouslySetInnerHTML={{ __html: content }}/>
+    <SRLWrapper>
+      <Box className={styles.article} my={8} dangerouslySetInnerHTML={{ __html: content }}/>
+    </SRLWrapper>
   </wrap.article>;
 };
 
