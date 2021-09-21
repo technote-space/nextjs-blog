@@ -1,7 +1,8 @@
+import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import { convert } from 'html-to-text';
 import mysql from 'serverless-mysql';
-import { singleton } from 'tsyringe';
+import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
 import Content from '$/domain/post/valueObject/content';
@@ -13,6 +14,7 @@ import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
+import { BasePostRepository } from '$/infra/post/repository/base';
 
 type PostData = {
   post_name: string;
@@ -25,10 +27,11 @@ type PostData = {
 };
 
 @singleton()
-export class WordPressPostRepository implements IPostRepository {
+export class WordPressPostRepository extends BasePostRepository implements IPostRepository {
   private mysql: mysql.ServerlessMysql;
 
-  public constructor() {
+  public constructor(@inject('Settings') settings: Settings) {
+    super(settings);
     this.mysql = mysql({
       config: {
         host: 'localhost',
@@ -40,7 +43,7 @@ export class WordPressPostRepository implements IPostRepository {
     });
   }
 
-  private static sourceId(): string {
+  protected sourceId(): string {
     return 'wp';
   }
 
@@ -68,14 +71,14 @@ export class WordPressPostRepository implements IPostRepository {
 
     return results.map(result => Post.reconstruct(
       Id.create({
-        source: Source.create(WordPressPostRepository.sourceId()),
+        source: Source.create(this.sourceId()),
         id: result.post_name,
       }),
       Title.create(result.post_title),
-      Excerpt.create(convert(result.post_content, {
+      Excerpt.create(this.replace(convert(result.post_content, {
         wordwrap: null,
         selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
-      })),
+      }))),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
@@ -91,7 +94,7 @@ export class WordPressPostRepository implements IPostRepository {
     await this.mysql.end();
 
     return results.map(result => Id.create({
-      source: Source.create(WordPressPostRepository.sourceId()),
+      source: Source.create(this.sourceId()),
       id: result.post_name,
     }));
   }
@@ -119,7 +122,7 @@ export class WordPressPostRepository implements IPostRepository {
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      Content.create(results[0].post_content.replace(/\r\n/g, '<br />')),
+      Content.create(this.replace(results[0].post_content.replace(/\r\n/g, '<br />'))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),

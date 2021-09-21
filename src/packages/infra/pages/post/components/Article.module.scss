@@ -1,15 +1,10 @@
 .article {
   margin-top: 2em;
   font-size: 1.15em;
+  line-height: 1.8;
 
   p {
-    line-height: 1.8;
     margin: 1.2em 0;
-
-    :global .artb-1029, :global .artb-1030, :global .artb-1031 {
-      font-weight: bold;
-      text-decoration: double underline red;
-    }
   }
 
   h2 {
@@ -27,7 +22,7 @@
 
   ul li,
   ol li {
-    margin: 0.5em 0.2em;
+    margin: 0.3em 0.2em;
   }
 
   ul ul, ul ol,
@@ -229,6 +224,19 @@
 
   pre {
     overflow-x: auto;
+    background-color: black;
+    color: white;
+    padding: 10px;
+  }
+
+  ul > br, ol > br {
+    display: none;
+  }
+
+  br {
+    display: block;
+    content: "";
+    margin: 0;
   }
 
   /* Gutenberg */
@@ -299,6 +307,66 @@
       flex: 1;
       object-fit: cover;
     }
+  }
+
+  :global .double-underline {
+    font-weight: bold;
+    text-decoration: double underline red;
+  }
+
+  :global .alert-box, :global .memo-box, :global .information-box, :global .comment-box,
+  :global .ok-box, :global .ng-box, :global .good-box, :global .bad-box, :global .profile-box {
+    padding: 20px;
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  :global .alert-box {
+    background: #fdf2f2;
+    border: 1px solid #f6b9b9;
+  }
+
+  :global .memo-box {
+    background: #ebf8f4;
+    border: 1px solid #8dd7c1;
+  }
+
+  :global .information-box {
+    background: #f3fafe;
+    border: 1px solid #bde4fc;
+  }
+
+  :global .comment-box {
+    background: #fefefe;
+    border: 1px solid #ccd;
+  }
+
+  :global .ok-box {
+    background: #f2fafb;
+    border: 1px solid #3cb2cc;
+  }
+
+  :global .ng-box {
+    background: #ffe7e7;
+    border: 1px solid #dd5454;
+  }
+
+  :global .good-box {
+    background: #f7fcf7;
+    border: 1px solid #98e093;
+  }
+
+  :global .bad-box {
+    background: #fff1f4;
+    border: 1px solid #eb6980;
+  }
+
+  :global .profile-box {
+    background: #fefefe;
+    border: 1px solid #ccd;
   }
 }
 

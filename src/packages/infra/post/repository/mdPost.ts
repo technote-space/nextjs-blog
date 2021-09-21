@@ -1,13 +1,14 @@
+import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import { promises } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
-import remarkGfm from 'remark-gfm'
+import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import removeMd from 'remove-markdown';
-import { singleton } from 'tsyringe';
+import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
 import Content from '$/domain/post/valueObject/content';
@@ -19,6 +20,7 @@ import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
+import { BasePostRepository } from '$/infra/post/repository/base';
 
 type MaybePost = {
   id: string;
@@ -33,8 +35,12 @@ type MaybePost = {
 type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>> & Pick<MaybePost, 'updatedAt' | 'thumbnail'>;
 
 @singleton()
-export class MarkdownPostRepository implements IPostRepository {
-  private static sourceId(): string {
+export class MarkdownPostRepository extends BasePostRepository implements IPostRepository {
+  public constructor(@inject('Settings') settings: Settings) {
+    super(settings);
+  }
+
+  protected sourceId(): string {
     return 'md';
   }
 
@@ -68,11 +74,11 @@ export class MarkdownPostRepository implements IPostRepository {
 
     return posts.filter(MarkdownPostRepository.filterPost).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(post => Post.reconstruct(
       Id.create({
-        source: Source.create(MarkdownPostRepository.sourceId()),
+        source: Source.create(this.sourceId()),
         id: post.id,
       }),
       Title.create(post.title),
-      Excerpt.create(removeMd(post.contentHtml)),
+      Excerpt.create(this.replace(removeMd(post.contentHtml))),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
@@ -84,7 +90,7 @@ export class MarkdownPostRepository implements IPostRepository {
     return fileNames.reduce(async (prev, fileName) => {
       const acc = await prev;
       return acc.concat(Id.create({
-        source: Source.create(MarkdownPostRepository.sourceId()),
+        source: Source.create(this.sourceId()),
         id: fileName.replace(/\.md$/, ''),
       }));
     }, Promise.resolve([] as Id[]));
@@ -101,7 +107,7 @@ export class MarkdownPostRepository implements IPostRepository {
 
     const processedContent = await remark()
       .use(remarkGfm)
-      .use(remarkRehype, {allowDangerousHtml: true})
+      .use(remarkRehype, { allowDangerousHtml: true })
       .use(rehypeStringify)
       .process(matterResult.content);
     post.contentHtml = processedContent.toString();
@@ -109,7 +115,7 @@ export class MarkdownPostRepository implements IPostRepository {
     return PostDetail.reconstruct(
       id,
       Title.create(post.title),
-      Content.create(post.contentHtml),
+      Content.create(this.replace(post.contentHtml)),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
