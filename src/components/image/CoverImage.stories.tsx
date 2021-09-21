@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import CoverImage from './CoverImage';
 
 export default {
-  title: 'CoverImage',
+  title: 'Common Components/CoverImage',
   component: CoverImage,
   argTypes: {
     src: { control: { type: 'text' } },

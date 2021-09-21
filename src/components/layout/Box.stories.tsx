@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Box from './Box';
 
 export default {
-  title: 'Box',
+  title: 'Common Components/Box',
   component: Box,
   argTypes: {
     children: { control: { type: 'text' } },

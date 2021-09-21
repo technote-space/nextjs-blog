@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Header from './Header';
 
 export default {
-  title: 'Header',
+  title: 'Layout Components/Header',
   component: Header,
   argTypes: {
     title: { control: { type: 'text' } },

@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Footer from './Footer';
 
 export default {
-  title: 'Footer',
+  title: 'Layout Components/Footer',
   component: Footer,
   argTypes: {
     author: { control: { type: 'text' } },

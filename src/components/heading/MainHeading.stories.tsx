@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import MainHeading from './MainHeading';
 
 export default {
-  title: 'MainHeading',
+  title: 'Common Components/MainHeading',
   component: MainHeading,
   argTypes: {
     children: { control: { type: 'text' } },

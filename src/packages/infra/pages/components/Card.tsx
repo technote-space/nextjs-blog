@@ -35,19 +35,7 @@ const defaultProps: StyleProps = {
 
 const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) => {
   return <Flex {...defaultProps} {...props}>
-    <Flex flexDir="column" display={['flex', 'flex', 'none', 'none']} p={2}>
-      <Flex flexDir="row" alignItems="center" mb={2}>
-        <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]}/>
-        <MainHeading ml={1}>
-          {title}
-        </MainHeading>
-      </Flex>
-      <SubHeading display={['flex', 'flex', 'none', 'none']}>
-        {excerpt}
-      </SubHeading>
-      <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
-    </Flex>
-    <Flex flexDir="row" display={['none', 'none', 'flex', 'flex']} p={3}>
+    <Flex flexDir="row" display={['none', 'none', 'flex', 'flex']} flexGrow={1} p={3}>
       <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]}/>
       <Flex flexDir="column" p={3} flexGrow={1}>
         <MainHeading mb={4}>
@@ -58,6 +46,18 @@ const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ..
         </SubHeading>
         <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
       </Flex>
+    </Flex>
+    <Flex flexDir="column" display={['flex', 'flex', 'none', 'none']} flexGrow={1} p={2}>
+      <Flex flexDir="row" alignItems="center" mb={2}>
+        <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]}/>
+        <MainHeading ml={1}>
+          {title}
+        </MainHeading>
+      </Flex>
+      <SubHeading display={['flex', 'flex', 'none', 'none']}>
+        {excerpt}
+      </SubHeading>
+      <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
     </Flex>
   </Flex>;
 };

@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import SubHeading from './SubHeading';
 
 export default {
-  title: 'SubHeading',
+  title: 'Common Components/SubHeading',
   component: SubHeading,
   argTypes: {
     children: { control: { type: 'text' } },

@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Card from './Card';
 
 export default {
-  title: 'Card',
+  title: 'Domain Components/Card',
   component: Card,
   argTypes: {
     url: { control: { type: 'text' } },

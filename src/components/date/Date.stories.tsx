@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Date from './Date';
 
 export default {
-  title: 'Date',
+  title: 'Common Components/Date',
   component: Date,
   argTypes: {
     date: { control: { type: 'date' } },

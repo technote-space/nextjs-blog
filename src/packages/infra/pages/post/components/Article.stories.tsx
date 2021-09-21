@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Article from './Article';
 
 export default {
-  title: 'Article',
+  title: 'Domain Components/Article',
   component: Article,
   argTypes: {
     thumbnail: { control: { type: 'text' } },

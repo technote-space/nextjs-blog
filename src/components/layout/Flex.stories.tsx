@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Flex from './Flex';
 
 export default {
-  title: 'Flex',
+  title: 'Common Components/Flex',
   component: Flex,
   argTypes: {
     children: { control: { type: 'text' } },

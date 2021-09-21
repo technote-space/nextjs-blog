@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import Thumbnail from './Thumbnail';
 
 export default {
-  title: 'Thumbnail',
+  title: 'Common Components/Thumbnail',
   component: Thumbnail,
   argTypes: {
     src: { control: { type: 'text' } },

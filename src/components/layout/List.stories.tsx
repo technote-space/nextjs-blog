@@ -3,7 +3,7 @@ import { storybookArgTypes } from '@/components/wrap';
 import List from './List';
 
 export default {
-  title: 'List',
+  title: 'Common Components/List',
   component: List,
   subcomponents: { ListItem: List.Item },
   argTypes: {
