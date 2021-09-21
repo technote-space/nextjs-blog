@@ -72,7 +72,10 @@ export class WordPressPostRepository implements IPostRepository {
         id: result.post_name,
       }),
       Title.create(result.post_title),
-      Excerpt.create(convert(result.post_content, { wordwrap: null })),
+      Excerpt.create(convert(result.post_content, {
+        wordwrap: null,
+        selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
+      })),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
