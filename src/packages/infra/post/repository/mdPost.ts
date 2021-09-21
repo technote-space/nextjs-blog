@@ -2,8 +2,10 @@ import type { IPostRepository } from '$/domain/post/repository/post';
 import { promises } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype';
 import removeMd from 'remove-markdown';
 import { singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
@@ -26,6 +28,7 @@ type MaybePost = {
   title?: string;
   contentHtml?: string;
   thumbnail?: string;
+  published?: boolean;
 };
 type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>> & Pick<MaybePost, 'updatedAt' | 'thumbnail'>;
 
@@ -36,7 +39,7 @@ export class MarkdownPostRepository implements IPostRepository {
   }
 
   private static filterPost(post: MaybePost): post is PostData {
-    return !!post.title && !!post.createdAt;
+    return !!post.title && !!post.createdAt && post.published === true;
   }
 
   private static getPostsDirectory(): string {
@@ -97,7 +100,9 @@ export class MarkdownPostRepository implements IPostRepository {
     }
 
     const processedContent = await remark()
-      .use(html)
+      .use(remarkGfm)
+      .use(remarkRehype, {allowDangerousHtml: true})
+      .use(rehypeStringify)
       .process(matterResult.content);
     post.contentHtml = processedContent.toString();
 

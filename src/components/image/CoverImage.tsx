@@ -62,8 +62,8 @@ const CoverImage: FC<Props> = ({ children, innerProps, ...props }) => {
     </Box>;
   }
 
-  // eslint-disable-next-line jsx-a11y/alt-text
   return <Box position="relative">
+    {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <Image {...getImageProps({ ...defaultProps, ...props })} />
     <Box {...getInnerBoxProps(innerProps)}>{children}</Box>
   </Box>;

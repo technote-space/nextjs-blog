@@ -32,7 +32,7 @@ module.exports = withBundleAnalyzer({
       net: false,
       tls: false,
       stream: false,
-      timers: false
+      timers: false,
     };
     if (!isServer) {
       config.externals.push(
@@ -41,7 +41,9 @@ module.exports = withBundleAnalyzer({
         {'html-to-text': 'var {}'},
         {'gray-matter': 'var {}'},
         {'remark': 'var {}'},
-        {'remark-html': 'var {}'},
+        {'remark-rehype': 'var {}'},
+        {'rehype-stringify': 'var {}'},
+        {'remark-gfm': 'var {}'},
         {'remove-markdown': 'var {}'},
       );
     }

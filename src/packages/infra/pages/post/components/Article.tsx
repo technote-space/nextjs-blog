@@ -1,6 +1,7 @@
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
-import { memo } from 'react';
+import Prism from 'prismjs';
+import { memo, useEffect } from 'react';
 import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
@@ -16,6 +17,10 @@ type Props = {
 };
 
 const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content }) => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   return <wrap.article backgroundColor="white" p={6} boxShadow="0 0 8px #ccc">
     <header>
       <Date

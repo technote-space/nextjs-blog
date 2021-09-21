@@ -160,6 +160,45 @@
     overflow-y: hidden !important;
     margin-bottom: 1em;
   }
+
+  blockquote {
+    background-color: #fafbfc;
+    border: 1px solid #ddd;
+    margin: 1em 0;
+    padding: 10px 1.2em;
+    position: relative;
+  }
+
+  blockquote::before, blockquote::after {
+    color: #C8C8C8;
+    font-family: serif;
+    position: absolute;
+    font-size: 300%;
+  }
+
+  blockquote::before {
+    content: "“";
+    line-height: 1.1;
+    left: 10px;
+    top: 0;
+  }
+
+  blockquote::after {
+    content: "”";
+    line-height: 0;
+    right: 10px;
+    bottom: 0;
+  }
+
+  blockquote cite {
+    font-size: 0.7em;
+  }
+
+  p code {
+    font-style: italic;
+    background-color: #eee;
+    padding: 4px;
+  }
 }
 
 
