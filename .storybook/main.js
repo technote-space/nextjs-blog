@@ -3,6 +3,9 @@ const {TsconfigPathsPlugin} = require('tsconfig-paths-webpack-plugin');
 const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   "stories": [
     "../src/components/Introduction.stories.mdx",
     "../src/**/*.stories.mdx",
@@ -16,21 +19,33 @@ module.exports = {
     "@storybook/addon-links",
   ],
   webpackFinal: async (config) => {
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        plugins: [
-          new TsconfigPathsPlugin({
-            configFile: path.resolve(__dirname, '../tsconfig.json')
-          }),
-        ],
-        alias: {
-          ...config.resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
-        }
-      }
-    }
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, '../tsconfig.json')
+      })
+    ];
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@emotion/core": toPath("node_modules/@emotion/react"),
+      "emotion-theming": toPath("node_modules/@emotion/react"),
+    };
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        {
+          loader: "css-loader",
+          options: {
+            importLoaders: 1,
+            modules: {
+              localIdentName: "[local]___[hash:base64:2]",
+            },
+          },
+        },
+        'sass-loader'
+      ],
+    });
+
+    return config
   },
 }

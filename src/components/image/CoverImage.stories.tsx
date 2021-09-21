@@ -32,7 +32,7 @@ SetSize.args = {
 export const LongText = Template.bind({});
 LongText.args = {
   src: 'https://placehold.jp/150x150.png',
-  children: '吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ',
+  children: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ',
   backgroundColor: '#ccc',
 };
 
