@@ -8,6 +8,8 @@ import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
 import { wrap } from '@/components/wrap';
 import styles from './Article.module.scss';
+import Link from 'next/link';
+import { pagesPath } from '@/lib/$path';
 
 type Props = {
   thumbnail?: string;
@@ -22,7 +24,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
     Prism.highlightAll();
   }, []);
 
-  return <wrap.article backgroundColor="white" p={6} boxShadow="0 0 8px #ccc">
+  return <wrap.article backgroundColor="white" p={7} boxShadow="0 0 8px #ccc">
     <header>
       <Date
         date={createdAt}
@@ -37,8 +39,13 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
       </CoverImage>
     </header>
     <SRLWrapper>
-      <Box className={styles.article} my={8} dangerouslySetInnerHTML={{ __html: content }}/>
+      <Box className={styles.article} dangerouslySetInnerHTML={{ __html: content }}/>
     </SRLWrapper>
+    <Box mx="auto" maxW={1000}>
+      <Link href={pagesPath.$url()}>
+        <a>← Back to home</a>
+      </Link>
+    </Box>
   </wrap.article>;
 };
 

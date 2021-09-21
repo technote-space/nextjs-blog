@@ -155,6 +155,90 @@ Array [
 ]
 `;
 
+exports[`Storyshots CoverImage Default 1`] = `
+Array [
+  <div
+    className="css-79elbk"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-tubz9s"
+      height={260}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+    />
+    <div
+      className="css-13erz9w"
+    >
+      Hello World!
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots CoverImage Long Text 1`] = `
+Array [
+  <div
+    className="css-79elbk"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-tubz9s"
+      height={260}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+    />
+    <div
+      className="css-13erz9w"
+    >
+      吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots CoverImage No Src 1`] = `
+Array [
+  <div
+    className="css-79elbk"
+  >
+    <div
+      className="css-1nf4yrf"
+    />
+    <div
+      className="css-13erz9w"
+    >
+      Hello World!
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots CoverImage Set Size 1`] = `
+Array [
+  <div
+    className="css-79elbk"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-1awnk4n"
+      height={180}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+    />
+    <div
+      className="css-13erz9w"
+    >
+      Hello World!
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Date Default 1`] = `
 Array [
   <time

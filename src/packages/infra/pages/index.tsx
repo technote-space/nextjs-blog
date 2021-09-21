@@ -19,7 +19,7 @@ export class IndexPage implements IIndexPage {
 
   public create(): VFC<Props> {
     const component = memo(({ posts }: Props) => {
-      return this.layoutComponent.render({ isHome: true }, <List>
+      return this.layoutComponent.render({}, <List>
         {posts.map(post => toEntity(post)).map((post) => (
           <List.Item key={post.getId().value}>
             <Link href={pagesPath.posts._id(post.getId().value).$url()}>
