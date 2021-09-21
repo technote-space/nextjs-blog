@@ -17,7 +17,6 @@ const Template: ComponentStory<typeof Article> = (args) => <div style={{ maxWidt
   <Article {...args} />
 </div>;
 
-//
 export const Default = Template.bind({});
 Default.args = {
   thumbnail: 'https://placehold.jp/150x150.png',
