@@ -12,7 +12,7 @@ type Props = StyleProps & {
 
 const defaultProps: StyleProps = {
   justifyContent: 'center',
-  p: 8,
+  p: [5, 7, 8, 8],
   mt: 5,
   boxShadow: '0 0 5px #ccc',
 };

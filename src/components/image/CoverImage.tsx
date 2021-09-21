@@ -10,7 +10,7 @@ const defaultProps: ImageProps = {
   alt: 'thumbnail',
   objectFit: 'contain',
   width: '100%',
-  height: 260,
+  height: [200, 220, 260, 260],
   loading: 'lazy',
   flexShrink: 0,
   filter: 'blur(5px)',
@@ -45,11 +45,12 @@ const getInnerBoxProps = (innerProps?: BoxProps): BoxProps => {
     transform: 'auto',
     translateX: '-50%',
     translateY: '-50%',
-    fontSize: '1.8em',
+    fontSize: ['1.3em', '1.5em', '1.8em', '1.8em'],
+    lineHeight: ['1.2em', '1.4em', '1.5em', '1.5em'],
     fontWeight: 'bold',
     color: '#545454',
     textShadow: '2px 2px 5px whitesmoke',
-    width: '85%',
+    width: ['90%', '90%', '85%', '85%'],
     ...innerProps,
   };
 };

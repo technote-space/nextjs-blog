@@ -17,32 +17,47 @@ type Props = StyleProps & {
 };
 
 const defaultProps: StyleProps = {
-  p: 3,
-  flexDir: 'row',
+  mx: 'auto',
+  maxW: 900,
   backgroundColor: 'white',
   cursor: 'pointer',
-  alignItems: 'center',
   boxSizing: 'border-box',
+  borderWidth: 1,
+  borderColor: '#ccc',
   transitionDuration: '0.3s',
   transform: 'auto-gpu',
   _hover: {
-    backgroundColor: '#faffff',
+    backgroundColor: '#fbffff',
     boxShadow: '0 2px 6px #ccc',
     translateY: -1,
-  }
+  },
 };
 
 const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) => {
   return <Flex {...defaultProps} {...props}>
-    <Thumbnail src={thumbnail} width={[150, 200, 200, 300]} height={[100, 120, 120, 180]}/>
-    <Flex flexDir="column" p={3} flexGrow={1}>
-      <MainHeading mb={4}>
-        {title}
-      </MainHeading>
-      <SubHeading>
+    <Flex flexDir="column" display={['flex', 'flex', 'none', 'none']} p={2}>
+      <Flex flexDir="row" alignItems="center" mb={2}>
+        <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]}/>
+        <MainHeading ml={1}>
+          {title}
+        </MainHeading>
+      </Flex>
+      <SubHeading display={['flex', 'flex', 'none', 'none']}>
         {excerpt}
       </SubHeading>
       <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
+    </Flex>
+    <Flex flexDir="row" display={['none', 'none', 'flex', 'flex']} p={3}>
+      <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]}/>
+      <Flex flexDir="column" p={3} flexGrow={1}>
+        <MainHeading mb={4}>
+          {title}
+        </MainHeading>
+        <SubHeading>
+          {excerpt}
+        </SubHeading>
+        <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
+      </Flex>
     </Flex>
   </Flex>;
 };

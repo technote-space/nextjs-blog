@@ -12,7 +12,7 @@ type Props = StyleProps & {
 
 const defaultProps: StyleProps = {
   justifyContent: 'center',
-  p: 8,
+  p: [5, 7, 8, 8],
   mb: 5,
   letterSpacing: 8,
   fontSize: '2.2em',

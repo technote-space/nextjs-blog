@@ -6,7 +6,10 @@ import factory from '@/components/factory';
 type Props = StyleProps;
 
 const defaultProps: Props = {
+  fontSize: ['0.8em', '0.8em', '1em', '1em'],
+  lineHeight: '1.35em',
   color: colors.subText,
+  wordBreak: 'break-word',
 };
 
 const SubHeading: FC<Props> = ({ children, ...props }) => {

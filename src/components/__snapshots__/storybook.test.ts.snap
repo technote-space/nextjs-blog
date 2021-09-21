@@ -10,11 +10,11 @@ Array [
     }
   >
     <article
-      className="css-1mbosxf"
+      className="css-1golnkc"
     >
       <header>
         <time
-          className="css-wdrqso"
+          className="css-1ni8tdr"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -24,13 +24,13 @@ Array [
         >
           <img
             alt="thumbnail"
-            className="chakra-image css-tubz9s"
-            height={260}
+            className="chakra-image css-17crems"
+            height={200}
             loading="lazy"
             src="https://placehold.jp/150x150.png"
           />
           <div
-            className="css-13erz9w"
+            className="css-i4z9fe"
           >
             <h1>
               Markdown 記法のテスト
@@ -277,11 +277,11 @@ Array [
     }
   >
     <article
-      className="css-1mbosxf"
+      className="css-1golnkc"
     >
       <header>
         <time
-          className="css-wdrqso"
+          className="css-1ni8tdr"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -290,10 +290,10 @@ Array [
           className="css-79elbk"
         >
           <div
-            className="css-1nf4yrf"
+            className="css-g63t4c"
           />
           <div
-            className="css-13erz9w"
+            className="css-i4z9fe"
           >
             <h1>
               Markdown 記法のテスト
@@ -544,35 +544,71 @@ Array [
 exports[`Storyshots Card Default 1`] = `
 Array [
   <div
-    className="css-1epue0w"
+    className="css-1bv5la7"
   >
-    <img
-      alt="thumbnail"
-      className="chakra-image css-14svrxw"
-      height={100}
-      loading="lazy"
-      src="https://placehold.jp/150x150.png"
-      width={150}
-    />
     <div
-      className="css-xg5s6b"
+      className="css-1s1dgvc"
     >
-      <h2
-        className="css-ojsz5g"
+      <div
+        className="css-1eskh14"
       >
-        吾輩は猫である
-      </h2>
+        <img
+          alt="thumbnail"
+          className="chakra-image css-i96gla"
+          height={70}
+          loading="lazy"
+          src="https://placehold.jp/150x150.png"
+          width={120}
+        />
+        <h2
+          className="css-1blgh54"
+        >
+          吾輩は猫である
+        </h2>
+      </div>
       <h3
-        className="css-he5ni6"
+        className="css-1thaztu"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-s2uf1z"
+        className="css-d3pfnp"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
+    </div>
+    <div
+      className="css-8mhicy"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-i96gla"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <div
+        className="css-xg5s6b"
+      >
+        <h2
+          className="css-8ctgrs"
+        >
+          吾輩は猫である
+        </h2>
+        <h3
+          className="css-1cl11c"
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+        </h3>
+        <time
+          className="css-d3pfnp"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>,
   <span />,
@@ -582,35 +618,71 @@ Array [
 exports[`Storyshots Card Long 1`] = `
 Array [
   <div
-    className="css-1epue0w"
+    className="css-1bv5la7"
   >
-    <img
-      alt="thumbnail"
-      className="chakra-image css-14svrxw"
-      height={100}
-      loading="lazy"
-      src="https://placehold.jp/150x150.png"
-      width={150}
-    />
     <div
-      className="css-xg5s6b"
+      className="css-1s1dgvc"
     >
-      <h2
-        className="css-ojsz5g"
+      <div
+        className="css-1eskh14"
       >
-        吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
-      </h2>
+        <img
+          alt="thumbnail"
+          className="chakra-image css-i96gla"
+          height={70}
+          loading="lazy"
+          src="https://placehold.jp/150x150.png"
+          width={120}
+        />
+        <h2
+          className="css-1blgh54"
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+        </h2>
+      </div>
       <h3
-        className="css-he5ni6"
+        className="css-1thaztu"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-s2uf1z"
+        className="css-d3pfnp"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
+    </div>
+    <div
+      className="css-8mhicy"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-i96gla"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <div
+        className="css-xg5s6b"
+      >
+        <h2
+          className="css-8ctgrs"
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+        </h2>
+        <h3
+          className="css-1cl11c"
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+        </h3>
+        <time
+          className="css-d3pfnp"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>,
   <span />,
@@ -620,27 +692,55 @@ Array [
 exports[`Storyshots Card No Thumbnail 1`] = `
 Array [
   <div
-    className="css-1epue0w"
+    className="css-1bv5la7"
   >
     <div
-      className="css-xg5s6b"
+      className="css-1s1dgvc"
     >
-      <h2
-        className="css-ojsz5g"
+      <div
+        className="css-1eskh14"
       >
-        吾輩は猫である
-      </h2>
+        <h2
+          className="css-1blgh54"
+        >
+          吾輩は猫である
+        </h2>
+      </div>
       <h3
-        className="css-he5ni6"
+        className="css-1thaztu"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-s2uf1z"
+        className="css-d3pfnp"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
+    </div>
+    <div
+      className="css-8mhicy"
+    >
+      <div
+        className="css-xg5s6b"
+      >
+        <h2
+          className="css-8ctgrs"
+        >
+          吾輩は猫である
+        </h2>
+        <h3
+          className="css-1cl11c"
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+        </h3>
+        <time
+          className="css-d3pfnp"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>,
   <span />,
@@ -650,35 +750,71 @@ Array [
 exports[`Storyshots Card Short 1`] = `
 Array [
   <div
-    className="css-1epue0w"
+    className="css-1bv5la7"
   >
-    <img
-      alt="thumbnail"
-      className="chakra-image css-14svrxw"
-      height={100}
-      loading="lazy"
-      src="https://placehold.jp/150x150.png"
-      width={150}
-    />
     <div
-      className="css-xg5s6b"
+      className="css-1s1dgvc"
     >
-      <h2
-        className="css-ojsz5g"
+      <div
+        className="css-1eskh14"
       >
-        吾輩は猫である
-      </h2>
+        <img
+          alt="thumbnail"
+          className="chakra-image css-i96gla"
+          height={70}
+          loading="lazy"
+          src="https://placehold.jp/150x150.png"
+          width={120}
+        />
+        <h2
+          className="css-1blgh54"
+        >
+          吾輩は猫である
+        </h2>
+      </div>
       <h3
-        className="css-he5ni6"
+        className="css-1thaztu"
       >
         吾輩は猫である。
       </h3>
       <time
-        className="css-s2uf1z"
+        className="css-d3pfnp"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
+    </div>
+    <div
+      className="css-8mhicy"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-i96gla"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <div
+        className="css-xg5s6b"
+      >
+        <h2
+          className="css-8ctgrs"
+        >
+          吾輩は猫である
+        </h2>
+        <h3
+          className="css-1cl11c"
+        >
+          吾輩は猫である。
+        </h3>
+        <time
+          className="css-d3pfnp"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>,
   <span />,
@@ -692,13 +828,13 @@ Array [
   >
     <img
       alt="thumbnail"
-      className="chakra-image css-tubz9s"
-      height={260}
+      className="chakra-image css-17crems"
+      height={200}
       loading="lazy"
       src="https://placehold.jp/150x150.png"
     />
     <div
-      className="css-13erz9w"
+      className="css-i4z9fe"
     >
       Hello World!
     </div>
@@ -714,13 +850,13 @@ Array [
   >
     <img
       alt="thumbnail"
-      className="chakra-image css-tubz9s"
-      height={260}
+      className="chakra-image css-17crems"
+      height={200}
       loading="lazy"
       src="https://placehold.jp/150x150.png"
     />
     <div
-      className="css-13erz9w"
+      className="css-i4z9fe"
     >
       吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
     </div>
@@ -735,10 +871,10 @@ Array [
     className="css-79elbk"
   >
     <div
-      className="css-1nf4yrf"
+      className="css-g63t4c"
     />
     <div
-      className="css-13erz9w"
+      className="css-i4z9fe"
     >
       Hello World!
     </div>
@@ -760,7 +896,7 @@ Array [
       src="https://placehold.jp/150x150.png"
     />
     <div
-      className="css-13erz9w"
+      className="css-i4z9fe"
     >
       Hello World!
     </div>
@@ -772,7 +908,7 @@ Array [
 exports[`Storyshots Date Default 1`] = `
 Array [
   <time
-    className="css-0"
+    className="css-15hwmdh"
     dateTime="2000-11-22T00:00:00.000Z"
   >
     2000/11/22
@@ -784,7 +920,7 @@ Array [
 exports[`Storyshots Date Format 1`] = `
 Array [
   <time
-    className="css-0"
+    className="css-15hwmdh"
     dateTime="2000-11-22T00:00:00.000Z"
   >
     2000年11月22日
@@ -810,7 +946,7 @@ Array [
     className="css-1ijbxy6"
   >
     <div
-      className="css-fs1kfh"
+      className="css-sxln12"
     >
       <a
         href="/"
@@ -834,7 +970,7 @@ Array [
     className="css-1ijbxy6"
   >
     <div
-      className="css-sz82m8"
+      className="css-1gc00b1"
     >
       <a
         href="/"
@@ -904,7 +1040,7 @@ Array [
 exports[`Storyshots MainHeading Default 1`] = `
 Array [
   <h2
-    className="css-9z3fyc"
+    className="css-w3cbui"
   >
     Hello World!
   </h2>,
@@ -915,7 +1051,7 @@ Array [
 exports[`Storyshots SubHeading Default 1`] = `
 Array [
   <h3
-    className="css-he5ni6"
+    className="css-1cl11c"
   >
     Hello World!
   </h3>,

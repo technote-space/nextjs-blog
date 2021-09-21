@@ -7,7 +7,7 @@ export default class Excerpt extends Text {
 
   protected fromInput(value: number | string): string {
     const text = super.fromInput(value);
-    const excerpt = text.substr(0, 100);
+    const excerpt = text.substr(0, 120);
     if (text.length !== excerpt.length) {
       return `${excerpt}...`;
     }

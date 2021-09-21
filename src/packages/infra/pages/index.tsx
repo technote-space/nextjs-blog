@@ -21,7 +21,7 @@ export class IndexPage implements IIndexPage {
     const component = memo(({ posts }: Props) => {
       return this.layoutComponent.render({}, <List>
         {posts.map(post => toEntity(post)).map((post) => (
-          <List.Item key={post.getId().value}>
+          <List.Item key={post.getId().value} mx={3}>
             <Link href={pagesPath.posts._id(post.getId().value).$url()}>
               <a>
                 <Card
