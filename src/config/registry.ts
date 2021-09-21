@@ -11,6 +11,7 @@ import { PostFactory } from '$/infra/post/factory';
 import { PostManager } from '$/infra/post/manager';
 import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
 import { WordPressPostRepository } from '$/infra/post/repository/wpPost';
+import { postSources } from '^/config/settings';
 
 container.registerSingleton('IFooterComponent', FooterComponent);
 container.registerSingleton('IHeaderComponent', HeaderComponent);
@@ -21,10 +22,11 @@ container.registerSingleton('IPostFactory', PostFactory);
 container.registerSingleton('IPostManager', PostManager);
 container.registerSingleton('MarkdownPostRepository', MarkdownPostRepository);
 container.registerSingleton('WordPressPostRepository', WordPressPostRepository);
-container.registerInstance('postRepositories', {
+const availablePostSources: Record<string, string> = {
   'md': 'MarkdownPostRepository',
   'wp': 'WordPressPostRepository',
-});
+};
+container.registerInstance('postRepositories', Object.assign({}, ...postSources.filter(source => source in availablePostSources).map(source => ({ [source]: availablePostSources[source] }))));
 
 // pages
 container.registerSingleton('IIndexPage', IndexPage);

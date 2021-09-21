@@ -29,7 +29,7 @@ export class IndexPage implements IIndexPage {
                   title={post.getTitle().value}
                   excerpt={post.getExcerpt().value}
                   createdAt={post.getCreatedAt().value}
-                  m={4}
+                  my={4}
                 />
               </a>
             </Link>
