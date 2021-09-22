@@ -17,10 +17,17 @@ export class AnyPageProps implements IAnyPageProps {
   }
 
   public async getStaticPaths(): Promise<Paths> {
+    const ids = Object.assign({}, ...(await this.postManager.getIds()).map(id => ({ [id.value]: true })));
+
     return {
-      paths: (this.settings.urlMaps ?? []).map(({ source }) => ({
-        params: { any: source.replace(/^\//, '').split('/') },
-      })),
+      paths: (this.settings.urlMaps ?? [])
+        .map(urlMap => ({
+          id: Id.create({ source: Source.create(urlMap.destination.source), id: urlMap.destination.id }),
+          source: urlMap.source,
+        }))
+        .filter(({ id }) => id.value in ids).map(({ source }) => ({
+          params: { any: source.replace(/^\//, '').split('/') },
+        })),
       fallback: false,
     };
   }
