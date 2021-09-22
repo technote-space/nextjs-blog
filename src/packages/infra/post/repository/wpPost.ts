@@ -64,7 +64,9 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT REPLACE(
-               IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value),
+               TRIM(TRAILING '/' FROM
+                    IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value)
+                 ),
                '/',
                '-'
                )                  AS post_name,
@@ -108,7 +110,9 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
       SELECT REPLACE(
-               IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value),
+               TRIM(TRAILING '/' FROM
+                    IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value)
+                 ),
                '/',
                '-'
                ) AS post_name
@@ -137,11 +141,14 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
              LEFT JOIN wp_posts thumbnail_post on thumbnail_post.ID = wp_postmeta.meta_value
       WHERE wp_posts.post_type = ? && wp_posts.post_status = ? &&
-            REPLACE(IF(
-                        COALESCE(permalink.meta_value, '') = '',
-                        wp_posts.post_name,
-                        permalink.meta_value
-                      ), '/', '-') = ?${excludeWhere}
+            REPLACE(
+              TRIM(TRAILING '/' FROM
+                   IF(
+                       COALESCE(permalink.meta_value, '') = '',
+                       wp_posts.post_name,
+                       permalink.meta_value
+                     )
+                ), '/', '-') = ?${excludeWhere}
     `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', id.postId, ...exclude]);
 
     await this.mysql.end();
