@@ -7,8 +7,14 @@ export const postSources = [
   // 'wp',
 ];
 export const settings: Settings = {
-  blogTitle: 'Hello World!',
-  author: 'Hello World!',
+  siteUrl: 'https://example.com',
+  seo: {
+    blogTitle: 'Hello World!',
+    author: 'Hello World!',
+    description: 'Hello World!',
+    // blogImage: 'https://example.com/hello_world.png',
+    // twitter: 'hello_world',
+  },
   // 本文内で置換
   replace: [
     {

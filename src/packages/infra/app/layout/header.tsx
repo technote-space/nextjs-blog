@@ -15,7 +15,7 @@ export class HeaderComponent extends BaseComponent implements IHeaderComponent {
   }
 
   protected getComponent(): VFC {
-    const component = memo(() => <Header title={this.settings.blogTitle}/>);
+    const component = memo(() => <Header title={this.settings.seo.blogTitle}/>);
     component.displayName = 'HeaderComponent';
 
     return component;

@@ -15,7 +15,7 @@ export class FooterComponent extends BaseComponent implements IFooterComponent {
   }
 
   protected getComponent(): VFC {
-    const component = memo(() => <Footer author={this.settings.author}/>);
+    const component = memo(() => <Footer author={this.settings.seo.author}/>);
     component.displayName = 'FooterComponent';
 
     return component;

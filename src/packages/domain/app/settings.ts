@@ -15,10 +15,17 @@ type UrlMap = {
     id: string | number;
   };
 };
-export type Settings = {
+type SEO = {
   blogTitle: string;
   author: string;
+  description: string;
+  blogImage?: string;
+  twitter?: string;
+};
+export type Settings = {
+  siteUrl: string;
   replace?: Replace[];
   exclude?: Exclude[];
   urlMaps?: UrlMap[];
+  seo: SEO;
 };

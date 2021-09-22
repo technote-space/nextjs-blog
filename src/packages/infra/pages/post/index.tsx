@@ -19,7 +19,14 @@ export class PostPage implements IPostPage {
   public create(): VFC<Props> {
     const component = memo(({ post }: Props) => {
       const entity = toEntity(post);
-      return this.layoutComponent.render({}, <Article
+      return this.layoutComponent.render({
+        seo: {
+          title: post.title,
+          description: post.excerpt,
+          image: post.thumbnail ?? undefined,
+          canonical: post.url,
+        },
+      }, <Article
         thumbnail={entity.getThumbnail()?.value}
         backgroundColor={post.dominantColor}
         title={entity.getTitle().value}

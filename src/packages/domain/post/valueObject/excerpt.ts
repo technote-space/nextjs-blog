@@ -11,7 +11,7 @@ export default class Excerpt extends Text {
   }
 
   protected fromInput(value: number | string): string {
-    const text = super.fromInput(value);
+    const text = super.fromInput(value).replace(/\r?\n/g, ' ');
     const excerpt = Excerpt.removeUrl(text).substr(0, 120);
     if (text.length !== excerpt.length) {
       return `${excerpt}...`;

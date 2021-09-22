@@ -1,5 +1,6 @@
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
+import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -10,14 +11,16 @@ export class PostDetail extends Base() {
   private id?: Id;
   private title!: Title;
   private content!: Content;
+  private excerpt!: Excerpt;
   private thumbnail?: Thumbnail;
   private createdAt!: CreatedAt;
   private updatedAt?: UpdatedAt;
 
-  public static create(title: Title, content: Content, thumbnail?: Thumbnail): PostDetail | never {
+  public static create(title: Title, content: Content, excerpt: Excerpt, thumbnail?: Thumbnail): PostDetail | never {
     const instance = new this();
     instance.title = title;
     instance.content = content;
+    instance.excerpt = excerpt;
     instance.thumbnail = thumbnail;
     instance.createdAt = CreatedAt.create(undefined);
     instance.updatedAt = UpdatedAt.create(undefined);
@@ -26,11 +29,12 @@ export class PostDetail extends Base() {
     return instance;
   }
 
-  public static reconstruct(id: Id, title: Title, content: Content, thumbnail: Thumbnail | undefined, createdAt: CreatedAt, updatedAt?: UpdatedAt): PostDetail {
+  public static reconstruct(id: Id, title: Title, content: Content, excerpt: Excerpt, thumbnail: Thumbnail | undefined, createdAt: CreatedAt, updatedAt?: UpdatedAt): PostDetail {
     const instance = new this();
     instance.id = id;
     instance.title = title;
     instance.content = content;
+    instance.excerpt = excerpt;
     instance.thumbnail = thumbnail;
     instance.createdAt = createdAt;
     instance.updatedAt = updatedAt;
@@ -49,6 +53,10 @@ export class PostDetail extends Base() {
 
   public getContent(): Content {
     return this.content;
+  }
+
+  public getExcerpt(): Excerpt {
+    return this.excerpt;
   }
 
   public getThumbnail(): Thumbnail | undefined {

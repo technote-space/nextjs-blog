@@ -160,7 +160,11 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      Content.create(this.replace(results[0].post_content.replace(/\r\n/g, '<br />'))),
+      Content.create(this.replace(results[0].post_content.replace(/\r?\n/g, '<br />'))),
+      Excerpt.create(this.replace(convert(results[0].post_content, {
+        wordwrap: null,
+        selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
+      }))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),

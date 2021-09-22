@@ -14,14 +14,12 @@ function useEsbuildMinify(config, options) {
 
 function useEsbuildLoader(config, options) {
   const {rules} = config.module;
-  rules.forEach(rule => {
-    if (rule.test?.test('.js')) {
-      rule.use = {
-        loader: 'esbuild-loader',
-        options,
-      };
-    }
-  });
+  const rule = rules.find(rule => rule.test.test('.js'));
+
+  rule.use = {
+    loader: 'esbuild-loader',
+    options,
+  };
 }
 
 module.exports = withBundleAnalyzer({
@@ -64,10 +62,6 @@ module.exports = withBundleAnalyzer({
     });
 
     return config;
-  },
-  images: {
-    loader: 'akamai',
-    path: '/',
   },
   eslint: {
     dirs: ['src/pages', 'src/packages', 'src/components']
