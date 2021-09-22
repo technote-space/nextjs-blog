@@ -10,8 +10,9 @@ export abstract class BasePostRepository implements IPostRepository {
 
   protected abstract sourceId(): string;
 
+  // TODO: Add test
   protected replace(text: string): string {
-    return (this.settings.replace ?? []).filter(setting => setting.source === this.sourceId()).reduce((prev, setting) => {
+    return (this.settings.replace ?? []).filter(setting => !setting.source || setting.source === this.sourceId()).reduce((prev, setting) => {
       if (typeof setting.from === 'string') {
         return prev.split(setting.from).join(setting.to);
       }

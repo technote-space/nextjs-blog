@@ -44,8 +44,12 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return 'md';
   }
 
-  private static filterPost(post: MaybePost): post is PostData {
-    return !!post.title && !!post.createdAt && post.published === true;
+  private getExcludeIds() {
+    return (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId()).map(setting => setting.id);
+  }
+
+  private static filterPost(post?: MaybePost): post is PostData {
+    return !!post && !!post.title && !!post.createdAt && post.published === true;
   }
 
   private static getPostsDirectory(): string {
@@ -62,10 +66,15 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async all(): Promise<Post[]> {
+    const exclude = this.getExcludeIds();
     const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
     const posts = await fileNames.reduce(async (prev, fileName) => {
       const acc = await prev;
       const id = fileName.replace(/\.md/, '');
+      if (exclude.includes(id)) {
+        return acc;
+      }
+
       const fileContents = await promises.readFile(path.join(MarkdownPostRepository.getPostsDirectory(), fileName), 'utf8');
       const matterResult = matter(fileContents);
 
@@ -86,9 +95,15 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async getIds(): Promise<Id[]> {
+    const exclude = this.getExcludeIds();
     const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
     return fileNames.reduce(async (prev, fileName) => {
       const acc = await prev;
+      const id = fileName.replace(/\.md$/, '');
+      if (exclude.includes(id)) {
+        return acc;
+      }
+
       return acc.concat(Id.create({
         source: Source.create(this.sourceId()),
         id: fileName.replace(/\.md$/, ''),
@@ -97,6 +112,11 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async fetch(id: Id): Promise<PostDetail> {
+    const exclude = this.getExcludeIds();
+    if (exclude.includes(id.postId)) {
+      throw NotFoundException;
+    }
+
     const fullPath = path.join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
     const fileContents = await promises.readFile(fullPath, 'utf8');
     const matterResult = matter(fileContents);

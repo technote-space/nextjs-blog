@@ -47,7 +47,21 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     return 'wp';
   }
 
+  private getExcludeSettings() {
+    const excludeIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId() && !setting.type).map(setting => Number(setting.id));
+    const excludeTermTaxonomyIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId() && setting.type === 'term').map(setting => Number(setting.id));
+
+    const excludeIdsWhere = `${excludeIds.length ? ` && wp_posts.ID NOT IN (${Array<string>(excludeIds.length).fill('?').join(', ')})` : ''}`;
+    const excludeTermTaxonomyIdsWhere = `${excludeTermTaxonomyIds.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (${Array<string>(excludeTermTaxonomyIds.length).fill('?').join(', ')}))` : ''}`;
+
+    return {
+      exclude: [...excludeIds, ...excludeTermTaxonomyIds],
+      excludeWhere: excludeIdsWhere + excludeTermTaxonomyIdsWhere,
+    };
+  }
+
   public async all(): Promise<Post[]> {
+    const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.post_name,
              wp_posts.post_date,
@@ -57,8 +71,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              wp_postmeta.meta_value as thumbnail_id
       FROM wp_posts
              LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
-      WHERE wp_posts.post_type = ? && wp_posts.post_status = ?
-    `, ['_thumbnail_id', 'post', 'publish']);
+      WHERE wp_posts.post_type = ? && wp_posts.post_status = ?${excludeWhere}
+    `, ['_thumbnail_id', 'post', 'publish', ...exclude]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -86,11 +100,12 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async getIds(): Promise<Id[]> {
+    const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
       SELECT post_name
       FROM wp_posts
-      WHERE post_type = ? && post_status = ?
-    `, ['post', 'publish']);
+      WHERE post_type = ? && post_status = ?${excludeWhere}
+    `, ['post', 'publish', ...exclude]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -100,6 +115,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async fetch(id: Id): Promise<PostDetail> {
+    const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.post_name,
              wp_posts.post_date,
@@ -110,8 +126,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       FROM wp_posts
              LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
              LEFT JOIN wp_posts thumbnail on thumbnail.ID = wp_postmeta.meta_value
-      WHERE wp_posts.post_type = ? && wp_posts.post_status = ? && wp_posts.post_name = ?
-    `, ['_thumbnail_id', 'post', 'publish', id.postId]);
+      WHERE wp_posts.post_type = ? && wp_posts.post_status = ? && wp_posts.post_name = ?${excludeWhere}
+    `, ['_thumbnail_id', 'post', 'publish', id.postId, ...exclude]);
 
     await this.mysql.end();
 
