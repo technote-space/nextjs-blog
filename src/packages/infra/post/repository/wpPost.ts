@@ -63,16 +63,21 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   public async all(): Promise<Post[]> {
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT wp_posts.post_name,
+      SELECT REPLACE(
+               IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value),
+               '/',
+               '-'
+               )                  AS post_name,
              wp_posts.post_date,
              wp_posts.post_modified,
              wp_posts.post_title,
              wp_posts.post_content,
-             wp_postmeta.meta_value as thumbnail_id
+             thumbnail.meta_value as thumbnail_id
       FROM wp_posts
-             LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
+             LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
+             LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
       WHERE wp_posts.post_type = ? && wp_posts.post_status = ?${excludeWhere}
-    `, ['_thumbnail_id', 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', ...exclude]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -102,10 +107,15 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   public async getIds(): Promise<Id[]> {
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
-      SELECT post_name
+      SELECT REPLACE(
+               IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value),
+               '/',
+               '-'
+               ) AS post_name
       FROM wp_posts
+             LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
       WHERE post_type = ? && post_status = ?${excludeWhere}
-    `, ['post', 'publish', ...exclude]);
+    `, ['custom_permalink', 'post', 'publish', ...exclude]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -117,17 +127,22 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   public async fetch(id: Id): Promise<PostDetail> {
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT wp_posts.post_name,
-             wp_posts.post_date,
+      SELECT wp_posts.post_date,
              wp_posts.post_modified,
              wp_posts.post_title,
              wp_posts.post_content,
-             thumbnail.guid as thumbnail
+             thumbnail_post.guid as thumbnail
       FROM wp_posts
+             LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
-             LEFT JOIN wp_posts thumbnail on thumbnail.ID = wp_postmeta.meta_value
-      WHERE wp_posts.post_type = ? && wp_posts.post_status = ? && wp_posts.post_name = ?${excludeWhere}
-    `, ['_thumbnail_id', 'post', 'publish', id.postId, ...exclude]);
+             LEFT JOIN wp_posts thumbnail_post on thumbnail_post.ID = wp_postmeta.meta_value
+      WHERE wp_posts.post_type = ? && wp_posts.post_status = ? &&
+            REPLACE(IF(
+                        COALESCE(permalink.meta_value, '') = '',
+                        wp_posts.post_name,
+                        permalink.meta_value
+                      ), '/', '-') = ?${excludeWhere}
+    `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', id.postId, ...exclude]);
 
     await this.mysql.end();
 
