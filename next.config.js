@@ -14,16 +14,20 @@ function useEsbuildMinify(config, options) {
 
 function useEsbuildLoader(config, options) {
   const {rules} = config.module;
-  const rule = rules.find(rule => rule.test.test('.js'));
-
-  rule.use = {
-    loader: 'esbuild-loader',
-    options,
-  };
+  rules.forEach(rule => {
+    if (rule.test?.test('.js')) {
+      rule.use = {
+        loader: 'esbuild-loader',
+        options,
+      };
+    }
+  });
 }
 
 module.exports = withBundleAnalyzer({
   webpack5: true,
+  reactStrictMode: true,
+  distDir: process.env.NODE_ENV === 'production' ? 'build' : '.next',
   webpack: (config, {isServer, webpack}) => {
     config.resolve.fallback = {
       fs: false,
