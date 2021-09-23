@@ -21,8 +21,14 @@ export class AnyPageProps implements IAnyPageProps {
   }
 
   public async getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
-    const ids = Object.assign({}, ...(await this.postManager.getIds()).map(id => ({ [id.value]: true })));
+    if (this.settings.isIsr) {
+      return {
+        paths: [],
+        fallback: 'blocking',
+      };
+    }
 
+    const ids = Object.assign({}, ...(await this.postManager.getIds()).map(id => ({ [id.value]: true })));
     return {
       paths: (this.settings.urlMaps ?? [])
         .map(urlMap => ({
@@ -42,23 +48,37 @@ export class AnyPageProps implements IAnyPageProps {
 
   public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
     if (!params) {
-      throw new NotFoundException;
+      return {
+        notFound: true,
+      };
     }
 
     const source = params.any.join('/');
     const destination = this.findDestination(source);
-
     if (!destination) {
-      throw new NotFoundException;
+      return {
+        notFound: true,
+      };
     }
 
-    return {
-      props: {
-        post: await fromEntity(await this.postManager.fetch(Id.create({
-          source: Source.create(destination.source),
-          id: destination.id,
-        }))),
-      },
-    };
+    try {
+      const post = await this.postManager.fetch(Id.create({
+        source: Source.create(destination.source),
+        id: destination.id,
+      }));
+      return {
+        props: {
+          post: await fromEntity(post),
+        },
+      };
+    } catch (e) {
+      if (e instanceof NotFoundException) {
+        return {
+          notFound: true,
+        };
+      }
+
+      throw e;
+    }
   }
 }

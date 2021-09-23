@@ -23,6 +23,8 @@ type SEO = {
   twitter?: string;
 };
 export type Settings = {
+  isIsr?: boolean;
+  isrRevalidate?: number;
   siteUrl: string;
   replace?: Replace[];
   exclude?: Exclude[];

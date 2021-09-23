@@ -154,13 +154,17 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     await this.mysql.end();
 
     if (!results.length) {
-      throw NotFoundException;
+      throw new NotFoundException;
     }
 
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      Content.create(this.replace(results[0].post_content.replace(/\r?\n/g, '<br />'))),
+      // block editor or classic editor
+      Content.create(this.replace(/<!-- wp:/.test(results[0].post_content) ?
+        results[0].post_content.replace(/<!-- \/?wp:.+? -->\n/g, '') :
+        results[0].post_content.replace(/\r?\n/g, '<br />'))
+      ),
       Excerpt.create(this.replace(convert(results[0].post_content, {
         wordwrap: null,
         selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],

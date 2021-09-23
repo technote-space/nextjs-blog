@@ -1,4 +1,5 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
+import type { Settings } from '$/domain/app/settings';
 import type { IPostPage, Props, Params, IPostPageProps } from '$/domain/pages/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostManager } from '$/domain/post/manager';
@@ -46,11 +47,19 @@ export class PostPage implements IPostPage {
 @singleton()
 export class PostPageProps implements IPostPageProps {
   public constructor(
+    @inject('Settings') private settings: Settings,
     @inject('IPostManager') private postManager: IPostManager,
   ) {
   }
 
   public async getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
+    if (this.settings.isIsr) {
+      return {
+        paths: [],
+        fallback: 'blocking',
+      };
+    }
+
     return {
       paths: (await this.postManager.getIds()).map(id => ({
         params: { id: id.value },
@@ -61,13 +70,27 @@ export class PostPageProps implements IPostPageProps {
 
   public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
     if (!params) {
-      throw new NotFoundException;
+      return {
+        notFound: true,
+      };
     }
 
-    return {
-      props: {
-        post: await fromEntity(await this.postManager.fetch(Id.create(params.id))),
-      },
-    };
+    try {
+      const post = await this.postManager.fetch(Id.create(params.id));
+      return {
+        props: {
+          post: await fromEntity(post),
+        },
+        revalidate: this.settings.isIsr ? (this.settings.isrRevalidate ?? 60) : undefined,
+      };
+    } catch (e) {
+      if (e instanceof NotFoundException) {
+        return {
+          notFound: true,
+        };
+      }
+
+      throw e;
+    }
   }
 }

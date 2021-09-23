@@ -1,6 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
-import { promises } from 'fs';
+import { promises, existsSync } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
@@ -114,15 +114,18 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   public async fetch(id: Id): Promise<PostDetail> {
     const exclude = this.getExcludeIds();
     if (exclude.includes(id.postId)) {
-      throw NotFoundException;
+      throw new NotFoundException;
     }
 
     const fullPath = path.join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
+    if (!existsSync(fullPath)) {
+      throw new NotFoundException;
+    }
     const fileContents = await promises.readFile(fullPath, 'utf8');
     const matterResult = matter(fileContents);
     const post = MarkdownPostRepository.toMaybePost(id.postId, matterResult);
     if (!MarkdownPostRepository.filterPost(post)) {
-      throw NotFoundException;
+      throw new NotFoundException;
     }
 
     const processedContent = await remark()
