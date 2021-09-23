@@ -1,7 +1,7 @@
 import type { Settings } from '$/domain/app/settings';
-import type { IAnyPageProps, Props } from '$/domain/pages/any';
-import type { Params, Paths } from '$/domain/pages/any';
+import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
 import type { IPostManager } from '$/domain/post/manager';
+import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
 import Source from '$/domain/post/valueObject/source';
@@ -20,7 +20,7 @@ export class AnyPageProps implements IAnyPageProps {
     return source.replace(/^\//, '').replace(/\/$/, '');
   }
 
-  public async getStaticPaths(): Promise<Paths> {
+  public async getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
     const ids = Object.assign({}, ...(await this.postManager.getIds()).map(id => ({ [id.value]: true })));
 
     return {
@@ -40,7 +40,7 @@ export class AnyPageProps implements IAnyPageProps {
     return (this.settings.urlMaps ?? []).find(urlMap => AnyPageProps.normalizeSource(urlMap.source) === source)?.destination;
   }
 
-  public async getStaticProps(params?: Params): Promise<Props> {
+  public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
     if (!params) {
       throw new NotFoundException;
     }
@@ -53,10 +53,12 @@ export class AnyPageProps implements IAnyPageProps {
     }
 
     return {
-      post: await fromEntity(await this.postManager.fetch(Id.create({
-        source: Source.create(destination.source),
-        id: destination.id,
-      }))),
+      props: {
+        post: await fromEntity(await this.postManager.fetch(Id.create({
+          source: Source.create(destination.source),
+          id: destination.id,
+        }))),
+      },
     };
   }
 }

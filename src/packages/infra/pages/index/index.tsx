@@ -1,6 +1,7 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
 import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
 import type { IPostManager } from '$/domain/post/manager';
+import type { GetStaticPropsResult } from 'next';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
@@ -31,9 +32,11 @@ export class IndexPageProps implements IIndexPageProps {
   ) {
   }
 
-  public async getStaticProps(): Promise<Props> {
+  public async getStaticProps(): Promise<GetStaticPropsResult<Props>> {
     return {
-      posts: (await this.postManager.all()).map(post => fromEntity(post)),
+      props: {
+        posts: (await this.postManager.all()).map(post => fromEntity(post)),
+      },
     };
   }
 }
