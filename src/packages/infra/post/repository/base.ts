@@ -3,6 +3,8 @@ import type { Post } from '$/domain/post/entity/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
+import { getAverageColor } from 'fast-average-color-node';
+import DominantColor from '$/domain/post/valueObject/dominantColor';
 
 export abstract class BasePostRepository implements IPostRepository {
   protected constructor(protected settings: Settings) {
@@ -19,6 +21,24 @@ export abstract class BasePostRepository implements IPostRepository {
 
       return prev.replace(setting.from, setting.to);
     }, text);
+  }
+
+  // TODO: Add test
+  protected async getDominantColor(thumbnail?: string, retry = 3): Promise<DominantColor | undefined> {
+    if (thumbnail) {
+      for (let i = retry; --i >= 0;) {
+        try {
+          const color = await getAverageColor(thumbnail, {
+            defaultColor: [255, 255, 255, 255],
+          });
+          return DominantColor.create(color.rgba);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+
+    return undefined;
   }
 
   public abstract all(): Promise<Post[]>;

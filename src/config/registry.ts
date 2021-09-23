@@ -5,7 +5,7 @@ import { HeaderComponent } from '$/infra/app/layout/header';
 import { LayoutComponent } from '$/infra/app/layout';
 import { HeadComponent } from '$/infra/app/head';
 import { AppService } from '$/infra/app';
-import { IndexPage, IndexPageProps } from '$/infra/pages';
+import { IndexPage, IndexPageProps } from '$/infra/pages/index';
 import { PostPage, PostPageProps } from '$/infra/pages/post';
 import { AnyPageProps } from '$/infra/pages/any';
 import { PostFactory } from '$/infra/post/factory';

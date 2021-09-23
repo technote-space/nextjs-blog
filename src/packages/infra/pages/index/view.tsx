@@ -1,14 +1,17 @@
-import type { Props } from '$/domain/pages';
 import type { VFC } from 'react';
 import Link from 'next/link';
-import Card from '$/infra/pages/components/Card';
-import { toEntity } from '$/infra/post/dto/post';
+import { Post } from '$/domain/post/entity/post';
+import Card from '$/infra/pages/index/components/Card';
 import List from '@/components/layout/List';
 import { pagesPath } from '@/lib/$path';
 
+export type Props = {
+  posts: Post[]
+};
+
 const View: VFC<Props> = ({ posts }) => {
   return <List>
-    {posts.map(post => toEntity(post)).map((post) => (
+    {posts.map((post) => (
       <List.Item key={post.getId().value} mx={3}>
         <Link href={pagesPath.posts._id(post.getId().value).$url()}>
           <a>

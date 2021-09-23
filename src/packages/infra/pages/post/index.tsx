@@ -1,5 +1,6 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
 import type { IPostPage, Props, Params, Paths, IPostPageProps } from '$/domain/pages/post';
+import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostManager } from '$/domain/post/manager';
 import type { VFC } from 'react';
 import { memo } from 'react';
@@ -7,7 +8,7 @@ import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 import View from '$/infra/pages/post/view';
-import { fromEntity } from '$/infra/post/dto/postDetail';
+import { fromEntity, toEntity } from '$/infra/post/dto/postDetail';
 
 @singleton()
 export class PostPage implements IPostPage {
@@ -16,16 +17,24 @@ export class PostPage implements IPostPage {
   ) {
   }
 
+  private static getSeoProps(entity: PostDetail) {
+    return {
+      title: entity.getTitle().value,
+      description: entity.getExcerpt().value,
+      image: entity.getThumbnail()?.value,
+      canonical: `/posts/${entity.getId().value}`,
+    };
+  }
+
   public create(): VFC<Props> {
     const component = memo(({ post }: Props) => {
-      return this.layoutComponent.render({
-        seo: {
-          title: post.title,
-          description: post.excerpt,
-          image: post.thumbnail ?? undefined,
-          canonical: post.url,
+      const entity = toEntity(post);
+      return this.layoutComponent.render(
+        {
+          seo: PostPage.getSeoProps(entity),
         },
-      }, <View post={post}/>);
+        <View post={entity}/>,
+      );
     });
     component.displayName = 'PostPage';
 

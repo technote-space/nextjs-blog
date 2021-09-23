@@ -4,8 +4,8 @@ import type { IPostManager } from '$/domain/post/manager';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
-import View from '$/infra/pages/view';
-import { fromEntity } from '$/infra/post/dto/post';
+import View from '$/infra/pages/index/view';
+import { fromEntity, toEntity } from '$/infra/post/dto/post';
 
 @singleton()
 export class IndexPage implements IIndexPage {
@@ -16,7 +16,7 @@ export class IndexPage implements IIndexPage {
 
   public create(): VFC<Props> {
     const component = memo(({ posts }: Props) => {
-      return this.layoutComponent.render({}, <View posts={posts}/>);
+      return this.layoutComponent.render({}, <View posts={posts.map(post => toEntity(post))}/>);
     });
     component.displayName = 'IndexPage';
 

@@ -166,6 +166,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
         selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
       }))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
+      await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),
     );

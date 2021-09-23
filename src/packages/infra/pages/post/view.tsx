@@ -1,14 +1,18 @@
-import type { Props } from '$/domain/pages/post';
+import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { VFC } from 'react';
 import Article from '$/infra/pages/post/components/Article';
 
+export type Props = {
+  post: PostDetail;
+};
+
 const View: VFC<Props> = ({ post }) => {
   return <Article
-    thumbnail={post.thumbnail ?? undefined}
-    backgroundColor={post.dominantColor}
-    title={post.title}
-    createdAt={post.createdAt}
-    content={post.content}
+    thumbnail={post.getThumbnail()?.value}
+    backgroundColor={post.getDominantColor()?.value}
+    title={post.getTitle().value}
+    createdAt={post.getCreatedAt().value}
+    content={post.getContent().value}
   />;
 };
 

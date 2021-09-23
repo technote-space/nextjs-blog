@@ -1,5 +1,6 @@
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
+import DominantColor from '$/domain/post/valueObject/dominantColor';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
@@ -13,15 +14,17 @@ export class PostDetail extends Base() {
   private content!: Content;
   private excerpt!: Excerpt;
   private thumbnail?: Thumbnail;
+  private dominantColor?: DominantColor;
   private createdAt!: CreatedAt;
   private updatedAt?: UpdatedAt;
 
-  public static create(title: Title, content: Content, excerpt: Excerpt, thumbnail?: Thumbnail): PostDetail | never {
+  public static create(title: Title, content: Content, excerpt: Excerpt, thumbnail?: Thumbnail, dominantColor?: DominantColor): PostDetail | never {
     const instance = new this();
     instance.title = title;
     instance.content = content;
     instance.excerpt = excerpt;
     instance.thumbnail = thumbnail;
+    instance.dominantColor = dominantColor;
     instance.createdAt = CreatedAt.create(undefined);
     instance.updatedAt = UpdatedAt.create(undefined);
     instance.validate();
@@ -29,13 +32,14 @@ export class PostDetail extends Base() {
     return instance;
   }
 
-  public static reconstruct(id: Id, title: Title, content: Content, excerpt: Excerpt, thumbnail: Thumbnail | undefined, createdAt: CreatedAt, updatedAt?: UpdatedAt): PostDetail {
+  public static reconstruct(id: Id, title: Title, content: Content, excerpt: Excerpt, thumbnail: Thumbnail | undefined, dominantColor: DominantColor | undefined, createdAt: CreatedAt, updatedAt?: UpdatedAt): PostDetail {
     const instance = new this();
     instance.id = id;
     instance.title = title;
     instance.content = content;
     instance.excerpt = excerpt;
     instance.thumbnail = thumbnail;
+    instance.dominantColor = dominantColor;
     instance.createdAt = createdAt;
     instance.updatedAt = updatedAt;
 
@@ -61,6 +65,10 @@ export class PostDetail extends Base() {
 
   public getThumbnail(): Thumbnail | undefined {
     return this.thumbnail;
+  }
+
+  public getDominantColor(): DominantColor | undefined {
+    return this.dominantColor;
   }
 
   public getCreatedAt(): CreatedAt {
