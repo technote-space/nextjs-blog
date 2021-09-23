@@ -1,7 +1,8 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
-import type { IPostPage, Props, Params, Paths, IPostPageProps } from '$/domain/pages/post';
+import type { IPostPage, Props, Params, IPostPageProps } from '$/domain/pages/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostManager } from '$/domain/post/manager';
+import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
@@ -49,7 +50,7 @@ export class PostPageProps implements IPostPageProps {
   ) {
   }
 
-  public async getStaticPaths(): Promise<Paths> {
+  public async getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
     return {
       paths: (await this.postManager.getIds()).map(id => ({
         params: { id: id.value },
@@ -58,13 +59,15 @@ export class PostPageProps implements IPostPageProps {
     };
   }
 
-  public async getStaticProps(params?: Params): Promise<Props> {
+  public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
     if (!params) {
       throw new NotFoundException;
     }
 
     return {
-      post: await fromEntity(await this.postManager.fetch(Id.create(params.id))),
+      props: {
+        post: await fromEntity(await this.postManager.fetch(Id.create(params.id))),
+      },
     };
   }
 }
