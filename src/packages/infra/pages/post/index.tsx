@@ -55,7 +55,7 @@ export class PostPageProps implements IPostPageProps {
       paths: (await this.postManager.getIds()).map(id => ({
         params: { id: id.value },
       })),
-      fallback: false,
+      fallback: 'blocking',
     };
   }
 
