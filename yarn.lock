@@ -11324,6 +11324,15 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
+node-canvas@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/node-canvas/-/node-canvas-2.7.0.tgz#771f3bd508f875c9e63171856d95e2be19ff86fd"
+  integrity sha512-G8Fq/ZWT13/dcvhrgDzi5Kus9u8sUR/VwxIeFqUytkuZlW9WR3lA6iB8TTOU8piGU+W/C6U/R9f8bqVoiN49mg==
+  dependencies:
+    "@mapbox/node-pre-gyp" "^1.0.0"
+    nan "^2.14.0"
+    simple-get "^3.0.3"
+
 node-dir@^0.1.10:
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/node-dir/-/node-dir-0.1.17.tgz"
