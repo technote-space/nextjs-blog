@@ -6,8 +6,8 @@ import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
-import Article from '$/infra/pages/post/components/Article';
-import { fromEntity, toEntity } from '$/infra/post/dto/postDetail';
+import View from '$/infra/pages/post/view';
+import { fromEntity } from '$/infra/post/dto/postDetail';
 
 @singleton()
 export class PostPage implements IPostPage {
@@ -18,7 +18,6 @@ export class PostPage implements IPostPage {
 
   public create(): VFC<Props> {
     const component = memo(({ post }: Props) => {
-      const entity = toEntity(post);
       return this.layoutComponent.render({
         seo: {
           title: post.title,
@@ -26,13 +25,7 @@ export class PostPage implements IPostPage {
           image: post.thumbnail ?? undefined,
           canonical: post.url,
         },
-      }, <Article
-        thumbnail={entity.getThumbnail()?.value}
-        backgroundColor={post.dominantColor}
-        title={entity.getTitle().value}
-        createdAt={entity.getCreatedAt().value}
-        content={entity.getContent().value}
-      />);
+      }, <View post={post}/>);
     });
     component.displayName = 'PostPage';
 
