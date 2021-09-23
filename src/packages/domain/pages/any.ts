@@ -1,5 +1,5 @@
-import type { Paths as SharedPaths } from '$/domain/shared/page';
 import type { PostDetailDTO } from '$/infra/post/dto/postDetail';
+import type { GetStaticPathsResult } from 'next';
 
 export type Props = {
   post: PostDetailDTO;
@@ -7,7 +7,7 @@ export type Props = {
 export type Params = {
   any: string[];
 };
-export type Paths = SharedPaths<Params>;
+export type Paths = GetStaticPathsResult<Params>;
 
 export interface IAnyPageProps {
   getStaticPaths(): Promise<Paths>;

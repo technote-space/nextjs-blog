@@ -16,6 +16,10 @@ export class AnyPageProps implements IAnyPageProps {
   ) {
   }
 
+  private static normalizeSource(source: string) {
+    return source.replace(/^\//, '').replace(/\/$/, '');
+  }
+
   public async getStaticPaths(): Promise<Paths> {
     const ids = Object.assign({}, ...(await this.postManager.getIds()).map(id => ({ [id.value]: true })));
 
@@ -26,14 +30,14 @@ export class AnyPageProps implements IAnyPageProps {
           source: urlMap.source,
         }))
         .filter(({ id }) => id.value in ids).map(({ source }) => ({
-          params: { any: source.replace(/^\//, '').split('/') },
+          params: { any: AnyPageProps.normalizeSource(source).split('/') },
         })),
       fallback: false,
     };
   }
 
   private findDestination(source: string): { source: string; id: string | number } | undefined {
-    return (this.settings.urlMaps ?? []).find(urlMap => urlMap.source.replace(/^\//, '') === source)?.destination;
+    return (this.settings.urlMaps ?? []).find(urlMap => AnyPageProps.normalizeSource(urlMap.source) === source)?.destination;
   }
 
   public async getStaticProps(params?: Params): Promise<Props> {
