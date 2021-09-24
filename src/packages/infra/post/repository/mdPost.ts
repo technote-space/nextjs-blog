@@ -40,12 +40,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     super(settings);
   }
 
-  protected sourceId(): string {
-    return 'md';
-  }
-
   private getExcludeIds() {
-    return (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId()).map(setting => setting.id);
+    return (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId).map(setting => setting.id);
   }
 
   private static filterPost(post?: MaybePost): post is PostData {
@@ -83,7 +79,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
 
     return posts.filter(MarkdownPostRepository.filterPost).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(post => Post.reconstruct(
       Id.create({
-        source: Source.create(this.sourceId()),
+        source: Source.create(this.sourceId),
         id: post.id,
       }),
       Title.create(post.title),
@@ -105,7 +101,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       }
 
       return acc.concat(Id.create({
-        source: Source.create(this.sourceId()),
+        source: Source.create(this.sourceId),
         id: fileName.replace(/\.md$/, ''),
       }));
     }, Promise.resolve([] as Id[]));

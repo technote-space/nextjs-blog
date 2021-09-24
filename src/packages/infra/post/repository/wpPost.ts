@@ -43,13 +43,9 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     });
   }
 
-  protected sourceId(): string {
-    return 'wp';
-  }
-
   private getExcludeSettings() {
-    const excludeIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId() && !setting.type).map(setting => Number(setting.id));
-    const excludeTermTaxonomyIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId() && setting.type === 'term').map(setting => Number(setting.id));
+    const excludeIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId && !setting.type).map(setting => Number(setting.id));
+    const excludeTermTaxonomyIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId && setting.type === 'term').map(setting => Number(setting.id));
 
     const excludeIdsWhere = `${excludeIds.length ? ` && wp_posts.ID NOT IN (${Array<string>(excludeIds.length).fill('?').join(', ')})` : ''}`;
     const excludeTermTaxonomyIdsWhere = `${excludeTermTaxonomyIds.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (${Array<string>(excludeTermTaxonomyIds.length).fill('?').join(', ')}))` : ''}`;
@@ -92,7 +88,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
 
     return results.map(result => Post.reconstruct(
       Id.create({
-        source: Source.create(this.sourceId()),
+        source: Source.create(this.sourceId),
         id: result.post_name,
       }),
       Title.create(result.post_title),
@@ -123,7 +119,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     await this.mysql.end();
 
     return results.map(result => Id.create({
-      source: Source.create(this.sourceId()),
+      source: Source.create(this.sourceId),
       id: result.post_name,
     }));
   }

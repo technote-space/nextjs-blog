@@ -11,10 +11,12 @@ export class PostFactory implements IPostFactory {
   private readonly __sources: Source[];
   private readonly __postRepositories: { [source: string]: IPostRepository };
 
-  public constructor(@inject('postRepositories') postRepositories: { [source: string]: string }) {
-    this.__postRepositories = Object.assign({}, ...Object.keys(postRepositories).map(source => ({
-      [source]: container.resolve(postRepositories[source]),
-    })));
+  public constructor(@inject('postRepositories') postRepositories: { [source: string]: { sourceId: string; repository: string } }) {
+    this.__postRepositories = Object.assign({}, ...Object.keys(postRepositories).map(source => {
+      const repository = container.resolve<IPostRepository>(postRepositories[source].repository);
+      repository.setSourceId(postRepositories[source].sourceId);
+      return { [source]: repository };
+    }));
     this.__sources = Object.keys(postRepositories).map(source => Source.create(source));
   }
 

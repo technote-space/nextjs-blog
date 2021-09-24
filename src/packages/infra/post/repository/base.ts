@@ -10,11 +10,15 @@ export abstract class BasePostRepository implements IPostRepository {
   protected constructor(protected settings: Settings) {
   }
 
-  protected abstract sourceId(): string;
+  private __sourceId?: string;
+
+  protected get sourceId(): string {
+    return this.__sourceId!;
+  }
 
   // TODO: Add test
   protected replace(text: string): string {
-    return (this.settings.replace ?? []).filter(setting => !setting.source || setting.source === this.sourceId()).reduce((prev, setting) => {
+    return (this.settings.replace ?? []).filter(setting => !setting.source || setting.source === this.sourceId).reduce((prev, setting) => {
       if (typeof setting.from === 'string') {
         return prev.split(setting.from).join(setting.to);
       }
@@ -39,6 +43,10 @@ export abstract class BasePostRepository implements IPostRepository {
     }
 
     return undefined;
+  }
+
+  public setSourceId(sourceId: string) {
+    this.__sourceId = sourceId;
   }
 
   public abstract all(): Promise<Post[]>;

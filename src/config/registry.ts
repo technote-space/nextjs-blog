@@ -27,7 +27,14 @@ const availablePostSources: Record<string, string> = {
   'md': 'MarkdownPostRepository',
   'wp': 'WordPressPostRepository',
 };
-container.registerInstance('postRepositories', Object.assign({}, ...postSources.filter(source => source in availablePostSources).map(source => ({ [source]: availablePostSources[source] }))));
+container.registerInstance('postRepositories', Object.assign({},
+  ...Object.keys(postSources).filter(source => source in availablePostSources).map(source => ({
+    [postSources[source]]: {
+      sourceId: postSources[source],
+      repository: availablePostSources[source],
+    },
+  }))),
+);
 
 // pages
 container.registerSingleton('IIndexPage', IndexPage);

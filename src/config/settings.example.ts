@@ -1,11 +1,12 @@
 import type { Settings } from '$/domain/app/settings';
 
-export const postSources = [
+// key => sourceId
+export const postSources: Record<string, string> = {
   // posts ディレクトリに作成した markdown で記事作成
-  'md',
+  'md': 'md',
   // .env で接続した WordPress の wp_posts で記事作成
-  // 'wp',
-];
+  // 'wp': wp,
+};
 export const settings: Settings = {
   // isIsr: true,
   // isrRevalidate: 60,
@@ -20,7 +21,7 @@ export const settings: Settings = {
   // 本文内で置換
   replace: [
     {
-      source: 'wp',
+      source: postSources['wp'],
       from: /class="(.+?\s)?wp-block-code\s+(\w+)(\s.+?)?"/g,
       to: 'class="$1language-$2$3"',
     },
@@ -29,12 +30,12 @@ export const settings: Settings = {
   exclude: [
     // WordPress の ID = 123 の投稿を除外
     // {
-    //   source: 'wp',
+    //   source: postSources['wp'],
     //   id: '123',
     // },
     // WordPress の term_taxonomy_id = 123 に紐付いた投稿を除外
     // {
-    //   source: 'wp',
+    //   source: postSources['wp'],
     //   type: 'term',
     //   id: '123',
     // },
@@ -44,7 +45,7 @@ export const settings: Settings = {
     // {
     //   source: '/old/graph-structured-program-evolution',
     //   destination: {
-    //     source: 'wp',
+    //     source: postSources['wp'],
     //     id: 'graph-structured-program-evolution',
     //   },
     // },
