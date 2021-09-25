@@ -387,7 +387,7 @@
         flex-shrink: 0;
         width: 40%;
         height: 0;
-        padding-bottom: 20%;
+        padding-bottom: 21%;
         align-self: center;
         transition: all 0.5s ease;
         background-size: contain;
@@ -447,7 +447,7 @@
       color: #e53900;
 
       :global .blog-card__image {
-        transform: scale(1.1);
+        transform: scale(1.08);
       }
     }
   }

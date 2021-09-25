@@ -10,6 +10,7 @@ module.exports = {
     "../src/components/Introduction.stories.mdx",
     "../src/**/*.stories.mdx",
     "../src/components/**/*.stories.tsx",
+    "../src/lib/**/components/**/*.stories.tsx",
     "../src/packages/infra/**/components/**/*.stories.tsx",
   ],
   "addons": [

@@ -13,7 +13,7 @@ published: true
 
 ## jsFiddle
 
-https://jsfiddle.net/Technote/3upmsz2y/
+https://jsfiddle.net/Technote/3upmsz2y/2/
 
 ## CodePen
 
@@ -32,5 +32,7 @@ https://stackblitz.com/edit/js-fkebjy?file=index.js
 https://twitter.com/carterjwm/status/849813577770778624
 
 ## YouTube
+
+https://www.youtube.com/watch
 
 https://www.youtube.com/watch?v=dHXC_ahjtEE
