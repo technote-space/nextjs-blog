@@ -159,8 +159,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       // block editor or classic editor
       Content.create(
         this.replace(/<!-- wp:/.test(results[0].post_content) ?
-          (await this.processLink(results[0].post_content)).replace(/<!-- \/?wp:.+? -->\n/g, '') :
-          (await this.processLink(results[0].post_content)).replace(/\r?\n/g, '<br />')
+          await this.processLink(results[0].post_content) :
+          (await this.processLink(results[0].post_content)).replace(/\r?\n/g, '<br />'),
         ),
       ),
       Excerpt.create(this.replace(convert(results[0].post_content, {

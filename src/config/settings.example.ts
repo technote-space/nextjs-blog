@@ -25,6 +25,11 @@ export const settings: Settings = {
       from: /class="(.+?\s)?wp-block-code\s+(\w+)(\s.+?)?"/g,
       to: 'class="$1language-$2$3"',
     },
+    {
+      source: postSources['wp'],
+      from: /<!--\s+\/?wp:.+?\s+-->\n/g,
+      to: '',
+    },
   ],
   //
   exclude: [
