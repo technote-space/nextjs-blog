@@ -774,7 +774,7 @@ Array [
     >
       <img
         alt="thumbnail"
-        className="chakra-image css-i96gla"
+        className="chakra-image css-3j5kgf"
         height={70}
         loading="lazy"
         src="https://placehold.jp/150x150.png"
@@ -794,7 +794,7 @@ Array [
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -827,7 +827,7 @@ Array [
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -848,7 +848,7 @@ Array [
     >
       <img
         alt="thumbnail"
-        className="chakra-image css-i96gla"
+        className="chakra-image css-3j5kgf"
         height={70}
         loading="lazy"
         src="https://placehold.jp/150x150.png"
@@ -868,7 +868,7 @@ Array [
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -901,7 +901,7 @@ Array [
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -934,7 +934,7 @@ Array [
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -959,7 +959,7 @@ Array [
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -980,7 +980,7 @@ Array [
     >
       <img
         alt="thumbnail"
-        className="chakra-image css-i96gla"
+        className="chakra-image css-3j5kgf"
         height={70}
         loading="lazy"
         src="https://placehold.jp/150x150.png"
@@ -1000,7 +1000,7 @@ Array [
           吾輩は猫である。
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -1033,13 +1033,139 @@ Array [
         吾輩は猫である。
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
     </div>
   </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/Pagination Default 1`] = `
+Array [
+  <ul
+    className="pagination"
+  >
+    <li
+      className="pagination__previous"
+    >
+      <a
+        aria-disabled="false"
+        aria-label="Previous page"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        rel="prev"
+        role="button"
+        tabIndex="0"
+      >
+        &lt;
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 1"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="break"
+    >
+      <a
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        ...
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 3"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="active"
+    >
+      <a
+        aria-current="page"
+        aria-label="Page 4 is your current page"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        4
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 5"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="break"
+    >
+      <a
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        ...
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 10"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        10
+      </a>
+    </li>
+    <li
+      className="pagination__next"
+    >
+      <a
+        aria-disabled="false"
+        aria-label="Next page"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        rel="next"
+        role="button"
+        tabIndex="0"
+      >
+        &gt;
+      </a>
+    </li>
+  </ul>,
   <span />,
 ]
 `;
@@ -1085,6 +1211,365 @@ Array [
       </a>
     </div>
   </header>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/BlogCard Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="blog-card"
+    >
+      <a
+        href="https://example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div
+          className="blog-card__image"
+          style={
+            Object {
+              "backgroundColor": "#ccc",
+              "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
+            }
+          }
+        />
+        <div
+          className="blog-card__details"
+        >
+          <div
+            className="blog-card__details__title"
+          >
+            吾輩は猫である
+          </div>
+          <div
+            className="blog-card__details__description"
+          >
+            吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+          </div>
+          <div
+            className="blog-card__details__source"
+          >
+            <div
+              className="blog-card__details__source__favicon"
+              style={
+                Object {
+                  "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
+                }
+              }
+            />
+            <div
+              className="blog-card__details__source__name"
+            >
+              example
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/BlogCard Minimum 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="blog-card"
+    >
+      <a
+        href="https://example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div
+          className="blog-card__image"
+          style={
+            Object {
+              "backgroundColor": "#ccc",
+              "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
+            }
+          }
+        />
+        <div
+          className="blog-card__details"
+        >
+          <div
+            className="blog-card__details__title"
+          >
+            https://example.com
+          </div>
+          <div
+            className="blog-card__details__description"
+          >
+            
+          </div>
+          <div
+            className="blog-card__details__source"
+          >
+            <div
+              className="blog-card__details__source__favicon"
+              style={
+                Object {
+                  "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
+                }
+              }
+            />
+            <div
+              className="blog-card__details__source__name"
+            >
+              example.com
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/CodePen Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-codepen"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        scrolling="no"
+        src="https://codepen.io/technote-space/embed/NWgLZRY?embed-version=2"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/CodeSandbox Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-codesandbox"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+        scrolling="no"
+        src="https://codesandbox.io/embed/keen-roman-kpz43?fontsize=14&hidenavigation=1&theme=dark"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/JsFiddle Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-jsfiddle"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        scrolling="no"
+        src="https://jsfiddle.net/Technote/3upmsz2y/2/embedded/"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/StackBlitz Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-stackblitz"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        scrolling="no"
+        src="https://stackblitz.com/edit/js-fkebjy?file=index.js&embed=1"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/Tweet Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-tweet"
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="0"
+        id="twitter-widget-849813577770778624"
+        loading="lazy"
+        scrolling="no"
+        src="https://platform.twitter.com/embed/Tweet.html?embedId=twitter-widget-849813577770778624&frame=false&hideCard=false&hideThread=false&id=849813577770778624&theme=light&widgetsVersion=1890d59c%3A1627936082797&width=450px"
+        style={
+          Object {
+            "display": "block",
+            "flexGrow": 1,
+            "height": 660,
+            "maxHeight": "calc(100vw * 1.6)",
+            "maxWidth": "100%",
+            "position": "static",
+            "visibility": "visible",
+            "width": 450,
+          }
+        }
+        title="Twitter Tweet"
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/YouTube Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-youtube"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        loading="lazy"
+        src="https://www.youtube.com/embed/dHXC_ahjtEE?loop=1&playlist=dHXC_ahjtEE"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/YouTube Invalid Url 1`] = `
+Array [
+  <div
+    className="article"
+  />,
   <span />,
 ]
 `;
