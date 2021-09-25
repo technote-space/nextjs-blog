@@ -16,6 +16,7 @@ const Tweet: VFC<Props> = ({ url }) => {
         display: 'block',
         flexGrow: 1,
         width: 450,
+        maxWidth: '100%',
         height: 660,
         maxHeight: `calc(100vw * 1.6)`,
       }}
