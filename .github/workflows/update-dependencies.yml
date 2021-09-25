@@ -11,6 +11,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
 name: Update dependencies
+
 jobs:
   update:
     name: Update npm dependencies
@@ -33,11 +34,7 @@ jobs:
         uses: technote-space/create-pr-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          EXECUTE_COMMANDS: |
-            npx npm-check-updates -u --packageFile package.json
-            yarn install
-            yarn upgrade
-            yarn audit
+          EXECUTE_COMMANDS: yarn update
           COMMIT_MESSAGE: 'chore: update npm dependencies'
           PR_DEFAULT_BRANCH_PREFIX: release/
           PR_DEFAULT_BRANCH_NAME: next-${CURRENT_VERSION}
