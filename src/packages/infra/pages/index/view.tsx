@@ -1,33 +1,42 @@
+import type { HookParams } from '$/infra/pages/index/hooks';
 import type { VFC } from 'react';
 import Link from 'next/link';
-import { Post } from '$/domain/post/entity/post';
+import { memo } from 'react';
 import Card from '$/infra/pages/index/components/Card';
+import Pagination from '$/infra/pages/index/components/Pagination';
+import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import { pagesPath } from '@/lib/$path';
 
-export type Props = {
-  posts: Post[]
-};
-
-const View: VFC<Props> = ({ posts }) => {
-  return <List>
-    {posts.map((post) => (
-      <List.Item key={post.getId().value} mx={3}>
-        <Link href={pagesPath.posts._id(post.getId().value).$url()}>
-          <a>
-            <Card
-              thumbnail={post.getThumbnail()?.value}
-              title={post.getTitle().value}
-              excerpt={post.getExcerpt().value}
-              createdAt={post.getCreatedAt().value}
-              my={4}
-            />
-          </a>
-        </Link>
-      </List.Item>
-    ))}
-  </List>;
+const View: VFC<HookParams> = ({ posts, perPage, currentPage, totalCount, handlePageChange }) => {
+  return <>
+    <List>
+      {posts.map((post) => (
+        <List.Item key={post.getId().value} mx={3}>
+          <Link href={pagesPath.posts._id(post.getId().value).$url()}>
+            <a>
+              <Card
+                thumbnail={post.getThumbnail()?.value}
+                title={post.getTitle().value}
+                excerpt={post.getExcerpt().value}
+                createdAt={post.getCreatedAt().value}
+                my={4}
+              />
+            </a>
+          </Link>
+        </List.Item>
+      ))}
+    </List>
+    <Flex my={5}>
+      <Pagination
+        perPage={perPage}
+        page={currentPage}
+        totalCount={totalCount}
+        onPageChange={handlePageChange}
+      />
+    </Flex>
+  </>;
 };
 
 View.displayName = 'IndexView';
-export default View;
+export default memo(View);
