@@ -44,7 +44,14 @@ const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ..
         <SubHeading>
           {excerpt}
         </SubHeading>
-        <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
+        <Date
+          date={createdAt}
+          format={dateFormat ?? 'YYYY.MM.DD'}
+          display="flex"
+          flexGrow={1}
+          justifyContent="end"
+          alignItems="end"
+        />
       </Flex>
     </Flex>
     <Flex flexDir="column" display={['flex', 'flex', 'none', 'none']} flexGrow={1} p={2}>
@@ -57,7 +64,14 @@ const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ..
       <SubHeading display={['flex', 'flex', 'none', 'none']}>
         {excerpt}
       </SubHeading>
-      <Date date={createdAt} format={dateFormat ?? 'YYYY.MM.DD'} textAlign="right"/>
+      <Date
+        date={createdAt}
+        format={dateFormat ?? 'YYYY.MM.DD'}
+        display="flex"
+        flexGrow={1}
+        justifyContent="end"
+        alignItems="end"
+      />
     </Flex>
   </Flex>;
 };
