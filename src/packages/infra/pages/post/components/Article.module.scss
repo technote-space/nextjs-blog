@@ -389,11 +389,12 @@
         height: 0;
         padding-bottom: 21%;
         align-self: center;
-        transition: all 0.5s ease;
+        transition: transform 0.5s ease;
         background-size: contain;
         background-repeat: no-repeat;
         background-position-x: center;
         background-position-y: center;
+        backface-visibility: hidden;
       }
 
       :global .blog-card__details {
@@ -447,7 +448,7 @@
       color: #e53900;
 
       :global .blog-card__image {
-        transform: scale(1.08);
+        transform: scale(1.05);
       }
     }
   }
