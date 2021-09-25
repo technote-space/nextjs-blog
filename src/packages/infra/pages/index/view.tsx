@@ -1,4 +1,4 @@
-import type { HookParams } from '$/infra/pages/index/hooks';
+import type { HooksParams } from '$/infra/pages/index/hooks';
 import type { VFC } from 'react';
 import Link from 'next/link';
 import { memo } from 'react';
@@ -8,7 +8,7 @@ import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import { pagesPath } from '@/lib/$path';
 
-const View: VFC<HookParams> = ({ posts, perPage, currentPage, totalCount, handlePageChange }) => {
+const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, handlePageChange }) => {
   return <>
     <List>
       {posts.map((post) => (

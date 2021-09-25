@@ -1,12 +1,8 @@
-import type { PostDetail } from '$/domain/post/entity/postDetail';
+import type { HooksParams } from '$/infra/pages/post/hooks';
 import type { VFC } from 'react';
 import Article from '$/infra/pages/post/components/Article';
 
-export type Props = {
-  post: PostDetail;
-};
-
-const View: VFC<Props> = ({ post }) => {
+const View: VFC<HooksParams['viewProps']> = ({ post }) => {
   return <Article
     thumbnail={post.getThumbnail()?.value}
     backgroundColor={post.getDominantColor()?.value}

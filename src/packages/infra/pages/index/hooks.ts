@@ -44,4 +44,4 @@ export const useHooks = ({ posts }: Props) => {
     handlePageChange,
   };
 };
-export type HookParams = ReturnType<typeof useHooks>;
+export type HooksParams = ReturnType<typeof useHooks>;
