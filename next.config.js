@@ -47,6 +47,7 @@ module.exports = withBundleAnalyzer({
         {'rehype-stringify': 'var {}'},
         {'remark-gfm': 'var {}'},
         {'remove-markdown': 'var {}'},
+        {'url-metadata': 'var {}'},
       );
     }
 

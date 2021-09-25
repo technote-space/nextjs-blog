@@ -309,11 +309,7 @@
     }
   }
 
-  :global .double-underline {
-    font-weight: bold;
-    text-decoration: double underline red;
-  }
-
+  /* cocoon */
   :global .alert-box, :global .memo-box, :global .information-box, :global .comment-box,
   :global .ok-box, :global .ng-box, :global .good-box, :global .bad-box, :global .profile-box {
     padding: 20px;
@@ -367,6 +363,99 @@
   :global .profile-box {
     background: #fefefe;
     border: 1px solid #ccd;
+  }
+
+  /* blog card */
+  :global .blog-card-wrapper {
+    position: relative;
+    margin: 16px auto;
+  }
+
+  :global .blog-card {
+    display: flex;
+    font-size: 13px;
+    line-height: 1.45em;
+    height: 200px;
+    transition: height 0.3s ease;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 1px 7px -1px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    color: #1c1c1c;
+    text-decoration: none;
+    user-select: none;
+
+    :global .blog-card__image {
+      flex-shrink: 0;
+      width: 380px;
+      height: 0;
+      padding-bottom: 24%;
+      transition: all 0.5s ease;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-position-y: center;
+    }
+
+    :global .blog-card__details {
+      display: flex;
+      z-index: 0;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 10px 16px;
+      background: white;
+
+      > div {
+        margin: 0 0 4px;
+      }
+
+      :global .blog-card__details__title {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        font-weight: bold;
+      }
+
+      :global .blog-card__details__meta {
+        display: flex;
+        flex-direction: row;
+
+        > div {
+          margin-right: 10px;
+        }
+      }
+
+      :global .blog-card__details__source {
+        display: flex;
+        flex-grow: 1;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        :global .blog-card__details__source__favicon {
+          width: 16px;
+          height: 16px;
+          background-size: cover;
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+
+  :global .blog-card:visited {
+    color: #1c1c1c;
+  }
+
+  :global .blog-card:hover {
+    color: #e53900;
+
+    :global .blog-card__image {
+      transform: scale(1.1);
+    }
+  }
+
+  /* misc */
+  :global .double-underline {
+    font-weight: bold;
+    text-decoration: double underline red;
   }
 }
 

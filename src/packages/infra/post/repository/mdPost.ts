@@ -134,7 +134,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return PostDetail.reconstruct(
       id,
       Title.create(post.title),
-      Content.create(this.replace(post.contentHtml)),
+      Content.create(this.replace(await this.processLink(post.contentHtml))),
       Excerpt.create(this.replace(removeMd(post.contentHtml))),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       await this.getDominantColor(post.thumbnail),

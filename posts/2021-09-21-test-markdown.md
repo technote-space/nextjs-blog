@@ -1,13 +1,13 @@
 ---
 title: "Markdown 記法のテスト"
-createdAt: "2021-09-20"
-updatedAt: "2021-09-21"
+createdAt: "2021-09-21"
+updatedAt: "2021-09-24"
 thumbnail: "https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png"
 tags: ["test"]
 published: true
 ---
 
-Markdownでも投稿できるようにしたのでそれの記法のテスト
+Markdownでの投稿のテスト
 
 ---
 
