@@ -8,8 +8,8 @@ export const postSources: Record<string, string> = {
   // 'wp': wp,
 };
 export const settings: Settings = {
-  // isIsr: true,
-  // isrRevalidate: 60,
+  isIsr: true,
+  isrRevalidate: 60,
   siteUrl: 'https://example.com',
   seo: {
     blogTitle: 'Hello World!',
