@@ -1,5 +1,6 @@
-import type { PostDetailDTO } from '$/domain/post/dto/postDetail';
-import type { IPage, Paths as SharedPaths } from '$/domain/shared/page';
+import type { IPage } from '$/domain/shared/page';
+import type { PostDetailDTO } from '$/infra/post/dto/postDetail';
+import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 
 export type Props = {
   post: PostDetailDTO;
@@ -7,12 +8,10 @@ export type Props = {
 export type Params = {
   id: string;
 };
-export type Paths = SharedPaths<Params>;
-
 export type IPostPage = IPage<Props>
 
 export interface IPostPageProps {
-  getStaticPaths(): Promise<Paths>;
+  getStaticPaths(): Promise<GetStaticPathsResult<Params>>;
 
-  getStaticProps(params?: Params): Promise<Props>;
+  getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>>;
 }

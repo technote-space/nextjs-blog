@@ -1,5 +1,4 @@
 setup:
-	npm_config_yes=true npx shx cp -u .env.example .env
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 	. ${NVM_DIR}/nvm.sh && nvm use
 	yarn

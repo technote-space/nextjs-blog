@@ -10,6 +10,7 @@
 
 # next.js
 /.next/
+/build/
 /out/
 
 # production
@@ -35,3 +36,6 @@ yarn-error.log*
 .env
 package-lock.json
 /*.sql
+/tmp
+/sh
+/*.zip

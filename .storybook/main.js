@@ -1,13 +1,17 @@
 const path = require('path');
+const {TsconfigPathsPlugin} = require('tsconfig-paths-webpack-plugin');
 const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
-  core: { builder: "storybook-builder-vite" },
+  core: {
+    builder: 'webpack5',
+  },
   "stories": [
     "../src/components/Introduction.stories.mdx",
     "../src/**/*.stories.mdx",
-    "../src/components/*.stories.tsx",
-    "../src/packages/infra/**/components/*.stories.tsx",
+    "../src/components/**/*.stories.tsx",
+    "../src/lib/**/components/**/*.stories.tsx",
+    "../src/packages/infra/**/components/**/*.stories.tsx",
   ],
   "addons": [
     "storybook-addon-performance/register",
@@ -15,17 +19,34 @@ module.exports = {
     "@storybook/addon-actions",
     "@storybook/addon-links",
   ],
-  viteFinal: async (config) => {
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
+  webpackFinal: async (config) => {
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, '../tsconfig.json')
+      })
+    ];
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@emotion/core": toPath("node_modules/@emotion/react"),
+      "emotion-theming": toPath("node_modules/@emotion/react"),
+    };
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        {
+          loader: "css-loader",
+          options: {
+            importLoaders: 1,
+            modules: {
+              localIdentName: "[local]___[hash:base64:2]",
+            },
+          },
         },
-      },
-    }
+        'sass-loader'
+      ],
+    });
+
+    return config
   },
 }

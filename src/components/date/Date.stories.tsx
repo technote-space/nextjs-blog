@@ -1,12 +1,14 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import { storybookArgTypes } from '@/components/wrap';
 import Date from './Date';
 
 export default {
-  title: 'Date',
+  title: 'Common Components/Date',
   component: Date,
   argTypes: {
     date: { control: { type: 'date' } },
     format: { control: { type: 'text' } },
+    ...storybookArgTypes,
   },
 } as ComponentMeta<typeof Date>;
 
