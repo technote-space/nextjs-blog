@@ -20,7 +20,7 @@ export abstract class BasePostRepository implements IPostRepository {
     return this.__sourceId!;
   }
 
-  protected replace(text: string): string {
+  private replace(text: string): string {
     return (this.settings.replace ?? []).filter(setting => !setting.source || setting.source === this.sourceId).reduce((prev, setting) => {
       return replaceAll(prev, setting.from, setting.to);
     }, text);
@@ -30,8 +30,12 @@ export abstract class BasePostRepository implements IPostRepository {
     return getDominantColor(thumbnail, this.settings.siteUrl, retry);
   }
 
-  protected async processLink(text: string): Promise<string> {
-    return replaceLinks(text, Oembed.parse);
+  protected processExcerpt(excerpt: string): string {
+    return this.replace(excerpt);
+  }
+
+  protected async processContent(content: string): Promise<string> {
+    return this.replace(await replaceLinks(this.replace(content), Oembed.parse));
   }
 
   public setSourceId(sourceId: string): void {

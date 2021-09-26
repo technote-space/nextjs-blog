@@ -92,7 +92,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
         id: result.post_name,
       }),
       Title.create(result.post_title),
-      Excerpt.create(this.replace(htmlToExcerpt(result.post_content))),
+      Excerpt.create(this.processExcerpt(htmlToExcerpt(result.post_content))),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
@@ -153,14 +153,15 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      // block editor or classic editor
       Content.create(
-        this.replace(/<!-- wp:/.test(results[0].post_content) ?
-          await this.processLink(results[0].post_content) :
-          (await this.processLink(results[0].post_content)).replace(/\r?\n/g, '<br />'),
+        await this.processContent(
+          // block editor or classic editor
+          /<!-- wp:/.test(results[0].post_content) ?
+            results[0].post_content :
+            results[0].post_content.replace(/\r?\n/g, '<br />'),
         ),
       ),
-      Excerpt.create(this.replace(htmlToExcerpt(results[0].post_content))),
+      Excerpt.create(this.processExcerpt(htmlToExcerpt(results[0].post_content))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),
