@@ -10,7 +10,8 @@ export const postSources: Record<string, string> = {
 export const settings: Settings = {
   isIsr: true,
   isrRevalidate: 60,
-  siteUrl: 'https://example.com',
+  siteUrl: 'http://localhost:3000',
+  // gaMeasurementId: 'UA-xxxxxxxx-y',
   seo: {
     blogTitle: 'Hello World!',
     author: 'Hello World!',

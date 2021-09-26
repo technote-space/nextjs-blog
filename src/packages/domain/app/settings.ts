@@ -39,4 +39,5 @@ export type Settings = {
   urlMaps?: UrlMap[];
   seo: SEO;
   breakpoints?: BreakPoints;
+  gaMeasurementId?: string;
 };
