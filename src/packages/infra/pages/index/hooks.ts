@@ -32,7 +32,7 @@ export const useHooks = ({ posts }: Props) => {
 
   const handlePageChange = useCallback((selectedItem: { selected: number }) => {
     // selected は 0〜
-    router.push(`/?page=${selectedItem.selected + 1}`).then();
+    router.push(`/?page=${selectedItem.selected + 1}`, undefined, { shallow: true, scroll: true }).then();
   }, [router]);
   const displayPosts = useMemo(() => entities.slice(_perPage * (_page - 1), _perPage * _page), [entities, _perPage, _page]);
 
