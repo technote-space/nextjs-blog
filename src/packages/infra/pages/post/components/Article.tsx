@@ -1,6 +1,5 @@
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
-import Link from 'next/link';
 import Prism from 'prismjs';
 import { memo, useEffect } from 'react';
 import { SRLWrapper } from 'simple-react-lightbox';
@@ -8,7 +7,6 @@ import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
 import { wrap } from '@/components/wrap';
-import { pagesPath } from '@/lib/$path';
 import styles from './Article.module.scss';
 
 type Props = {
@@ -42,11 +40,6 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
     <SRLWrapper>
       <Box className={styles.article} dangerouslySetInnerHTML={{ __html: content }}/>
     </SRLWrapper>
-    <Box>
-      <Link href={pagesPath.$url()}>
-        <a className={styles.back}>トップページに戻る</a>
-      </Link>
-    </Box>
   </wrap.article>;
 };
 
