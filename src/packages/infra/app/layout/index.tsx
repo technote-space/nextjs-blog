@@ -24,7 +24,7 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
         {this.headComponent.render(seo ?? {})}
         {this.headerComponent.render({})}
         <main>
-          <Box mx="auto" maxW={1000}>
+          <Box mx="auto" maxW={900}>
             {children}
           </Box>
         </main>

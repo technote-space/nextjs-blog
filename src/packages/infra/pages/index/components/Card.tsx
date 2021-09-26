@@ -18,7 +18,6 @@ type Props = StyleProps & {
 
 const defaultProps: StyleProps = {
   mx: 'auto',
-  maxW: 900,
   backgroundColor: 'white',
   cursor: 'pointer',
   boxSizing: 'border-box',

@@ -24,7 +24,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
     Prism.highlightAll();
   }, []);
 
-  return <wrap.article backgroundColor="white" p={[3, 3, 7, 7]} maxW={900} mx="auto" boxShadow="0 0 8px #ccc">
+  return <wrap.article backgroundColor="white" p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
     <header>
       <Date
         date={createdAt}

@@ -12,7 +12,7 @@ const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, handl
   return <>
     <List>
       {posts.map((post) => (
-        <List.Item key={post.getId().value} mx={3}>
+        <List.Item key={post.getId().value}>
           <Link href={pagesPath.posts._id(post.getId().value).$url()}>
             <a>
               <Card
