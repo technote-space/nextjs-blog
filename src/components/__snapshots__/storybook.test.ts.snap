@@ -244,7 +244,7 @@ Array [
     }
   >
     <article
-      className="css-1golnkc"
+      className="css-1flh3nq"
     >
       <header>
         <time
@@ -511,7 +511,7 @@ Array [
     }
   >
     <article
-      className="css-1golnkc"
+      className="css-1flh3nq"
     >
       <header>
         <time
@@ -767,7 +767,7 @@ console.log('Hello World!');
 exports[`Storyshots Domain Components/Card Default 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
@@ -841,7 +841,7 @@ Array [
 exports[`Storyshots Domain Components/Card Long 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
@@ -915,7 +915,7 @@ Array [
 exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
@@ -973,7 +973,7 @@ Array [
 exports[`Storyshots Domain Components/Card Short 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
