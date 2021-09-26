@@ -13,8 +13,8 @@ export class AppService implements IAppService {
 
   public create(): (props: PropsWithChildren<AppProps>) => JSX.Element {
     // eslint-disable-next-line react/display-name
-    return ({ Component, pageProps }: PropsWithChildren<AppProps>): JSX.Element => {
-      return this.theme.render({}, <Component {...pageProps} />);
-    };
+    return ({ Component, pageProps }: PropsWithChildren<AppProps>) => this.theme.render(
+      {}, <Component {...pageProps} />,
+    );
   }
 }

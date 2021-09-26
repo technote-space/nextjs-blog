@@ -19,15 +19,13 @@ const defaultProps: StyleProps = {
   boxShadow: '0 0 5px #ccc',
 };
 
-const Header: VFC<Props> = ({ title, ...props }) => {
-  return <wrap.header backgroundColor="white">
-    <Flex {...defaultProps} {...props}>
-      <Link href={pagesPath.$url()}>
-        <a>{title}</a>
-      </Link>
-    </Flex>
-  </wrap.header>;
-};
+const Header: VFC<Props> = ({ title, ...props }) => <wrap.header backgroundColor="white">
+  <Flex {...defaultProps} {...props}>
+    <Link href={pagesPath.$url()}>
+      <a>{title}</a>
+    </Link>
+  </Flex>
+</wrap.header>;
 
 Header.displayName = 'Header';
 export default memo(Header);

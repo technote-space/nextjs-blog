@@ -52,13 +52,11 @@ export class ChakraUiTheme extends BaseComponent<Props> implements ITheme {
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo(({ children }) => {
-      return <ChakraProvider theme={this.__theme}>
-        <SimpleReactLightbox>
-          {children}
-        </SimpleReactLightbox>
-      </ChakraProvider>;
-    });
+    const component = memo(({ children }) => <ChakraProvider theme={this.__theme}>
+      <SimpleReactLightbox>
+        {children}
+      </SimpleReactLightbox>
+    </ChakraProvider>);
     component.displayName = 'ThemeProvider';
 
     return component;

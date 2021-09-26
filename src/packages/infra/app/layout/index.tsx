@@ -19,18 +19,16 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo(({ seo, children }: Props) => {
-      return <Box>
-        {this.headComponent.render(seo ?? {})}
-        {this.headerComponent.render({})}
-        <main>
-          <Box mx="auto" maxW={900}>
-            {children}
-          </Box>
-        </main>
-        {this.footerComponent.render({})}
-      </Box>;
-    });
+    const component = memo(({ seo, children }: Props) => <Box>
+      {this.headComponent.render(seo ?? {})}
+      {this.headerComponent.render({})}
+      <main>
+        <Box mx="auto" maxW={900}>
+          {children}
+        </Box>
+      </main>
+      {this.footerComponent.render({})}
+    </Box>);
     component.displayName = 'LayoutComponent';
 
     return component;

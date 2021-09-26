@@ -17,15 +17,13 @@ const defaultProps: StyleProps = {
   boxShadow: '0 0 5px #ccc',
 };
 
-const Footer: VFC<Props> = ({ author, ...props }) => {
-  return <wrap.footer backgroundColor="white">
-    <Flex {...defaultProps} {...props}>
-      <Link href={pagesPath.$url()}>
-        <a>©{(new Date()).getFullYear()} {author}</a>
-      </Link>
-    </Flex>
-  </wrap.footer>;
-};
+const Footer: VFC<Props> = ({ author, ...props }) => <wrap.footer backgroundColor="white">
+  <Flex {...defaultProps} {...props}>
+    <Link href={pagesPath.$url()}>
+      <a>©{(new Date()).getFullYear()} {author}</a>
+    </Link>
+  </Flex>
+</wrap.footer>;
 
 Footer.displayName = 'Footer';
 export default memo(Footer);
