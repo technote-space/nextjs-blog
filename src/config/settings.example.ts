@@ -31,7 +31,7 @@ export const settings: Settings = {
       to: '',
     },
   ],
-  //
+  // 除外設定
   exclude: [
     // WordPress の ID = 123 の投稿を除外
     // {
