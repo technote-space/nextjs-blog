@@ -150,17 +150,12 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       throw new NotFoundException;
     }
 
+    const isClassicEditor = !/<!-- wp:/.test(results[0].post_content);
+    const processedContent = await this.processContent(results[0].post_content);
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      Content.create(
-        await this.processContent(
-          // block editor or classic editor
-          /<!-- wp:/.test(results[0].post_content) ?
-            results[0].post_content :
-            results[0].post_content.replace(/\r?\n/g, '<br />'),
-        ),
-      ),
+      Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(htmlToExcerpt(results[0].post_content))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),

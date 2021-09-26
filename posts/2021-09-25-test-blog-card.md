@@ -38,3 +38,29 @@ https://docs.github.com/ja/articles/software-in-virtual-environments-for-github-
 ### ドメインも死んでいる場合
 
 https://test.invalid/123
+
+## コード内のURLはブログカード化されない
+
+~~~markdown
+```json
+{
+  "url": "https://example.com"
+}
+```
+~~~
+
+```json
+{
+  "url": "https://example.com"
+}
+```
+
+~~~markdown
+```html
+<p><a href="https://example.com">https://example.com</a></p>
+```
+~~~
+
+```html
+<p><a href="https://example.com">https://example.com</a></p>
+```
