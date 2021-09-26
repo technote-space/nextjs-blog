@@ -61,7 +61,7 @@ export class AnyPageProps implements IAnyPageProps {
 
     return {
       redirect: {
-        statusCode: 301,
+        permanent: true,
         destination: `/posts/${Id.create({
           source: Source.create(destination.source),
           id: destination.id,
