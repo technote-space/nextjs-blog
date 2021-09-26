@@ -27,7 +27,7 @@ export abstract class BasePostRepository implements IPostRepository {
   }
 
   protected async getDominantColor(thumbnail?: string, retry = 3): Promise<DominantColor | undefined> {
-    return getDominantColor(thumbnail, retry);
+    return getDominantColor(thumbnail, this.settings.siteUrl, retry);
   }
 
   protected async processLink(text: string): Promise<string> {

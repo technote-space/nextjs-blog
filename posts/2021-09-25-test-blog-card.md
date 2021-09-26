@@ -2,7 +2,7 @@
 title: "ブログカードのテスト"
 createdAt: "2021-09-25"
 updatedAt: "2021-09-25"
-thumbnail: "https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png"
+thumbnail: "/images/pet_cat_sit.png"
 tags: ["test"]
 published: true
 ---

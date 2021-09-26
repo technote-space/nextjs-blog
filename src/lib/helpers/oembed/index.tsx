@@ -11,8 +11,8 @@ import {
   isStackblitzUrl,
   isTweetUrl,
   isYoutubeUrl,
-  extractYoutubeVideoParameters,
   isValidHttpUrl,
+  getDomainName,
 } from '@/lib/helpers/url';
 import { getDominantColor } from '@/lib/helpers/color';
 import { escapeHtml } from '@/lib/helpers/string';
@@ -75,7 +75,7 @@ export class Oembed {
 
   private static async generateCard(url: string, title?: string, description?: string, image?: string, canonical?: string, source?: string): Promise<string> {
     const _image = image || `https://s.wordpress.com/mshots/v1/${escapeHtml(url)}?w=380&h=200`;
-    const dominantColor = await getDominantColor(_image);
+    const dominantColor = await getDominantColor(_image, getDomainName(url));
 
     return ReactDOMServer.renderToString(<BlogCard
       url={url}
