@@ -5,8 +5,6 @@ import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
 import Source from '$/domain/post/valueObject/source';
-import NotFoundException from '$/domain/shared/exceptions/notFound';
-import { fromEntity } from '$/infra/post/dto/postDetail';
 
 @singleton()
 export class AnyPageProps implements IAnyPageProps {
@@ -61,24 +59,14 @@ export class AnyPageProps implements IAnyPageProps {
       };
     }
 
-    try {
-      const post = await this.postManager.fetch(Id.create({
-        source: Source.create(destination.source),
-        id: destination.id,
-      }));
-      return {
-        props: {
-          post: await fromEntity(post),
-        },
-      };
-    } catch (e) {
-      if (e instanceof NotFoundException) {
-        return {
-          notFound: true,
-        };
-      }
-
-      throw e;
-    }
+    return {
+      redirect: {
+        statusCode: 301,
+        destination: `/posts/${Id.create({
+          source: Source.create(destination.source),
+          id: destination.id,
+        }).value}`,
+      },
+    };
   }
 }
