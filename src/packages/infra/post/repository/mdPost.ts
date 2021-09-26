@@ -66,7 +66,11 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
     const posts = await fileNames.reduce(async (prev, fileName) => {
       const acc = await prev;
-      const id = fileName.replace(/\.md/, '');
+      if (!fileName.endsWith('.md')) {
+        return acc;
+      }
+
+      const id = fileName.replace(/\.md$/, '');
       if (exclude.includes(id)) {
         return acc;
       }

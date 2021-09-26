@@ -1,3 +1,5 @@
+import { convert } from 'html-to-text';
+
 // TODO: Add test
 export const replaceAll = (text: string, from: string | RegExp, to: string): string => {
   if (typeof from === 'string') {
@@ -18,4 +20,9 @@ export const escapeHtml = (str: string): string => str.replace(/[&'`"<>]/g, matc
     '<': '&lt;',
     '>': '&gt;',
   }[match] ?? match;
+});
+
+export const htmlToExcerpt = (html: string): string => convert(html, {
+  wordwrap: null,
+  selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
 });

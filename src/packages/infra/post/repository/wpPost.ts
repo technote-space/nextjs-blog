@@ -1,6 +1,5 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
-import { convert } from 'html-to-text';
 import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
@@ -15,6 +14,7 @@ import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 import { BasePostRepository } from '$/infra/post/repository/base';
+import { htmlToExcerpt } from '@/lib/helpers/string';
 
 type PostData = {
   post_name: string;
@@ -92,10 +92,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
         id: result.post_name,
       }),
       Title.create(result.post_title),
-      Excerpt.create(this.replace(convert(result.post_content, {
-        wordwrap: null,
-        selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
-      }))),
+      Excerpt.create(this.replace(htmlToExcerpt(result.post_content))),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
@@ -163,10 +160,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
           (await this.processLink(results[0].post_content)).replace(/\r?\n/g, '<br />'),
         ),
       ),
-      Excerpt.create(this.replace(convert(results[0].post_content, {
-        wordwrap: null,
-        selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
-      }))),
+      Excerpt.create(this.replace(htmlToExcerpt(results[0].post_content))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),
