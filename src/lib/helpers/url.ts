@@ -99,3 +99,8 @@ export const replaceLinks = async (text: string, replace: (url: string) => Promi
 export const getDomainName = (url: string): string => {
   return new URL(url).hostname;
 };
+
+export const getSiteUrl = (url: string): string => {
+  const urlInstance = new URL(url);
+  return `${urlInstance.protocol}//${urlInstance.username ? `${urlInstance.username}${urlInstance.password ? `:${urlInstance.password}` : ''}@` : ''}${urlInstance.host}`;
+};
