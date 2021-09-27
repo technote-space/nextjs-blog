@@ -33,10 +33,10 @@ export class IndexPageProps implements IIndexPageProps {
   ) {
   }
 
-  public async getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  public async getStaticProps(postType?: string): Promise<GetStaticPropsResult<Props>> {
     return {
       props: {
-        posts: (await this.postManager.all()).map(post => fromEntity(post)),
+        posts: (await this.postManager.all(postType)).map(post => fromEntity(post)),
       },
       revalidate: this.settings.isIsr ? (this.settings.isrRevalidate ?? 60) : undefined,
     };

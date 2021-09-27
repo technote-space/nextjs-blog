@@ -6,9 +6,9 @@ import Source from '$/domain/post/valueObject/source';
 export interface IPostFactory {
   getSources(): Source[];
 
-  all(source: Source): Promise<Post[]>;
+  all(source: Source, postType?: string): Promise<Post[]>;
 
-  getIds(source: Source): Promise<Id[]>;
+  getIds(source: Source, postType?: string): Promise<Id[]>;
 
-  fetch(id: Id): Promise<PostDetail> | never;
+  fetch(id: Id, postType?: string): Promise<PostDetail> | never;
 }

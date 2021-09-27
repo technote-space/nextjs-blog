@@ -38,7 +38,7 @@ export class PostPageProps implements IPostPageProps {
   ) {
   }
 
-  public async getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
+  public async getStaticPaths(postType: string): Promise<GetStaticPathsResult<Params>> {
     if (this.settings.isIsr) {
       return {
         paths: [],
@@ -47,14 +47,14 @@ export class PostPageProps implements IPostPageProps {
     }
 
     return {
-      paths: (await this.postManager.getIds()).map(id => ({
+      paths: (await this.postManager.getIds(postType)).map(id => ({
         params: { id: id.value },
       })),
       fallback: false,
     };
   }
 
-  public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
+  public async getStaticProps(params?: Params, postType?: string): Promise<GetStaticPropsResult<Props>> {
     if (!params) {
       return {
         notFound: true,
@@ -62,7 +62,7 @@ export class PostPageProps implements IPostPageProps {
     }
 
     try {
-      const post = await this.postManager.fetch(Id.create(params.id));
+      const post = await this.postManager.fetch(Id.create(params.id), postType);
       return {
         props: {
           post: await fromEntity(post),

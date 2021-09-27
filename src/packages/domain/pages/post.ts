@@ -11,7 +11,7 @@ export type Params = {
 export type IPostPage = IPage<Props>
 
 export interface IPostPageProps {
-  getStaticPaths(): Promise<GetStaticPathsResult<Params>>;
+  getStaticPaths(postType?: string): Promise<GetStaticPathsResult<Params>>;
 
-  getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>>;
+  getStaticProps(params?: Params, postType?: string): Promise<GetStaticPropsResult<Props>>;
 }

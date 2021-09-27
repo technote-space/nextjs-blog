@@ -8,5 +8,5 @@ export type Props = {
 export type IIndexPage = IPage<Props>
 
 export interface IIndexPageProps {
-  getStaticProps(): Promise<GetStaticPropsResult<Props>>;
+  getStaticProps(postType?: string): Promise<GetStaticPropsResult<Props>>;
 }

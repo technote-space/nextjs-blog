@@ -56,7 +56,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     };
   }
 
-  public async all(): Promise<Post[]> {
+  public async all(postType?: string): Promise<Post[]> {
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT REPLACE(
@@ -75,7 +75,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
       WHERE wp_posts.post_type = ? && wp_posts.post_status = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', postType ?? 'post', 'publish', ...exclude]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -99,7 +99,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     ));
   }
 
-  public async getIds(): Promise<Id[]> {
+  public async getIds(postType?: string): Promise<Id[]> {
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
       SELECT REPLACE(
@@ -112,7 +112,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
       WHERE post_type = ? && post_status = ?${excludeWhere}
-    `, ['custom_permalink', 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', postType ?? 'post', 'publish', ...exclude]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -121,7 +121,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     }));
   }
 
-  public async fetch(id: Id): Promise<PostDetail> {
+  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
     const { exclude, excludeWhere } = this.getExcludeSettings();
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.post_date,
@@ -142,7 +142,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                        permalink.meta_value
                      )
                 ), '/', '-') = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', id.postId, ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', postType ?? 'post', 'publish', id.postId, ...exclude]);
 
     await this.mysql.end();
 

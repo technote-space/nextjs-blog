@@ -28,11 +28,13 @@ type MaybePost = {
   createdAt?: string;
   updatedAt?: string;
   title?: string;
+  postType?: string;
   contentHtml?: string;
   thumbnail?: string;
   published?: boolean;
 };
-type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>> & Pick<MaybePost, 'updatedAt' | 'thumbnail'>;
+type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>>
+  & Pick<MaybePost, 'updatedAt' | 'postType' | 'thumbnail'>;
 
 @singleton()
 export class MarkdownPostRepository extends BasePostRepository implements IPostRepository {
@@ -44,8 +46,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId).map(setting => setting.id);
   }
 
-  private static filterPost(post?: MaybePost): post is PostData {
-    return !!post && !!post.title && !!post.createdAt && post.published === true;
+  private static filterPost(postType?: string): (post?: MaybePost) => post is PostData {
+    return (post?: MaybePost): post is PostData => !!post && !!post.title && !!post.createdAt && post.published === true && (postType ?? 'post') === (post.postType ?? 'post');
   }
 
   private static getPostsDirectory(): string {
@@ -61,7 +63,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     };
   }
 
-  public async all(): Promise<Post[]> {
+  private async getPostDataList(postType?: string): Promise<PostData[]> {
     const exclude = this.getExcludeIds();
     const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
     const posts = await fileNames.reduce(async (prev, fileName) => {
@@ -81,7 +83,11 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       return acc.concat(MarkdownPostRepository.toMaybePost(id, matterResult));
     }, Promise.resolve([] as MaybePost[]));
 
-    return posts.filter(MarkdownPostRepository.filterPost).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(post => Post.reconstruct(
+    return posts.filter(MarkdownPostRepository.filterPost(postType));
+  }
+
+  public async all(postType?: string): Promise<Post[]> {
+    return (await this.getPostDataList(postType)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(post => Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: post.id,
@@ -94,24 +100,14 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     ));
   }
 
-  public async getIds(): Promise<Id[]> {
-    const exclude = this.getExcludeIds();
-    const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
-    return fileNames.reduce(async (prev, fileName) => {
-      const acc = await prev;
-      const id = fileName.replace(/\.md$/, '');
-      if (exclude.includes(id)) {
-        return acc;
-      }
-
-      return acc.concat(Id.create({
-        source: Source.create(this.sourceId),
-        id: fileName.replace(/\.md$/, ''),
-      }));
-    }, Promise.resolve([] as Id[]));
+  public async getIds(postType?: string): Promise<Id[]> {
+    return (await this.getPostDataList(postType)).map(post => Id.create({
+      source: Source.create(this.sourceId),
+      id: post.id,
+    }));
   }
 
-  public async fetch(id: Id): Promise<PostDetail> {
+  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
     const exclude = this.getExcludeIds();
     if (exclude.includes(id.postId)) {
       throw new NotFoundException;
@@ -124,7 +120,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     const fileContents = await promises.readFile(fullPath, 'utf8');
     const matterResult = matter(fileContents);
     const post = MarkdownPostRepository.toMaybePost(id.postId, matterResult);
-    if (!MarkdownPostRepository.filterPost(post)) {
+    if (!MarkdownPostRepository.filterPost(postType)(post)) {
       throw new NotFoundException;
     }
 

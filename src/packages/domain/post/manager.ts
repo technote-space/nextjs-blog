@@ -3,9 +3,9 @@ import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type Id from '$/domain/post/valueObject/id';
 
 export interface IPostManager {
-  all(): Promise<Post[]>;
+  all(postType?: string): Promise<Post[]>;
 
-  getIds(): Promise<Id[]>;
+  getIds(postType?: string): Promise<Id[]>;
 
-  fetch(id: Id): Promise<PostDetail> | never;
+  fetch(id: Id, postType?: string): Promise<PostDetail> | never;
 }
