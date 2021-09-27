@@ -1,3 +1,5 @@
+import type { HeadingTagName } from '@jsdevtools/rehype-toc';
+
 type Replace = {
   source?: string;
   from: string | RegExp;
@@ -37,6 +39,9 @@ export type Settings = {
   replace?: Replace[];
   exclude?: Exclude[];
   urlMaps?: UrlMap[];
+  toc?: {
+    headings?: HeadingTagName[];
+  };
   seo: SEO;
   breakpoints?: BreakPoints;
   gaMeasurementId?: string;

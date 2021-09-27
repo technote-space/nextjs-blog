@@ -56,4 +56,9 @@ export const settings: Settings = {
     //   },
     // },
   ],
+  // 目次
+  toc: {
+    // 空にすると目次無効
+    headings: ['h1', 'h2', 'h3', 'h4'],
+  },
 };

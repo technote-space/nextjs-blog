@@ -7,6 +7,7 @@ import DominantColor from '$/domain/post/valueObject/dominantColor';
 import { getDominantColor } from '@/lib/helpers/color';
 import { Oembed } from '@/lib/helpers/oembed';
 import { replaceAll } from '@/lib/helpers/string';
+import { addToc } from '@/lib/helpers/toc';
 import { processExternalLinks, processLinksInCode, processOneLineLinks } from '@/lib/helpers/url';
 
 export abstract class BasePostRepository implements IPostRepository {
@@ -35,7 +36,19 @@ export abstract class BasePostRepository implements IPostRepository {
   }
 
   protected async processContent(content: string): Promise<string> {
-    return this.replace(processExternalLinks(await processOneLineLinks(processLinksInCode(this.replace(content)), Oembed.parse)));
+    return addToc(
+      this.replace(
+        processExternalLinks(
+          await processOneLineLinks(
+            processLinksInCode(
+              this.replace(content),
+            ),
+            Oembed.parse,
+          ),
+        ),
+      ),
+      this.settings.toc?.headings,
+    );
   }
 
   public setSourceId(sourceId: string): void {

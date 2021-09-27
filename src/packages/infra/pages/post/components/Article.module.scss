@@ -490,6 +490,96 @@
     }
   }
 
+  /* TOC */
+  :global .toc-wrapper {
+    padding: 0;
+    margin: 3em auto;
+    border: 2px solid whitesmoke;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    width: 90%;
+
+    :global .toc-title {
+      background: whitesmoke;
+      color: #292929;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      font-size: 1.1em;
+      text-align: center;
+      display: block;
+      padding: 2px 16px;
+      cursor: pointer;
+
+      &::after {
+        content: '[開く]';
+        margin-left: .5em;
+        cursor: pointer;
+        font-size: .8em;
+      }
+
+      &:hover::after {
+        text-decoration: underline
+      }
+    }
+
+    :global .toc-checkbox {
+      display: none;
+
+      & + .toc-title + .toc {
+        ol {
+          margin: 0;
+          transition: margin .5s ease-out;
+        }
+
+        li {
+          margin: 0 0.2em;
+          opacity: 0;
+          transition: all .5s ease-out;
+
+          a {
+            display: block;
+            height: 0;
+            transition: height .5s ease-out;
+          }
+        }
+      }
+
+      &:checked + .toc-title {
+        &::after {
+          content: '[閉じる]'
+        }
+
+        & + .toc {
+          > ol {
+            margin: 1em 0;
+          }
+
+          li {
+            margin: 0.3em 0.2em;
+            opacity: 1;
+
+            a {
+              height: 1.4em;
+            }
+          }
+        }
+      }
+    }
+
+    :global .toc {
+      a {
+        transition: all 200ms ease-in-out;
+        text-decoration: none;
+
+        &:hover {
+          color: #ccc;
+        }
+
+        color: #545454;
+      }
+    }
+  }
+
   /* misc */
   :global .double-underline {
     font-weight: bold;
