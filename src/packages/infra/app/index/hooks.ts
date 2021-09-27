@@ -6,7 +6,9 @@ import { useEffect, useCallback } from 'react';
 export const useHooks = (analytics: IAnalytics) => {
   const router = useRouter();
   const handleRouteChange = useCallback((path: string) => {
-    analytics.pageView(path);
+    if (analytics.isValid()) {
+      analytics.pageView(path);
+    }
   }, [analytics]);
 
   useEffect(() => {

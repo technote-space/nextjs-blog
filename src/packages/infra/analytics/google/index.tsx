@@ -3,24 +3,24 @@ import type { Settings } from '$/domain/app/settings';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
-import View from '$/infra/analytics/view';
+import View from '$/infra/analytics/google/view';
 import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
-export class Analytics extends BaseComponent implements IAnalytics {
+export class GoogleAnalytics extends BaseComponent implements IAnalytics {
   private readonly __isValid: boolean;
   private readonly __gaMeasurementId: string;
 
   public constructor(@inject('Settings') settings: Settings) {
     super();
 
-    this.__isValid = !!settings.gaMeasurementId;
-    this.__gaMeasurementId = settings.gaMeasurementId ?? '';
+    this.__isValid = !!settings.analytics?.googleAnalyticsId;
+    this.__gaMeasurementId = settings.analytics?.googleAnalyticsId ?? '';
   }
 
   protected getComponent(): VFC {
     const component = memo(() => <View gaMeasurementId={this.__gaMeasurementId}/>);
-    component.displayName = 'Analytics';
+    component.displayName = 'GoogleAnalytics';
 
     return component;
   }

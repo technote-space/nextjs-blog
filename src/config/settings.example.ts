@@ -11,7 +11,9 @@ export const settings: Settings = {
   isIsr: true,
   isrRevalidate: 60,
   siteUrl: 'http://localhost:3000',
-  // gaMeasurementId: 'UA-xxxxxxxx-y',
+  // analytics: {
+  //   googleAnalyticsId: 'UA-xxxxxxxx-y',
+  // },
   seo: {
     blogTitle: 'Hello World!',
     author: 'Hello World!',

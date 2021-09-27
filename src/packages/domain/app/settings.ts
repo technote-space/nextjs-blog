@@ -44,5 +44,10 @@ export type Settings = {
   };
   seo: SEO;
   breakpoints?: BreakPoints;
-  gaMeasurementId?: string;
+  analytics?: {
+    googleAnalyticsId?: string;
+  };
+  advertising?: {
+    googleAdsenseClientId?: string;
+  };
 };

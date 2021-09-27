@@ -1,3 +1,4 @@
+import type { IAdvertising } from '$/domain/advertising';
 import type { IAnalytics } from '$/domain/analytics';
 import type { IAppService } from '$/domain/app';
 import type { ITheme } from '$/domain/app/theme';
@@ -11,6 +12,7 @@ export class AppService implements IAppService {
   public constructor(
     @inject('ITheme') private theme: ITheme,
     @inject('IAnalytics') private analytics: IAnalytics,
+    @inject('IAdvertising') private advertising: IAdvertising,
   ) {
   }
 
@@ -21,6 +23,7 @@ export class AppService implements IAppService {
       return this.theme.render(
         {}, <>
           {this.analytics.render({})}
+          {this.advertising.render({})}
           <Component {...pageProps} />
         </>,
       );
