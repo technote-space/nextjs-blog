@@ -44,7 +44,14 @@ export function isValidHttpUrl(str: string) {
 }
 
 // TODO: Add test
-const extractOneLineLinks1 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/^(<pre[^>]*?>[\s\S]*?)?((<p>)?(<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)(<\/a>)?(?!.*<br\s*\/?>).*?(<\/p>)?)/img));
+const extractCodes = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<pre[^>]*?>(<code[^>]*?>)?(([\s\S])*?)(<\/code>)?<\/pre>/img));
+export const processLinksInCode = (text: string): string => {
+  return extractCodes(text).reduce((acc: string, match: RegExpMatchArray) => {
+    return acc.replace(match[2], match[2].replace(/(https?):\/\//g, '$1&#x3a;&#x2f;&#x2f;').replace(/<(\/?[a-zA-Z][^>]*?)>/g, '&#x3C;$1>'))
+  }, text);
+}
+
+const extractOneLineLinks1 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/^((<p>)?(<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)(<\/a>)?(?!.*<br\s*\/?>).*?(<\/p>)?)/img));
 const extractOneLineLinks2 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<br\s*\/?>((<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)(<\/a>)?)(<br\s*\/?>|<\/p>)/img));
 const processOneLineLink = (replace: (url: string) => Promise<string>) => async (prev: Promise<string>, match: RegExpMatchArray) => {
   const acc = await prev;
@@ -52,15 +59,11 @@ const processOneLineLink = (replace: (url: string) => Promise<string>) => async 
     return acc.replace(new RegExp(`${pregQuote(match[1], '/')}`, 'img'), await replace(match[3]));
   }
 
-  if (match[0].startsWith('<pre')) {
-    return acc;
-  }
-
   if (match[0].includes('p>') && (!match[0].includes('<p>') || !match[0].includes('</p>'))) {
     return acc;
   }
 
-  return acc.replace(new RegExp(`^${pregQuote(match[2], '/')}`, 'img'), await replace(match[5]));
+  return acc.replace(new RegExp(`^${pregQuote(match[1], '/')}`, 'img'), await replace(match[4]));
 };
 const processOneLineLinksWith = (
   text: string,
@@ -80,8 +83,7 @@ export const processOneLineLinks = async (text: string, replace: (url: string) =
 };
 
 const extractExternalLinks = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<a([^>]*?)href="(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)"(.*?)>([^<].+?)<\/a>/img));
-const processExternalLink = async (prev: Promise<string>, match: RegExpMatchArray) => {
-  const acc = await prev;
+const processExternalLink = (acc: string, match: RegExpMatchArray) => {
   const includesTarget = match[1].includes('target=') || match[3].includes('target=');
   const includesNoReferrer = match[1].includes('noreferrer') || match[3].includes('noreferrer');
   const includesNoOpener = match[1].includes('noopener') || match[3].includes('noopener');
@@ -96,8 +98,8 @@ const processExternalLink = async (prev: Promise<string>, match: RegExpMatchArra
 const processExternalLinksWith = (
   text: string,
   extractor: (text: string) => RegExpMatchArray[],
-): Promise<string> => extractor(text).reduce(processExternalLink, Promise.resolve(text));
-export const processExternalLinks = async (text: string): Promise<string> => processExternalLinksWith(text, extractExternalLinks);
+): string => extractor(text).reduce(processExternalLink, text)
+export const processExternalLinks = (text: string): string => processExternalLinksWith(text, extractExternalLinks);
 
 export const getDomainName = (url: string): string => {
   return new URL(url).hostname;
