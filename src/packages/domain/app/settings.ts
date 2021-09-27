@@ -52,5 +52,8 @@ export type Settings = {
   advertising?: {
     googleAdsenseClientId?: string;
   };
-  defaultPostType?: string;
+  postType?: {
+    default?: string;
+    hideDate?: string[];
+  }
 };

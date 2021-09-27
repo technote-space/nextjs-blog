@@ -15,16 +15,17 @@ type Props = {
   title: string;
   createdAt: dayjs.ConfigType;
   content: string;
+  hideDate?: boolean;
 };
 
-const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content }) => {
+const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate }) => {
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
   return <wrap.article backgroundColor="white" p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
     <header>
-      <Date
+      {!hideDate && <Date
         date={createdAt}
         format="YYYY.MM.DD"
         opacity={0.7}
@@ -32,7 +33,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
         fontWeight="bold"
         mt={['1.2em', '1.4em', '2em', '2em']}
         ml={['1.5em', '1.8em', '2.5em', '2.5em']}
-      />
+      />}
       <CoverImage src={thumbnail} backgroundColor={backgroundColor}>
         <h1>{title}</h1>
       </CoverImage>

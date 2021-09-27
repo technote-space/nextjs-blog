@@ -15,13 +15,14 @@ import { fromEntity } from '$/infra/post/dto/postDetail';
 @singleton()
 export class PostPage implements IPostPage {
   public constructor(
+    @inject('Settings') private settings: Settings,
     @inject('ILayoutComponent') private layoutComponent: ILayoutComponent,
   ) {
   }
 
   public create(): VFC<Props> {
     const component = memo((props: Props) => {
-      const { layoutProps, viewProps } = useHooks(props);
+      const { layoutProps, viewProps } = useHooks(props, this.settings);
       return this.layoutComponent.render(layoutProps, <View {...viewProps}/>);
     });
     component.displayName = 'PostPage';

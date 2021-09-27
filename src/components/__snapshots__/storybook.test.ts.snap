@@ -489,6 +489,251 @@ console.log('Hello World!');
 ]
 `;
 
+exports[`Storyshots Domain Components/Article Hide Date 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <article
+      className="css-1flh3nq"
+    >
+      <header>
+        <div
+          className="css-79elbk"
+        >
+          <div
+            className="css-g63t4c"
+          />
+          <div
+            className="css-i4z9fe"
+          >
+            <h1>
+              Markdown 記法のテスト
+            </h1>
+          </div>
+        </div>
+      </header>
+      <div
+        className="article css-0"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<h2>見出し</h2>
+<p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
+<pre><code class=\\"language-markdown\\">## 見出し2
+
+見出し2です。
+
+### 見出し3
+
+見出し3です。
+
+#### 見出し4
+
+見出し4です。
+
+##### 見出し5
+
+見出し5です。
+
+###### 見出し6
+
+見出し6です。
+</code></pre>
+<h2>見出し2</h2>
+<p>見出し2です。</p>
+<h3>見出し3</h3>
+<p>見出し3です。</p>
+<h4>見出し4</h4>
+<p>見出し4です。</p>
+<h5>見出し5</h5>
+<p>見出し5です。</p>
+<h6>見出し6</h6>
+<p>見出し6です。</p>
+<h2>段落</h2>
+<pre><code class=\\"language-markdown\\">これは1つ目の段落の1行目です。  
+これは1つ目の段落の2行目です。
+
+これは2つ目の段落の1行目です。  
+これは2つ目の段落の2行目です。
+</code></pre>
+<p>これは1つ目の段落の1行目です。<br>
+これは1つ目の段落の2行目です。</p>
+<p>これは2つ目の段落の1行目です。<br>
+これは2つ目の段落の2行目です。</p>
+<h2>順序無しリスト</h2>
+<pre><code class=\\"language-markdown\\">- 1
+- 2
+  - 2-1
+  - 2-2
+    - 2-2-1
+    - 2-2-2
+- 3
+</code></pre>
+<ul>
+<li>1</li>
+<li>2
+<ul>
+<li>2-1</li>
+<li>2-2
+<ul>
+<li>2-2-1</li>
+<li>2-2-2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3</li>
+</ul>
+<h2>順序付きリスト</h2>
+<pre><code class=\\"language-markdown\\">1. 1
+1. 2
+  1. 2-1
+  1. 2-2
+    1. 2-2-1
+    1. 2-2-2
+1. 3
+</code></pre>
+<ol>
+<li>1</li>
+<li>2</li>
+<li>2-1</li>
+<li>2-2
+<ol>
+<li>2-2-1</li>
+<li>2-2-2</li>
+</ol>
+</li>
+<li>3</li>
+</ol>
+<h2>引用</h2>
+<pre><code class=\\"language-markdown\\">> 引用1  
+> 引用2
+>> 引用の入れ子3  
+>> 引用の入れ子4 
+</code></pre>
+<blockquote>
+<p>引用1<br>
+引用2</p>
+<blockquote>
+<p>引用の入れ子3<br>
+引用の入れ子4</p>
+</blockquote>
+</blockquote>
+<h2>コードブロック</h2>
+<pre><code class=\\"language-markdown\\">\`\`\`javascript
+console.log('Hello World!');
+\`\`\`
+</code></pre>
+<pre><code class=\\"language-javascript\\">console.log('Hello World!');
+</code></pre>
+<h2>テーブル</h2>
+<pre><code class=\\"language-markdown\\">| Left align | Right align | Center align |
+|:-----------|------------:|:------------:|
+| This       |        This |     This     |
+| column     |      column |    column    |
+| will       |        will |     will     |
+| be         |          be |      be      |
+| left       |       right |    center    |
+| aligned    |     aligned |   aligned    |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align=\\"left\\">Left align</th>
+<th align=\\"right\\">Right align</th>
+<th align=\\"center\\">Center align</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align=\\"left\\">This</td>
+<td align=\\"right\\">This</td>
+<td align=\\"center\\">This</td>
+</tr>
+<tr>
+<td align=\\"left\\">column</td>
+<td align=\\"right\\">column</td>
+<td align=\\"center\\">column</td>
+</tr>
+<tr>
+<td align=\\"left\\">will</td>
+<td align=\\"right\\">will</td>
+<td align=\\"center\\">will</td>
+</tr>
+<tr>
+<td align=\\"left\\">be</td>
+<td align=\\"right\\">be</td>
+<td align=\\"center\\">be</td>
+</tr>
+<tr>
+<td align=\\"left\\">left</td>
+<td align=\\"right\\">right</td>
+<td align=\\"center\\">center</td>
+</tr>
+<tr>
+<td align=\\"left\\">aligned</td>
+<td align=\\"right\\">aligned</td>
+<td align=\\"center\\">aligned</td>
+</tr>
+</tbody>
+</table>
+<h2>リンク</h2>
+<pre><code class=\\"language-markdown\\"> [リンク](https://example.com) 
+</code></pre>
+<p><a href=\\"https://example.com\\">リンク</a></p>
+<h2>コード</h2>
+<pre><code class=\\"language-markdown\\">これはインラインの \`console.log('Hello World!')\` コード
+</code></pre>
+<p>これはインラインの <code>console.log('Hello World!')</code> コード</p>
+<h2>強い強調</h2>
+<pre><code class=\\"language-markdown\\">これは **強い強調** です。
+</code></pre>
+<p>これは <strong>強い強調</strong> です。</p>
+<h2>強調</h2>
+<pre><code class=\\"language-markdown\\">これは *強調* です。
+</code></pre>
+<p>これは <em>強調</em> です。</p>
+<h2>削除済みテキスト</h2>
+<pre><code class=\\"language-markdown\\">これは ~~削除済みテキスト~~ です。
+</code></pre>
+<p>これは <del>削除済みテキスト</del> です。</p>
+<h2>水平線</h2>
+<pre><code class=\\"language-markdown\\">これは水平線です。
+
+---
+
+これは水平線です。
+</code></pre>
+<p>これは水平線です。</p>
+<hr>
+<p>これは水平線です。</p>
+<h2>画像</h2>
+<pre><code class=\\"language-markdown\\">これは ![kotowaza_neko_koban](https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png) 画像です。
+
+これらも ![cat_russian_blue](https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png) ![pet_cat_sit](https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png) 画像です。
+
+これは  
+![pet_cat_oddeye_black](https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png)  
+画像です。
+</code></pre>
+<p>これは <img src=\\"https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png\\" alt=\\"kotowaza_neko_koban\\"> 画像です。</p>
+<p>これらも <img src=\\"https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png\\" alt=\\"cat_russian_blue\\"> <img src=\\"https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png\\" alt=\\"pet_cat_sit\\"> 画像です。</p>
+<p>これは<br>
+<img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
+画像です。</p>",
+          }
+        }
+      />
+    </article>
+  </div>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Domain Components/Article No Thumbnail 1`] = `
 Array [
   <div

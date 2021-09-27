@@ -63,4 +63,7 @@ export const settings: Settings = {
     postTypes: ['post'],
     headings: ['h1', 'h2', 'h3', 'h4'],
   },
+  postType: {
+    hideDate: ['page'],
+  },
 };

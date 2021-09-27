@@ -37,7 +37,7 @@ export abstract class BasePostRepository implements IPostRepository {
   }
 
   private get defaultPostType(): string {
-    return this.settings.defaultPostType ?? PostType.DEFAULT_POST_TYPE;
+    return this.settings.postType?.default ?? PostType.DEFAULT_POST_TYPE;
   }
 
   protected getPostType(postType?: string): string {

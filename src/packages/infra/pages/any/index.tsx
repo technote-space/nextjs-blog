@@ -64,7 +64,7 @@ export class AnyPageProps implements IAnyPageProps {
     return {
       redirect: {
         permanent: true,
-        destination: `/${pluralize(destination.postType ?? this.settings.defaultPostType ?? PostType.DEFAULT_POST_TYPE)}/${Id.create({
+        destination: `/${pluralize(destination.postType ?? this.settings.postType?.default ?? PostType.DEFAULT_POST_TYPE)}/${Id.create({
           source: Source.create(destination.source),
           id: destination.id,
         }).value}`,

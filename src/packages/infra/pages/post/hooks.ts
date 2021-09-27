@@ -1,8 +1,9 @@
+import type { Settings } from '$/domain/app/settings';
 import type { Props } from '$/domain/pages/post';
 import { toEntity } from '$/infra/post/dto/postDetail';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useHooks = ({ post }: Props) => {
+export const useHooks = ({ post }: Props, settings: Settings) => {
   const entity = toEntity(post);
 
   return {
@@ -16,6 +17,7 @@ export const useHooks = ({ post }: Props) => {
     },
     viewProps: {
       post: entity,
+      hideDate: (settings.postType?.hideDate ?? []).includes(entity.getPostType().value),
     },
   };
 };
