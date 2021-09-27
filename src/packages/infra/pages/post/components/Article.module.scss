@@ -528,18 +528,19 @@
       & + .toc-title + .toc {
         ol {
           margin: 0;
-          transition: margin .5s ease-out;
+          transition: margin .3s ease-out;
         }
 
         li {
           margin: 0 0.2em;
           opacity: 0;
-          transition: all .5s ease-out;
+          transition: all .3s ease-out;
+          line-height: 0;
 
           a {
             display: block;
-            height: 0;
-            transition: height .5s ease-out;
+            line-height: 0;
+            transition: all .3s ease-out;
           }
         }
       }
@@ -559,7 +560,7 @@
             opacity: 1;
 
             a {
-              height: 1.4em;
+              line-height: 1.6;
             }
           }
         }

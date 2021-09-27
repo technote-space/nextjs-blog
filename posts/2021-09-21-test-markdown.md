@@ -1,7 +1,7 @@
 ---
 title: "Markdown 記法のテスト"
 createdAt: "2021-09-21"
-updatedAt: "2021-09-24"
+updatedAt: "2021-09-27"
 thumbnail: "/images/kotowaza_neko_koban.png"
 tags: ["test"]
 published: true
@@ -16,6 +16,10 @@ Markdownでの投稿のテスト
 見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない
 
 ```markdown
+# 見出し1
+
+見出し1ですが h2 に置き換わります。
+
 ## 見出し2
 
 見出し2です。
@@ -36,6 +40,10 @@ Markdownでの投稿のテスト
 
 見出し6です。
 ```
+
+# 見出し1
+
+見出し1ですが h2 に置き換わります。
 
 ## 見出し2
 

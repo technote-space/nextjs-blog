@@ -37,7 +37,7 @@ export abstract class BasePostRepository implements IPostRepository {
 
   protected async processContent(content: string): Promise<string> {
     return addToc(
-      this.replace(
+      replaceAll(this.replace(
         processExternalLinks(
           await processOneLineLinks(
             processLinksInCode(
@@ -46,7 +46,7 @@ export abstract class BasePostRepository implements IPostRepository {
             Oembed.parse,
           ),
         ),
-      ),
+      ), /(<\/?)h1([^>]*?>)/, '$1h2$2'),
       this.settings.toc?.headings,
     );
   }
