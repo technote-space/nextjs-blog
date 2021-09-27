@@ -1,11 +1,11 @@
 import type { HooksParams } from '$/infra/pages/index/hooks';
 import type { VFC } from 'react';
-import Link from 'next/link';
 import { memo } from 'react';
 import Card from '$/infra/pages/index/components/Card';
 import Pagination from '$/infra/pages/index/components/Pagination';
 import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
+import Link from '@/components/link/Link';
 import { pagesPath } from '@/lib/$path';
 
 const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, handlePageChange }) => <>
@@ -13,15 +13,13 @@ const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, handl
     {posts.map((post) => (
       <List.Item key={post.getId().value}>
         <Link href={pagesPath.posts._id(post.getId().value).$url()}>
-          <a>
-            <Card
-              thumbnail={post.getThumbnail()?.value}
-              title={post.getTitle().value}
-              excerpt={post.getExcerpt().value}
-              createdAt={post.getCreatedAt().value}
-              my={4}
-            />
-          </a>
+          <Card
+            thumbnail={post.getThumbnail()?.value}
+            title={post.getTitle().value}
+            excerpt={post.getExcerpt().value}
+            createdAt={post.getCreatedAt().value}
+            my={4}
+          />
         </Link>
       </List.Item>
     ))}

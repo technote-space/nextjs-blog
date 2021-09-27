@@ -1,8 +1,8 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
-import Link from 'next/link';
 import { memo } from 'react';
 import Flex from '@/components/layout/Flex';
+import Link from '@/components/link/Link';
 import { wrap } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
@@ -20,7 +20,7 @@ const defaultProps: StyleProps = {
 const Footer: VFC<Props> = ({ author, ...props }) => <wrap.footer backgroundColor="white">
   <Flex {...defaultProps} {...props}>
     <Link href={pagesPath.$url()}>
-      <a>©{(new Date()).getFullYear()} {author}</a>
+      ©{(new Date()).getFullYear()} {author}
     </Link>
   </Flex>
 </wrap.footer>;

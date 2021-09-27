@@ -1,8 +1,8 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
-import Link from 'next/link';
 import { memo } from 'react';
 import Flex from '@/components/layout/Flex';
+import Link from '@/components/link/Link';
 import { wrap } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
@@ -22,7 +22,7 @@ const defaultProps: StyleProps = {
 const Header: VFC<Props> = ({ title, ...props }) => <wrap.header backgroundColor="white">
   <Flex {...defaultProps} {...props}>
     <Link href={pagesPath.$url()}>
-      <a>{title}</a>
+      {title}
     </Link>
   </Flex>
 </wrap.header>;
