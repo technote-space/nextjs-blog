@@ -3,7 +3,6 @@
 
 import ReactDOMServer from 'react-dom/server';
 import urlMetadata from 'url-metadata';
-import { decode } from 'html-entities';
 import {
   isJsfiddleUrl,
   isCodepenUrl,
@@ -15,7 +14,7 @@ import {
   getSiteUrl,
 } from '@/lib/helpers/url';
 import { getDominantColor } from '@/lib/helpers/color';
-import { escapeHtml } from '@/lib/helpers/string';
+import { decodeUrlHtmlEntity, escapeHtml } from '@/lib/helpers/string';
 import BlogCard from '@/lib/helpers/oembed/components/BlogCard';
 import Tweet from '@/lib/helpers/oembed/components/Tweet';
 import StackBlitz from '@/lib/helpers/oembed/components/StackBlitz';
@@ -91,7 +90,7 @@ export class Oembed {
   // TODO: Add test
   public static async parse(str: string): Promise<string> {
     if (!(str in Oembed.__cache)) {
-      Oembed.__cache[str] = await Oembed.__parse(decode(str));
+      Oembed.__cache[str] = await Oembed.__parse(decodeUrlHtmlEntity(str));
     }
 
     return Oembed.__cache[str];

@@ -22,6 +22,11 @@ export const escapeHtml = (str: string): string => str.replace(/[&'`"<>]/g, matc
   }[match] ?? match;
 });
 
+export const decodeUrlHtmlEntity = (str: string): string => str
+  .replace(/(&#38;|&#x26;)/ig, '&')
+  .replace(/(&#61;|&#x3d;)/ig, '=')
+  .replace(/(&#63;|&#x3f;)/ig, '?')
+
 export const htmlToExcerpt = (html: string): string => convert(html, {
   wordwrap: null,
   selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
