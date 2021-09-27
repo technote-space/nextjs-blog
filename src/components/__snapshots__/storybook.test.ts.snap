@@ -483,18 +483,6 @@ console.log('Hello World!');
           }
         }
       />
-      <div
-        className="css-0"
-      >
-        <a
-          className="back"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          トップページに戻る
-        </a>
-      </div>
     </article>
   </div>,
   <span />,
@@ -746,18 +734,6 @@ console.log('Hello World!');
           }
         }
       />
-      <div
-        className="css-0"
-      >
-        <a
-          className="back"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          トップページに戻る
-        </a>
-      </div>
     </article>
   </div>,
   <span />,
