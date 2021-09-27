@@ -15,6 +15,7 @@ type UrlMap = {
   destination: {
     source: string;
     id: string | number;
+    postType?: string;
   };
 };
 type SEO = {
@@ -40,6 +41,7 @@ export type Settings = {
   exclude?: Exclude[];
   urlMaps?: UrlMap[];
   toc?: {
+    postTypes?: string[];
     headings?: HeadingTagName[];
   };
   seo: SEO;
@@ -50,4 +52,5 @@ export type Settings = {
   advertising?: {
     googleAdsenseClientId?: string;
   };
+  defaultPostType?: string;
 };

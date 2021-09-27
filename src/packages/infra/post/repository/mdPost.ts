@@ -15,6 +15,7 @@ import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
+import PostType from '$/domain/post/valueObject/postType';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -46,8 +47,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId).map(setting => setting.id);
   }
 
-  private static filterPost(postType?: string): (post?: MaybePost) => post is PostData {
-    return (post?: MaybePost): post is PostData => !!post && !!post.title && !!post.createdAt && post.published === true && (postType ?? 'post') === (post.postType ?? 'post');
+  private filterPost(postType?: string): (post?: MaybePost) => post is PostData {
+    return (post?: MaybePost): post is PostData => !!post && !!post.title && !!post.createdAt && post.published === true && this.getPostType(postType) === this.getPostType(post.postType);
   }
 
   private static getPostsDirectory(): string {
@@ -83,7 +84,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       return acc.concat(MarkdownPostRepository.toMaybePost(id, matterResult));
     }, Promise.resolve([] as MaybePost[]));
 
-    return posts.filter(MarkdownPostRepository.filterPost(postType));
+    return posts.filter(this.filterPost(postType));
   }
 
   public async all(postType?: string): Promise<Post[]> {
@@ -94,6 +95,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       }),
       Title.create(post.title),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
+      PostType.create(this.getPostType(postType)),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
@@ -120,7 +122,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     const fileContents = await promises.readFile(fullPath, 'utf8');
     const matterResult = matter(fileContents);
     const post = MarkdownPostRepository.toMaybePost(id.postId, matterResult);
-    if (!MarkdownPostRepository.filterPost(postType)(post)) {
+    if (!this.filterPost(postType)(post)) {
       throw new NotFoundException;
     }
 
@@ -134,8 +136,9 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return PostDetail.reconstruct(
       id,
       Title.create(post.title),
-      Content.create(await this.processContent(post.contentHtml)),
+      Content.create(await this.processContent(post.contentHtml, postType)),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
+      PostType.create(this.getPostType(postType)),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.createdAt),

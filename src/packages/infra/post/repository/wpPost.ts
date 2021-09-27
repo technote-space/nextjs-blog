@@ -8,6 +8,7 @@ import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
+import PostType from '$/domain/post/valueObject/postType';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -75,7 +76,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
       WHERE wp_posts.post_type = ? && wp_posts.post_status = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', postType ?? 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', ...exclude]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -93,6 +94,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       }),
       Title.create(result.post_title),
       Excerpt.create(this.processExcerpt(htmlToExcerpt(result.post_content))),
+      PostType.create(this.getPostType(postType)),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
@@ -112,7 +114,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
       WHERE post_type = ? && post_status = ?${excludeWhere}
-    `, ['custom_permalink', postType ?? 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', this.getPostType(postType), 'publish', ...exclude]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -142,7 +144,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                        permalink.meta_value
                      )
                 ), '/', '-') = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', postType ?? 'post', 'publish', id.postId, ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', id.postId, ...exclude]);
 
     await this.mysql.end();
 
@@ -151,12 +153,13 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     }
 
     const isClassicEditor = !/<!-- wp:/.test(results[0].post_content);
-    const processedContent = await this.processContent(results[0].post_content);
+    const processedContent = await this.processContent(results[0].post_content, postType);
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(htmlToExcerpt(results[0].post_content))),
+      PostType.create(this.getPostType(postType)),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),

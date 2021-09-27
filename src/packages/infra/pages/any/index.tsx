@@ -2,8 +2,10 @@ import type { Settings } from '$/domain/app/settings';
 import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
 import type { IPostManager } from '$/domain/post/manager';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
+import pluralize from 'pluralize';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
+import PostType from '$/domain/post/valueObject/postType';
 import Source from '$/domain/post/valueObject/source';
 
 @singleton()
@@ -40,7 +42,7 @@ export class AnyPageProps implements IAnyPageProps {
     };
   }
 
-  private findDestination(source: string): { source: string; id: string | number } | undefined {
+  private findDestination(source: string): { source: string; id: string | number; postType?: string } | undefined {
     return (this.settings.urlMaps ?? []).find(urlMap => AnyPageProps.normalizeSource(urlMap.source) === source)?.destination;
   }
 
@@ -62,7 +64,7 @@ export class AnyPageProps implements IAnyPageProps {
     return {
       redirect: {
         permanent: true,
-        destination: `/posts/${Id.create({
+        destination: `/${pluralize(destination.postType ?? this.settings.defaultPostType ?? PostType.DEFAULT_POST_TYPE)}/${Id.create({
           source: Source.create(destination.source),
           id: destination.id,
         }).value}`,

@@ -11,7 +11,7 @@ export const useHooks = ({ post }: Props) => {
         title: entity.getTitle().value,
         description: entity.getExcerpt().value,
         image: entity.getThumbnail()?.value,
-        canonical: `/posts/${entity.getId().value}`,
+        canonical: `/${entity.getPostType().pluralized}/${entity.getId().value}`,
       },
     },
     viewProps: {

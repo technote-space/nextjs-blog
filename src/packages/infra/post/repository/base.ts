@@ -4,6 +4,7 @@ import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
+import PostType from '$/domain/post/valueObject/postType';
 import { getDominantColor } from '@/lib/helpers/color';
 import { Oembed } from '@/lib/helpers/oembed';
 import { replaceAll } from '@/lib/helpers/string';
@@ -35,7 +36,15 @@ export abstract class BasePostRepository implements IPostRepository {
     return this.replace(excerpt);
   }
 
-  protected async processContent(content: string): Promise<string> {
+  private get defaultPostType(): string {
+    return this.settings.defaultPostType ?? PostType.DEFAULT_POST_TYPE;
+  }
+
+  protected getPostType(postType?: string): string {
+    return postType ?? this.defaultPostType;
+  }
+
+  protected async processContent(content: string, postType?: string): Promise<string> {
     return addToc(
       replaceAll(this.replace(
         processExternalLinks(
@@ -47,7 +56,7 @@ export abstract class BasePostRepository implements IPostRepository {
           ),
         ),
       ), /(<\/?)h1([^>]*?>)/, '$1h2$2'),
-      this.settings.toc?.headings,
+      !this.settings.toc?.postTypes || this.settings.toc.postTypes.includes(this.getPostType(postType)) ? this.settings.toc?.headings : [],
     );
   }
 
