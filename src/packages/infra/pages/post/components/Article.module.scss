@@ -538,6 +538,7 @@
           line-height: 0;
 
           a {
+            pointer-events: none;
             display: block;
             line-height: 0;
             transition: all .3s ease-out;
@@ -560,6 +561,7 @@
             opacity: 1;
 
             a {
+              pointer-events: auto;
               line-height: 1.6;
             }
           }
