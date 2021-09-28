@@ -3,7 +3,8 @@ import type { Settings } from '$/domain/app/settings';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
-import Footer from '$/infra/app/layout/components/Footer';
+import { useHooks } from '$/infra/app/layout/footer/hooks';
+import View from '$/infra/app/layout/footer/view';
 import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
@@ -15,7 +16,7 @@ export class FooterComponent extends BaseComponent implements IFooterComponent {
   }
 
   protected getComponent(): VFC {
-    const component = memo(() => <Footer author={this.settings.seo.author}/>);
+    const component = memo(() => <View {...useHooks(this.settings)}/>);
     component.displayName = 'FooterComponent';
 
     return component;
