@@ -1397,18 +1397,162 @@ Array [
     className="css-1ijbxy6"
   >
     <div
-      className="css-sxln12"
+      className="css-3thfti"
     >
-      <a
-        href="/"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
+      <div
+        className="css-ij292a"
       >
-        ©
-        2000
-         
-        Hello World!
-      </a>
+        <ul
+          className="css-1bb328q"
+          role="list"
+        >
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              お問い合わせ
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              利用規約
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1l4w6pd"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ©
+          2000
+           
+          Hello World!
+        </a>
+      </div>
+    </div>
+  </footer>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Footer Long 1`] = `
+Array [
+  <footer
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-3thfti"
+    >
+      <div
+        className="css-ij292a"
+      >
+        <ul
+          className="css-1bb328q"
+          role="list"
+        >
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩は猫である。名前はまだ無い
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              どこで生れたかとんと見当がつかぬ
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩はここで始めて人間というものを見た
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1l4w6pd"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ©
+          2000
+           
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+        </a>
+      </div>
+    </div>
+  </footer>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Footer No Pages 1`] = `
+Array [
+  <footer
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-3thfti"
+    >
+      <div
+        className="css-1l4w6pd"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ©
+          2000
+           
+          Hello World!
+        </a>
+      </div>
     </div>
   </footer>,
   <span />,
@@ -1421,15 +1565,237 @@ Array [
     className="css-1ijbxy6"
   >
     <div
-      className="css-1gc00b1"
+      className="css-1gv1287"
     >
-      <a
-        href="/"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
+      <div
+        className="css-o2383q"
       >
-        Hello World!
-      </a>
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              お問い合わせ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              利用規約
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1m9wlgl"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          Hello World!
+        </a>
+      </div>
+      <div
+        className="css-1tqwu74"
+      >
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              お問い合わせ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              利用規約
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Header Long 1`] = `
+Array [
+  <header
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-1gv1287"
+    >
+      <div
+        className="css-o2383q"
+      >
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩は猫である。名前はまだ無い
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              どこで生れたかとんと見当がつかぬ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩はここで始めて人間というものを見た
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1m9wlgl"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+        </a>
+      </div>
+      <div
+        className="css-1tqwu74"
+      >
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩は猫である。名前はまだ無い
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              どこで生れたかとんと見当がつかぬ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩はここで始めて人間というものを見た
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Header No Pages 1`] = `
+Array [
+  <header
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-1gv1287"
+    >
+      <div
+        className="css-1m9wlgl"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          Hello World!
+        </a>
+      </div>
     </div>
   </header>,
   <span />,

@@ -40,7 +40,7 @@ const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }
   <Flex {...defaultProps} {...props}>
     {!!pages?.length && <Flex {...defaultPagesStyle} {...pagesStyle}>
       <List display="flex" flexWrap="wrap">
-        {pages.map(({ label, url }) => <List.Item key={url} m={1} mx={2}>
+        {pages.map(({ label, url }, index) => <List.Item key={index} m={1} mx={2}>
           <Link href={url}>{label}</Link>
         </List.Item>)}
       </List>

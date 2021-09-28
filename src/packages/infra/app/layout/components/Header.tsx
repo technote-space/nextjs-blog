@@ -46,7 +46,7 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
   const createPagesComponent = (hide?: boolean) => pages?.length ?
     <Flex {...defaultPagesStyle} {...pagesStyle} {...(hide ? { visibility: 'hidden', maxHeight: '1.5em' } : {})}>
       <List display={['flex', 'flex', 'block', 'block']} flexWrap="wrap">
-        {pages.map(({ label, url }) => <List.Item key={url} ml={[5, 5, 0, 0]}>
+        {pages.map(({ label, url }, index) => <List.Item key={index} ml={[5, 5, 0, 0]}>
           <Link href={url}>{label}</Link>
         </List.Item>)}
       </List>
