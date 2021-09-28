@@ -233,6 +233,7 @@
     font-style: italic;
     background-color: #eee;
     padding: 4px;
+    line-height: 1.5;
   }
 
   img {
@@ -240,7 +241,7 @@
     cursor: pointer;
     display: inline;
     margin: 8px 0;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     transition: all 0.3s;
 
     &:hover {
