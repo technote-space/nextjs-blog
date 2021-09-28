@@ -10,7 +10,7 @@ const View: VFC<HooksParams> = ({ title, description, image, url, type, twitter 
   <link rel="canonical" href={url}/>
   {/*/!* Twitter *!/*/}
   <meta name="twitter:card" content="summary"/>
-  {twitter && <meta name="twitter:site" content={`@${twitter}`}/>}
+  {twitter && <meta name="twitter:site" content={twitter}/>}
   <meta name="twitter:title" content={title}/>
   <meta name="twitter:description" content={description}/>
   <meta name="twitter:image" content={image}/>
