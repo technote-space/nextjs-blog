@@ -9,6 +9,7 @@ type Exclude = {
   source: string;
   type?: string;
   id: string;
+  postType?: string;
 };
 type UrlMap = {
   source: string;

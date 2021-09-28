@@ -44,9 +44,13 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     });
   }
 
-  private getExcludeSettings() {
-    const excludeIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId && !setting.type).map(setting => Number(setting.id));
-    const excludeTermTaxonomyIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId && setting.type === 'term').map(setting => Number(setting.id));
+  private getExcludeSettings(postType?: string) {
+    const excludeIds = (this.settings.exclude ?? [])
+      .filter(setting => !setting.type && this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId)
+      .map(setting => Number(setting.id));
+    const excludeTermTaxonomyIds = (this.settings.exclude ?? [])
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId && setting.type === 'term')
+      .map(setting => Number(setting.id));
 
     const excludeIdsWhere = `${excludeIds.length ? ` && wp_posts.ID NOT IN (${Array<string>(excludeIds.length).fill('?').join(', ')})` : ''}`;
     const excludeTermTaxonomyIdsWhere = `${excludeTermTaxonomyIds.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (${Array<string>(excludeTermTaxonomyIds.length).fill('?').join(', ')}))` : ''}`;
@@ -58,7 +62,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async all(postType?: string): Promise<Post[]> {
-    const { exclude, excludeWhere } = this.getExcludeSettings();
+    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT REPLACE(
                TRIM(TRAILING '/' FROM
@@ -102,7 +106,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async getIds(postType?: string): Promise<Id[]> {
-    const { exclude, excludeWhere } = this.getExcludeSettings();
+    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
       SELECT REPLACE(
                TRIM(TRAILING '/' FROM
@@ -124,7 +128,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
-    const { exclude, excludeWhere } = this.getExcludeSettings();
+    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.post_date,
              wp_posts.post_modified,

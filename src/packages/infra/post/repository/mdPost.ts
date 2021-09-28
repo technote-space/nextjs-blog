@@ -43,8 +43,10 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     super(settings);
   }
 
-  private getExcludeIds() {
-    return (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId).map(setting => setting.id);
+  private getExcludeIds(postType?: string) {
+    return (this.settings.exclude ?? [])
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId)
+      .map(setting => setting.id);
   }
 
   private filterPost(postType?: string): (post?: MaybePost) => post is PostData {
@@ -65,7 +67,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   private async getPostDataList(postType?: string): Promise<PostData[]> {
-    const exclude = this.getExcludeIds();
+    const exclude = this.getExcludeIds(postType);
     const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
     const posts = await fileNames.reduce(async (prev, fileName) => {
       const acc = await prev;
@@ -110,7 +112,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
-    const exclude = this.getExcludeIds();
+    const exclude = this.getExcludeIds(postType);
     if (exclude.includes(id.postId)) {
       throw new NotFoundException;
     }
