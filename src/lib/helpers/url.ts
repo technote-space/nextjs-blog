@@ -3,6 +3,7 @@
 // @see https://github.com/zenn-dev/zenn-editor/blob/main/packages/zenn-markdown-html/src/utils/url-matcher.ts
 
 import { pregQuote } from '@/lib/helpers/string';
+import type { Settings } from '$/domain/app/settings';
 
 export const isTweetUrl = (url: string): boolean => /^https:\/\/twitter\.com\/[a-zA-Z0-9_-]+\/status\/[a-zA-Z0-9?=]+$/.test(url);
 
@@ -109,3 +110,11 @@ export const getSiteUrl = (url: string): string => {
   const urlInstance = new URL(url);
   return `${urlInstance.protocol}//${urlInstance.username ? `${urlInstance.username}${urlInstance.password ? `:${urlInstance.password}` : ''}@` : ''}${urlInstance.host}`;
 };
+
+export const getAbsoluteUrl = (url: string, settings: Settings): string => {
+  if (/^https?/.test(url)) {
+    return url;
+  }
+
+  return `${settings.siteUrl.replace(/\/$/, '')}/${url.replace(/^\//, '')}`
+}
