@@ -1,3 +1,4 @@
+import type { PostData } from '$/domain/app/settings';
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
 import { memo } from 'react';
@@ -8,6 +9,7 @@ import { pagesPath } from '@/lib/$path';
 
 type Props = StyleProps & {
   author: string;
+  pages?: PostData[];
 }
 
 const defaultProps: StyleProps = {
@@ -17,7 +19,7 @@ const defaultProps: StyleProps = {
   boxShadow: '0 0 5px #ccc',
 };
 
-const Footer: VFC<Props> = ({ author, ...props }) => <wrap.footer backgroundColor="white">
+const Footer: VFC<Props> = ({ author, pages, ...props }) => <wrap.footer backgroundColor="white">
   <Flex {...defaultProps} {...props}>
     <Link href={pagesPath.$url()}>
       ©{(new Date()).getFullYear()} {author}

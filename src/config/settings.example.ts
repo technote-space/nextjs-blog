@@ -66,4 +66,9 @@ export const settings: Settings = {
   postType: {
     hideDate: ['page'],
   },
+  // 固定ページへのリンク表示
+  // pages: {
+  //   header: [],
+  //   footer: [],
+  // }
 };

@@ -3,7 +3,8 @@ import type { Settings } from '$/domain/app/settings';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
-import Header from '$/infra/app/layout/components/Header';
+import { useHooks } from '$/infra/app/layout/header/hooks';
+import View from '$/infra/app/layout/header/view';
 import { BaseComponent } from '$/infra/shared/component';
 
 @singleton()
@@ -15,7 +16,7 @@ export class HeaderComponent extends BaseComponent implements IHeaderComponent {
   }
 
   protected getComponent(): VFC {
-    const component = memo(() => <Header title={this.settings.seo.blogTitle}/>);
+    const component = memo(() => <View {...useHooks(this.settings)}/>);
     component.displayName = 'HeaderComponent';
 
     return component;
