@@ -168,6 +168,10 @@
     word-break: break-word;
   }
 
+  iframe {
+    max-width: 100%;
+  }
+
   :global .scrollable-table {
     -webkit-overflow-scrolling: touch;
 

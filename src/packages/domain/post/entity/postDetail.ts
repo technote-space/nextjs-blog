@@ -1,3 +1,4 @@
+import { Post } from '$/domain/post/entity/post';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
@@ -89,5 +90,9 @@ export class PostDetail extends Base() {
 
   public compare(other: this): number {
     return other.createdAt.compare(this.createdAt);
+  }
+
+  public getUrl(): string {
+    return Post.createUrl(this.getId(), this.getPostType());
   }
 }

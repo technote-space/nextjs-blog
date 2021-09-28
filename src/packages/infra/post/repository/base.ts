@@ -1,10 +1,9 @@
 import type { Settings } from '$/domain/app/settings';
-import type { Post } from '$/domain/post/entity/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
+import { Post } from '$/domain/post/entity/post';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
-import PostType from '$/domain/post/valueObject/postType';
 import { getDominantColor } from '@/lib/helpers/color';
 import { Oembed } from '@/lib/helpers/oembed';
 import { replaceAll } from '@/lib/helpers/string';
@@ -36,12 +35,8 @@ export abstract class BasePostRepository implements IPostRepository {
     return this.replace(excerpt);
   }
 
-  private get defaultPostType(): string {
-    return this.settings.postType?.default ?? PostType.DEFAULT_POST_TYPE;
-  }
-
   protected getPostType(postType?: string): string {
-    return postType ?? this.defaultPostType;
+    return Post.ensurePostType(postType, this.settings);
   }
 
   protected async processContent(content: string, postType?: string): Promise<string> {
