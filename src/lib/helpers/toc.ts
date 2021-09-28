@@ -9,7 +9,6 @@ import { unified } from 'unified';
 import { getRandomString } from '@/lib/helpers/random';
 
 const customizeTOC = (toc: HtmlElementNode): HtmlElementNode => {
-  console.log(((toc.children![0] as HtmlElementNode).children?.length ?? 0));
   if (((toc.children![0] as HtmlElementNode).children?.length ?? 0) <= 1) {
     return {
       type: 'element',
