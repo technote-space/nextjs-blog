@@ -9,22 +9,6 @@ export const postSources: Record<string, string> = {
   // 'wp': wp,
 };
 export const settings: Settings = {
-  isIsr: !!process.env.IS_ISR,
-  isrRevalidate: process.env.ISR_REVALIDATE ? Number(process.env.ISR_REVALIDATE) : undefined,
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
-  analytics: {
-    googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
-  },
-  advertising: {
-    googleAdsenseClientId: process.env.NEXT_PUBLIC_ADSENSE_ID,
-  },
-  seo: {
-    blogTitle: process.env.NEXT_PUBLIC_BLOG_TITLE ?? 'Hello World!',
-    author: process.env.NEXT_PUBLIC_BLOG_AUTHOR ?? 'Hello World!',
-    description: process.env.NEXT_PUBLIC_BLOG_DESCRIPTION ?? 'Hello World!',
-    blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
-    twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
-  },
   // 本文内で置換
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
@@ -84,4 +68,20 @@ export const settings: Settings = {
   //     },
   //   ],
   // },
+  isIsr: !!process.env.IS_ISR,
+  isrRevalidate: process.env.ISR_REVALIDATE ? Number(process.env.ISR_REVALIDATE) : undefined,
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+  analytics: {
+    googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
+  },
+  advertising: {
+    googleAdsenseClientId: process.env.NEXT_PUBLIC_ADSENSE_ID,
+  },
+  seo: {
+    blogTitle: process.env.NEXT_PUBLIC_BLOG_TITLE ?? 'Hello World!',
+    author: process.env.NEXT_PUBLIC_BLOG_AUTHOR ?? 'Hello World!',
+    description: process.env.NEXT_PUBLIC_BLOG_DESCRIPTION ?? 'Hello World!',
+    blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
+    twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
+  },
 };
