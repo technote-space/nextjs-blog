@@ -10,6 +10,7 @@ export default {
     title: { control: { type: 'text' } },
     createdAt: { control: { type: 'date' } },
     content: { control: { type: 'text' } },
+    hideDate: { control: { type: 'boolean' } },
   },
 } as ComponentMeta<typeof Article>;
 
