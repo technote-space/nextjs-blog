@@ -59,6 +59,19 @@
     }
   }
 
+  @media screen and (max-width: 540px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      :global .icon-link {
+        height: 20px;
+      }
+    }
+  }
+
   h2,
   h3,
   h4,
@@ -594,6 +607,12 @@
 
         color: #545454;
       }
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    :global .toc-wrapper {
+      width: 100%;
     }
   }
 
