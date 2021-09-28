@@ -43,6 +43,20 @@
   h6 {
     line-height: 1.25;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+
+    :global .icon-link {
+      transition: all 0.3s;
+      height: 0;
+      margin-left: 5px;
+    }
+
+    &:hover {
+      :global .icon-link {
+        height: 20px;
+      }
+    }
   }
 
   h2,

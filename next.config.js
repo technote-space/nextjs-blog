@@ -45,8 +45,12 @@ module.exports = withBundleAnalyzer({
         {'gray-matter': 'var {}'},
         {'remark': 'var {}'},
         {'remark-rehype': 'var {}'},
-        {'rehype-stringify': 'var {}'},
         {'remark-gfm': 'var {}'},
+        {'rehype-stringify': 'var {}'},
+        {'rehype-parse': 'var {}'},
+        {'rehype-slug': 'var {}'},
+        {'rehype-autolink-headings': 'var {}'},
+        {'unified': 'var {}'},
         {'remove-markdown': 'var {}'},
         {'url-metadata': 'var {}'},
       );
