@@ -56,7 +56,7 @@ module.exports = withBundleAnalyzer({
         {'node-cache': 'var {}'},
         {'node-canvas': 'var {}'},
         {'fast-average-color-node': 'var {}'},
-        {'validator': 'var {}'},
+        {'./registry.server': 'var {}'},
       );
     }
 
