@@ -3,6 +3,7 @@
 
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import dynamic from 'next/dynamic';
 import ReactDOMServer from 'react-dom/server';
 import { singleton, inject } from 'tsyringe';
 import urlMetadata from 'url-metadata';
@@ -17,13 +18,14 @@ import {
   isValidHttpUrl,
   getSiteUrl,
 } from '@/lib/helpers/url';
-import BlogCard from './components/BlogCard';
-import CodePen from './components/CodePen';
-import CodeSandbox from './components/CodeSandbox';
-import JsFiddle from './components/JsFiddle';
-import StackBlitz from './components/StackBlitz';
-import Tweet from './components/Tweet';
-import YouTube from './components/YouTube';
+
+const BlogCard = dynamic(() => import('./components/BlogCard'));
+const CodePen = dynamic(() => import('./components/CodePen'));
+const CodeSandbox = dynamic(() => import('./components/CodeSandbox'));
+const JsFiddle = dynamic(() => import('./components/JsFiddle'));
+const StackBlitz = dynamic(() => import('./components/StackBlitz'));
+const Tweet = dynamic(() => import('./components/Tweet'));
+const YouTube = dynamic(() => import('./components/YouTube'));
 
 @singleton()
 export class OembedService implements IOembedService {

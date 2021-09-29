@@ -3,6 +3,7 @@ import type { VFC } from 'react';
 import { memo } from 'react';
 import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
+import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
 import { wrap } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
@@ -40,9 +41,9 @@ const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }
   <Flex {...defaultProps} {...props}>
     {!!pages?.length && <Flex {...defaultPagesStyle} {...pagesStyle}>
       <List display="flex" flexWrap="wrap">
-        {pages.map(({ label, url }, index) => <List.Item key={index} m={1} mx={2}>
+        {pages.map(({ label, url }, index) => <ListItem key={index} m={1} mx={2}>
           <Link href={url}>{label}</Link>
-        </List.Item>)}
+        </ListItem>)}
       </List>
     </Flex>}
     <Flex {...defaultAuthorStyle} {...authorStyle}>
