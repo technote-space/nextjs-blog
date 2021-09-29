@@ -1,16 +1,17 @@
 import isInt from 'validator/lib/isInt';
-import Base from '$/domain/shared/valueObject/base';
+import Float from '$/domain/shared/valueObject/float';
 
-export default abstract class Int extends Base<number | string, number>() {
+export default abstract class Int extends Float {
   protected fromInput(value: number | string): number {
-    if (typeof value === 'number') {
-      return value;
-    }
-
-    return parseInt(value);
+    return Math.floor(super.fromInput(value));
   }
 
   public validate(value: number | string): string[] | undefined {
+    const results = super.validate(value);
+    if (results?.length) {
+      return results;
+    }
+
     if (typeof value === 'string' && !isInt(value)) {
       return ['整数の形式が正しくありません'];
     }
@@ -21,9 +22,5 @@ export default abstract class Int extends Base<number | string, number>() {
     }
 
     return undefined;
-  }
-
-  public compare(value: this): number {
-    return this.value - value.value;
   }
 }

@@ -64,12 +64,16 @@ export class Post extends Base() {
     return other.createdAt.compare(this.createdAt);
   }
 
+  public compareUpdatedAt(other: this): number {
+    return (other.updatedAt ?? other.createdAt).compare(this.updatedAt ?? this.createdAt);
+  }
+
   public getUrl(): string {
     return Post.createUrl(this.getId(), this.getPostType());
   }
 
   public static createUrl(id: Id, postType: PostType): string {
-    return `/${postType.pluralized}/${id.value}`;
+    return `/${postType.pluralized}/${id.value}/`;
   }
 
   public static ensurePostType(postType: string | undefined, settings: Settings): string {
