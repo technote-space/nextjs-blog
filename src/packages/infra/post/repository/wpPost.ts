@@ -43,7 +43,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     super(settings,color, oembed, toc);
     this.mysql = mysql({
       config: {
-        host: 'localhost',
+        host: process.env.DB_HOST,
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
