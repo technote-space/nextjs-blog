@@ -1,7 +1,7 @@
 import type { StyleProps } from '@/components/wrap';
 import type { FC } from 'react';
 import { colors } from '@/components/constants';
-import factory from '@/components/factory';
+import { Heading2 } from '@/components/wrap';
 
 type Props = StyleProps;
 
@@ -13,12 +13,12 @@ const defaultProps: Props = {
 };
 
 const MainHeading: FC<Props> = ({ children, ...props }) => {
-  return <factory.h2
+  return <Heading2
     {...defaultProps}
     {...props}
   >
     {children}
-  </factory.h2>;
+  </Heading2>;
 };
 
 MainHeading.displayName = 'MainHeading';

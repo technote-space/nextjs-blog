@@ -1,14 +1,12 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
-import dynamic from 'next/dynamic';
 import { memo } from 'react';
-
-const Date = dynamic(() => import('@/components/date/Date'));
-const MainHeading = dynamic(() => import('@/components/heading/MainHeading'));
-const SubHeading = dynamic(() => import('@/components/heading/SubHeading'));
-const Thumbnail = dynamic(() => import('@/components/image/Thumbnail'));
-const Flex = dynamic(() => import('@/components/layout/Flex'));
+import Date from '@/components/date/Date';
+import MainHeading from '@/components/heading/MainHeading';
+import SubHeading from '@/components/heading/SubHeading';
+import Thumbnail from '@/components/image/Thumbnail';
+import Flex from '@/components/layout/Flex';
 
 type Props = StyleProps & {
   thumbnail?: string;

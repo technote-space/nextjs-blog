@@ -5,7 +5,7 @@ import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
-import { wrap } from '@/components/wrap';
+import { Footer as FooterComponent } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type PostData = {
@@ -35,7 +35,7 @@ const defaultPagesStyle: StyleProps = {
   mb: 2,
 };
 
-const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <wrap.footer
+const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <FooterComponent
   backgroundColor="white"
 >
   <Flex {...defaultProps} {...props}>
@@ -52,7 +52,7 @@ const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }
       </Link>
     </Flex>
   </Flex>
-</wrap.footer>;
+</FooterComponent>;
 
 Footer.displayName = 'Footer';
 export default memo(Footer);

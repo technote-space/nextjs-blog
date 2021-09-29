@@ -1,15 +1,15 @@
-import type { ListItemProps } from '@chakra-ui/react';
+import type { ListItemProps } from '@/components/wrap';
 import type { FC } from 'react';
-import { ListItem as ChakraUiListItem } from '@chakra-ui/react';
+import { ListItem as ListItemComponent } from '@/components/wrap';
 
 type Props = ListItemProps;
 
 const defaultProps: Props = {};
 
 const ListItem: FC<Props> = ({ children, ...props }) => {
-  return <ChakraUiListItem {...defaultProps} {...props} >
+  return <ListItemComponent {...defaultProps} {...props} >
     {children}
-  </ChakraUiListItem>;
+  </ListItemComponent>;
 };
 
 ListItem.displayName = 'ListItem';

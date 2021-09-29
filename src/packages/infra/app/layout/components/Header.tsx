@@ -5,7 +5,7 @@ import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
-import { wrap } from '@/components/wrap';
+import { Header as HeaderComponent } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type PostData = {
@@ -52,7 +52,7 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
         </ListItem>)}
       </List>
     </Flex> : null;
-  return <wrap.header backgroundColor="white">
+  return <HeaderComponent backgroundColor="white">
     <Flex {...defaultProps} {...props}>
       {createPagesComponent(true)}
       <Flex {...defaultTitleStyle} {...titleStyle}>
@@ -62,7 +62,7 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
       </Flex>
       {createPagesComponent()}
     </Flex>
-  </wrap.header>;
+  </HeaderComponent>;
 };
 
 Header.displayName = 'Header';

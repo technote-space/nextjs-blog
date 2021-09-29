@@ -1,5 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { storybookArgTypes } from '@/components/wrap';
+import { storybookArgTypes } from '@/components/storybook.shared';
 import MainHeading from './MainHeading';
 
 export default {

@@ -1,15 +1,13 @@
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
-import dynamic from 'next/dynamic';
 import Prism from 'prismjs';
 import { memo, useEffect } from 'react';
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
-import { wrap } from '@/components/wrap';
+import Date from '@/components/date/Date';
+import CoverImage from '@/components/image/CoverImage';
+import Box from '@/components/layout/Box';
+import { Article as ArticleComponent } from '@/components/wrap';
 import styles from './Article.module.scss';
-
-const Date = dynamic(() => import('@/components/date/Date'));
-const CoverImage = dynamic(() => import('@/components/image/CoverImage'));
-const Box = dynamic(() => import('@/components/layout/Box'));
 
 type Props = {
   thumbnail?: string;
@@ -26,7 +24,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
   }, []);
 
   return <SimpleReactLightbox>
-    <wrap.article backgroundColor="white" p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
+    <ArticleComponent backgroundColor="white" p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
       <header>
         {!hideDate && <Date
           date={createdAt}
@@ -44,7 +42,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
       <SRLWrapper>
         <Box className={styles.article} dangerouslySetInnerHTML={{ __html: content }}/>
       </SRLWrapper>
-    </wrap.article>
+    </ArticleComponent>
   </SimpleReactLightbox>;
 };
 
