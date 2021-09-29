@@ -10,11 +10,11 @@ export class PostManager implements IPostManager {
   public constructor(@inject('IPostFactory') private postFactory: IPostFactory) {
   }
 
-  public async all(postType?: string): Promise<Post[]> {
+  public async all(postType?: string, sortByUpdatedAt?: boolean): Promise<Post[]> {
     return (await this.postFactory.getSources().reduce(async (prev, source) => {
       const acc = await prev;
       return acc.concat(...await this.postFactory.all(source, postType));
-    }, Promise.resolve([] as Post[]))).sort((a, b) => a.compare(b));
+    }, Promise.resolve([] as Post[]))).sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b));
   }
 
   public async getIds(postType?: string): Promise<Id[]> {

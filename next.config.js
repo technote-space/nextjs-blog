@@ -53,6 +53,10 @@ module.exports = withBundleAnalyzer({
         {'unified': 'var {}'},
         {'remove-markdown': 'var {}'},
         {'url-metadata': 'var {}'},
+        {'node-cache': 'var {}'},
+        {'node-canvas': 'var {}'},
+        {'fast-average-color-node': 'var {}'},
+        {'validator': 'var {}'},
       );
     }
 
