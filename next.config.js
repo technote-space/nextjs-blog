@@ -38,26 +38,7 @@ module.exports = withBundleAnalyzer({
       timers: false,
     };
     if (!isServer) {
-      config.externals.push(
-        'mysql',
-        {'serverless-mysql': 'var {}'},
-        {'html-to-text': 'var {}'},
-        {'gray-matter': 'var {}'},
-        {'remark': 'var {}'},
-        {'remark-rehype': 'var {}'},
-        {'remark-gfm': 'var {}'},
-        {'rehype-stringify': 'var {}'},
-        {'rehype-parse': 'var {}'},
-        {'rehype-slug': 'var {}'},
-        {'rehype-autolink-headings': 'var {}'},
-        {'unified': 'var {}'},
-        {'remove-markdown': 'var {}'},
-        {'url-metadata': 'var {}'},
-        {'node-cache': 'var {}'},
-        {'node-canvas': 'var {}'},
-        {'fast-average-color-node': 'var {}'},
-        {'./registry.server': 'var {}'},
-      );
+      config.externals.push({'./registry.server': 'var {}'});
     }
 
     config.plugins.push(
