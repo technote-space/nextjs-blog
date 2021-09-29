@@ -40,10 +40,10 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
   ) {
-    super(settings,color, oembed, toc);
+    super(settings, color, oembed, toc);
     this.mysql = mysql({
       config: {
-        host: process.env.DB_HOST,
+        host: process.env.DB_HOST ?? 'localhost',
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
