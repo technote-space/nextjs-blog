@@ -1,5 +1,6 @@
 import { container } from 'tsyringe';
 import './registry.theme';
+import { Cache } from '$/infra/shared/library/cache';
 import { FooterComponent } from '$/infra/app/layout/footer';
 import { HeaderComponent } from '$/infra/app/layout/header';
 import { LayoutComponent } from '$/infra/app/layout';
@@ -18,6 +19,7 @@ import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
 import { WordPressPostRepository } from '$/infra/post/repository/wpPost';
 import { postSources } from '^/config/settings';
 
+container.registerSingleton('ICache', Cache);
 container.registerSingleton('IFooterComponent', FooterComponent);
 container.registerSingleton('IHeaderComponent', HeaderComponent);
 container.registerSingleton('ILayoutComponent', LayoutComponent);
