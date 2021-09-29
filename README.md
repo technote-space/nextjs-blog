@@ -1,5 +1,10 @@
 # NextJs Blog
 
+[![CI Status](https://github.com/nextjs-blog/nextjs-blog/workflows/CI/badge.svg)](https://github.com/nextjs-blog/nextjs-blog/actions)
+[![codecov](https://codecov.io/gh/nextjs-blog/nextjs-blog/branch/main/graph/badge.svg)](https://codecov.io/gh/nextjs-blog/nextjs-blog)
+[![CodeFactor](https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog/badge)](https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/nextjs-blog/nextjs-blog/blob/main/LICENSE)
+
 NextJs で作ったブログ
 
 ## Table of Contents
