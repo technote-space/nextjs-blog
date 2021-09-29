@@ -1,6 +1,9 @@
 import { container } from 'tsyringe';
 import './registry.theme';
 import { Cache } from '$/infra/shared/library/cache';
+import { ColorService } from '$/infra/post/service/color';
+import { OembedService } from '$/infra/post/service/oembed';
+import { TocService } from '$/infra/post/service/toc';
 import { FooterComponent } from '$/infra/app/layout/footer';
 import { HeaderComponent } from '$/infra/app/layout/header';
 import { LayoutComponent } from '$/infra/app/layout';
@@ -19,8 +22,12 @@ import { PostManager } from '$/infra/post/manager';
 import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
 import { WordPressPostRepository } from '$/infra/post/repository/wpPost';
 import { postSources } from '^/config/settings';
+import { IOembedService } from '$/domain/post/service/oembed';
 
 container.registerSingleton('ICache', Cache);
+container.registerSingleton('IColorService', ColorService);
+container.registerSingleton('IOembedService', OembedService);
+container.registerSingleton('ITocService', TocService);
 container.registerSingleton('IFooterComponent', FooterComponent);
 container.registerSingleton('IHeaderComponent', HeaderComponent);
 container.registerSingleton('ILayoutComponent', LayoutComponent);

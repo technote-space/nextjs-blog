@@ -1,6 +1,6 @@
 import type { VFC } from 'react';
-import { getDomainName } from '@/lib/helpers/url';
 import { escapeHtml } from '@/lib/helpers/string';
+import { getDomainName } from '@/lib/helpers/url';
 
 type Props = {
   url: string;

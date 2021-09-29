@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import CodeSandbox from './CodeSandbox';
 import styles from '$/infra/pages/post/components/Article.module.scss';
+import CodeSandbox from './CodeSandbox';
 
 export default {
   title: 'Library Components/CodeSandbox',

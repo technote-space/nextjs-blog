@@ -1,6 +1,6 @@
 import { VFC } from 'react';
-import { extractYoutubeVideoParameters } from '@/lib/helpers/url';
 import { escapeHtml } from '@/lib/helpers/string';
+import { extractYoutubeVideoParameters } from '@/lib/helpers/url';
 
 type Props = {
   url: string;

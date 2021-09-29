@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import CodePen from './CodePen';
 import styles from '$/infra/pages/post/components/Article.module.scss';
+import CodePen from './CodePen';
 
 export default {
   title: 'Library Components/CodePen',

@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import JsFiddle from './JsFiddle';
 import styles from '$/infra/pages/post/components/Article.module.scss';
+import JsFiddle from './JsFiddle';
 
 export default {
   title: 'Library Components/JsFiddle',

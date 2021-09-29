@@ -1,8 +1,12 @@
 // License MIT @zenn-dev/zenn-editor, Technote
 // @see https://github.com/zenn-dev/zenn-editor
 
+import type { IColorService } from '$/domain/post/service/color';
+import type { IOembedService } from '$/domain/post/service/oembed';
 import ReactDOMServer from 'react-dom/server';
+import { singleton, inject } from 'tsyringe';
 import urlMetadata from 'url-metadata';
+import { decodeUrlHtmlEntity, escapeHtml } from '@/lib/helpers/string';
 import {
   isJsfiddleUrl,
   isCodepenUrl,
@@ -13,20 +17,24 @@ import {
   isValidHttpUrl,
   getSiteUrl,
 } from '@/lib/helpers/url';
-import { getDominantColor } from '@/lib/helpers/color';
-import { decodeUrlHtmlEntity, escapeHtml } from '@/lib/helpers/string';
-import BlogCard from '@/lib/helpers/oembed/components/BlogCard';
-import Tweet from '@/lib/helpers/oembed/components/Tweet';
-import StackBlitz from '@/lib/helpers/oembed/components/StackBlitz';
-import CodeSandbox from '@/lib/helpers/oembed/components/CodeSandbox';
-import CodePen from '@/lib/helpers/oembed/components/CodePen';
-import JsFiddle from '@/lib/helpers/oembed/components/JsFiddle';
-import YouTube from '@/lib/helpers/oembed/components/YouTube';
+import BlogCard from './components/BlogCard';
+import CodePen from './components/CodePen';
+import CodeSandbox from './components/CodeSandbox';
+import JsFiddle from './components/JsFiddle';
+import StackBlitz from './components/StackBlitz';
+import Tweet from './components/Tweet';
+import YouTube from './components/YouTube';
 
-export class Oembed {
+@singleton()
+export class OembedService implements IOembedService {
   private static __cache: Record<string, string> = {};
 
-  private static async __parse(str: string): Promise<string> {
+  public constructor(
+    @inject('IColorService') private color: IColorService,
+  ) {
+  }
+
+  private async __process(str: string): Promise<string> {
     if (isJsfiddleUrl(str)) {
       return ReactDOMServer.renderToString(<JsFiddle url={str}/>);
     }
@@ -58,23 +66,23 @@ export class Oembed {
       try {
         const metadata = await urlMetadata(str) as urlMetadata.Result & { 'zenn:description'?: string };
         const description = metadata.description.length > 120 ? `${metadata.description.substr(0, 120)}...` : metadata.description;
-        return Oembed.generateCard(str, metadata.title, description, metadata.image, metadata.canonical, metadata.source);
+        return this.generateCard(str, metadata.title, description, metadata.image, metadata.canonical, metadata.source);
       } catch (e) {
         console.log(e);
         if (e instanceof Error && /getaddrinfo ENOTFOUND/.test(e.message)) {
           // ドメインも死んでるっぽい
           return `<div style="text-decoration: line-through">${str}</div>`;
         }
-        return Oembed.generateCard(str);
+        return this.generateCard(str);
       }
     }
 
     return str;
   }
 
-  private static async generateCard(url: string, title?: string, description?: string, image?: string, canonical?: string, source?: string): Promise<string> {
+  private async generateCard(url: string, title?: string, description?: string, image?: string, canonical?: string, source?: string): Promise<string> {
     const _image = image || `https://s.wordpress.com/mshots/v1/${escapeHtml(url)}?w=380&h=200`;
-    const dominantColor = await getDominantColor(_image, getSiteUrl(url));
+    const dominantColor = await this.color.getDominantColor(_image, getSiteUrl(url));
 
     return ReactDOMServer.renderToString(<BlogCard
       url={url}
@@ -88,11 +96,11 @@ export class Oembed {
   }
 
   // TODO: Add test
-  public static async parse(str: string): Promise<string> {
-    if (!(str in Oembed.__cache)) {
-      Oembed.__cache[str] = await Oembed.__parse(decodeUrlHtmlEntity(str));
+  public async process(str: string): Promise<string> {
+    if (!(str in OembedService.__cache)) {
+      OembedService.__cache[str] = await this.__process(decodeUrlHtmlEntity(str));
     }
 
-    return Oembed.__cache[str];
+    return OembedService.__cache[str];
   }
 }

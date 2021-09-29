@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import BlogCard from './BlogCard';
 import styles from '$/infra/pages/post/components/Article.module.scss';
+import BlogCard from './BlogCard';
 
 export default {
   title: 'Library Components/BlogCard',

@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import Tweet from './Tweet';
 import styles from '$/infra/pages/post/components/Article.module.scss';
+import Tweet from './Tweet';
 
 export default {
   title: 'Library Components/Tweet',
