@@ -11,7 +11,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
-    "cover": "jest",
+    "cover": "jest --coverage",
     "cover:update": "jest -u",
     "test": "yarn lint && yarn typecheck && yarn cover",
     "update": "npm_config_yes=true npx npm-check-updates -u --timeout 100000 && yarn install && yarn upgrade && yarn audit",
