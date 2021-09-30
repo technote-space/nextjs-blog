@@ -1,4 +1,4 @@
-import type { PostDetailDTO } from '$/infra/post/dto/postDetail';
+import type { PostDetailDTO } from '$/domain/post/dto/postDetail';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 
 export type Props = {

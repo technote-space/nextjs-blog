@@ -65,6 +65,16 @@
           "module": "src/components",
           "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx"],
           "allowSameModule": true
+        },
+        {
+          "module": "src/packages/domain",
+          "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**"],
+          "allowSameModule": true
+        },
+        {
+          "module": "src/packages/infra",
+          "allowReferenceFrom": ["src/pages/**"],
+          "allowSameModule": true
         }
       ]
     ]
