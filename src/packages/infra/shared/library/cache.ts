@@ -22,10 +22,6 @@ export class Cache implements ICache {
     return this.cache.set(key, value);
   }
 
-  public has(key: Key): boolean {
-    return this.cache.has(key);
-  }
-
   public del(key: Key): void {
     this.cache.del(key);
   }

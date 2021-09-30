@@ -5,8 +5,6 @@ export interface ICache {
 
   set<T>(key: Key, value: T, ttlSec?: number): boolean;
 
-  has(key: Key): boolean;
-
   del(key: Key): void;
 
   getOrGenerate<T>(key: Key, generate: (key: Key) => Promise<T>, ttlSec?: number): Promise<T>;
