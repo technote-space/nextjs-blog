@@ -1,6 +1,8 @@
 import type { HooksParams } from '$/infra/pages/post/hooks';
 import type { VFC } from 'react';
-import Article from '$/infra/pages/post/components/Article';
+import dynamic from 'next/dynamic';
+
+const Article = dynamic(() => import('$/infra/pages/post/components/Article'));
 
 const View: VFC<HooksParams['viewProps']> = ({ post, hideDate }) => <Article
   thumbnail={post.getThumbnail()?.value}

@@ -1,6 +1,6 @@
-import type { BoxProps, ImageProps } from '@chakra-ui/react';
+import type { BoxProps, ImageProps } from '@/components/wrap';
 import type { FC } from 'react';
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image } from '@/components/wrap';
 
 type Props = ImageProps & {
   innerProps?: BoxProps

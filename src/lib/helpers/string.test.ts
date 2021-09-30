@@ -1,4 +1,4 @@
-import { replaceAll, pregQuote, escapeHtml, decodeUrlHtmlEntity, htmlToExcerpt } from './string';
+import { replaceAll, pregQuote, escapeHtml, decodeUrlHtmlEntity } from './string';
 
 describe('replaceAll', () => {
   it('should replace all string', () => {
@@ -27,12 +27,5 @@ describe('decodeUrlHtmlEntity', () => {
   it('should decode url html entity', () => {
     expect(decodeUrlHtmlEntity('')).toBe('');
     expect(decodeUrlHtmlEntity('test1&#38;test2&#x3d;test3&#63;&#x3f;')).toBe('test1&test2=test3??');
-  });
-});
-
-describe('htmlToExcerpt', () => {
-  it('should convert html to excerpt string', () => {
-    expect(htmlToExcerpt('')).toBe('');
-    expect(htmlToExcerpt('<p>test1 <pre>this is code</pre>    test2\n<code>this is code</code>test3\n<a href="https://example.com">this is link</a>')).toBe('test1 test2 test3 this is link');
   });
 });
