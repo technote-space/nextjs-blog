@@ -1,5 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { ITocService } from '$/domain/post/service/toc';
@@ -47,8 +48,9 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     @inject('IColorService') color: IColorService,
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
+    @inject('ICodeService') code: ICodeService,
   ) {
-    super(settings, color, oembed, toc);
+    super(settings, color, oembed, toc, code);
   }
 
   private getExcludeIds(postType?: string) {

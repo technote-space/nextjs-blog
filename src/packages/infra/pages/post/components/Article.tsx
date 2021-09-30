@@ -1,7 +1,6 @@
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
-import Prism from 'prismjs';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
 import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
@@ -18,12 +17,8 @@ type Props = {
   hideDate?: boolean;
 };
 
-const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate }) => {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
-
-  return <SimpleReactLightbox>
+const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate }) =>
+  <SimpleReactLightbox>
     <ArticleComponent backgroundColor="white" p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
       <header>
         {!hideDate && <Date
@@ -44,7 +39,6 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
       </SRLWrapper>
     </ArticleComponent>
   </SimpleReactLightbox>;
-};
 
 Article.displayName = 'Article';
 export default memo(Article);
