@@ -3,9 +3,9 @@ import type { Props, Params, IPostPageProps } from '$/domain/pages/post';
 import type { IPostManager } from '$/domain/post/manager';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
+import { fromEntity } from '$/domain/post/dto/postDetail';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
-import { fromEntity } from '$/infra/post/dto/postDetail';
 
 @singleton()
 export class PostPageProps implements IPostPageProps {

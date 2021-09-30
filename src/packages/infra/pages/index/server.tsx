@@ -3,7 +3,7 @@ import type { IIndexPageProps, Props } from '$/domain/pages';
 import type { IPostManager } from '$/domain/post/manager';
 import type { GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
-import { fromEntity } from '$/infra/post/dto/post';
+import { fromEntity } from '$/domain/post/dto/post';
 
 @singleton()
 export class IndexPageProps implements IIndexPageProps {
