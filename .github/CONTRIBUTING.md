@@ -1,7 +1,7 @@
 # Contributing
-[issues]: https://github.com/technote-space/tech-blog/issues
-[fork]: https://github.com/technote-space/tech-blog/fork
-[pr]: https://github.com/technote-space/tech-blog/compare
+[issues]: https://github.com/nextjs-blog/nextjs-blog/issues
+[fork]: https://github.com/nextjs-blog/nextjs-blog/fork
+[pr]: https://github.com/nextjs-blog/nextjs-blog/compare
 [eslint]: https://eslint.org/
 [jest]: https://jestjs.io/
 [code-of-conduct]: CODE_OF_CONDUCT.md

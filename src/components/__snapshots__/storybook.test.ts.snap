@@ -1802,6 +1802,26 @@ Array [
 ]
 `;
 
+exports[`Storyshots Layout Components/Layout Default 1`] = `
+Array [
+  <div
+    className="css-0"
+  >
+    [[head]]
+    [[header]]
+    <main>
+      <div
+        className="css-jlhdae"
+      >
+        Hello World!
+      </div>
+    </main>
+    [[footer]]
+  </div>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Library Components/BlogCard Default 1`] = `
 Array [
   <div

@@ -1,7 +1,7 @@
-import type { ImageProps } from '@chakra-ui/react';
+import type { ImageProps } from '@/components/wrap';
 import type { VFC } from 'react';
-import { Image } from '@chakra-ui/react';
 import { memo } from 'react';
+import { Image } from '@/components/wrap';
 
 type Props = ImageProps;
 

@@ -1,6 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { Props } from '$/domain/pages/post';
-import { toEntity } from '$/infra/post/dto/postDetail';
+import { toEntity } from '$/domain/post/dto/postDetail';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useHooks = ({ post }: Props, settings: Settings) => {

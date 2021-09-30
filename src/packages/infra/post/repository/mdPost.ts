@@ -1,5 +1,8 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { IColorService } from '$/domain/post/service/color';
+import type { IOembedService } from '$/domain/post/service/oembed';
+import type { ITocService } from '$/domain/post/service/toc';
 import { promises, existsSync } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -39,8 +42,13 @@ type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>>
 
 @singleton()
 export class MarkdownPostRepository extends BasePostRepository implements IPostRepository {
-  public constructor(@inject('Settings') settings: Settings) {
-    super(settings);
+  public constructor(
+    @inject('Settings') settings: Settings,
+    @inject('IColorService') color: IColorService,
+    @inject('IOembedService') oembed: IOembedService,
+    @inject('ITocService') toc: ITocService,
+  ) {
+    super(settings, color, oembed, toc);
   }
 
   private getExcludeIds(postType?: string) {

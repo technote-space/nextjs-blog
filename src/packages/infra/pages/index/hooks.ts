@@ -1,7 +1,7 @@
 import type { Props } from '$/domain/pages';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
-import { toEntity } from '$/infra/post/dto/post';
+import { toEntity } from '$/domain/post/dto/post';
 
 const parseNumberQuery = (page: string | string[] | undefined): number => {
   if (page === undefined) {

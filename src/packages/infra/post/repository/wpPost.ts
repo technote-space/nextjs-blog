@@ -1,5 +1,9 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { IColorService } from '$/domain/post/service/color';
+import  type { IHtmlService } from '$/domain/post/service/html';
+import type { IOembedService } from '$/domain/post/service/oembed';
+import type { ITocService } from '$/domain/post/service/toc';
 import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
@@ -15,7 +19,6 @@ import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 import { BasePostRepository } from '$/infra/post/repository/base';
-import { htmlToExcerpt } from '@/lib/helpers/string';
 
 type PostData = {
   post_name: string;
@@ -31,11 +34,17 @@ type PostData = {
 export class WordPressPostRepository extends BasePostRepository implements IPostRepository {
   private mysql: mysql.ServerlessMysql;
 
-  public constructor(@inject('Settings') settings: Settings) {
-    super(settings);
+  public constructor(
+    @inject('Settings') settings: Settings,
+    @inject('IColorService') color: IColorService,
+    @inject('IOembedService') oembed: IOembedService,
+    @inject('ITocService') toc: ITocService,
+    @inject('IHtmlService') private html: IHtmlService,
+  ) {
+    super(settings, color, oembed, toc);
     this.mysql = mysql({
       config: {
-        host: 'localhost',
+        host: process.env.DB_HOST ?? 'localhost',
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
@@ -97,7 +106,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
         id: result.post_name,
       }),
       Title.create(result.post_title),
-      Excerpt.create(this.processExcerpt(htmlToExcerpt(result.post_content))),
+      Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
@@ -162,7 +171,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       id,
       Title.create(results[0].post_title),
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
-      Excerpt.create(this.processExcerpt(htmlToExcerpt(results[0].post_content))),
+      Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(results[0].post_content))),
       PostType.create(this.getPostType(postType)),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),

@@ -1,14 +1,14 @@
-import type { BoxProps } from '@chakra-ui/react';
+import type { BoxProps } from '@/components/wrap';
 import type { VFC } from 'react';
-import { Box as ChakraUiBox } from '@chakra-ui/react';
 import { memo } from 'react';
+import { Box as BoxComponent } from '@/components/wrap';
 
 type Props = BoxProps;
 
 const defaultProps: Props = {};
 
 const Box: VFC<Props> = (props) => {
-  return <ChakraUiBox {...defaultProps} {...props} />;
+  return <BoxComponent {...defaultProps} {...props} />;
 };
 
 Box.displayName = 'Box';
