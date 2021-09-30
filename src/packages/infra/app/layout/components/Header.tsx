@@ -3,8 +3,9 @@ import type { VFC } from 'react';
 import { memo } from 'react';
 import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
+import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
-import { wrap } from '@/components/wrap';
+import { Header as HeaderComponent } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type PostData = {
@@ -46,12 +47,12 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
   const createPagesComponent = (hide?: boolean) => pages?.length ?
     <Flex {...defaultPagesStyle} {...pagesStyle} {...(hide ? { visibility: 'hidden', maxHeight: '1.5em' } : {})}>
       <List display={['flex', 'flex', 'block', 'block']} flexWrap="wrap">
-        {pages.map(({ label, url }, index) => <List.Item key={index} ml={[5, 5, 0, 0]}>
+        {pages.map(({ label, url }, index) => <ListItem key={index} ml={[5, 5, 0, 0]}>
           <Link href={url}>{label}</Link>
-        </List.Item>)}
+        </ListItem>)}
       </List>
     </Flex> : null;
-  return <wrap.header backgroundColor="white">
+  return <HeaderComponent backgroundColor="white">
     <Flex {...defaultProps} {...props}>
       {createPagesComponent(true)}
       <Flex {...defaultTitleStyle} {...titleStyle}>
@@ -61,7 +62,7 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
       </Flex>
       {createPagesComponent()}
     </Flex>
-  </wrap.header>;
+  </HeaderComponent>;
 };
 
 Header.displayName = 'Header';
