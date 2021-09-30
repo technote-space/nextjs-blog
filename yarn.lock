@@ -7573,6 +7573,11 @@ eslint-plugin-standard@~4.0.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-4.0.2.tgz#021211a9f077e63a6847e7bb9ab4247327ac8e0c"
   integrity sha512-nKptN8l7jksXkwFk++PhJB3cCDTcXOEyhISIN86Ue2feJ1LFyY3PrY3/xT2keXlJSY5bpmbiTG0f885/YKAvTA==
 
+eslint-plugin-strict-dependencies@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-strict-dependencies/-/eslint-plugin-strict-dependencies-0.0.1.tgz#3fe7304b27ec4ee8f29ecab29210a0c8d51fe3e7"
+  integrity sha512-Ez6ILdOYHEDD1udh1mzT2t5m3ZiTGWIe/xcbkSk/DDTzFiFeqIaFyXy0a7jIKZP9OlB/ztw534KQsXwJVrKKww==
+
 eslint-plugin-unused-imports@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/eslint-plugin-unused-imports/-/eslint-plugin-unused-imports-1.1.5.tgz#a2b992ef0faf6c6c75c3815cc47bde76739513c2"

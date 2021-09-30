@@ -10,7 +10,8 @@
   "plugins": [
     "@typescript-eslint",
     "import",
-    "unused-imports"
+    "unused-imports",
+    "strict-dependencies"
   ],
   "rules": {
     "@typescript-eslint/no-non-null-assertion": "off",
@@ -51,6 +52,21 @@
     "unused-imports/no-unused-vars": [
       "error",
       { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+    ],
+    "strict-dependencies/strict-dependencies": [
+      "error",
+      [
+        {
+          "module": "@chakra-ui/react",
+          "allowReferenceFrom": ["src/components/wrap.ts", "src/packages/infra/app/theme/chakraUi.tsx"],
+          "allowSameModule": false
+        },
+        {
+          "module": "src/components",
+          "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx"],
+          "allowSameModule": true
+        }
+      ]
     ]
   }
 }
