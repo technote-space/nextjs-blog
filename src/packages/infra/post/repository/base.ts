@@ -1,6 +1,7 @@
 import type { Settings } from '$/domain/app/settings';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { ITocService } from '$/domain/post/service/toc';
@@ -16,6 +17,7 @@ export abstract class BasePostRepository implements IPostRepository {
     protected color: IColorService,
     protected oembed: IOembedService,
     protected toc: ITocService,
+    protected code: ICodeService,
   ) {
   }
 
@@ -43,20 +45,30 @@ export abstract class BasePostRepository implements IPostRepository {
     return Post.ensurePostType(postType, this.settings);
   }
 
+  protected getContentFilters(): Array<{ tag: string; filter: (content: string, postType?: string) => Promise<string> }> {
+    return [
+      { tag: 'pre-replace', filter: async content => this.replace(content) },
+      { tag: 'processLinksInCode', filter: async content => processLinksInCode(content) },
+      {
+        tag: 'processOneLineLinks',
+        filter: async content => processOneLineLinks(content, url => this.oembed.process(url)),
+      },
+      { tag: 'processExternalLinks', filter: async content => processExternalLinks(content) },
+      { tag: 'replace', filter: async content => this.replace(content) },
+      { tag: 'replace-h1', filter: async content => replaceAll(content, /(<\/?)h1([^>]*?>)/, '$1h2$2') },
+      { tag: 'code', filter: async content => this.code.process(content) },
+      {
+        tag: 'toc',
+        filter: async (content, postType) => this.toc.process(content, !this.settings.toc?.postTypes || this.settings.toc.postTypes.includes(this.getPostType(postType)) ? this.settings.toc?.headings : []),
+      },
+    ];
+  }
+
   protected async processContent(content: string, postType?: string): Promise<string> {
-    return this.toc.process(
-      replaceAll(this.replace(
-        processExternalLinks(
-          await processOneLineLinks(
-            processLinksInCode(
-              this.replace(content),
-            ),
-            url => this.oembed.process(url),
-          ),
-        ),
-      ), /(<\/?)h1([^>]*?>)/, '$1h2$2'),
-      !this.settings.toc?.postTypes || this.settings.toc.postTypes.includes(this.getPostType(postType)) ? this.settings.toc?.headings : [],
-    );
+    return this.getContentFilters().reduce(async (prev, { filter }) => {
+      const acc = await prev;
+      return await filter(acc, postType);
+    }, Promise.resolve(content));
   }
 
   public setSourceId(sourceId: string): void {

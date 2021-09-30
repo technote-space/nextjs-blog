@@ -1,5 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import  type { IHtmlService } from '$/domain/post/service/html';
 import type { IOembedService } from '$/domain/post/service/oembed';
@@ -39,9 +40,10 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     @inject('IColorService') color: IColorService,
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
+    @inject('ICodeService') code: ICodeService,
     @inject('IHtmlService') private html: IHtmlService,
   ) {
-    super(settings, color, oembed, toc);
+    super(settings, color, oembed, toc, code);
     this.mysql = mysql({
       config: {
         host: process.env.DB_HOST ?? 'localhost',
