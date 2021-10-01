@@ -2,8 +2,9 @@ import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
-import  type { IHtmlService } from '$/domain/post/service/html';
+import type { IHtmlService } from '$/domain/post/service/html';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
@@ -41,9 +42,10 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
     @inject('ICodeService') code: ICodeService,
+    @inject('IThumbnailService') thumbnail: IThumbnailService,
     @inject('IHtmlService') private html: IHtmlService,
   ) {
-    super(settings, color, oembed, toc, code);
+    super(settings, color, oembed, toc, code, thumbnail);
     this.mysql = mysql({
       config: {
         host: process.env.DB_HOST ?? 'localhost',
@@ -102,7 +104,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
 
     await this.mysql.end();
 
-    return results.map(result => Post.reconstruct(
+    return results.reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: result.post_name,
@@ -110,10 +112,10 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Title.create(result.post_title),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
-      result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
+      await this.getThumbnail(result.thumbnail_id ? thumbnails[result.thumbnail_id] : undefined),
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
-    ));
+    )), Promise.resolve([] as Post[]));
   }
 
   public async getIds(postType?: string): Promise<Id[]> {

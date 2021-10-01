@@ -3,6 +3,7 @@ import type { IPostRepository } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import { promises, existsSync } from 'fs';
 import path from 'path';
@@ -49,8 +50,9 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
     @inject('ICodeService') code: ICodeService,
+    @inject('IThumbnailService') thumbnail: IThumbnailService,
   ) {
-    super(settings, color, oembed, toc, code);
+    super(settings, color, oembed, toc, code, thumbnail);
   }
 
   private getExcludeIds(postType?: string) {
@@ -100,7 +102,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async all(postType?: string): Promise<Post[]> {
-    return (await this.getPostDataList(postType)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(post => Post.reconstruct(
+    return (await this.getPostDataList(postType)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).reduce(async (prev, post) => (await prev).concat(Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: post.id,
@@ -108,10 +110,10 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Title.create(post.title),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
-      post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
+      await this.getThumbnail(post.thumbnail),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
-    ));
+    )), Promise.resolve([] as Post[]));
   }
 
   public async getIds(postType?: string): Promise<Id[]> {
