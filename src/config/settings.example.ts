@@ -87,7 +87,7 @@ export const settings: Settings = {
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
   },
-  wpExportXml: process.env.NEXT_PUBLIC_WP_EXPORT_XML ? {
-    path: process.env.NEXT_PUBLIC_WP_EXPORT_XML,
+  wpExportXml: process.env.WP_EXPORT_XML ? {
+    path: process.env.WP_EXPORT_XML,
   } : undefined,
 };
