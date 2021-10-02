@@ -66,13 +66,13 @@ export abstract class BasePostRepository implements IPostRepository {
         filter: async content => processOneLineLinks(content, url => this.oembed.process(url)),
       },
       { tag: 'processExternalLinks', filter: async content => processExternalLinks(content) },
-      { tag: 'replace', filter: async content => this.replace(content) },
       { tag: 'replace-h1', filter: async content => replaceAll(content, /(<\/?)h1([^>]*?>)/, '$1h2$2') },
       { tag: 'code', filter: async content => this.code.process(content) },
       {
         tag: 'toc',
         filter: async (content, postType) => this.toc.process(content, !this.settings.toc?.postTypes || this.settings.toc.postTypes.includes(this.getPostType(postType)) ? this.settings.toc?.headings : []),
       },
+      { tag: 'replace', filter: async content => this.replace(content) },
     ];
   }
 

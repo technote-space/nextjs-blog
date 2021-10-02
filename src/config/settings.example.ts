@@ -6,19 +6,21 @@ export const postSources: Record<string, string> = {
   // posts ディレクトリに作成した markdown で記事作成
   'md': 'md',
   // .env で接続した WordPress の wp_posts で記事作成
-  // 'wp': wp,
+  // 'wpdb': wpdb,
+  // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
+  // 'wpxml': wpxml,
 };
 export const settings: Settings = {
   // 本文内で置換
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
     {
-      source: [postSources['wp']],
+      source: [postSources['wpdb'], postSources['wpxml']],
       from: /<pre class="wp-block-code\s+(\w+)(\s.+?)?"><code>/g,
       to: '<pre class="language-$1$2"><code class="language-$1">',
     },
     {
-      source: [postSources['wp']],
+      source: [postSources['wpdb'], postSources['wpxml']],
       from: /<!--\s+\/?wp:.+?\s+-->\n/g,
       to: '',
     },
@@ -27,13 +29,13 @@ export const settings: Settings = {
   exclude: [
     // WordPress の ID = 123 の投稿を除外
     // {
-    //   source: postSources['wp'],
+    //   source: postSources['wpxml'],
     //   id: '123',
     // },
     // WordPress の wp_terms.slug = 'test' のタグ に紐付いた投稿を除外
     // type = category でカテゴリー
     // {
-    //   source: postSources['wp'],
+    //   source: postSources['wpxml'],
     //   type: 'post_tag',
     //   id: 'test',
     // },
@@ -43,7 +45,7 @@ export const settings: Settings = {
     // {
     //   source: '/old/graph-structured-program-evolution',
     //   destination: {
-    //     source: postSources['wp'],
+    //     source: postSources['wpxml'],
     //     id: 'graph-structured-program-evolution',
     //   },
     // },
@@ -62,7 +64,7 @@ export const settings: Settings = {
   //   header: [],
   //   footer: [
   //     {
-  //       source: postSources['wp'],
+  //       source: postSources['wpxml'],
   //       id: 'contact',
   //       postType: 'page',
   //       title: 'お問い合わせ',
@@ -85,4 +87,7 @@ export const settings: Settings = {
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
   },
+  wpExportXml: process.env.NEXT_PUBLIC_WP_EXPORT_XML ? {
+    path: process.env.NEXT_PUBLIC_WP_EXPORT_XML,
+  } : undefined,
 };
