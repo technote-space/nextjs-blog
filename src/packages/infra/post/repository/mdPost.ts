@@ -6,7 +6,7 @@ import type { IOembedService } from '$/domain/post/service/oembed';
 import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import { promises, existsSync } from 'fs';
-import path from 'path';
+import { join } from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
@@ -66,7 +66,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   private static getPostsDirectory(): string {
-    return path.join(process.cwd(), 'posts');
+    return join(process.cwd(), 'posts');
   }
 
   private static toMaybePost(id: string, result: matter.GrayMatterFile<string>): MaybePost {
@@ -92,7 +92,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
         return acc;
       }
 
-      const fileContents = await promises.readFile(path.join(MarkdownPostRepository.getPostsDirectory(), fileName), 'utf8');
+      const fileContents = await promises.readFile(join(MarkdownPostRepository.getPostsDirectory(), fileName), 'utf8');
       const matterResult = matter(fileContents);
 
       return acc.concat(MarkdownPostRepository.toMaybePost(id, matterResult));
@@ -129,7 +129,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       throw new NotFoundException;
     }
 
-    const fullPath = path.join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
+    const fullPath = join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
     if (!existsSync(fullPath)) {
       throw new NotFoundException;
     }
