@@ -1,14 +1,14 @@
-import type { FlexProps } from '@chakra-ui/react';
+import type { FlexProps } from '@/components/wrap';
 import type { VFC } from 'react';
-import { Flex as ChakraUiFlex } from '@chakra-ui/react';
 import { memo } from 'react';
+import { Flex as FlexComponent } from '@/components/wrap';
 
 type Props = FlexProps;
 
 const defaultProps: Props = {};
 
 const Flex: VFC<Props> = (props) => {
-  return <ChakraUiFlex {...defaultProps} {...props} />;
+  return <FlexComponent {...defaultProps} {...props} />;
 };
 
 Flex.displayName = 'Flex';

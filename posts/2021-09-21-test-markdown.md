@@ -1,8 +1,8 @@
 ---
 title: "Markdown 記法のテスト"
 createdAt: "2021-09-21"
-updatedAt: "2021-09-24"
-thumbnail: "https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png"
+updatedAt: "2021-09-27"
+thumbnail: "/images/kotowaza_neko_koban.png"
 tags: ["test"]
 published: true
 ---
@@ -16,6 +16,10 @@ Markdownでの投稿のテスト
 見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない
 
 ```markdown
+# 見出し1
+
+見出し1ですが h2 に置き換わります。
+
 ## 見出し2
 
 見出し2です。
@@ -36,6 +40,10 @@ Markdownでの投稿のテスト
 
 見出し6です。
 ```
+
+# 見出し1
+
+見出し1ですが h2 に置き換わります。
 
 ## 見出し2
 
@@ -220,19 +228,19 @@ console.log('Hello World!');
 ## 画像
 
 ```markdown
-これは ![kotowaza_neko_koban](https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png) 画像です。
+これは ![kotowaza_neko_koban](/images/kotowaza_neko_koban.png) 画像です。
 
-これらも ![cat_russian_blue](https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png) ![pet_cat_sit](https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png) 画像です。
+これらも ![cat_russian_blue](/imaegs/cat_russian_blue.png) ![pet_cat_sit](/images/pet_cat_sit.png) 画像です。
 
 これは  
-![pet_cat_oddeye_black](https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png)  
+![pet_cat_oddeye_black](/images/pet_cat_oddeye_black.png)  
 画像です。
 ```
 
-これは ![kotowaza_neko_koban](https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png) 画像です。
+これは ![kotowaza_neko_koban](/images/kotowaza_neko_koban.png) 画像です。
 
-これらも ![cat_russian_blue](https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png) ![pet_cat_sit](https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png) 画像です。
+これらも ![cat_russian_blue](/images/cat_russian_blue.png) ![pet_cat_sit](/images/pet_cat_sit.png) 画像です。
 
 これは  
-![pet_cat_oddeye_black](https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png)  
+![pet_cat_oddeye_black](/images/pet_cat_oddeye_black.png)  
 画像です。

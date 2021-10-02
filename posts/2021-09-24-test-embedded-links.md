@@ -2,7 +2,7 @@
 title: "URL埋め込みのテスト"
 createdAt: "2021-09-24"
 updatedAt: "2021-09-24"
-thumbnail: "https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png"
+thumbnail: "/images/cat_russian_blue.png"
 tags: ["test"]
 published: true
 ---

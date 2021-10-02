@@ -2,7 +2,7 @@
 title: "ブログカードのテスト"
 createdAt: "2021-09-25"
 updatedAt: "2021-09-25"
-thumbnail: "https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png"
+thumbnail: "/images/pet_cat_sit.png"
 tags: ["test"]
 published: true
 ---
@@ -38,3 +38,29 @@ https://docs.github.com/ja/articles/software-in-virtual-environments-for-github-
 ### ドメインも死んでいる場合
 
 https://test.invalid/123
+
+## コード内のURLはブログカード化されない
+
+~~~markdown
+```json
+{
+  "url": "https://example.com"
+}
+```
+~~~
+
+```json
+{
+  "url": "https://example.com"
+}
+```
+
+~~~markdown
+```html
+<p><a href="https://example.com">https://example.com</a></p>
+```
+~~~
+
+```html
+<p><a href="https://example.com">https://example.com</a></p>
+```

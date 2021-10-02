@@ -244,7 +244,7 @@ Array [
     }
   >
     <article
-      className="css-1golnkc"
+      className="css-1flh3nq"
     >
       <header>
         <time
@@ -483,18 +483,251 @@ console.log('Hello World!');
           }
         }
       />
-      <div
-        className="css-0"
-      >
-        <a
-          className="back"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+    </article>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/Article Hide Date 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <article
+      className="css-1flh3nq"
+    >
+      <header>
+        <div
+          className="css-79elbk"
         >
-          トップページに戻る
-        </a>
-      </div>
+          <div
+            className="css-g63t4c"
+          />
+          <div
+            className="css-i4z9fe"
+          >
+            <h1>
+              Markdown 記法のテスト
+            </h1>
+          </div>
+        </div>
+      </header>
+      <div
+        className="article css-0"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<h2>見出し</h2>
+<p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
+<pre><code class=\\"language-markdown\\">## 見出し2
+
+見出し2です。
+
+### 見出し3
+
+見出し3です。
+
+#### 見出し4
+
+見出し4です。
+
+##### 見出し5
+
+見出し5です。
+
+###### 見出し6
+
+見出し6です。
+</code></pre>
+<h2>見出し2</h2>
+<p>見出し2です。</p>
+<h3>見出し3</h3>
+<p>見出し3です。</p>
+<h4>見出し4</h4>
+<p>見出し4です。</p>
+<h5>見出し5</h5>
+<p>見出し5です。</p>
+<h6>見出し6</h6>
+<p>見出し6です。</p>
+<h2>段落</h2>
+<pre><code class=\\"language-markdown\\">これは1つ目の段落の1行目です。  
+これは1つ目の段落の2行目です。
+
+これは2つ目の段落の1行目です。  
+これは2つ目の段落の2行目です。
+</code></pre>
+<p>これは1つ目の段落の1行目です。<br>
+これは1つ目の段落の2行目です。</p>
+<p>これは2つ目の段落の1行目です。<br>
+これは2つ目の段落の2行目です。</p>
+<h2>順序無しリスト</h2>
+<pre><code class=\\"language-markdown\\">- 1
+- 2
+  - 2-1
+  - 2-2
+    - 2-2-1
+    - 2-2-2
+- 3
+</code></pre>
+<ul>
+<li>1</li>
+<li>2
+<ul>
+<li>2-1</li>
+<li>2-2
+<ul>
+<li>2-2-1</li>
+<li>2-2-2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3</li>
+</ul>
+<h2>順序付きリスト</h2>
+<pre><code class=\\"language-markdown\\">1. 1
+1. 2
+  1. 2-1
+  1. 2-2
+    1. 2-2-1
+    1. 2-2-2
+1. 3
+</code></pre>
+<ol>
+<li>1</li>
+<li>2</li>
+<li>2-1</li>
+<li>2-2
+<ol>
+<li>2-2-1</li>
+<li>2-2-2</li>
+</ol>
+</li>
+<li>3</li>
+</ol>
+<h2>引用</h2>
+<pre><code class=\\"language-markdown\\">> 引用1  
+> 引用2
+>> 引用の入れ子3  
+>> 引用の入れ子4 
+</code></pre>
+<blockquote>
+<p>引用1<br>
+引用2</p>
+<blockquote>
+<p>引用の入れ子3<br>
+引用の入れ子4</p>
+</blockquote>
+</blockquote>
+<h2>コードブロック</h2>
+<pre><code class=\\"language-markdown\\">\`\`\`javascript
+console.log('Hello World!');
+\`\`\`
+</code></pre>
+<pre><code class=\\"language-javascript\\">console.log('Hello World!');
+</code></pre>
+<h2>テーブル</h2>
+<pre><code class=\\"language-markdown\\">| Left align | Right align | Center align |
+|:-----------|------------:|:------------:|
+| This       |        This |     This     |
+| column     |      column |    column    |
+| will       |        will |     will     |
+| be         |          be |      be      |
+| left       |       right |    center    |
+| aligned    |     aligned |   aligned    |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align=\\"left\\">Left align</th>
+<th align=\\"right\\">Right align</th>
+<th align=\\"center\\">Center align</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align=\\"left\\">This</td>
+<td align=\\"right\\">This</td>
+<td align=\\"center\\">This</td>
+</tr>
+<tr>
+<td align=\\"left\\">column</td>
+<td align=\\"right\\">column</td>
+<td align=\\"center\\">column</td>
+</tr>
+<tr>
+<td align=\\"left\\">will</td>
+<td align=\\"right\\">will</td>
+<td align=\\"center\\">will</td>
+</tr>
+<tr>
+<td align=\\"left\\">be</td>
+<td align=\\"right\\">be</td>
+<td align=\\"center\\">be</td>
+</tr>
+<tr>
+<td align=\\"left\\">left</td>
+<td align=\\"right\\">right</td>
+<td align=\\"center\\">center</td>
+</tr>
+<tr>
+<td align=\\"left\\">aligned</td>
+<td align=\\"right\\">aligned</td>
+<td align=\\"center\\">aligned</td>
+</tr>
+</tbody>
+</table>
+<h2>リンク</h2>
+<pre><code class=\\"language-markdown\\"> [リンク](https://example.com) 
+</code></pre>
+<p><a href=\\"https://example.com\\">リンク</a></p>
+<h2>コード</h2>
+<pre><code class=\\"language-markdown\\">これはインラインの \`console.log('Hello World!')\` コード
+</code></pre>
+<p>これはインラインの <code>console.log('Hello World!')</code> コード</p>
+<h2>強い強調</h2>
+<pre><code class=\\"language-markdown\\">これは **強い強調** です。
+</code></pre>
+<p>これは <strong>強い強調</strong> です。</p>
+<h2>強調</h2>
+<pre><code class=\\"language-markdown\\">これは *強調* です。
+</code></pre>
+<p>これは <em>強調</em> です。</p>
+<h2>削除済みテキスト</h2>
+<pre><code class=\\"language-markdown\\">これは ~~削除済みテキスト~~ です。
+</code></pre>
+<p>これは <del>削除済みテキスト</del> です。</p>
+<h2>水平線</h2>
+<pre><code class=\\"language-markdown\\">これは水平線です。
+
+---
+
+これは水平線です。
+</code></pre>
+<p>これは水平線です。</p>
+<hr>
+<p>これは水平線です。</p>
+<h2>画像</h2>
+<pre><code class=\\"language-markdown\\">これは ![kotowaza_neko_koban](https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png) 画像です。
+
+これらも ![cat_russian_blue](https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png) ![pet_cat_sit](https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png) 画像です。
+
+これは  
+![pet_cat_oddeye_black](https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png)  
+画像です。
+</code></pre>
+<p>これは <img src=\\"https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png\\" alt=\\"kotowaza_neko_koban\\"> 画像です。</p>
+<p>これらも <img src=\\"https://user-images.githubusercontent.com/39912269/134112901-4f837244-4a11-494f-be19-e6d9729f540d.png\\" alt=\\"cat_russian_blue\\"> <img src=\\"https://user-images.githubusercontent.com/39912269/134112910-6645b607-2db8-46e5-b312-cf70b04a5ae3.png\\" alt=\\"pet_cat_sit\\"> 画像です。</p>
+<p>これは<br>
+<img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
+画像です。</p>",
+          }
+        }
+      />
     </article>
   </div>,
   <span />,
@@ -511,7 +744,7 @@ Array [
     }
   >
     <article
-      className="css-1golnkc"
+      className="css-1flh3nq"
     >
       <header>
         <time
@@ -746,18 +979,6 @@ console.log('Hello World!');
           }
         }
       />
-      <div
-        className="css-0"
-      >
-        <a
-          className="back"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          トップページに戻る
-        </a>
-      </div>
     </article>
   </div>,
   <span />,
@@ -767,14 +988,14 @@ console.log('Hello World!');
 exports[`Storyshots Domain Components/Card Default 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
     >
       <img
         alt="thumbnail"
-        className="chakra-image css-i96gla"
+        className="chakra-image css-3j5kgf"
         height={70}
         loading="lazy"
         src="https://placehold.jp/150x150.png"
@@ -794,7 +1015,7 @@ Array [
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -827,7 +1048,7 @@ Array [
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -841,14 +1062,14 @@ Array [
 exports[`Storyshots Domain Components/Card Long 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
     >
       <img
         alt="thumbnail"
-        className="chakra-image css-i96gla"
+        className="chakra-image css-3j5kgf"
         height={70}
         loading="lazy"
         src="https://placehold.jp/150x150.png"
@@ -868,7 +1089,7 @@ Array [
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -901,7 +1122,7 @@ Array [
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -915,7 +1136,7 @@ Array [
 exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
@@ -934,7 +1155,7 @@ Array [
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -959,7 +1180,7 @@ Array [
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -973,14 +1194,14 @@ Array [
 exports[`Storyshots Domain Components/Card Short 1`] = `
 Array [
   <div
-    className="css-1bv5la7"
+    className="css-1no22wl"
   >
     <div
       className="css-ojlcd6"
     >
       <img
         alt="thumbnail"
-        className="chakra-image css-i96gla"
+        className="chakra-image css-3j5kgf"
         height={70}
         loading="lazy"
         src="https://placehold.jp/150x150.png"
@@ -1000,7 +1221,7 @@ Array [
           吾輩は猫である。
         </h3>
         <time
-          className="css-d3pfnp"
+          className="css-o30iye"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -1033,7 +1254,7 @@ Array [
         吾輩は猫である。
       </h3>
       <time
-        className="css-d3pfnp"
+        className="css-o30iye"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -1044,24 +1265,294 @@ Array [
 ]
 `;
 
+exports[`Storyshots Domain Components/Pagination Default 1`] = `
+Array [
+  <ul
+    className="pagination"
+  >
+    <li
+      className="pagination__previous"
+    >
+      <a
+        aria-disabled="false"
+        aria-label="Previous page"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        rel="prev"
+        role="button"
+        tabIndex="0"
+      >
+        &lt;
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 1"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        1
+      </a>
+    </li>
+    <li
+      className="break"
+    >
+      <a
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        ...
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 3"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        3
+      </a>
+    </li>
+    <li
+      className="active"
+    >
+      <a
+        aria-current="page"
+        aria-label="Page 4 is your current page"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        4
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 5"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        5
+      </a>
+    </li>
+    <li
+      className="break"
+    >
+      <a
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        ...
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        aria-label="Page 10"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        10
+      </a>
+    </li>
+    <li
+      className="pagination__next"
+    >
+      <a
+        aria-disabled="false"
+        aria-label="Next page"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        rel="next"
+        role="button"
+        tabIndex="0"
+      >
+        &gt;
+      </a>
+    </li>
+  </ul>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Layout Components/Footer Default 1`] = `
 Array [
   <footer
     className="css-1ijbxy6"
   >
     <div
-      className="css-sxln12"
+      className="css-3thfti"
     >
-      <a
-        href="/"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
+      <div
+        className="css-ij292a"
       >
-        ©
-        2000
-         
-        Hello World!
-      </a>
+        <ul
+          className="css-1bb328q"
+          role="list"
+        >
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              お問い合わせ
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              利用規約
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1l4w6pd"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ©
+          2000
+           
+          Hello World!
+        </a>
+      </div>
+    </div>
+  </footer>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Footer Long 1`] = `
+Array [
+  <footer
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-3thfti"
+    >
+      <div
+        className="css-ij292a"
+      >
+        <ul
+          className="css-1bb328q"
+          role="list"
+        >
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩は猫である。名前はまだ無い
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              どこで生れたかとんと見当がつかぬ
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+            </a>
+          </li>
+          <li
+            className="css-12sewy"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩はここで始めて人間というものを見た
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1l4w6pd"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ©
+          2000
+           
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+        </a>
+      </div>
+    </div>
+  </footer>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Footer No Pages 1`] = `
+Array [
+  <footer
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-3thfti"
+    >
+      <div
+        className="css-1l4w6pd"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ©
+          2000
+           
+          Hello World!
+        </a>
+      </div>
     </div>
   </footer>,
   <span />,
@@ -1074,17 +1565,618 @@ Array [
     className="css-1ijbxy6"
   >
     <div
-      className="css-1gc00b1"
+      className="css-1gv1287"
     >
-      <a
-        href="/"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
+      <div
+        className="css-o2383q"
       >
-        Hello World!
-      </a>
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              お問い合わせ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              利用規約
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1m9wlgl"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          Hello World!
+        </a>
+      </div>
+      <div
+        className="css-1tqwu74"
+      >
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              お問い合わせ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              利用規約
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </header>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Header Long 1`] = `
+Array [
+  <header
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-1gv1287"
+    >
+      <div
+        className="css-o2383q"
+      >
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩は猫である。名前はまだ無い
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              どこで生れたかとんと見当がつかぬ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩はここで始めて人間というものを見た
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-1m9wlgl"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+        </a>
+      </div>
+      <div
+        className="css-1tqwu74"
+      >
+        <ul
+          className="css-10z17e"
+          role="list"
+        >
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩は猫である。名前はまだ無い
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              どこで生れたかとんと見当がつかぬ
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+            </a>
+          </li>
+          <li
+            className="css-i4ntb9"
+          >
+            <a
+              href="https://example.com"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              吾輩はここで始めて人間というものを見た
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Header No Pages 1`] = `
+Array [
+  <header
+    className="css-1ijbxy6"
+  >
+    <div
+      className="css-1gv1287"
+    >
+      <div
+        className="css-1m9wlgl"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          Hello World!
+        </a>
+      </div>
+    </div>
+  </header>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Layout Components/Layout Default 1`] = `
+Array [
+  <div
+    className="css-0"
+  >
+    [[head]]
+    [[header]]
+    <main>
+      <div
+        className="css-jlhdae"
+      >
+        Hello World!
+      </div>
+    </main>
+    [[footer]]
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/BlogCard Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="blog-card"
+    >
+      <a
+        href="https://example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div
+          className="blog-card__image"
+          style={
+            Object {
+              "backgroundColor": "#ccc",
+              "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
+            }
+          }
+        />
+        <div
+          className="blog-card__details"
+        >
+          <div
+            className="blog-card__details__title"
+          >
+            吾輩は猫である
+          </div>
+          <div
+            className="blog-card__details__description"
+          >
+            吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+          </div>
+          <div
+            className="blog-card__details__source"
+          >
+            <div
+              className="blog-card__details__source__favicon"
+              style={
+                Object {
+                  "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
+                }
+              }
+            />
+            <div
+              className="blog-card__details__source__name"
+            >
+              example
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/BlogCard Minimum 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="blog-card"
+    >
+      <a
+        href="https://example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div
+          className="blog-card__image"
+          style={
+            Object {
+              "backgroundColor": "#ccc",
+              "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
+            }
+          }
+        />
+        <div
+          className="blog-card__details"
+        >
+          <div
+            className="blog-card__details__title"
+          >
+            https://example.com
+          </div>
+          <div
+            className="blog-card__details__description"
+          >
+            
+          </div>
+          <div
+            className="blog-card__details__source"
+          >
+            <div
+              className="blog-card__details__source__favicon"
+              style={
+                Object {
+                  "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
+                }
+              }
+            />
+            <div
+              className="blog-card__details__source__name"
+            >
+              example.com
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/CodePen Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-codepen"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        scrolling="no"
+        src="https://codepen.io/technote-space/embed/NWgLZRY?embed-version=2"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/CodeSandbox Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-codesandbox"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+        scrolling="no"
+        src="https://codesandbox.io/embed/keen-roman-kpz43?fontsize=14&hidenavigation=1&theme=dark"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/JsFiddle Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-jsfiddle"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        scrolling="no"
+        src="https://jsfiddle.net/Technote/3upmsz2y/2/embedded/"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/StackBlitz Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-stackblitz"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="no"
+        loading="lazy"
+        scrolling="no"
+        src="https://stackblitz.com/edit/js-fkebjy?file=index.js&embed=1"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/Tweet Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-tweet"
+    >
+      <iframe
+        allowFullScreen={true}
+        allowTransparency={true}
+        frameBorder="0"
+        id="twitter-widget-849813577770778624"
+        loading="lazy"
+        scrolling="no"
+        src="https://platform.twitter.com/embed/Tweet.html?embedId=twitter-widget-849813577770778624&frame=false&hideCard=false&hideThread=false&id=849813577770778624&theme=light&widgetsVersion=1890d59c%3A1627936082797&width=450px"
+        style={
+          Object {
+            "display": "block",
+            "flexGrow": 1,
+            "height": 660,
+            "maxHeight": "calc(100vw * 1.6)",
+            "maxWidth": "100%",
+            "position": "static",
+            "visibility": "visible",
+            "width": 450,
+          }
+        }
+        title="Twitter Tweet"
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/YouTube Default 1`] = `
+Array [
+  <div
+    className="article"
+  >
+    <div
+      className="embed-youtube"
+      style={
+        Object {
+          "height": 0,
+          "paddingBottom": "56.25%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <iframe
+        allowFullScreen={true}
+        loading="lazy"
+        src="https://www.youtube.com/embed/dHXC_ahjtEE?loop=1&playlist=dHXC_ahjtEE"
+        style={
+          Object {
+            "height": "100%",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Library Components/YouTube Invalid Url 1`] = `
+Array [
+  <div
+    className="article"
+  />,
   <span />,
 ]
 `;

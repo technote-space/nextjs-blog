@@ -1,11 +1,12 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { storybookArgTypes } from '@/components/wrap';
+import { storybookArgTypes } from '@/components/storybook.shared';
 import List from './List';
+import ListItem from './ListItem';
 
 export default {
   title: 'Common Components/List',
   component: List,
-  subcomponents: { ListItem: List.Item },
+  subcomponents: { ListItem },
   argTypes: {
     children: { control: { type: 'text' } },
     ...storybookArgTypes,
@@ -14,12 +15,12 @@ export default {
 
 const EmptyTemplate: ComponentStory<typeof List> = (args) => <List {...args} />;
 const OneItemTemplate: ComponentStory<typeof List> = ({ children, ...args }) => <List {...args} >
-  <List.Item>{children}</List.Item>
+  <ListItem>{children}</ListItem>
 </List>;
 const MultipleItemsTemplate: ComponentStory<typeof List> = ({ children, ...args }) => <List {...args} >
-  <List.Item>{children}</List.Item>
-  <List.Item>{children}</List.Item>
-  <List.Item>{children}</List.Item>
+  <ListItem>{children}</ListItem>
+  <ListItem>{children}</ListItem>
+  <ListItem>{children}</ListItem>
 </List>;
 
 export const Empty = EmptyTemplate.bind({});

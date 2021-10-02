@@ -1,31 +1,58 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
-import Link from 'next/link';
 import { memo } from 'react';
 import Flex from '@/components/layout/Flex';
-import { wrap } from '@/components/wrap';
+import List from '@/components/layout/List';
+import ListItem from '@/components/layout/ListItem';
+import Link from '@/components/link/Link';
+import { Footer as FooterComponent } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
+
+type PostData = {
+  label: string;
+  url: string;
+};
 
 type Props = StyleProps & {
   author: string;
+  authorStyle?: StyleProps;
+  pages?: PostData[];
+  pagesStyle?: StyleProps;
 }
 
 const defaultProps: StyleProps = {
+  flexDirection: 'column',
   justifyContent: 'center',
   p: [5, 7, 8, 8],
   mt: 5,
   boxShadow: '0 0 5px #ccc',
 };
+const defaultAuthorStyle: StyleProps = {
+  justifyContent: 'center',
+};
+const defaultPagesStyle: StyleProps = {
+  justifyContent: 'center',
+  mb: 2,
+};
 
-const Footer: VFC<Props> = ({ author, ...props }) => {
-  return <wrap.footer backgroundColor="white">
-    <Flex {...defaultProps} {...props}>
+const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <FooterComponent
+  backgroundColor="white"
+>
+  <Flex {...defaultProps} {...props}>
+    {!!pages?.length && <Flex {...defaultPagesStyle} {...pagesStyle}>
+      <List display="flex" flexWrap="wrap">
+        {pages.map(({ label, url }, index) => <ListItem key={index} m={1} mx={2}>
+          <Link href={url}>{label}</Link>
+        </ListItem>)}
+      </List>
+    </Flex>}
+    <Flex {...defaultAuthorStyle} {...authorStyle}>
       <Link href={pagesPath.$url()}>
-        <a>©{(new Date()).getFullYear()} {author}</a>
+        ©{(new Date()).getFullYear()} {author}
       </Link>
     </Flex>
-  </wrap.footer>;
-};
+  </Flex>
+</FooterComponent>;
 
 Footer.displayName = 'Footer';
 export default memo(Footer);

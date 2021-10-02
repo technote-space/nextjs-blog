@@ -5,8 +5,8 @@ import type { IHeaderComponent } from '$/domain/app/layout/header';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
+import View from '$/infra/app/layout/view';
 import { BaseComponent } from '$/infra/shared/component';
-import Box from '@/components/layout/Box';
 
 @singleton()
 export class LayoutComponent extends BaseComponent<Props> implements ILayoutComponent {
@@ -19,18 +19,13 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo(({ seo, children }: Props) => {
-      return <Box>
-        {this.headComponent.render(seo ?? {})}
-        {this.headerComponent.render({})}
-        <main>
-          <Box mx="auto" maxW={1000}>
-            {children}
-          </Box>
-        </main>
-        {this.footerComponent.render({})}
-      </Box>;
-    });
+    const component = memo(({ seo, children }: Props) => <View
+      head={this.headComponent.render(seo ?? {})}
+      header={this.headerComponent.render({})}
+      footer={this.footerComponent.render({})}
+    >
+      {children}
+    </View>);
     component.displayName = 'LayoutComponent';
 
     return component;

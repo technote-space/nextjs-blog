@@ -25,6 +25,7 @@ function useEsbuildLoader(config, options) {
 module.exports = withBundleAnalyzer({
   webpack5: true,
   reactStrictMode: true,
+  trailingSlash: true,
   distDir: process.env.NODE_ENV === 'production' ? 'build' : '.next',
   webpack: (config, {isServer, webpack}) => {
     config.resolve.fallback = {
@@ -37,18 +38,7 @@ module.exports = withBundleAnalyzer({
       timers: false,
     };
     if (!isServer) {
-      config.externals.push(
-        'mysql',
-        {'serverless-mysql': 'var {}'},
-        {'html-to-text': 'var {}'},
-        {'gray-matter': 'var {}'},
-        {'remark': 'var {}'},
-        {'remark-rehype': 'var {}'},
-        {'rehype-stringify': 'var {}'},
-        {'remark-gfm': 'var {}'},
-        {'remove-markdown': 'var {}'},
-        {'url-metadata': 'var {}'},
-      );
+      config.externals.push({'./registry.server': 'var {}'});
     }
 
     config.plugins.push(

@@ -18,7 +18,6 @@ type Props = StyleProps & {
 
 const defaultProps: StyleProps = {
   mx: 'auto',
-  maxW: 900,
   backgroundColor: 'white',
   cursor: 'pointer',
   boxSizing: 'border-box',
@@ -33,10 +32,10 @@ const defaultProps: StyleProps = {
   },
 };
 
-const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) => {
-  return <Flex {...defaultProps} {...props}>
+const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) =>
+  <Flex {...defaultProps} {...props}>
     <Flex flexDir="row" display={['none', 'none', 'flex', 'flex']} flexGrow={1} p={3}>
-      <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]}/>
+      <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]} alignSelf="center"/>
       <Flex flexDir="column" p={3} flexGrow={1}>
         <MainHeading mb={4}>
           {title}
@@ -74,7 +73,6 @@ const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ..
       />
     </Flex>
   </Flex>;
-};
 
 Card.displayName = 'Card';
 export default memo(Card);

@@ -2,7 +2,7 @@ module.exports = {
   clearMocks: true,
   testMatch: ['<rootDir>/src/**/*.test.ts?(x)'],
   collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
+    'src/**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],

@@ -1,6 +1,9 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
-import { convert } from 'html-to-text';
+import type { IColorService } from '$/domain/post/service/color';
+import  type { IHtmlService } from '$/domain/post/service/html';
+import type { IOembedService } from '$/domain/post/service/oembed';
+import type { ITocService } from '$/domain/post/service/toc';
 import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
@@ -9,6 +12,7 @@ import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
+import PostType from '$/domain/post/valueObject/postType';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -30,11 +34,17 @@ type PostData = {
 export class WordPressPostRepository extends BasePostRepository implements IPostRepository {
   private mysql: mysql.ServerlessMysql;
 
-  public constructor(@inject('Settings') settings: Settings) {
-    super(settings);
+  public constructor(
+    @inject('Settings') settings: Settings,
+    @inject('IColorService') color: IColorService,
+    @inject('IOembedService') oembed: IOembedService,
+    @inject('ITocService') toc: ITocService,
+    @inject('IHtmlService') private html: IHtmlService,
+  ) {
+    super(settings, color, oembed, toc);
     this.mysql = mysql({
       config: {
-        host: 'localhost',
+        host: process.env.DB_HOST ?? 'localhost',
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
@@ -43,9 +53,13 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     });
   }
 
-  private getExcludeSettings() {
-    const excludeIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId && !setting.type).map(setting => Number(setting.id));
-    const excludeTermTaxonomyIds = (this.settings.exclude ?? []).filter(setting => setting.source === this.sourceId && setting.type === 'term').map(setting => Number(setting.id));
+  private getExcludeSettings(postType?: string) {
+    const excludeIds = (this.settings.exclude ?? [])
+      .filter(setting => !setting.type && this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId)
+      .map(setting => Number(setting.id));
+    const excludeTermTaxonomyIds = (this.settings.exclude ?? [])
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId && setting.type === 'term')
+      .map(setting => Number(setting.id));
 
     const excludeIdsWhere = `${excludeIds.length ? ` && wp_posts.ID NOT IN (${Array<string>(excludeIds.length).fill('?').join(', ')})` : ''}`;
     const excludeTermTaxonomyIdsWhere = `${excludeTermTaxonomyIds.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (${Array<string>(excludeTermTaxonomyIds.length).fill('?').join(', ')}))` : ''}`;
@@ -56,8 +70,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     };
   }
 
-  public async all(): Promise<Post[]> {
-    const { exclude, excludeWhere } = this.getExcludeSettings();
+  public async all(postType?: string): Promise<Post[]> {
+    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT REPLACE(
                TRIM(TRAILING '/' FROM
@@ -75,7 +89,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
       WHERE wp_posts.post_type = ? && wp_posts.post_status = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', ...exclude]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -92,18 +106,16 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
         id: result.post_name,
       }),
       Title.create(result.post_title),
-      Excerpt.create(this.replace(convert(result.post_content, {
-        wordwrap: null,
-        selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
-      }))),
+      Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
+      PostType.create(this.getPostType(postType)),
       result.thumbnail_id && thumbnails[result.thumbnail_id] ? Thumbnail.create(thumbnails[result.thumbnail_id]) : undefined,
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
     ));
   }
 
-  public async getIds(): Promise<Id[]> {
-    const { exclude, excludeWhere } = this.getExcludeSettings();
+  public async getIds(postType?: string): Promise<Id[]> {
+    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
       SELECT REPLACE(
                TRIM(TRAILING '/' FROM
@@ -115,7 +127,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
       WHERE post_type = ? && post_status = ?${excludeWhere}
-    `, ['custom_permalink', 'post', 'publish', ...exclude]);
+    `, ['custom_permalink', this.getPostType(postType), 'publish', ...exclude]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -124,8 +136,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     }));
   }
 
-  public async fetch(id: Id): Promise<PostDetail> {
-    const { exclude, excludeWhere } = this.getExcludeSettings();
+  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
+    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.post_date,
              wp_posts.post_modified,
@@ -145,7 +157,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                        permalink.meta_value
                      )
                 ), '/', '-') = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', 'post', 'publish', id.postId, ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', id.postId, ...exclude]);
 
     await this.mysql.end();
 
@@ -153,20 +165,14 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       throw new NotFoundException;
     }
 
+    const isClassicEditor = !/<!-- wp:/.test(results[0].post_content);
+    const processedContent = await this.processContent(results[0].post_content, postType);
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),
-      // block editor or classic editor
-      Content.create(
-        this.replace(/<!-- wp:/.test(results[0].post_content) ?
-          (await this.processLink(results[0].post_content)).replace(/<!-- \/?wp:.+? -->\n/g, '') :
-          (await this.processLink(results[0].post_content)).replace(/\r?\n/g, '<br />')
-        ),
-      ),
-      Excerpt.create(this.replace(convert(results[0].post_content, {
-        wordwrap: null,
-        selectors: [{ selector: 'pre', format: 'skip' }, { selector: 'a', format: 'inline' }],
-      }))),
+      Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
+      Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(results[0].post_content))),
+      PostType.create(this.getPostType(postType)),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),

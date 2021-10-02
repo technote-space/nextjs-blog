@@ -5,9 +5,9 @@ import type Id from '$/domain/post/valueObject/id';
 export interface IPostRepository {
   setSourceId(sourceId: string): void;
 
-  all(): Promise<Post[]>;
+  all(postType?: string): Promise<Post[]>;
 
-  getIds(): Promise<Id[]>;
+  getIds(postType?: string): Promise<Id[]>;
 
-  fetch(id: Id): Promise<PostDetail> | never;
+  fetch(id: Id, postType?: string): Promise<PostDetail> | never;
 }

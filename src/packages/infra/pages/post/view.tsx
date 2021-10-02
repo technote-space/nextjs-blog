@@ -1,20 +1,17 @@
-import type { PostDetail } from '$/domain/post/entity/postDetail';
+import type { HooksParams } from '$/infra/pages/post/hooks';
 import type { VFC } from 'react';
-import Article from '$/infra/pages/post/components/Article';
+import dynamic from 'next/dynamic';
 
-export type Props = {
-  post: PostDetail;
-};
+const Article = dynamic(() => import('$/infra/pages/post/components/Article'));
 
-const View: VFC<Props> = ({ post }) => {
-  return <Article
-    thumbnail={post.getThumbnail()?.value}
-    backgroundColor={post.getDominantColor()?.value}
-    title={post.getTitle().value}
-    createdAt={post.getCreatedAt().value}
-    content={post.getContent().value}
-  />;
-};
+const View: VFC<HooksParams['viewProps']> = ({ post, hideDate }) => <Article
+  thumbnail={post.getThumbnail()?.value}
+  backgroundColor={post.getDominantColor()?.value}
+  title={post.getTitle().value}
+  createdAt={post.getCreatedAt().value}
+  content={post.getContent().value}
+  hideDate={hideDate}
+/>;
 
 View.displayName = 'PostView';
 export default View;

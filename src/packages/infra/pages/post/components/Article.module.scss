@@ -43,6 +43,33 @@
   h6 {
     line-height: 1.25;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+
+    :global .icon-link {
+      transition: all 0.3s;
+      height: 0;
+      margin-left: 5px;
+    }
+
+    &:hover {
+      :global .icon-link {
+        height: 20px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      :global .icon-link {
+        height: 20px;
+      }
+    }
   }
 
   h2,
@@ -141,6 +168,10 @@
     word-break: break-word;
   }
 
+  iframe {
+    max-width: 100%;
+  }
+
   :global .scrollable-table {
     -webkit-overflow-scrolling: touch;
 
@@ -202,6 +233,7 @@
     font-style: italic;
     background-color: #eee;
     padding: 4px;
+    line-height: 1.5;
   }
 
   img {
@@ -209,7 +241,7 @@
     cursor: pointer;
     display: inline;
     margin: 8px 0;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     transition: all 0.3s;
 
     &:hover {
@@ -389,11 +421,12 @@
         height: 0;
         padding-bottom: 21%;
         align-self: center;
-        transition: all 0.5s ease;
+        transition: transform 0.5s ease;
         background-size: contain;
         background-repeat: no-repeat;
         background-position-x: center;
         background-position-y: center;
+        backface-visibility: hidden;
       }
 
       :global .blog-card__details {
@@ -447,7 +480,7 @@
       color: #e53900;
 
       :global .blog-card__image {
-        transform: scale(1.08);
+        transform: scale(1.05);
       }
     }
   }
@@ -486,6 +519,105 @@
   @media screen and (max-width: 480px) {
     :global .blog-card {
       margin: 16px auto;
+    }
+  }
+
+  /* TOC */
+  :global .toc-wrapper {
+    padding: 0;
+    margin: 3em auto;
+    border: 2px solid whitesmoke;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    width: 90%;
+
+    :global .toc-title {
+      background: whitesmoke;
+      color: #292929;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      font-size: 1.1em;
+      text-align: center;
+      display: block;
+      padding: 2px 16px;
+      cursor: pointer;
+
+      &::after {
+        content: '[開く]';
+        margin-left: .5em;
+        cursor: pointer;
+        font-size: .8em;
+      }
+
+      &:hover::after {
+        text-decoration: underline
+      }
+    }
+
+    :global .toc-checkbox {
+      display: none;
+
+      & + .toc-title + .toc {
+        ol {
+          margin: 0;
+          transition: margin .3s ease-out;
+        }
+
+        li {
+          margin: 0 0.2em;
+          opacity: 0;
+          transition: all .3s ease-out;
+          line-height: 0;
+
+          a {
+            pointer-events: none;
+            display: block;
+            line-height: 0;
+            transition: all .3s ease-out;
+          }
+        }
+      }
+
+      &:checked + .toc-title {
+        &::after {
+          content: '[閉じる]'
+        }
+
+        & + .toc {
+          > ol {
+            margin: 1em 0;
+          }
+
+          li {
+            margin: 0.3em 0.2em;
+            opacity: 1;
+
+            a {
+              pointer-events: auto;
+              line-height: 1.6;
+            }
+          }
+        }
+      }
+    }
+
+    :global .toc {
+      a {
+        transition: all 200ms ease-in-out;
+        text-decoration: none;
+
+        &:hover {
+          color: #ccc;
+        }
+
+        color: #545454;
+      }
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    :global .toc-wrapper {
+      width: 100%;
     }
   }
 

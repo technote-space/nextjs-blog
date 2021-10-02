@@ -24,15 +24,15 @@ export class PostFactory implements IPostFactory {
     return this.__sources;
   }
 
-  public all(source: Source): Promise<Post[]> {
-    return this.__postRepositories[source.value].all();
+  public all(source: Source, postType?: string): Promise<Post[]> {
+    return this.__postRepositories[source.value].all(postType);
   }
 
-  public getIds(source: Source): Promise<Id[]> {
-    return this.__postRepositories[source.value].getIds();
+  public getIds(source: Source, postType?: string): Promise<Id[]> {
+    return this.__postRepositories[source.value].getIds(postType);
   }
 
-  public fetch(id: Id): Promise<PostDetail> {
-    return this.__postRepositories[id.source.value].fetch(id);
+  public fetch(id: Id, postType?: string): Promise<PostDetail> {
+    return this.__postRepositories[id.source.value].fetch(id, postType);
   }
 }

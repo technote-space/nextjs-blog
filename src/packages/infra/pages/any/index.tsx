@@ -2,11 +2,11 @@ import type { Settings } from '$/domain/app/settings';
 import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
 import type { IPostManager } from '$/domain/post/manager';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
+import pluralize from 'pluralize';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
+import PostType from '$/domain/post/valueObject/postType';
 import Source from '$/domain/post/valueObject/source';
-import NotFoundException from '$/domain/shared/exceptions/notFound';
-import { fromEntity } from '$/infra/post/dto/postDetail';
 
 @singleton()
 export class AnyPageProps implements IAnyPageProps {
@@ -42,7 +42,7 @@ export class AnyPageProps implements IAnyPageProps {
     };
   }
 
-  private findDestination(source: string): { source: string; id: string | number } | undefined {
+  private findDestination(source: string): { source: string; id: string | number; postType?: string } | undefined {
     return (this.settings.urlMaps ?? []).find(urlMap => AnyPageProps.normalizeSource(urlMap.source) === source)?.destination;
   }
 
@@ -61,24 +61,14 @@ export class AnyPageProps implements IAnyPageProps {
       };
     }
 
-    try {
-      const post = await this.postManager.fetch(Id.create({
-        source: Source.create(destination.source),
-        id: destination.id,
-      }));
-      return {
-        props: {
-          post: await fromEntity(post),
-        },
-      };
-    } catch (e) {
-      if (e instanceof NotFoundException) {
-        return {
-          notFound: true,
-        };
-      }
-
-      throw e;
-    }
+    return {
+      redirect: {
+        permanent: true,
+        destination: `/${pluralize(destination.postType ?? this.settings.postType?.default ?? PostType.DEFAULT_POST_TYPE)}/${Id.create({
+          source: Source.create(destination.source),
+          id: destination.id,
+        }).value}`,
+      },
+    };
   }
 }

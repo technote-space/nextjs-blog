@@ -1,5 +1,5 @@
+import type { PostDTO } from '$/domain/post/dto/post';
 import type { IPage } from '$/domain/shared/page';
-import type { PostDTO } from '$/infra/post/dto/post';
 import type { GetStaticPropsResult } from 'next';
 
 export type Props = {
@@ -8,5 +8,5 @@ export type Props = {
 export type IIndexPage = IPage<Props>
 
 export interface IIndexPageProps {
-  getStaticProps(): Promise<GetStaticPropsResult<Props>>;
+  getStaticProps(postType?: string): Promise<GetStaticPropsResult<Props>>;
 }

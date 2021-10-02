@@ -1,7 +1,7 @@
 import type { StyleProps } from '@/components/wrap';
 import type { FC } from 'react';
 import { colors } from '@/components/constants';
-import factory from '@/components/factory';
+import { Heading3 } from '@/components/wrap';
 
 type Props = StyleProps;
 
@@ -13,12 +13,12 @@ const defaultProps: Props = {
 };
 
 const SubHeading: FC<Props> = ({ children, ...props }) => {
-  return <factory.h3
+  return <Heading3
     {...defaultProps}
     {...props}
   >
     {children}
-  </factory.h3>;
+  </Heading3>;
 };
 
 SubHeading.displayName = 'SubHeading';

@@ -5,7 +5,6 @@ import type { VFC } from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { createBreakpoints, mode } from '@chakra-ui/theme-tools';
 import { memo } from 'react';
-import SimpleReactLightbox from 'simple-react-lightbox';
 import { inject, singleton } from 'tsyringe';
 import { BaseComponent } from '$/infra/shared/component';
 
@@ -52,13 +51,9 @@ export class ChakraUiTheme extends BaseComponent<Props> implements ITheme {
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo(({ children }) => {
-      return <ChakraProvider theme={this.__theme}>
-        <SimpleReactLightbox>
-          {children}
-        </SimpleReactLightbox>
-      </ChakraProvider>;
-    });
+    const component = memo(({ children }) => <ChakraProvider theme={this.__theme}>
+      {children}
+    </ChakraProvider>);
     component.displayName = 'ThemeProvider';
 
     return component;
