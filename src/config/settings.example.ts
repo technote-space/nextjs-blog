@@ -14,8 +14,8 @@ export const settings: Settings = {
   replace: [
     {
       source: postSources['wp'],
-      from: /class="(.+?\s)?wp-block-code\s+(\w+)(\s.+?)?"/g,
-      to: 'class="$1language-$2$3"',
+      from: /<pre class="wp-block-code\s+(\w+)(\s.+?)?"><code>/g,
+      to: '<pre class="language-$1$2"><code class="language-$1">',
     },
     {
       source: postSources['wp'],
