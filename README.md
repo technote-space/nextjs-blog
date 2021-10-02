@@ -1,11 +1,23 @@
-# NextJs Blog
+<p align="center">
+  <a href="https://nextjs.org">
+    <img alt="logo" src="https://user-images.githubusercontent.com/39912269/135714832-7d94bc6a-eb3f-4f99-945c-09e0e35e5bc4.png" height="128">
+  </a>
+</p>
 
-[![CI Status](https://github.com/nextjs-blog/nextjs-blog/workflows/CI/badge.svg)](https://github.com/nextjs-blog/nextjs-blog/actions)
-[![codecov](https://codecov.io/gh/nextjs-blog/nextjs-blog/branch/main/graph/badge.svg)](https://codecov.io/gh/nextjs-blog/nextjs-blog)
-[![CodeFactor](https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog/badge)](https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/nextjs-blog/nextjs-blog/blob/main/LICENSE)
-
-NextJs で作ったブログ
+<p align="center">
+  <a aria-label="CI Status" href="https://github.com/nextjs-blog/nextjs-blog/actions">
+    <img alt="CI Status" src="https://github.com/nextjs-blog/nextjs-blog/workflows/CI/badge.svg">
+  </a>
+  <a aria-label="codecov" href="https://codecov.io/gh/nextjs-blog/nextjs-blog">
+    <img alt="codecov" src="https://codecov.io/gh/nextjs-blog/nextjs-blog/branch/main/graph/badge.svg">
+  </a>
+  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog/badge">
+  </a>
+  <a aria-label="License" href="https://github.com/nextjs-blog/nextjs-blog/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg">
+  </a>
+</p>
 
 ## Table of Contents
 
@@ -52,15 +64,28 @@ nvm の設定と package のインストール
 
 posts ディレクトリ下に `.md` ファイルを追加
 
+オフにする場合は `.env` の `NEXT_PUBLIC_MD_SOURCE` をコメントアウト
+
+### WordPressのエクスポート機能で出力したXMLファイル
+
+1. WordPressの 管理画面 > ツール > エクスポート からXML形式で全てのコンテンツをエクスポート
+2. postsディレクトリなどに配置
+3. 配置したファイルパスを `.env` の `WP_EXPORT_XML` に指定 (例：`pages/export.xml`)
+4. WordPress の `wp-content/uploads` を `public` にコピー (`public/wp-content/uploads`)
+5. `.env` の `NEXT_PUBLIC_WP_XML_SOURCE` のコメントを外す
+
 ### WordPressのデータベース
 
+既存の WordPress が稼働していて画像等にURLでアクセスできる前提です。
+
 1. `.env` に接続情報を設定
-2. `src/config/settings.ts` の postSources の wp のコメントを外す
+   * `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`
+2. `.env` の `NEXT_PUBLIC_WP_DB_SOURCE` のコメントを外す
 
 ### 対応予定
 
-* WordPressのエクスポート機能で出力されたxml
 * microCMS
+* WordPress REST API
 
 ## Author
 
