@@ -173,14 +173,19 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }));
   }
 
+  private static convertImageUrl(content: string, data: WpXmlData): string {
+    return content.replace(new RegExp(`${pregQuote(`${data.rss.channel[0].base_site_url[0].replace(/\/$/, '')}`, '/')}`, 'g'), '');
+  }
+
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
-    const post = this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType)).find(post => post.post_name === id.postId);
+    const data = await this.getExportXmlData();
+    const post = this.getExcludedPosts(this.collectPosts(data, postType)).find(post => post.post_name === id.postId);
     if (!post) {
       throw new NotFoundException;
     }
 
     const isClassicEditor = !/<!-- wp:/.test(post.post_content);
-    const processedContent = await this.processContent(post.post_content, postType);
+    const processedContent = WordPressExportPostRepository.convertImageUrl(await this.processContent(post.post_content, postType), data);
     return PostDetail.reconstruct(
       id,
       Title.create(post.post_title),
