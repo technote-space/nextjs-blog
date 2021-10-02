@@ -13,12 +13,12 @@ export const settings: Settings = {
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
     {
-      source: postSources['wp'],
+      source: [postSources['wp']],
       from: /<pre class="wp-block-code\s+(\w+)(\s.+?)?"><code>/g,
       to: '<pre class="language-$1$2"><code class="language-$1">',
     },
     {
-      source: postSources['wp'],
+      source: [postSources['wp']],
       from: /<!--\s+\/?wp:.+?\s+-->\n/g,
       to: '',
     },
@@ -30,11 +30,12 @@ export const settings: Settings = {
     //   source: postSources['wp'],
     //   id: '123',
     // },
-    // WordPress の term_taxonomy_id = 123 に紐付いた投稿を除外
+    // WordPress の wp_terms.slug = 'test' のタグ に紐付いた投稿を除外
+    // type = category でカテゴリー
     // {
     //   source: postSources['wp'],
-    //   type: 'term',
-    //   id: '123',
+    //   type: 'post_tag',
+    //   id: 'test',
     // },
   ],
   urlMaps: [

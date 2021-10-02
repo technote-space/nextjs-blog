@@ -57,7 +57,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
 
   private getExcludeIds(postType?: string) {
     return (this.settings.exclude ?? [])
-      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId)
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId))
       .map(setting => `${setting.id}`);
   }
 

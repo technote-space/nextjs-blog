@@ -1,23 +1,23 @@
 import type { HeadingTagName } from '@jsdevtools/rehype-toc';
 
-export type PostData = {
-  source: string;
+export type PostData<SourceType extends string | string[]> = {
+  source: SourceType;
   id: string | number;
   postType?: string;
 };
 type Replace = {
-  source?: string;
+  source?: string[];
   from: string | RegExp;
   to: string;
 };
-type Exclude = PostData & {
+type Exclude = PostData<string[]> & {
   type?: string;
 };
 type UrlMap = {
   source: string;
-  destination: PostData;
+  destination: PostData<string>;
 };
-type PageData = PostData & {
+type PageData = PostData<string> & {
   title: string;
 };
 type SEO = {

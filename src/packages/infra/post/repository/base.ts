@@ -31,7 +31,7 @@ export abstract class BasePostRepository implements IPostRepository {
   }
 
   private replace(text: string): string {
-    return (this.settings.replace ?? []).filter(setting => !setting.source || setting.source === this.sourceId).reduce((prev, setting) => {
+    return (this.settings.replace ?? []).filter(setting => !setting.source || setting.source.includes(this.sourceId)).reduce((prev, setting) => {
       return replaceAll(prev, setting.from, setting.to);
     }, text);
   }

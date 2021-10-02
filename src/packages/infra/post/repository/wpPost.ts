@@ -59,18 +59,22 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
 
   private getExcludeSettings(postType?: string) {
     const excludeIds = (this.settings.exclude ?? [])
-      .filter(setting => !setting.type && this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId)
+      .filter(setting => !setting.type && this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId))
       .map(setting => Number(setting.id));
-    const excludeTermTaxonomyIds = (this.settings.exclude ?? [])
-      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId && setting.type === 'term')
-      .map(setting => Number(setting.id));
+    const excludeTermPostTagSlugs = (this.settings.exclude ?? [])
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId) && setting.type === 'post_tag')
+      .map(setting => setting.id);
+    const excludeTermCategorySlugs = (this.settings.exclude ?? [])
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId) && setting.type === 'category')
+      .map(setting => setting.id);
 
     const excludeIdsWhere = `${excludeIds.length ? ` && wp_posts.ID NOT IN (${Array<string>(excludeIds.length).fill('?').join(', ')})` : ''}`;
-    const excludeTermTaxonomyIdsWhere = `${excludeTermTaxonomyIds.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (${Array<string>(excludeTermTaxonomyIds.length).fill('?').join(', ')}))` : ''}`;
+    const excludeTermPostTagSlugsWhere = `${excludeTermPostTagSlugs.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (SELECT term_id FROM wp_term_taxonomy WHERE taxonomy = "post_tag" AND term_id IN (SELECT term_id FROM wp_terms WHERE slug IN (${Array<string>(excludeTermPostTagSlugs.length).fill('?').join(', ')}))))` : ''}`;
+    const excludeTermCategorySlugsWhere = `${excludeTermCategorySlugs.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (SELECT term_id FROM wp_term_taxonomy WHERE taxonomy = "category" AND term_id IN (SELECT term_id FROM wp_terms WHERE slug IN (${Array<string>(excludeTermCategorySlugs.length).fill('?').join(', ')}))))` : ''}`;
 
     return {
-      exclude: [...excludeIds, ...excludeTermTaxonomyIds],
-      excludeWhere: excludeIdsWhere + excludeTermTaxonomyIdsWhere,
+      exclude: [...excludeIds, ...excludeTermPostTagSlugs, ...excludeTermCategorySlugs],
+      excludeWhere: excludeIdsWhere + excludeTermPostTagSlugsWhere + excludeTermCategorySlugsWhere,
     };
   }
 
@@ -92,8 +96,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
-      WHERE wp_posts.post_type = ? && wp_posts.post_status = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', ...exclude]);
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${excludeWhere}
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', ...exclude]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -130,8 +134,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                ) AS post_name
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
-      WHERE post_type = ? && post_status = ?${excludeWhere}
-    `, ['custom_permalink', this.getPostType(postType), 'publish', ...exclude]);
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${excludeWhere}
+    `, ['custom_permalink', this.getPostType(postType), 'publish', 'future', ...exclude]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -152,7 +156,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta on wp_posts.ID = wp_postmeta.post_id AND wp_postmeta.meta_key = ?
              LEFT JOIN wp_posts thumbnail_post on thumbnail_post.ID = wp_postmeta.meta_value
-      WHERE wp_posts.post_type = ? && wp_posts.post_status = ? &&
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?) &&
             REPLACE(
               TRIM(TRAILING '/' FROM
                    IF(
@@ -161,7 +165,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                        permalink.meta_value
                      )
                 ), '/', '-') = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', id.postId, ...exclude]);
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', id.postId, ...exclude]);
 
     await this.mysql.end();
 
