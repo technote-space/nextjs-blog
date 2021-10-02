@@ -62,4 +62,7 @@ export type Settings = {
     header?: PageData[];
     footer?: PageData[];
   };
+  wpExportXml?: {
+    path: string;
+  }
 };
