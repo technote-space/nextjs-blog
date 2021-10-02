@@ -62,6 +62,13 @@ export type Settings = {
     header?: PageData[];
     footer?: PageData[];
   };
+  wpdb?: {
+    host?: string | undefined;
+    port?: number | undefined;
+    user?: string | undefined;
+    password?: string | undefined;
+    database?: string | undefined;
+  };
   wpExportXml?: {
     path: string;
   }

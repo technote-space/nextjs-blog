@@ -1,14 +1,18 @@
 import type { Settings } from '$/domain/app/settings';
 
 // key => sourceId
-// 現在使用可能なkey: md, wp
+// 現在使用可能なkey: md, wpdb, wpxml
 export const postSources: Record<string, string> = {
   // posts ディレクトリに作成した markdown で記事作成
-  'md': 'md',
+  ...(process.env.MD_SOURCE ? { 'md': process.env.MD_SOURCE } : {}),
   // .env で接続した WordPress の wp_posts で記事作成
-  // 'wpdb': wpdb,
+  ...(process.env.WP_DB_SOURCE && process.env.DB_USER && process.env.DB_PASS && process.env.DB_NAME ? {
+    'wpdb': 'wpdb',
+  } : {}),
   // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
-  // 'wpxml': wpxml,
+  ...(process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
+    'wpxml': 'wpxml',
+  } : {}),
 };
 export const settings: Settings = {
   // 本文内で置換
@@ -73,6 +77,16 @@ export const settings: Settings = {
   // },
   isIsr: !!process.env.IS_ISR,
   isrRevalidate: process.env.ISR_REVALIDATE ? Number(process.env.ISR_REVALIDATE) : undefined,
+  wpdb: process.env.WP_DB_SOURCE && process.env.DB_USER && process.env.DB_PASS && process.env.DB_NAME ? {
+    host: process.env.DB_HOST ?? 'localhost',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT),
+  } : undefined,
+  wpExportXml: process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
+    path: process.env.WP_EXPORT_XML,
+  } : undefined,
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
@@ -87,7 +101,4 @@ export const settings: Settings = {
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
   },
-  wpExportXml: process.env.WP_EXPORT_XML ? {
-    path: process.env.WP_EXPORT_XML,
-  } : undefined,
 };
