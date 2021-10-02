@@ -4,15 +4,11 @@ import type { Settings } from '$/domain/app/settings';
 // 現在使用可能なkey: md, wpdb, wpxml
 export const postSources: Record<string, string> = {
   // posts ディレクトリに作成した markdown で記事作成
-  ...(process.env.MD_SOURCE ? { 'md': process.env.MD_SOURCE } : {}),
+  ...(process.env.NEXT_PUBLIC_MD_SOURCE ? { 'md': process.env.NEXT_PUBLIC_MD_SOURCE } : {}),
   // .env で接続した WordPress の wp_posts で記事作成
-  ...(process.env.WP_DB_SOURCE && process.env.DB_USER && process.env.DB_PASS && process.env.DB_NAME ? {
-    'wpdb': 'wpdb',
-  } : {}),
+  ...(process.env.NEXT_PUBLIC_WP_DB_SOURCE ? { 'wpdb': process.env.NEXT_PUBLIC_WP_DB_SOURCE } : {}),
   // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
-  ...(process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
-    'wpxml': 'wpxml',
-  } : {}),
+  ...(process.env.NEXT_PUBLIC_WP_XML_SOURCE ? { 'wpxml': process.env.NEXT_PUBLIC_WP_XML_SOURCE } : {}),
 };
 export const settings: Settings = {
   // 本文内で置換
