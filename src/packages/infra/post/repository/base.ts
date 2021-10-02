@@ -4,10 +4,12 @@ import type { IPostRepository } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import type Id from '$/domain/post/valueObject/id';
 import { Post } from '$/domain/post/entity/post';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
+import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import { replaceAll } from '@/lib/helpers/string';
 import { processExternalLinks, processLinksInCode, processOneLineLinks } from '@/lib/helpers/url';
 
@@ -18,6 +20,7 @@ export abstract class BasePostRepository implements IPostRepository {
     protected oembed: IOembedService,
     protected toc: ITocService,
     protected code: ICodeService,
+    protected thumbnail: IThumbnailService,
   ) {
   }
 
@@ -35,6 +38,15 @@ export abstract class BasePostRepository implements IPostRepository {
 
   protected async getDominantColor(thumbnail?: string, retry = 3): Promise<DominantColor | undefined> {
     return this.color.getDominantColor(thumbnail, this.settings.siteUrl, retry);
+  }
+
+  protected async getThumbnail(thumbnail?: string): Promise<Thumbnail | undefined> {
+    const base64 = await this.thumbnail.toBase64(this.settings, thumbnail);
+    if (!base64) {
+      return undefined;
+    }
+
+    return Thumbnail.create(base64);
   }
 
   protected processExcerpt(excerpt: string): string {
