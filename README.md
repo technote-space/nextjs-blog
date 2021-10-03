@@ -31,6 +31,7 @@
   - [セットアップ](#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
 - [記事](#%E8%A8%98%E4%BA%8B)
   - [Markdown](#markdown)
+  - [WordPressのエクスポート機能で出力したXMLファイル](#wordpress%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E6%A9%9F%E8%83%BD%E3%81%A7%E5%87%BA%E5%8A%9B%E3%81%97%E3%81%9Fxml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB)
   - [WordPressのデータベース](#wordpress%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9)
   - [対応予定](#%E5%AF%BE%E5%BF%9C%E4%BA%88%E5%AE%9A)
 - [Author](#author)
