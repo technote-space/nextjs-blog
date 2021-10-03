@@ -1,9 +1,9 @@
 import type { Post } from '$/domain/post/entity/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostFactory } from '$/domain/post/factory';
+import type { IPostManager } from '$/domain/post/manager';
 import type Id from '$/domain/post/valueObject/id';
 import { singleton, inject } from 'tsyringe';
-import { IPostManager } from '$/domain/post/manager';
 
 @singleton()
 export class PostManager implements IPostManager {

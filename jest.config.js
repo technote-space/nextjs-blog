@@ -1,6 +1,5 @@
 module.exports = {
   clearMocks: true,
-  testMatch: ['<rootDir>/src/**/*.test.ts?(x)'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!**/*.d.ts',
@@ -31,8 +30,7 @@ module.exports = {
   transform: {
     /* Use babel-jest to transpile tests with the next/babel preset
     https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object */
-    '^.+\\.(js|jsx|ts)$': 'esbuild-jest',
-    '^.+\\.tsx$': ['babel-jest', {presets: ['next/babel']}],
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', {presets: ['next/babel']}],
   },
   transformIgnorePatterns: [
     '^.+\\.module\\.(css|sass|scss)$',
