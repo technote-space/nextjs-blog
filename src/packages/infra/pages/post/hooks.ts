@@ -3,11 +3,13 @@ import type { Props } from '$/domain/pages/post';
 import { toEntity } from '$/domain/post/dto/postDetail';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useHooks = ({ post }: Props, settings: Settings) => {
+export const useHooks = ({ headerPages, footerPages, post }: Props, settings: Settings) => {
   const entity = toEntity(post);
 
   return {
     layoutProps: {
+      headerPages,
+      footerPages,
       seo: {
         title: entity.getTitle().value,
         description: entity.getExcerpt().value,

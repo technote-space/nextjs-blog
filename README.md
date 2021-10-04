@@ -5,16 +5,16 @@
 </p>
 
 <p align="center">
-  <a aria-label="CI Status" href="https://github.com/nextjs-blog/nextjs-blog/actions">
-    <img alt="CI Status" src="https://github.com/nextjs-blog/nextjs-blog/workflows/CI/badge.svg">
+  <a aria-label="CI Status" href="https://github.com/technote-space/nextjs-blog/actions">
+    <img alt="CI Status" src="https://github.com/technote-space/nextjs-blog/workflows/CI/badge.svg">
   </a>
-  <a aria-label="codecov" href="https://codecov.io/gh/nextjs-blog/nextjs-blog">
-    <img alt="codecov" src="https://codecov.io/gh/nextjs-blog/nextjs-blog/branch/main/graph/badge.svg">
+  <a aria-label="codecov" href="https://codecov.io/gh/technote-space/nextjs-blog">
+    <img alt="codecov" src="https://codecov.io/gh/technote-space/nextjs-blog/branch/main/graph/badge.svg">
   </a>
-  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog">
-    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog/badge">
+  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/technote-space/nextjs-blog">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/technote-space/nextjs-blog/badge">
   </a>
-  <a aria-label="License" href="https://github.com/nextjs-blog/nextjs-blog/blob/main/LICENSE">
+  <a aria-label="License" href="https://github.com/technote-space/nextjs-blog/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg">
   </a>
 </p>
@@ -65,7 +65,7 @@ nvm の設定と package のインストール
 
 posts ディレクトリ下に `.md` ファイルを追加
 
-オフにする場合は `.env` の `NEXT_PUBLIC_MD_SOURCE` をコメントアウト
+オフにする場合は `.env` の `MD_SOURCE` をコメントアウト
 
 ### WordPressのエクスポート機能で出力したXMLファイル
 
@@ -73,7 +73,7 @@ posts ディレクトリ下に `.md` ファイルを追加
 2. postsディレクトリなどに配置
 3. 配置したファイルパスを `.env` の `WP_EXPORT_XML` に指定 (例：`pages/export.xml`)
 4. WordPress の `wp-content/uploads` を `public` にコピー (`public/wp-content/uploads`)
-5. `.env` の `NEXT_PUBLIC_WP_XML_SOURCE` のコメントを外す
+5. `.env` の `WP_XML_SOURCE` のコメントを外す
 
 ### WordPressのデータベース
 
@@ -81,7 +81,7 @@ posts ディレクトリ下に `.md` ファイルを追加
 
 1. `.env` に接続情報を設定
    * `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`
-2. `.env` の `NEXT_PUBLIC_WP_DB_SOURCE` のコメントを外す
+2. `.env` の `WP_DB_SOURCE` のコメントを外す
 
 ### 対応予定
 
