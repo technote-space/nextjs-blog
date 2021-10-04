@@ -65,7 +65,7 @@ nvm の設定と package のインストール
 
 posts ディレクトリ下に `.md` ファイルを追加
 
-オフにする場合は `.env` の `NEXT_PUBLIC_MD_SOURCE` をコメントアウト
+オフにする場合は `.env` の `MD_SOURCE` をコメントアウト
 
 ### WordPressのエクスポート機能で出力したXMLファイル
 
@@ -73,7 +73,7 @@ posts ディレクトリ下に `.md` ファイルを追加
 2. postsディレクトリなどに配置
 3. 配置したファイルパスを `.env` の `WP_EXPORT_XML` に指定 (例：`pages/export.xml`)
 4. WordPress の `wp-content/uploads` を `public` にコピー (`public/wp-content/uploads`)
-5. `.env` の `NEXT_PUBLIC_WP_XML_SOURCE` のコメントを外す
+5. `.env` の `WP_XML_SOURCE` のコメントを外す
 
 ### WordPressのデータベース
 
@@ -81,7 +81,7 @@ posts ディレクトリ下に `.md` ファイルを追加
 
 1. `.env` に接続情報を設定
    * `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`
-2. `.env` の `NEXT_PUBLIC_WP_DB_SOURCE` のコメントを外す
+2. `.env` の `WP_DB_SOURCE` のコメントを外す
 
 ### 対応予定
 
