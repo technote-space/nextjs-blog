@@ -5,16 +5,16 @@
 </p>
 
 <p align="center">
-  <a aria-label="CI Status" href="https://github.com/nextjs-blog/nextjs-blog/actions">
-    <img alt="CI Status" src="https://github.com/nextjs-blog/nextjs-blog/workflows/CI/badge.svg">
+  <a aria-label="CI Status" href="https://github.com/technote-space/nextjs-blog/actions">
+    <img alt="CI Status" src="https://github.com/technote-space/nextjs-blog/workflows/CI/badge.svg">
   </a>
-  <a aria-label="codecov" href="https://codecov.io/gh/nextjs-blog/nextjs-blog">
-    <img alt="codecov" src="https://codecov.io/gh/nextjs-blog/nextjs-blog/branch/main/graph/badge.svg">
+  <a aria-label="codecov" href="https://codecov.io/gh/technote-space/nextjs-blog">
+    <img alt="codecov" src="https://codecov.io/gh/technote-space/nextjs-blog/branch/main/graph/badge.svg">
   </a>
-  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog">
-    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog/badge">
+  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/technote-space/nextjs-blog">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/technote-space/nextjs-blog/badge">
   </a>
-  <a aria-label="License" href="https://github.com/nextjs-blog/nextjs-blog/blob/main/LICENSE">
+  <a aria-label="License" href="https://github.com/technote-space/nextjs-blog/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg">
   </a>
 </p>
