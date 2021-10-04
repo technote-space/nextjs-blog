@@ -4,6 +4,7 @@ import type { IPostManager } from '$/domain/post/manager';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
 import { fromEntity } from '$/domain/post/dto/postDetail';
+import { Post } from '$/domain/post/entity/post';
 import Id from '$/domain/post/valueObject/id';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 
@@ -43,6 +44,14 @@ export class PostPageProps implements IPostPageProps {
       return {
         props: {
           post: await fromEntity(post),
+          headerPages: (this.settings.pages?.header ?? []).map(page => ({
+            label: page.title,
+            url: Post.createUrlFromPostData(page, this.settings),
+          })),
+          footerPages: (this.settings.pages?.footer ?? []).map(page => ({
+            label: page.title,
+            url: Post.createUrlFromPostData(page, this.settings),
+          })),
         },
         revalidate: this.settings.isIsr ? (this.settings.isrRevalidate ?? 60) : undefined,
       };
