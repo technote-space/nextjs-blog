@@ -2,7 +2,7 @@
 // @see https://github.com/zenn-dev/zenn-editor
 // @see https://github.com/zenn-dev/zenn-editor/blob/main/packages/zenn-markdown-html/src/utils/url-matcher.ts
 
-import { pregQuote } from '@/lib/helpers/string';
+import { pregQuote } from './string';
 
 export const isTweetUrl = (url: string): boolean => /^https:\/\/twitter\.com\/[a-zA-Z0-9_-]+\/status\/[a-zA-Z0-9?=]+$/.test(url);
 
@@ -34,7 +34,7 @@ export function extractYoutubeVideoParameters(
   }
 }
 
-export function isValidHttpUrl(str: string) {
+export function isValidHttpUrl(str: string): boolean {
   try {
     const url = new URL(str);
     return url.protocol === 'http:' || url.protocol === 'https:';
@@ -51,8 +51,8 @@ export const processLinksInCode = (text: string): string => {
   }, text);
 };
 
-const extractOneLineLinks1 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/^((<p>)?(<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)(<\/a>)?(?!.*<br\s*\/?>).*?(<\/p>)?)/img));
-const extractOneLineLinks2 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<br\s*\/?>((<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)(<\/a>)?)(<br\s*\/?>|<\/p>)/img));
+const extractOneLineLinks1 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/^((<p>)?(<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#]+)(<\/a>)?(?!.*<br\s*\/?>).*?(<\/p>)?)/img));
+const extractOneLineLinks2 = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<br\s*\/?>((<a[^>]+?>)?(https?:\/\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#]+)(<\/a>)?)(<br\s*\/?>|<\/p>)/img));
 const processOneLineLink = (replace: (url: string) => Promise<string>) => async (prev: Promise<string>, match: RegExpMatchArray) => {
   const acc = await prev;
   if (match[0].startsWith('<br')) {
@@ -82,7 +82,7 @@ export const processOneLineLinks = async (text: string, replace: (url: string) =
   );
 };
 
-const extractExternalLinks = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<a\s+([^>]*?)href="(https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:@&=+$,%#]+)"(.*?)>([^<].+?)<\/a>/img));
+const extractExternalLinks = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<a\s+([^>]*?)href="(https?:\/\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#]+)"(.*?)>([^<].+?)<\/a>/img));
 const processExternalLink = (acc: string, match: RegExpMatchArray) => {
   const includesTarget = match[1].includes('target=') || match[3].includes('target=');
   const includesNoReferrer = match[1].includes('noreferrer') || match[3].includes('noreferrer');
