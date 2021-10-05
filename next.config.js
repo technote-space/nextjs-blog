@@ -42,6 +42,6 @@ module.exports = withBundleAnalyzer({
     return config;
   },
   eslint: {
-    dirs: ['src/pages', 'src/packages', 'src/components']
+    dirs: ['src/pages', 'src/packages', 'src/components', 'src/lib']
   }
 });

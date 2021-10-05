@@ -34,6 +34,7 @@
     "gray-matter": "^4.0.3",
     "html-to-text": "^8.0.0",
     "next": "^11.1.2",
+    "next-sitemap": "^1.6.173",
     "node-cache": "^5.1.2",
     "node-canvas": "^2.7.0",
     "pluralize": "^8.0.0",
@@ -85,7 +86,7 @@
     "@types/simple-react-lightbox": "^3.6.1",
     "@types/validator": "^13.6.3",
     "@types/xml2js": "^0.4.9",
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
     "babel-jest": "^27.2.4",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
@@ -100,7 +101,6 @@
     "jest": "^27.2.4",
     "lint-staged": "^11.2.0",
     "mockdate": "^3.0.5",
-    "next-sitemap": "^1.6.173",
     "npm-run-all": "^4.1.5",
     "pathpida": "^0.17.0",
     "react-test-renderer": "^17.0.2",
@@ -109,7 +109,7 @@
     "storybook-addon-performance": "^0.16.1",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.4.3",
-    "webpack": "^5.56.1"
+    "webpack": "^5.57.0"
   },
   "engines": {
     "node": ">=14",
