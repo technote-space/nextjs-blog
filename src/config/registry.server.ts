@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 import { Cache } from '$/infra/shared/library/cache';
 import { ColorService } from '$/infra/post/service/color';
+import { ColorServiceForVercel } from '$/infra/post/service/colorForVercel';
 import { OembedService } from '$/infra/post/service/oembed';
 import { TocService } from '$/infra/post/service/toc';
 import { CodeService } from '$/infra/post/service/code';
@@ -21,7 +22,7 @@ import { WordPressExportPostRepository } from '$/infra/post/repository/wpExport'
 import { postSources } from '^/config/settings';
 
 container.registerSingleton('ICache', Cache);
-container.registerSingleton('IColorService', ColorService);
+container.registerSingleton('IColorService', process.env.VERCEL ? ColorServiceForVercel : ColorService);
 container.registerSingleton('IOembedService', OembedService);
 container.registerSingleton('ITocService', TocService);
 container.registerSingleton('ICodeService', CodeService);
