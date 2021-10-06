@@ -70,7 +70,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       return join(process.cwd(), 'posts');
     }
 
-    return join(process.cwd(), '.next', 'static', 'posts');
+    return join('/', '_next', 'static', 'posts');
   }
 
   private static toMaybePost(id: string, result: matter.GrayMatterFile<string>): MaybePost {
