@@ -66,15 +66,11 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   private static getPostsDirectory(): string {
-    if (!process.env.VERCEL) {
+    if (!process.env.VERCEL || existsSync(join(process.cwd(), 'posts'))) {
       return join(process.cwd(), 'posts');
     }
 
-    if (existsSync(join(process.cwd(), '_next', 'static', 'posts'))) {
-      return join(process.cwd(), '_next', 'static', 'posts');
-    }
-
-    return join(process.cwd(), 'posts');
+    return join(process.cwd(), '_next', 'static', 'posts');
   }
 
   private static toMaybePost(id: string, result: matter.GrayMatterFile<string>): MaybePost {
