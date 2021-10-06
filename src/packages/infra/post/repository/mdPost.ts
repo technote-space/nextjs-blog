@@ -5,7 +5,7 @@ import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
-import { promises, existsSync } from 'fs';
+import { promises, existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
@@ -70,6 +70,9 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       return join(process.cwd(), 'posts');
     }
 
+    console.log(readdirSync(process.cwd()));
+    console.log(readdirSync(join(process.cwd(), '.next')));
+    console.log(readdirSync(join(process.cwd(), '.next', 'server')));
     return join(process.cwd(), '.next', 'server', 'posts');
   }
 
