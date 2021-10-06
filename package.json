@@ -7,7 +7,7 @@
     "dev:next": "next dev",
     "dev:path": "pathpida --watch",
     "build": "pathpida && next build",
-    "now-build": "yarn build && yarn install --production && yarn remove fast-average-color-node && cp -r posts .next/",
+    "now-build": "yarn build && yarn install --production && yarn remove fast-average-color-node && cp -r posts .next/static/",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

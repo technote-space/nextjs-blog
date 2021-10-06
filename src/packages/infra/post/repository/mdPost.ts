@@ -70,8 +70,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       return join(process.cwd(), 'posts');
     }
 
-    if (existsSync(join(process.cwd(), '_next', 'posts'))) {
-      return join(process.cwd(), '_next', 'posts');
+    if (existsSync(join(process.cwd(), '_next', 'static', 'posts'))) {
+      return join(process.cwd(), '_next', 'static', 'posts');
     }
 
     return join(process.cwd(), 'posts');
