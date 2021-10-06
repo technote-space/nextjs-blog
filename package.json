@@ -28,6 +28,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/bundle-analyzer": "^11.1.2",
     "axios": "^0.22.0",
+    "canvas": "2.6.1",
     "dayjs": "^1.10.7",
     "fast-average-color-node": "^1.0.3",
     "framer-motion": "^4",
