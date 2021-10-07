@@ -73,7 +73,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     console.log(readdirSync(process.cwd()));
     console.log(readdirSync(join(process.cwd(), '.next')));
     console.log(readdirSync(join(process.cwd(), '.next', 'server')));
-    return join(process.cwd(), '.next', 'server', 'posts');
+    console.log(readdirSync(join(process.cwd(), '.next', 'server', 'chunks')));
+    return join(process.cwd(), '.next', 'server', 'chunks', 'posts');
   }
 
   private static toMaybePost(id: string, result: matter.GrayMatterFile<string>): MaybePost {
