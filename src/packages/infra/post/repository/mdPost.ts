@@ -71,9 +71,10 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     }
 
     console.log(readdirSync(process.cwd()));
-    console.log(readdirSync(join(process.cwd(), '.next')));
-    console.log(readdirSync(join(process.cwd(), '.next', 'server')));
-    console.log(readdirSync(join(process.cwd(), '.next', 'server', 'chunks')));
+    console.log(readdirSync(join(process.cwd(), 'node_modules')));
+    console.log(readdirSync(join(process.cwd(), 'node_modules', 'shiki-languages')));
+    console.log(readdirSync(join(process.cwd(), '.node_modules', 'shiki-languages', 'data')));
+    console.log(readdirSync(join(process.cwd(), '.node_modules', 'shiki-languages', 'data', 'grammars')));
     return join(process.cwd(), '.next', 'server', 'chunks', 'posts');
   }
 
