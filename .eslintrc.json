@@ -68,7 +68,7 @@
         },
         {
           "module": "src/packages/domain",
-          "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**"],
+          "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**", "src/config/settings.*"],
           "allowSameModule": true
         },
         {
@@ -78,7 +78,7 @@
         },
         {
           "module": "src/packages/infra",
-          "allowReferenceFrom": ["src/pages/**"],
+          "allowReferenceFrom": ["src/pages/**", "src/config/registry.*"],
           "allowSameModule": true
         }
       ],
