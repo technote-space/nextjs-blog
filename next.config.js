@@ -18,7 +18,7 @@ module.exports = withBundleAnalyzer({
   webpack5: true,
   reactStrictMode: true,
   trailingSlash: true,
-  distDir: process.env.NODE_ENV === 'production' ? 'build' : '.next',
+  distDir: !process.env.VERCEL && process.env.NODE_ENV === 'production' ? 'build' : '.next',
   webpack: (config, {isServer, webpack}) => {
     config.resolve.fallback = {
       fs: false,

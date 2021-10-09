@@ -40,3 +40,10 @@ package-lock.json
 /tmp
 /sh
 /*.zip
+
+# 開発用
+# リリース時には削除
+public/*
+!public/favicon.ico
+!public/images/
+contents/*

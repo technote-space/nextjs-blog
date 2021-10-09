@@ -1,6 +1,0 @@
-# 開発用
-# リリース時には削除
-*
-!.gitignore
-!favicon.ico
-!images/

@@ -11,8 +11,11 @@ export class ThumbnailService implements IThumbnailService {
   private static __cache: Record<string, string | undefined> = {};
 
   private static async getImageBuffer(settings: { siteUrl: string }, thumbnail: string): Promise<Buffer> {
-    if (!/^https?/.test(thumbnail) && existsSync(join(process.cwd(), 'public', thumbnail))) {
-      return promises.readFile(join(process.cwd(), 'public', thumbnail));
+    if (!/^https?/.test(thumbnail)) {
+      const path = process.env.VERCEL ? join(process.cwd(), thumbnail) : join(process.cwd(), 'public', thumbnail);
+      if (!/^https?/.test(thumbnail) && existsSync(path)) {
+        return promises.readFile(path);
+      }
     }
 
     const response = await axios.get(getAbsoluteUrl(thumbnail, settings), { responseType: 'arraybuffer' });
