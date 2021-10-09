@@ -5,6 +5,7 @@ import type { IPostRepository } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
 import { singleton, inject, container } from 'tsyringe';
 import Source from '$/domain/post/valueObject/source';
+import NotFoundException from '$/domain/shared/exceptions/notFound';
 
 @singleton()
 export class PostFactory implements IPostFactory {
@@ -25,20 +26,24 @@ export class PostFactory implements IPostFactory {
   }
 
   public async all(postType?: string, sortByUpdatedAt?: boolean): Promise<Post[]> {
-    return (await this.getSources().reduce(async(prev, source) => {
+    return (await this.getSources().reduce(async (prev, source) => {
       const acc = await prev;
-      return acc.concat(...await this.__postRepositories[source.value].all(postType))
+      return acc.concat(...await this.__postRepositories[source.value].all(postType));
     }, Promise.resolve([] as Post[]))).sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b));
   }
 
   public async getIds(postType?: string): Promise<Id[]> {
-    return this.getSources().reduce(async(prev, source) => {
+    return this.getSources().reduce(async (prev, source) => {
       const acc = await prev;
-      return acc.concat(...await this.__postRepositories[source.value].getIds(postType))
-    }, Promise.resolve([] as Id[]))
+      return acc.concat(...await this.__postRepositories[source.value].getIds(postType));
+    }, Promise.resolve([] as Id[]));
   }
 
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
+    if (!(id.source.value in this.__postRepositories)) {
+      throw new NotFoundException;
+    }
+
     return this.__postRepositories[id.source.value].fetch(id, postType);
   }
 }
