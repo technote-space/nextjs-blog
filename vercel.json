@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "index.tsx": {
-      "includeFiles": "node_modules/**"
-    }
-  }
-}
