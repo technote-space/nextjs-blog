@@ -24,15 +24,21 @@ export class PostFactory implements IPostFactory {
     return this.__sources;
   }
 
-  public all(source: Source, postType?: string): Promise<Post[]> {
-    return this.__postRepositories[source.value].all(postType);
+  public async all(postType?: string, sortByUpdatedAt?: boolean): Promise<Post[]> {
+    return (await this.getSources().reduce(async(prev, source) => {
+      const acc = await prev;
+      return acc.concat(...await this.__postRepositories[source.value].all(postType))
+    }, Promise.resolve([] as Post[]))).sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b));
   }
 
-  public getIds(source: Source, postType?: string): Promise<Id[]> {
-    return this.__postRepositories[source.value].getIds(postType);
+  public async getIds(postType?: string): Promise<Id[]> {
+    return this.getSources().reduce(async(prev, source) => {
+      const acc = await prev;
+      return acc.concat(...await this.__postRepositories[source.value].getIds(postType))
+    }, Promise.resolve([] as Id[]))
   }
 
-  public fetch(id: Id, postType?: string): Promise<PostDetail> {
+  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
     return this.__postRepositories[id.source.value].fetch(id, postType);
   }
 }

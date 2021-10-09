@@ -1,6 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
-import type { IPostManager } from '$/domain/post/manager';
+import type { IPostFactory } from '$/domain/post/factory';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import pluralize from 'pluralize';
 import { singleton, inject } from 'tsyringe';
@@ -12,7 +12,7 @@ import Source from '$/domain/post/valueObject/source';
 export class AnyPageProps implements IAnyPageProps {
   public constructor(
     @inject('Settings') private settings: Settings,
-    @inject('IPostManager') private postManager: IPostManager,
+    @inject('IPostFactory') private postFactory: IPostFactory,
   ) {
   }
 
@@ -28,7 +28,7 @@ export class AnyPageProps implements IAnyPageProps {
       };
     }
 
-    const ids = Object.assign({}, ...(await this.postManager.getIds()).map(id => ({ [id.value]: true })));
+    const ids = Object.assign({}, ...(await this.postFactory.getIds()).map(id => ({ [id.value]: true })));
     return {
       paths: (this.settings.urlMaps ?? [])
         .map(urlMap => ({
