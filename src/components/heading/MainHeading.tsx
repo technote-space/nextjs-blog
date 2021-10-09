@@ -1,6 +1,5 @@
 import type { StyleProps } from '@/components/wrap';
 import type { FC } from 'react';
-import { colors } from '@/components/constants';
 import { Heading2 } from '@/components/wrap';
 
 type Props = StyleProps;
@@ -8,7 +7,7 @@ type Props = StyleProps;
 const defaultProps: Props = {
   fontSize: ['1em', '1em', '1.35em', '1.35em'],
   lineHeight: ['1.3em', '1.3em', '1.5em', '1.5em'],
-  color: colors.text,
+  color: '#333',
   wordBreak: 'break-word',
 };
 

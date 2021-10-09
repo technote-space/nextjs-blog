@@ -14,7 +14,7 @@ export class IndexPage implements IIndexPage {
   }
 
   public create(): VFC<Props> {
-    const component = memo((props: Props) => this.layoutComponent.render({}, <View {...useHooks(props)} />));
+    const component = memo((props: Props) => this.layoutComponent.render(props, <View {...useHooks(props)} />));
     component.displayName = 'IndexPage';
 
     return component;

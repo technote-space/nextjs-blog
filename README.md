@@ -1,11 +1,23 @@
-# NextJs Blog
+<p align="center">
+  <a href="https://nextjs.org">
+    <img alt="logo" src="https://user-images.githubusercontent.com/39912269/135714832-7d94bc6a-eb3f-4f99-945c-09e0e35e5bc4.png" height="128">
+  </a>
+</p>
 
-[![CI Status](https://github.com/nextjs-blog/nextjs-blog/workflows/CI/badge.svg)](https://github.com/nextjs-blog/nextjs-blog/actions)
-[![codecov](https://codecov.io/gh/nextjs-blog/nextjs-blog/branch/main/graph/badge.svg)](https://codecov.io/gh/nextjs-blog/nextjs-blog)
-[![CodeFactor](https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog/badge)](https://www.codefactor.io/repository/github/nextjs-blog/nextjs-blog)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/nextjs-blog/nextjs-blog/blob/main/LICENSE)
-
-NextJs で作ったブログ
+<p align="center">
+  <a aria-label="CI Status" href="https://github.com/technote-space/nextjs-blog/actions">
+    <img alt="CI Status" src="https://github.com/technote-space/nextjs-blog/workflows/CI/badge.svg">
+  </a>
+  <a aria-label="codecov" href="https://codecov.io/gh/technote-space/nextjs-blog">
+    <img alt="codecov" src="https://codecov.io/gh/technote-space/nextjs-blog/branch/main/graph/badge.svg">
+  </a>
+  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/technote-space/nextjs-blog">
+    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/technote-space/nextjs-blog/badge">
+  </a>
+  <a aria-label="License" href="https://github.com/technote-space/nextjs-blog/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg">
+  </a>
+</p>
 
 ## Table of Contents
 
@@ -19,6 +31,7 @@ NextJs で作ったブログ
   - [セットアップ](#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
 - [記事](#%E8%A8%98%E4%BA%8B)
   - [Markdown](#markdown)
+  - [WordPressのエクスポート機能で出力したXMLファイル](#wordpress%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E6%A9%9F%E8%83%BD%E3%81%A7%E5%87%BA%E5%8A%9B%E3%81%97%E3%81%9Fxml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB)
   - [WordPressのデータベース](#wordpress%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9)
   - [対応予定](#%E5%AF%BE%E5%BF%9C%E4%BA%88%E5%AE%9A)
 - [Author](#author)
@@ -52,15 +65,28 @@ nvm の設定と package のインストール
 
 posts ディレクトリ下に `.md` ファイルを追加
 
+オフにする場合は `.env` の `MD_SOURCE` をコメントアウト
+
+### WordPressのエクスポート機能で出力したXMLファイル
+
+1. WordPressの 管理画面 > ツール > エクスポート からXML形式で全てのコンテンツをエクスポート
+2. postsディレクトリなどに配置
+3. 配置したファイルパスを `.env` の `WP_EXPORT_XML` に指定 (例：`pages/export.xml`)
+4. WordPress の `wp-content/uploads` を `public` にコピー (`public/wp-content/uploads`)
+5. `.env` の `WP_XML_SOURCE` のコメントを外す
+
 ### WordPressのデータベース
 
+既存の WordPress が稼働していて画像等にURLでアクセスできる前提です。
+
 1. `.env` に接続情報を設定
-2. `src/config/settings.ts` の postSources の wp のコメントを外す
+   * `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`
+2. `.env` の `WP_DB_SOURCE` のコメントを外す
 
 ### 対応予定
 
-* WordPressのエクスポート機能で出力されたxml
 * microCMS
+* WordPress REST API
 
 ## Author
 

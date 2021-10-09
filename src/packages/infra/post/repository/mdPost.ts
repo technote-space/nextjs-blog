@@ -1,10 +1,12 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import { promises, existsSync } from 'fs';
-import path from 'path';
+import { join } from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
@@ -47,13 +49,15 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     @inject('IColorService') color: IColorService,
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
+    @inject('ICodeService') code: ICodeService,
+    @inject('IThumbnailService') thumbnail: IThumbnailService,
   ) {
-    super(settings, color, oembed, toc);
+    super(settings, color, oembed, toc, code, thumbnail);
   }
 
   private getExcludeIds(postType?: string) {
     return (this.settings.exclude ?? [])
-      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source === this.sourceId)
+      .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId))
       .map(setting => `${setting.id}`);
   }
 
@@ -62,7 +66,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   private static getPostsDirectory(): string {
-    return path.join(process.cwd(), 'posts');
+    return join(process.cwd(), 'posts');
   }
 
   private static toMaybePost(id: string, result: matter.GrayMatterFile<string>): MaybePost {
@@ -88,7 +92,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
         return acc;
       }
 
-      const fileContents = await promises.readFile(path.join(MarkdownPostRepository.getPostsDirectory(), fileName), 'utf8');
+      const fileContents = await promises.readFile(join(MarkdownPostRepository.getPostsDirectory(), fileName), 'utf8');
       const matterResult = matter(fileContents);
 
       return acc.concat(MarkdownPostRepository.toMaybePost(id, matterResult));
@@ -98,7 +102,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async all(postType?: string): Promise<Post[]> {
-    return (await this.getPostDataList(postType)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(post => Post.reconstruct(
+    return (await this.getPostDataList(postType)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).reduce(async (prev, post) => (await prev).concat(Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: post.id,
@@ -106,10 +110,10 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Title.create(post.title),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
-      post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
+      await this.getThumbnail(post.thumbnail),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
-    ));
+    )), Promise.resolve([] as Post[]));
   }
 
   public async getIds(postType?: string): Promise<Id[]> {
@@ -125,7 +129,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       throw new NotFoundException;
     }
 
-    const fullPath = path.join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
+    const fullPath = join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
     if (!existsSync(fullPath)) {
       throw new NotFoundException;
     }

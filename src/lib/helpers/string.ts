@@ -6,7 +6,7 @@ export const replaceAll = (text: string, from: string | RegExp, to: string): str
   return text.replace(from, to);
 };
 
-export const pregQuote = (str: string, delimiter?: string) => str.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + (delimiter || '') + '-]', 'g'), '\\$&');
+export const pregQuote = (str: string, delimiter?: string): string => str.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + (delimiter || '') + '-]', 'g'), '\\$&');
 
 export const escapeHtml = (str: string): string => str.replace(/[&'`"<>]/g, match => {
   return {

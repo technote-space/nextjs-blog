@@ -72,11 +72,19 @@
           "allowSameModule": true
         },
         {
+          "module": "src/lib",
+          "allowReferenceFrom": ["src/packages/infra/**"],
+          "allowSameModule": true
+        },
+        {
           "module": "src/packages/infra",
           "allowReferenceFrom": ["src/pages/**"],
           "allowSameModule": true
         }
-      ]
+      ],
+      {
+        "resolveRelativeImport": true
+      }
     ]
   }
 }

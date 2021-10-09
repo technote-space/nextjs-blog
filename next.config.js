@@ -1,26 +1,18 @@
-const {ESBuildMinifyPlugin} = require('esbuild-loader');
+// https://github.com/Automattic/node-canvas/issues/1779#issuecomment-895885846
+if (
+  process.env.LD_LIBRARY_PATH == null ||
+  !process.env.LD_LIBRARY_PATH.includes(
+    `${process.env.PWD}/node_modules/canvas/build/Release:`,
+  )
+) {
+  process.env.LD_LIBRARY_PATH = `${
+    process.env.PWD
+  }/node_modules/canvas/build/Release:${process.env.LD_LIBRARY_PATH || ''}`;
+}
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
-
-function useEsbuildMinify(config, options) {
-  const {minimizer} = config.optimization;
-  const terserIndex = minimizer.findIndex(
-    minifier => minifier.constructor.name === 'TerserPlugin',
-  );
-
-  minimizer.splice(terserIndex, 1, new ESBuildMinifyPlugin(options));
-}
-
-function useEsbuildLoader(config, options) {
-  const {rules} = config.module;
-  const rule = rules.find(rule => rule.test.test('.js'));
-
-  rule.use = {
-    loader: 'esbuild-loader',
-    options,
-  };
-}
 
 module.exports = withBundleAnalyzer({
   webpack5: true,
@@ -46,15 +38,10 @@ module.exports = withBundleAnalyzer({
         React: 'react',
       }),
     );
-    useEsbuildMinify(config);
-    useEsbuildLoader(config, {
-      loader: 'tsx',
-      target: 'es2017',
-    });
 
     return config;
   },
   eslint: {
-    dirs: ['src/pages', 'src/packages', 'src/components']
+    dirs: ['src/pages', 'src/packages', 'src/components', 'src/lib']
   }
 });

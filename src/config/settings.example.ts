@@ -1,24 +1,26 @@
 import type { Settings } from '$/domain/app/settings';
 
 // key => sourceId
-// 現在使用可能なkey: md, wp
+// 現在使用可能なkey: md, wpdb, wpxml
 export const postSources: Record<string, string> = {
   // posts ディレクトリに作成した markdown で記事作成
-  'md': 'md',
+  ...(process.env.MD_SOURCE ? { 'md': process.env.MD_SOURCE } : {}),
   // .env で接続した WordPress の wp_posts で記事作成
-  // 'wp': wp,
+  ...(process.env.WP_DB_SOURCE ? { 'wpdb': process.env.WP_DB_SOURCE } : {}),
+  // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
+  ...(process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? { 'wpxml': process.env.WP_XML_SOURCE } : {}),
 };
 export const settings: Settings = {
   // 本文内で置換
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
     {
-      source: postSources['wp'],
-      from: /class="(.+?\s)?wp-block-code\s+(\w+)(\s.+?)?"/g,
-      to: 'class="$1language-$2$3"',
+      source: [postSources['wpdb'], postSources['wpxml']],
+      from: /<pre class="wp-block-code\s+(\w+)(\s.+?)?"><code>/g,
+      to: '<pre class="language-$1$2"><code class="language-$1">',
     },
     {
-      source: postSources['wp'],
+      source: [postSources['wpdb'], postSources['wpxml']],
       from: /<!--\s+\/?wp:.+?\s+-->\n/g,
       to: '',
     },
@@ -27,14 +29,15 @@ export const settings: Settings = {
   exclude: [
     // WordPress の ID = 123 の投稿を除外
     // {
-    //   source: postSources['wp'],
+    //   source: postSources['wpxml'],
     //   id: '123',
     // },
-    // WordPress の term_taxonomy_id = 123 に紐付いた投稿を除外
+    // WordPress の wp_terms.slug = 'test' のタグ に紐付いた投稿を除外
+    // type = category でカテゴリー
     // {
-    //   source: postSources['wp'],
-    //   type: 'term',
-    //   id: '123',
+    //   source: postSources['wpxml'],
+    //   type: 'post_tag',
+    //   id: 'test',
     // },
   ],
   urlMaps: [
@@ -42,7 +45,7 @@ export const settings: Settings = {
     // {
     //   source: '/old/graph-structured-program-evolution',
     //   destination: {
-    //     source: postSources['wp'],
+    //     source: postSources['wpxml'],
     //     id: 'graph-structured-program-evolution',
     //   },
     // },
@@ -61,7 +64,7 @@ export const settings: Settings = {
   //   header: [],
   //   footer: [
   //     {
-  //       source: postSources['wp'],
+  //       source: postSources['wpxml'],
   //       id: 'contact',
   //       postType: 'page',
   //       title: 'お問い合わせ',
@@ -70,6 +73,16 @@ export const settings: Settings = {
   // },
   isIsr: !!process.env.IS_ISR,
   isrRevalidate: process.env.ISR_REVALIDATE ? Number(process.env.ISR_REVALIDATE) : undefined,
+  wpdb: process.env.WP_DB_SOURCE ? {
+    host: process.env.DB_HOST ?? 'localhost',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT),
+  } : undefined,
+  wpExportXml: process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
+    path: process.env.WP_EXPORT_XML,
+  } : undefined,
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,

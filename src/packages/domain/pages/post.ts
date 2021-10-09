@@ -1,8 +1,8 @@
 import type { PostDetailDTO } from '$/domain/post/dto/postDetail';
-import type { IPage } from '$/domain/shared/page';
+import type { IPage, ServerProps } from '$/domain/shared/page';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 
-export type Props = {
+export type Props = ServerProps & {
   post: PostDetailDTO;
 };
 export type Params = {

@@ -1,14 +1,11 @@
+import type { Props } from '$/domain/app/layout/footer';
 import type { Settings } from '$/domain/app/settings';
-import { Post } from '$/domain/post/entity/post';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useHooks = (settings: Settings) => {
+export const useHooks = ({ footerPages }: Props, settings: Settings) => {
   return {
     author: settings.seo.author,
-    pages: (settings.pages?.footer ?? []).map(page => ({
-      label: page.title,
-      url: Post.createUrlFromPostData(page, settings),
-    })),
+    pages: footerPages,
   };
 };
 export type HooksParams = ReturnType<typeof useHooks>;

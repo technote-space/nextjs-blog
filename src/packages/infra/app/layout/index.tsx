@@ -19,10 +19,10 @@ export class LayoutComponent extends BaseComponent<Props> implements ILayoutComp
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo(({ seo, children }: Props) => <View
+    const component = memo(({ headerPages, footerPages, seo, children }: Props) => <View
       head={this.headComponent.render(seo ?? {})}
-      header={this.headerComponent.render({})}
-      footer={this.footerComponent.render({})}
+      header={this.headerComponent.render({ headerPages })}
+      footer={this.footerComponent.render({ footerPages })}
     >
       {children}
     </View>);

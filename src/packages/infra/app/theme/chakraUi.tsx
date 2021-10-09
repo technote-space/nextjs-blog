@@ -47,6 +47,9 @@ export class ChakraUiTheme extends BaseComponent<Props> implements ITheme {
         xl: '80em',
         '2xl': '96em',
       }),
+      fonts: {
+        body: '"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
+      },
     });
   }
 
