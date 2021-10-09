@@ -1,10 +1,10 @@
 import type { ICodeService } from '$/domain/post/service/code';
+import { readdirSync } from 'fs';
 import parse from 'rehype-parse';
 import shiki from 'rehype-shiki';
 import stringify from 'rehype-stringify';
 import { singleton } from 'tsyringe';
 import { unified } from 'unified';
-import { readdirSync } from 'fs';
 
 // FIXME: 1度読まないと Vercel で消える
 const path = process.cwd();
