@@ -58,7 +58,7 @@
       [
         {
           "module": "@chakra-ui/react",
-          "allowReferenceFrom": ["src/components/wrap.ts", "src/packages/infra/app/theme/chakraUi.tsx"],
+          "allowReferenceFrom": ["src/components/wrap.ts", "src/packages/infra/app/theme/chakraUi.tsx", "src/config/chakraUi.ts"],
           "allowSameModule": false
         },
         {
