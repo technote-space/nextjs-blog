@@ -5,7 +5,7 @@ import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
-import { promises, existsSync, readdirSync } from 'fs';
+import { promises, existsSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
@@ -82,21 +82,36 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     };
   }
 
+  private readdirRecursively(dir = ''): string[] {
+    const paths = readdirSync(join(MarkdownPostRepository.getPostsDirectory(), dir));
+    const filePaths: string[] = [];
+    for (const path of paths) {
+      const stats = statSync(join(MarkdownPostRepository.getPostsDirectory(), dir, path));
+      if (stats.isDirectory()) {
+        filePaths.push(...this.readdirRecursively(join(dir, path)));
+      } else if (path.endsWith('.md')) {
+        filePaths.push(join(dir, path));
+      }
+    }
+
+    return filePaths;
+  }
+
   private async getPostDataList(postType?: string): Promise<PostData[]> {
     const exclude = this.getExcludeIds(postType);
-    const fileNames = await promises.readdir(MarkdownPostRepository.getPostsDirectory());
-    const posts = await fileNames.reduce(async (prev, fileName) => {
+    const filePaths = this.readdirRecursively();
+    const posts = await filePaths.reduce(async (prev, filePath) => {
       const acc = await prev;
-      if (!fileName.endsWith('.md')) {
+      if (!filePath.endsWith('.md')) {
         return acc;
       }
 
-      const id = fileName.replace(/\.md$/, '');
+      const id = filePath.replace(/\.md$/, '').replace(/\//g, '-');
       if (exclude.includes(id)) {
         return acc;
       }
 
-      const fileContents = await promises.readFile(join(MarkdownPostRepository.getPostsDirectory(), fileName), 'utf8');
+      const fileContents = await promises.readFile(join(MarkdownPostRepository.getPostsDirectory(), filePath), 'utf8');
       const matterResult = matter(fileContents);
 
       return acc.concat(MarkdownPostRepository.toMaybePost(id, matterResult));
@@ -127,16 +142,27 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     }));
   }
 
+  private static searchPost(postId: string): string | never {
+    const split = postId.split('-');
+    for (let pos = 0; pos < split.length; ++pos) {
+      const dir = `./${split.slice(0, pos).join('/')}`;
+      const name = split.slice(pos).join('-');
+      const fullPath = join(MarkdownPostRepository.getPostsDirectory(), dir, `${name}.md`);
+      if (existsSync(fullPath)) {
+        return fullPath;
+      }
+    }
+
+    throw new NotFoundException;
+  }
+
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
     const exclude = this.getExcludeIds(postType);
     if (exclude.includes(id.postId)) {
       throw new NotFoundException;
     }
 
-    const fullPath = join(MarkdownPostRepository.getPostsDirectory(), `${id.postId}.md`);
-    if (!existsSync(fullPath)) {
-      throw new NotFoundException;
-    }
+    const fullPath = MarkdownPostRepository.searchPost(id.postId);
     const fileContents = await promises.readFile(fullPath, 'utf8');
     const matterResult = matter(fileContents);
     const post = MarkdownPostRepository.toMaybePost(id.postId, matterResult);
