@@ -5,7 +5,7 @@ import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
-import { promises, existsSync } from 'fs';
+import { promises, existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import rehypeStringify from 'rehype-stringify';
@@ -42,6 +42,10 @@ type MaybePost = {
 type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>>
   & Pick<MaybePost, 'updatedAt' | 'postType' | 'thumbnail'>;
 
+// FIXME: 1度読まないと Vercel で消える
+const path = process.cwd();
+readdirSync(`${path}/contents`);
+
 @singleton()
 export class MarkdownPostRepository extends BasePostRepository implements IPostRepository {
   public constructor(
@@ -66,11 +70,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   private static getPostsDirectory(): string {
-    if (!process.env.VERCEL || existsSync(join(process.cwd(), 'posts'))) {
-      return join(process.cwd(), 'posts');
-    }
-
-    return join(process.cwd(), '.next', 'server', 'chunks', 'posts');
+    return join(process.cwd(), 'contents');
   }
 
   private static toMaybePost(id: string, result: matter.GrayMatterFile<string>): MaybePost {

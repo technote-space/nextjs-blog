@@ -7,7 +7,7 @@ import type { IOembedService } from '$/domain/post/service/oembed';
 import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import type { IXmlService } from '$/domain/post/service/xml';
-import { promises } from 'fs';
+import { promises, readdirSync } from 'fs';
 import { join } from 'path';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
@@ -75,7 +75,6 @@ type WpXmlData = {
     }[];
   };
 }
-
 type PostData = {
   id: number;
   post_name: string;
@@ -89,6 +88,10 @@ type PostData = {
     nicename: string;
   }[]
 };
+
+// FIXME: 1度読まないと Vercel で消える
+const path = process.cwd();
+readdirSync(`${path}/contents`);
 
 @singleton()
 export class WordPressExportPostRepository extends BasePostRepository implements IPostRepository {
@@ -107,7 +110,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
 
   private async getExportXmlData(): Promise<WpXmlData> {
     return this.xml.parse<WpXmlData>(
-      await promises.readFile(join(process.cwd(), this.settings.wpExportXml!.path), 'utf8'),
+      await promises.readFile(join(process.cwd(), 'contents', this.settings.wpExportXml!.path), 'utf8'),
     );
   }
 
