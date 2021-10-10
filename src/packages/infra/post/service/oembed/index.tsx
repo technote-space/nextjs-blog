@@ -73,7 +73,7 @@ export class OembedService implements IOembedService {
         console.log(e);
         if (e instanceof Error && /getaddrinfo ENOTFOUND/.test(e.message)) {
           // ドメインも死んでるっぽい
-          return `<div style="text-decoration: line-through">${str}</div>`;
+          return `<a href="${str}" style="text-decoration: line-through">${str}</a>`;
         }
         return this.generateCard(str);
       }
