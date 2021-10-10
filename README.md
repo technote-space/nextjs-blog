@@ -63,7 +63,7 @@ nvm の設定と package のインストール
 
 ### Markdown
 
-posts ディレクトリ下に `.md` ファイルを追加
+contents ディレクトリ下に `.md` ファイルを追加
 
 オフにする場合は `.env` の `MD_SOURCE` をコメントアウト
 
@@ -71,7 +71,7 @@ posts ディレクトリ下に `.md` ファイルを追加
 
 1. WordPressの 管理画面 > ツール > エクスポート からXML形式で全てのコンテンツをエクスポート
 2. postsディレクトリなどに配置
-3. 配置したファイルパスを `.env` の `WP_EXPORT_XML` に指定 (例：`pages/export.xml`)
+3. 配置したファイルパスを `.env` の `WP_EXPORT_XML` に指定 (例：`export.xml`)
 4. WordPress の `wp-content/uploads` を `public` にコピー (`public/wp-content/uploads`)
 5. `.env` の `WP_XML_SOURCE` のコメントを外す
 
