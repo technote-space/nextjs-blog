@@ -83,7 +83,7 @@ export const settings: Settings = {
   wpExportXml: process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
     path: process.env.WP_EXPORT_XML,
   } : undefined,
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  siteUrl: `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
   },
@@ -91,9 +91,9 @@ export const settings: Settings = {
     googleAdsenseClientId: process.env.NEXT_PUBLIC_ADSENSE_ID,
   },
   seo: {
-    blogTitle: process.env.NEXT_PUBLIC_BLOG_TITLE || 'Hello World!',
-    author: process.env.NEXT_PUBLIC_BLOG_AUTHOR || 'Hello World!',
-    description: process.env.NEXT_PUBLIC_BLOG_DESCRIPTION || 'Hello World!',
+    blogTitle: process.env.NEXT_PUBLIC_BLOG_TITLE || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_MESSAGE || 'Hello World!',
+    author: process.env.NEXT_PUBLIC_BLOG_AUTHOR || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_AUTHOR_NAME || 'Hello World!',
+    description: process.env.NEXT_PUBLIC_BLOG_DESCRIPTION || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_MESSAGE || 'Hello World!',
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
   },
