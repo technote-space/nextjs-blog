@@ -3,6 +3,7 @@
 
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { ISlack } from '$/domain/shared/library/slack';
 import dynamic from 'next/dynamic';
 import ReactDOMServer from 'react-dom/server';
 import { singleton, inject } from 'tsyringe';
@@ -33,6 +34,7 @@ export class OembedService implements IOembedService {
 
   public constructor(
     @inject('IColorService') private color: IColorService,
+    @inject('ISlack') private slack: ISlack,
   ) {
   }
 
@@ -73,6 +75,7 @@ export class OembedService implements IOembedService {
         console.log(e);
         if (e instanceof Error && /getaddrinfo ENOTFOUND/.test(e.message)) {
           // ドメインも死んでるっぽい
+          this.slack.sendError(e).then();
           return `<a href="${str}" style="text-decoration: line-through">${str}</a>`;
         }
         return this.generateCard(str);
