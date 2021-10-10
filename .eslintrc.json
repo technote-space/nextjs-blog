@@ -11,7 +11,7 @@
     "@typescript-eslint",
     "import",
     "unused-imports",
-    "strict-dependencies"
+    "@technote-space/strict-dependencies"
   ],
   "rules": {
     "@typescript-eslint/no-non-null-assertion": "off",
@@ -53,7 +53,7 @@
       "error",
       { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
     ],
-    "strict-dependencies/strict-dependencies": [
+    "@technote-space/strict-dependencies/strict-dependencies": [
       "error",
       [
         {
