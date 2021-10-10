@@ -17,10 +17,12 @@ import { ThumbnailService } from '$/infra/post/service/thumbnail';
 import { TocService } from '$/infra/post/service/toc';
 import { XmlService } from '$/infra/post/service/xml';
 import { Cache } from '$/infra/shared/library/cache';
+import { Slack } from '$/infra/shared/library/slack';
 import { Sitemap } from '$/infra/sitemap';
 import { postSources } from '^/config/settings';
 
 container.registerSingleton('ICache', Cache);
+container.registerSingleton('ISlack', Slack);
 container.registerSingleton('IColorService', process.env.VERCEL ? ColorServiceForVercel : ColorService);
 container.registerSingleton('IOembedService', OembedService);
 container.registerSingleton('ITocService', TocService);
