@@ -1,5 +1,5 @@
 import type { Settings } from '$/domain/app/settings';
-import type { IPostManager } from '$/domain/post/manager';
+import type { IPostFactory } from '$/domain/post/factory';
 import type { ISitemap } from '$/domain/sitemap';
 import dayjs from 'dayjs';
 import { inject, singleton } from 'tsyringe';
@@ -14,18 +14,18 @@ import { getAbsoluteUrl } from '@/lib/helpers/url';
 export class Sitemap implements ISitemap {
   public constructor(
     @inject('Settings') private settings: Settings,
-    @inject('IPostManager') private postManager: IPostManager,
+    @inject('IPostFactory') private postFactory: IPostFactory,
   ) {
   }
 
   public async getFields(): Promise<Field[]> {
-    const posts = (await this.postManager.all('post', true)).map(post => Field.reconstruct(
+    const posts = (await this.postFactory.all('post', true)).map(post => Field.reconstruct(
       Loc.create(getAbsoluteUrl(post.getUrl(), this.settings)),
       Lastmod.create((post.getUpdatedAt() ?? post.getCreatedAt()).value),
       Changefreq.create('monthly'),
       Priority.create(1),
     ));
-    const pages = (await this.postManager.all('page', true)).map(page => Field.reconstruct(
+    const pages = (await this.postFactory.all('page', true)).map(page => Field.reconstruct(
       Loc.create(getAbsoluteUrl(page.getUrl(), this.settings)),
       Lastmod.create((page.getUpdatedAt() ?? page.getCreatedAt()).value),
       Changefreq.create('yearly'),

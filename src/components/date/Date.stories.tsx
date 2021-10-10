@@ -15,8 +15,7 @@ export default {
 const Template: ComponentStory<typeof Date> = (args) => <Date {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};
 
 export const Format = Template.bind({});
 Format.args = {

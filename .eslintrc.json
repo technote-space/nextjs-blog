@@ -11,7 +11,7 @@
     "@typescript-eslint",
     "import",
     "unused-imports",
-    "strict-dependencies"
+    "@technote-space/strict-dependencies"
   ],
   "rules": {
     "@typescript-eslint/no-non-null-assertion": "off",
@@ -53,12 +53,12 @@
       "error",
       { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
     ],
-    "strict-dependencies/strict-dependencies": [
+    "@technote-space/strict-dependencies/strict-dependencies": [
       "error",
       [
         {
           "module": "@chakra-ui/react",
-          "allowReferenceFrom": ["src/components/wrap.ts", "src/packages/infra/app/theme/chakraUi.tsx"],
+          "allowReferenceFrom": ["src/components/wrap.ts", "src/packages/infra/app/theme/chakraUi.tsx", "src/config/chakraUi.ts"],
           "allowSameModule": false
         },
         {
@@ -68,7 +68,7 @@
         },
         {
           "module": "src/packages/domain",
-          "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**"],
+          "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**", "src/config/settings.*"],
           "allowSameModule": true
         },
         {
@@ -78,7 +78,7 @@
         },
         {
           "module": "src/packages/infra",
-          "allowReferenceFrom": ["src/pages/**"],
+          "allowReferenceFrom": ["src/pages/**", "src/config/registry.*"],
           "allowSameModule": true
         }
       ],

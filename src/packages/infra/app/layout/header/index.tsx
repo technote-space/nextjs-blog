@@ -16,7 +16,7 @@ export class HeaderComponent extends BaseComponent<Props> implements IHeaderComp
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo((props : Props) => <View {...useHooks(props, this.settings)}/>);
+    const component = memo((props: Props) => <View {...useHooks(props, this.settings)}/>);
     component.displayName = 'HeaderComponent';
 
     return component;

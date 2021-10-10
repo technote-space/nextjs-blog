@@ -16,7 +16,7 @@ export class FooterComponent extends BaseComponent<Props> implements IFooterComp
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo((props : Props) => <View {...useHooks(props, this.settings)}/>);
+    const component = memo((props: Props) => <View {...useHooks(props, this.settings)}/>);
     component.displayName = 'FooterComponent';
 
     return component;

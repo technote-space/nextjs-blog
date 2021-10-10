@@ -27,14 +27,6 @@ type SEO = {
   blogImage?: string;
   twitter?: string;
 };
-type BreakPoints = {
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-  '2xl'?: string;
-  [key: string]: string | undefined;
-}
 export type Settings = {
   isIsr?: boolean;
   isrRevalidate?: number;
@@ -47,7 +39,6 @@ export type Settings = {
     headings?: HeadingTagName[];
   };
   seo: SEO;
-  breakpoints?: BreakPoints;
   analytics?: {
     googleAnalyticsId?: string;
   };
