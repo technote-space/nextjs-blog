@@ -75,7 +75,9 @@ export class OembedService implements IOembedService {
         console.log(e);
         if (e instanceof Error && /getaddrinfo ENOTFOUND/.test(e.message)) {
           // ドメインも死んでるっぽい
-          this.slack.sendError(e).then();
+          if (!/test\.invalid/.test(str)) {
+            this.slack.sendError(e).then();
+          }
           return `<a href="${str}" style="text-decoration: line-through">${str}</a>`;
         }
         return this.generateCard(str);
