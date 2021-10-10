@@ -83,6 +83,9 @@ export const settings: Settings = {
   wpExportXml: process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
     path: process.env.WP_EXPORT_XML,
   } : undefined,
+  slack: {
+    webhookUrl: process.env.SLACK_WEBHOOK_URL,
+  },
   siteUrl: (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : undefined) || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,

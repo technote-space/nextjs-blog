@@ -1,23 +1,9 @@
-<p align="center">
-  <a href="https://nextjs.org">
-    <img alt="logo" src="https://user-images.githubusercontent.com/39912269/135714832-7d94bc6a-eb3f-4f99-945c-09e0e35e5bc4.png" height="128">
-  </a>
-</p>
+# My Tech Blog
 
-<p align="center">
-  <a aria-label="CI Status" href="https://github.com/technote-space/nextjs-blog/actions">
-    <img alt="CI Status" src="https://github.com/technote-space/nextjs-blog/workflows/CI/badge.svg">
-  </a>
-  <a aria-label="codecov" href="https://codecov.io/gh/technote-space/nextjs-blog">
-    <img alt="codecov" src="https://codecov.io/gh/technote-space/nextjs-blog/branch/main/graph/badge.svg">
-  </a>
-  <a aria-label="CodeFactor" href="https://www.codefactor.io/repository/github/technote-space/nextjs-blog">
-    <img alt="CodeFactor" src="https://www.codefactor.io/repository/github/technote-space/nextjs-blog/badge">
-  </a>
-  <a aria-label="License" href="https://github.com/technote-space/nextjs-blog/blob/main/LICENSE">
-    <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg">
-  </a>
-</p>
+[![CI Status](https://github.com/technote-space/nextjs-blog/workflows/CI/badge.svg)](https://github.com/technote-space/nextjs-blog/actions)
+[![codecov](https://codecov.io/gh/technote-space/nextjs-blog/branch/main/graph/badge.svg)](https://codecov.io/gh/technote-space/nextjs-blog)
+[![CodeFactor](https://www.codefactor.io/repository/github/technote-space/nextjs-blog/badge)](https://www.codefactor.io/repository/github/technote-space/nextjs-blog)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/nextjs-blog/blob/main/LICENSE)
 
 ## Table of Contents
 
@@ -43,7 +29,7 @@
 
 ## デモ
 
-準備中...
+https://nextjs-blog-technote-space.vercel.app/
 
 ## 動作要件
 

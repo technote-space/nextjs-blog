@@ -45,5 +45,6 @@ package-lock.json
 # リリース時には削除
 public/*
 !public/favicon.ico
+!public/nprogress.css
 !public/images/
 contents/*

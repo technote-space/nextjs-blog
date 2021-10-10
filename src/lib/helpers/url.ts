@@ -43,7 +43,6 @@ export function isValidHttpUrl(str: string): boolean {
   }
 }
 
-// TODO: Add test
 const extractCodes = (text: string): RegExpMatchArray[] => Array.from(text.matchAll(/<pre[^>]*?>(<code[^>]*?>)?(([\s\S])*?)(<\/code>)?<\/pre>/img));
 export const processLinksInCode = (text: string): string => {
   return extractCodes(text).reduce((acc: string, match: RegExpMatchArray) => {

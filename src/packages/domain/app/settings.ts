@@ -62,5 +62,8 @@ export type Settings = {
   };
   wpExportXml?: {
     path: string;
-  }
+  };
+  slack?: {
+    webhookUrl?: string;
+  };
 };

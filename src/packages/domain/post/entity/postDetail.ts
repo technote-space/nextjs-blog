@@ -10,7 +10,7 @@ import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
 import Base from '$/domain/shared/entity/base';
 
-export class PostDetail extends Base() {
+export class PostDetail extends Base {
   private id?: Id;
   private title!: Title;
   private content!: Content;

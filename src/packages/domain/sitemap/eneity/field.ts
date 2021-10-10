@@ -4,7 +4,7 @@ import Lastmod from '$/domain/sitemap/valueObject/lastmod';
 import Loc from '$/domain/sitemap/valueObject/loc';
 import Priority from '$/domain/sitemap/valueObject/priority';
 
-export class Field extends Base() {
+export class Field extends Base {
   private loc!: Loc;
   private lastmod?: Lastmod;
   private changefreq?: Changefreq;
