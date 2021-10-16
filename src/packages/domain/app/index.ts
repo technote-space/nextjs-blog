@@ -1,6 +1,11 @@
 import type { AppProps } from 'next/app';
-import type { PropsWithChildren } from 'react';
+
+export type AppPropsWithOptions = Omit<AppProps, 'Component'> & {
+  Component: AppProps['Component'] & {
+    noTemplate?: boolean;
+  };
+};
 
 export interface IAppService {
-  create(): (props: PropsWithChildren<AppProps>) => JSX.Element;
+  create(): (props: AppPropsWithOptions) => JSX.Element;
 }
