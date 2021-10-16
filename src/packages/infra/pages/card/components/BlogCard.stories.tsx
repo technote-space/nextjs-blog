@@ -1,5 +1,4 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import styles from '$/infra/pages/post/components/Article.module.scss';
 import BlogCard from './BlogCard';
 
 export default {
@@ -16,9 +15,7 @@ export default {
   },
 } as ComponentMeta<typeof BlogCard>;
 
-const Template: ComponentStory<typeof BlogCard> = (args) => <div className={styles.article}>
-  <BlogCard {...args} />
-</div>;
+const Template: ComponentStory<typeof BlogCard> = (args) => <BlogCard {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

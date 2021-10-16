@@ -4,11 +4,9 @@
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { ISlack } from '$/domain/shared/library/slack';
-import dynamic from 'next/dynamic';
 import ReactDOMServer from 'react-dom/server';
 import { singleton, inject } from 'tsyringe';
-import urlMetadata from 'url-metadata';
-import { decodeUrlHtmlEntity, escapeHtml } from '@/lib/helpers/string';
+import { decodeUrlHtmlEntity } from '@/lib/helpers/string';
 import {
   isJsfiddleUrl,
   isCodepenUrl,
@@ -17,11 +15,7 @@ import {
   isTweetUrl,
   isYoutubeUrl,
   isValidHttpUrl,
-  getSiteUrl,
 } from '@/lib/helpers/url';
-import type { ICache } from '$/domain/shared/library/cache';
-import objectHash from 'object-hash';
-import BlogCard from './components/BlogCard';
 import CodePen from './components/CodePen';
 import CodeSandbox from './components/CodeSandbox';
 import JsFiddle from './components/JsFiddle';
@@ -39,7 +33,7 @@ export class OembedService implements IOembedService {
   ) {
   }
 
-  private async __process(str: string): Promise<string> {
+  private static async __process(str: string): Promise<string> {
     if (isJsfiddleUrl(str)) {
       return ReactDOMServer.renderToString(<JsFiddle url={str}/>);
     }
@@ -68,45 +62,16 @@ export class OembedService implements IOembedService {
     }
 
     if (isValidHttpUrl(str)) {
-      try {
-        const metadata = await urlMetadata(str) as urlMetadata.Result & { 'zenn:description'?: string };
-        const description = metadata.description.length > 120 ? `${metadata.description.substr(0, 120)}...` : metadata.description;
-        return this.generateCard(str, metadata.title, description, metadata.image, metadata.canonical, metadata.source);
-      } catch (e) {
-        console.log(e);
-        if (e instanceof Error && /getaddrinfo ENOTFOUND/.test(e.message)) {
-          // ドメインも死んでるっぽい
-          if (!/test\.invalid/.test(str)) {
-            this.slack.sendError(e).then();
-          }
-          return `<a href="${str}" style="text-decoration: line-through">${str}</a>`;
-        }
-        return this.generateCard(str);
-      }
+      return `<div class="blog-card"><iframe src="/card/${encodeURIComponent(str)}" frameborder="0" scrolling="no" loading="lazy"></iframe></div>`;
     }
 
     return str;
   }
 
-  private async generateCard(url: string, title?: string, description?: string, image?: string, canonical?: string, source?: string): Promise<string> {
-    const _image = image || `https://s.wordpress.com/mshots/v1/${escapeHtml(url)}?w=380&h=200`;
-    const dominantColor = await this.color.getDominantColor(_image, getSiteUrl(url));
-
-    return ReactDOMServer.renderToString(<BlogCard
-      url={url}
-      title={title}
-      description={description}
-      image={_image}
-      dominantColor={dominantColor?.value}
-      canonical={canonical}
-      source={source}
-    />);
-  }
-
   // TODO: Add test
   public async process(str: string): Promise<string> {
     if (!(str in OembedService.__cache)) {
-      OembedService.__cache[str] = await this.__process(decodeUrlHtmlEntity(str));
+      OembedService.__cache[str] = await OembedService.__process(decodeUrlHtmlEntity(str));
     }
 
     return OembedService.__cache[str];
