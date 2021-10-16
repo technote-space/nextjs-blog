@@ -26,7 +26,8 @@ Sitemap: ${this.settings.siteUrl.replace(/\/$/, '')}/sitemap.xml
     res.statusCode = 200;
     res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
     res.setHeader('Content-Type', 'text/plain');
-    res.end(robotsTxt);
+    res.write(robotsTxt);
+    res.end();
 
     return {
       props: {},

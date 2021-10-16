@@ -20,12 +20,12 @@ const useAutoResizeIframe = (): void => {
       const contentWindow = iframe.contentWindow;
       if (contentWindow) {
         const setHeight = () => {
-          iframe.style.height = contentWindow.document.body.scrollHeight + 'px';
-          console.log(iframe.style.height);
+          const card = contentWindow.document.body.querySelector('.blog-card');
+          iframe.style.height = (card?.scrollHeight ?? contentWindow.document.body.scrollHeight) + 'px';
         };
         contentWindow.onload = () => {
           iframe.style.width = '100%';
-          setHeight();
+          iframe.style.height = contentWindow.document.body.scrollHeight + 'px';
         };
         contentWindow.onresize = debounce(setHeight);
       }

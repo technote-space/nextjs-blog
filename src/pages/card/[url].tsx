@@ -1,9 +1,10 @@
-import type { ICardPage, ICardPageProps, Props, Params } from '$/domain/pages/card';
-import type { GetStaticProps, GetStaticPaths } from 'next';
+import type { ICardPageProps, Params } from '$/domain/pages/card';
+import type { GetServerSideProps } from 'next';
 import { container } from 'tsyringe';
 
-export default (container.resolve('ICardPage') as ICardPage).create();
+export default function CardPage(): null {
+  return null;
+}
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => (container.resolve('ICardPageProps') as ICardPageProps).getStaticPaths();
-
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => (container.resolve('ICardPageProps') as ICardPageProps).getStaticProps(params);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getServerSideProps: GetServerSideProps<{ [key: string]: any }, Params> = async (context) => (container.resolve('ICardPageProps') as ICardPageProps).getServerSideProps(context);
