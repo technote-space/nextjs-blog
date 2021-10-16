@@ -1,5 +1,6 @@
 import { container } from 'tsyringe';
 import { AnyPageProps } from '$/infra/pages/any';
+import { CardPageProps } from '$/infra/pages/card/server';
 import { IndexPageProps } from '$/infra/pages/index/server';
 import { PostPageProps } from '$/infra/pages/post/server';
 import { RobotsPageProps } from '$/infra/pages/robots';
@@ -55,3 +56,4 @@ container.registerSingleton('IPostPageProps', PostPageProps);
 container.registerSingleton('IAnyPageProps', AnyPageProps);
 container.registerSingleton('ISitemapPageProps', SitemapPageProps);
 container.registerSingleton('IRobotsPageProps', RobotsPageProps);
+container.registerSingleton('ICardPageProps', CardPageProps);

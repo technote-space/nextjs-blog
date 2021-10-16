@@ -1,0 +1,118 @@
+.blog-card {
+  position: relative;
+
+  > a {
+    display: flex;
+    font-size: 13px;
+    line-height: 1.45em;
+    transition: height 0.3s ease;
+    border-radius: 3px;
+    background: #fff;
+    overflow: hidden;
+    color: #1c1c1c;
+    text-decoration: none;
+    user-select: none;
+
+    .blog-card__image {
+      flex-shrink: 0;
+      width: 40%;
+      height: 0;
+      padding-bottom: 21%;
+      align-self: center;
+      transition: transform 0.5s ease;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-position-y: center;
+      backface-visibility: hidden;
+    }
+
+    .blog-card__details {
+      display: flex;
+      z-index: 0;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 10px 16px;
+      background: white;
+
+      > div {
+        margin: 0 0 4px;
+      }
+
+      &__title {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        font-weight: bold;
+      }
+
+      &__description {
+      }
+
+      &__meta {
+        display: flex;
+        flex-direction: row;
+
+        > div {
+          margin-right: 10px;
+        }
+      }
+
+      &__source {
+        display: flex;
+        flex-grow: 1;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        &__favicon {
+          width: 16px;
+          height: 16px;
+          background-size: cover;
+          margin-right: 3px;
+        }
+        &__name {
+        }
+      }
+    }
+  }
+
+  > a:visited {
+    color: #1c1c1c;
+  }
+
+  > a:hover {
+    color: #e53900;
+
+    .blog-card__image {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .blog-card {
+    > a {
+      .blog-card__image {
+        width: 46%;
+        padding-bottom: 24%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .blog-card {
+    > a {
+      flex-direction: column;
+      border: solid 1px #ccc;
+
+      .blog-card__image {
+        width: 100%;
+        padding-bottom: 53%;
+      }
+
+      .blog-card__details {
+        border-top: solid 1px #ccc;
+      }
+    }
+  }
+}
