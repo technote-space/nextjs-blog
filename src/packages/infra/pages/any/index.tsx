@@ -1,4 +1,4 @@
-import type { Settings } from '$/domain/app/settings';
+import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
@@ -20,6 +20,14 @@ export class AnyPageProps implements IAnyPageProps {
     return source.replace(/^\//, '').replace(/\/$/, '');
   }
 
+  private async getUrlMaps(): Promise<UrlMap[]> {
+    if (this.settings.urlMaps) {
+      return this.settings.urlMaps.concat(...await this.postFactory.getUrlMaps());
+    }
+
+    return this.postFactory.getUrlMaps();
+  }
+
   public async getStaticPaths(): Promise<GetStaticPathsResult<Params>> {
     if (this.settings.isIsr) {
       return {
@@ -30,7 +38,7 @@ export class AnyPageProps implements IAnyPageProps {
 
     const ids = Object.assign({}, ...(await this.postFactory.getIds()).map(id => ({ [id.value]: true })));
     return {
-      paths: (this.settings.urlMaps ?? [])
+      paths: (await this.getUrlMaps())
         .map(urlMap => ({
           id: Id.create({ source: Source.create(urlMap.destination.source), id: urlMap.destination.id }),
           source: urlMap.source,
@@ -42,8 +50,8 @@ export class AnyPageProps implements IAnyPageProps {
     };
   }
 
-  private findDestination(source: string): { source: string; id: string | number; postType?: string } | undefined {
-    return (this.settings.urlMaps ?? []).find(urlMap => AnyPageProps.normalizeSource(urlMap.source) === source)?.destination;
+  private async findDestination(source: string): Promise<{ source: string; id: string | number; postType?: string } | undefined> {
+    return (await this.getUrlMaps()).find(urlMap => AnyPageProps.normalizeSource(urlMap.source) === source)?.destination;
   }
 
   public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
@@ -54,7 +62,7 @@ export class AnyPageProps implements IAnyPageProps {
     }
 
     const source = params.any.join('/');
-    const destination = this.findDestination(source);
+    const destination = await this.findDestination(source);
     if (!destination) {
       return {
         notFound: true,

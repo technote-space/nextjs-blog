@@ -4,16 +4,16 @@ import NProgress from 'nprogress';
 import { useEffect, useCallback } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useHooks = (analytics: IAnalytics) => {
+export const useHooks = (analytics?: IAnalytics) => {
   const router = useRouter();
   const handleRouteChange = useCallback((path: string) => {
-    if (analytics.isValid()) {
+    if (analytics?.isValid()) {
       analytics.pageView(path);
     }
   }, [analytics]);
 
   useEffect(() => {
-    if (!analytics.isValid()) {
+    if (!analytics?.isValid()) {
       return;
     }
 

@@ -40,6 +40,7 @@ package-lock.json
 /tmp
 /sh
 /*.zip
+tsconfig.tsbuildinfo
 
 # 開発用
 # リリース時には削除
