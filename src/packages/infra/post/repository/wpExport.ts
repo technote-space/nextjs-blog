@@ -206,6 +206,10 @@ export class WordPressExportPostRepository extends BasePostRepository implements
   }
 
   public async getUrlMaps(): Promise<UrlMap[]> {
+    if (!this.settings.wpExportXml?.urlMaps) {
+      return [];
+    }
+
     return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), null)).map(result => ({
       source: result.link,
       destination: {
