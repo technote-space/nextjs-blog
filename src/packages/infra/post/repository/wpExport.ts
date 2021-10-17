@@ -1,4 +1,4 @@
-import type { Settings } from '$/domain/app/settings';
+import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
@@ -86,7 +86,9 @@ type PostData = {
   category?: {
     domain: 'post_tag' | 'category';
     nicename: string;
-  }[]
+  }[];
+  link: string;
+  post_type: string;
 };
 
 // FIXME: 1度読まないと Vercel で消える
@@ -121,10 +123,10 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       .replace('/', '-');
   }
 
-  private collectPosts(data: WpXmlData, postType?: string): PostData[] {
-    const _postType = this.getPostType(postType);
+  private collectPosts(data: WpXmlData, postType?: string | null): PostData[] {
+    const _postType = postType === null ? undefined : this.getPostType(postType);
     return data.rss.channel[0].item
-      .filter(item => item.post_type[0] === _postType && (item.status[0] === 'publish' || item.status[0] === 'future'))
+      .filter(item => (!_postType || item.post_type[0] === _postType) && (item.status[0] === 'publish' || item.status[0] === 'future'))
       .map(item => ({
         id: Number(item.post_id[0]),
         post_name: WordPressExportPostRepository.getPostName(data.rss.channel[0].base_site_url[0], item),
@@ -134,6 +136,8 @@ export class WordPressExportPostRepository extends BasePostRepository implements
         post_excerpt: item.encoded[1],
         thumbnail: this.getThumbnailUrl(data, item.postmeta?.find(meta => meta.meta_key[0] === '_thumbnail_id')?.meta_value[0]),
         category: item.category?.map(item => item.$),
+        link: WordPressExportPostRepository.removeBaseSiteUrl(item.link[0], data),
+        post_type: item.post_type[0],
       }));
   }
 
@@ -176,7 +180,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }));
   }
 
-  private static convertImageUrl(content: string, data: WpXmlData): string {
+  private static removeBaseSiteUrl(content: string, data: WpXmlData): string {
     return content.replace(new RegExp(`${pregQuote(`${data.rss.channel[0].base_site_url[0].replace(/\/$/, '')}`, '/')}`, 'g'), '');
   }
 
@@ -188,7 +192,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }
 
     const isClassicEditor = !/<!-- wp:/.test(post.post_content);
-    const processedContent = WordPressExportPostRepository.convertImageUrl(await this.processContent(post.post_content, postType), data);
+    const processedContent = WordPressExportPostRepository.removeBaseSiteUrl(await this.processContent(post.post_content, postType), data);
     return PostDetail.reconstruct(
       id,
       Title.create(post.post_title),
@@ -199,5 +203,20 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.post_date),
     );
+  }
+
+  public async getUrlMaps(): Promise<UrlMap[]> {
+    if (!this.settings.wpExportXml?.urlMaps) {
+      return [];
+    }
+
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), null)).map(result => ({
+      source: result.link,
+      destination: {
+        source: this.sourceId,
+        id: result.post_name,
+        postType: result.post_type,
+      },
+    } as UrlMap));
   }
 }
