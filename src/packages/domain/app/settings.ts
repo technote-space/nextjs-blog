@@ -13,7 +13,7 @@ type Replace = {
 type Exclude = PostData<string[]> & {
   type?: string;
 };
-type UrlMap = {
+export type UrlMap = {
   source: string;
   destination: PostData<string>;
 };

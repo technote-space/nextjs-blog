@@ -1,3 +1,4 @@
+import type { UrlMap } from '$/domain/app/settings';
 import type { Post } from '$/domain/post/entity/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostFactory } from '$/domain/post/factory';
@@ -45,5 +46,12 @@ export class PostFactory implements IPostFactory {
     }
 
     return this.__postRepositories[id.source.value].fetch(id, postType);
+  }
+
+  public async getUrlMaps(): Promise<UrlMap[]> {
+    return this.getSources().reduce(async (prev, source) => {
+      const acc = await prev;
+      return acc.concat(...await this.__postRepositories[source.value].getUrlMaps());
+    }, Promise.resolve([] as UrlMap[]));
   }
 }
