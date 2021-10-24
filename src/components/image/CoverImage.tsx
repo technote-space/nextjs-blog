@@ -48,8 +48,6 @@ const getInnerBoxProps = (innerProps?: BoxProps): BoxProps => {
     fontSize: ['1.3em', '1.5em', '1.8em', '1.8em'],
     lineHeight: ['1.2em', '1.4em', '1.5em', '1.5em'],
     fontWeight: 'bold',
-    color: '#545454',
-    textShadow: '2px 2px 5px whitesmoke',
     width: ['90%', '90%', '85%', '85%'],
     ...innerProps,
   };

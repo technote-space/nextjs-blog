@@ -4,6 +4,7 @@ module.exports = {
     'src/**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
+    '!**/*.example.*',
   ],
   coveragePathIgnorePatterns: [
     '\\$.+\\.ts',
