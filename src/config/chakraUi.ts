@@ -11,7 +11,6 @@ export default {
       },
       main: {
         width: '100%',
-        bg: mode('white', 'gray.800')(props),
       },
       h1: {
         color: mode('#545454', '#eee')(props),
@@ -88,6 +87,18 @@ export default {
         },
         '.profile-box': {
           bg: mode('#fefefe', 'transparent')(props),
+        },
+      },
+      '.article-card': {
+        bg: mode('white', 'gray.800')(props),
+        _hover: {
+          bg: mode('#fbffff', 'gray.700')(props),
+        },
+        h2: {
+          color: mode('#333', '#eee')(props),
+        },
+        h3: {
+          color: mode('#333', '#eee')(props),
         },
       },
       header: {
