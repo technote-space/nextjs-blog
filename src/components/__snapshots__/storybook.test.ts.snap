@@ -2,6 +2,37 @@
 
 exports[`Storyshots Common Components/Box Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-0"
   >
@@ -13,6 +44,37 @@ Array [
 
 exports[`Storyshots Common Components/CoverImage Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-79elbk"
   >
@@ -24,7 +86,7 @@ Array [
       src="https://placehold.jp/150x150.png"
     />
     <div
-      className="css-i4z9fe"
+      className="css-x2qbky"
     >
       Hello World!
     </div>
@@ -35,6 +97,37 @@ Array [
 
 exports[`Storyshots Common Components/CoverImage Long Text 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-79elbk"
   >
@@ -46,7 +139,7 @@ Array [
       src="https://placehold.jp/150x150.png"
     />
     <div
-      className="css-i4z9fe"
+      className="css-x2qbky"
     >
       吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
     </div>
@@ -57,6 +150,37 @@ Array [
 
 exports[`Storyshots Common Components/CoverImage No Src 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-79elbk"
   >
@@ -64,7 +188,7 @@ Array [
       className="css-g63t4c"
     />
     <div
-      className="css-i4z9fe"
+      className="css-x2qbky"
     >
       Hello World!
     </div>
@@ -75,6 +199,37 @@ Array [
 
 exports[`Storyshots Common Components/CoverImage Set Size 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-79elbk"
   >
@@ -86,7 +241,7 @@ Array [
       src="https://placehold.jp/150x150.png"
     />
     <div
-      className="css-i4z9fe"
+      className="css-x2qbky"
     >
       Hello World!
     </div>
@@ -97,6 +252,37 @@ Array [
 
 exports[`Storyshots Common Components/Date Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <time
     className="css-15hwmdh"
     dateTime="2000-11-22T00:00:00.000Z"
@@ -109,6 +295,37 @@ Array [
 
 exports[`Storyshots Common Components/Date Format 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <time
     className="css-15hwmdh"
     dateTime="2000-11-22T00:00:00.000Z"
@@ -121,6 +338,37 @@ Array [
 
 exports[`Storyshots Common Components/Flex Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-k008qs"
   >
@@ -132,6 +380,37 @@ Array [
 
 exports[`Storyshots Common Components/List Empty 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <ul
     className="css-155za0w"
     role="list"
@@ -142,6 +421,37 @@ Array [
 
 exports[`Storyshots Common Components/List Multiple Items 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <ul
     className="css-155za0w"
     role="list"
@@ -168,6 +478,37 @@ Array [
 
 exports[`Storyshots Common Components/List One Item 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <ul
     className="css-155za0w"
     role="list"
@@ -184,8 +525,39 @@ Array [
 
 exports[`Storyshots Common Components/MainHeading Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <h2
-    className="css-w3cbui"
+    className="css-ratmk4"
   >
     Hello World!
   </h2>,
@@ -195,8 +567,39 @@ Array [
 
 exports[`Storyshots Common Components/SubHeading Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <h3
-    className="css-sa2ial"
+    className="css-15qp5m4"
   >
     Hello World!
   </h3>,
@@ -206,6 +609,37 @@ Array [
 
 exports[`Storyshots Common Components/Thumbnail Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <img
     alt="thumbnail"
     className="chakra-image css-1sv9k7u"
@@ -218,10 +652,76 @@ Array [
 ]
 `;
 
-exports[`Storyshots Common Components/Thumbnail No Src 1`] = `<span />`;
+exports[`Storyshots Common Components/Thumbnail No Src 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <span />,
+]
+`;
 
 exports[`Storyshots Common Components/Thumbnail Set Size 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <img
     alt="thumbnail"
     className="chakra-image css-9yxp9o"
@@ -236,6 +736,37 @@ Array [
 
 exports[`Storyshots Domain Components/Article Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     style={
       Object {
@@ -244,7 +775,7 @@ Array [
     }
   >
     <article
-      className="css-1flh3nq"
+      className="css-st6isk"
     >
       <header>
         <time
@@ -264,7 +795,7 @@ Array [
             src="https://placehold.jp/150x150.png"
           />
           <div
-            className="css-i4z9fe"
+            className="css-x2qbky"
           >
             <h1>
               Markdown 記法のテスト
@@ -491,6 +1022,37 @@ console.log('Hello World!');
 
 exports[`Storyshots Domain Components/Article Hide Date 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     style={
       Object {
@@ -499,7 +1061,7 @@ Array [
     }
   >
     <article
-      className="css-1flh3nq"
+      className="css-st6isk"
     >
       <header>
         <div
@@ -509,7 +1071,7 @@ Array [
             className="css-g63t4c"
           />
           <div
-            className="css-i4z9fe"
+            className="css-x2qbky"
           >
             <h1>
               Markdown 記法のテスト
@@ -736,6 +1298,37 @@ console.log('Hello World!');
 
 exports[`Storyshots Domain Components/Article No Thumbnail 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     style={
       Object {
@@ -744,7 +1337,7 @@ Array [
     }
   >
     <article
-      className="css-1flh3nq"
+      className="css-st6isk"
     >
       <header>
         <time
@@ -760,7 +1353,7 @@ Array [
             className="css-g63t4c"
           />
           <div
-            className="css-i4z9fe"
+            className="css-x2qbky"
           >
             <h1>
               Markdown 記法のテスト
@@ -987,8 +1580,39 @@ console.log('Hello World!');
 
 exports[`Storyshots Domain Components/Card Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
-    className="css-1no22wl"
+    className="article-card css-1y9794"
   >
     <div
       className="css-ojlcd6"
@@ -1005,12 +1629,12 @@ Array [
         className="css-xg5s6b"
       >
         <h2
-          className="css-8ctgrs"
+          className="css-1i8ukke"
         >
           吾輩は猫である
         </h2>
         <h3
-          className="css-sa2ial"
+          className="css-15qp5m4"
         >
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
@@ -1037,13 +1661,13 @@ Array [
           width={120}
         />
         <h2
-          className="css-1blgh54"
+          className="css-j0vfib"
         >
           吾輩は猫である
         </h2>
       </div>
       <h3
-        className="css-1jp0489"
+        className="css-xf98z4"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
@@ -1061,8 +1685,39 @@ Array [
 
 exports[`Storyshots Domain Components/Card Long 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
-    className="css-1no22wl"
+    className="article-card css-1y9794"
   >
     <div
       className="css-ojlcd6"
@@ -1079,12 +1734,12 @@ Array [
         className="css-xg5s6b"
       >
         <h2
-          className="css-8ctgrs"
+          className="css-1i8ukke"
         >
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
         </h2>
         <h3
-          className="css-sa2ial"
+          className="css-15qp5m4"
         >
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
@@ -1111,13 +1766,13 @@ Array [
           width={120}
         />
         <h2
-          className="css-1blgh54"
+          className="css-j0vfib"
         >
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
         </h2>
       </div>
       <h3
-        className="css-1jp0489"
+        className="css-xf98z4"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
@@ -1135,8 +1790,39 @@ Array [
 
 exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
-    className="css-1no22wl"
+    className="article-card css-1y9794"
   >
     <div
       className="css-ojlcd6"
@@ -1145,12 +1831,12 @@ Array [
         className="css-xg5s6b"
       >
         <h2
-          className="css-8ctgrs"
+          className="css-1i8ukke"
         >
           吾輩は猫である
         </h2>
         <h3
-          className="css-sa2ial"
+          className="css-15qp5m4"
         >
           吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
         </h3>
@@ -1169,13 +1855,13 @@ Array [
         className="css-1eskh14"
       >
         <h2
-          className="css-1blgh54"
+          className="css-j0vfib"
         >
           吾輩は猫である
         </h2>
       </div>
       <h3
-        className="css-1jp0489"
+        className="css-xf98z4"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
@@ -1193,8 +1879,39 @@ Array [
 
 exports[`Storyshots Domain Components/Card Short 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
-    className="css-1no22wl"
+    className="article-card css-1y9794"
   >
     <div
       className="css-ojlcd6"
@@ -1211,12 +1928,12 @@ Array [
         className="css-xg5s6b"
       >
         <h2
-          className="css-8ctgrs"
+          className="css-1i8ukke"
         >
           吾輩は猫である
         </h2>
         <h3
-          className="css-sa2ial"
+          className="css-15qp5m4"
         >
           吾輩は猫である。
         </h3>
@@ -1243,13 +1960,13 @@ Array [
           width={120}
         />
         <h2
-          className="css-1blgh54"
+          className="css-j0vfib"
         >
           吾輩は猫である
         </h2>
       </div>
       <h3
-        className="css-1jp0489"
+        className="css-xf98z4"
       >
         吾輩は猫である。
       </h3>
@@ -1267,6 +1984,37 @@ Array [
 
 exports[`Storyshots Domain Components/Pagination Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <ul
     className="pagination"
   >
@@ -1393,8 +2141,39 @@ Array [
 
 exports[`Storyshots Layout Components/Footer Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <footer
-    className="css-1ijbxy6"
+    className="css-0"
   >
     <div
       className="css-3thfti"
@@ -1452,8 +2231,39 @@ Array [
 
 exports[`Storyshots Layout Components/Footer Long 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <footer
-    className="css-1ijbxy6"
+    className="css-0"
   >
     <div
       className="css-3thfti"
@@ -1533,8 +2343,39 @@ Array [
 
 exports[`Storyshots Layout Components/Footer No Pages 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <footer
-    className="css-1ijbxy6"
+    className="css-0"
   >
     <div
       className="css-3thfti"
@@ -1561,8 +2402,39 @@ Array [
 
 exports[`Storyshots Layout Components/Header Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <header
-    className="css-1ijbxy6"
+    className="css-0"
   >
     <div
       className="css-1gv1287"
@@ -1648,8 +2520,39 @@ Array [
 
 exports[`Storyshots Layout Components/Header Long 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <header
-    className="css-1ijbxy6"
+    className="css-0"
   >
     <div
       className="css-1gv1287"
@@ -1779,8 +2682,39 @@ Array [
 
 exports[`Storyshots Layout Components/Header No Pages 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <header
-    className="css-1ijbxy6"
+    className="css-0"
   >
     <div
       className="css-1gv1287"
@@ -1804,6 +2738,37 @@ Array [
 
 exports[`Storyshots Layout Components/Layout Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="css-0"
   >
@@ -1824,6 +2789,37 @@ Array [
 
 exports[`Storyshots Library Components/BlogCard Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <html
     lang="ja"
   >
@@ -2037,6 +3033,37 @@ Array [
 
 exports[`Storyshots Library Components/BlogCard Minimum 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <html
     lang="ja"
   >
@@ -2250,6 +3277,37 @@ Array [
 
 exports[`Storyshots Library Components/CodePen Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   >
@@ -2289,6 +3347,37 @@ Array [
 
 exports[`Storyshots Library Components/CodeSandbox Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   >
@@ -2330,6 +3419,37 @@ Array [
 
 exports[`Storyshots Library Components/JsFiddle Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   >
@@ -2369,6 +3489,37 @@ Array [
 
 exports[`Storyshots Library Components/StackBlitz Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   >
@@ -2408,6 +3559,37 @@ Array [
 
 exports[`Storyshots Library Components/Tweet Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   >
@@ -2444,6 +3626,37 @@ Array [
 
 exports[`Storyshots Library Components/YouTube Default 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   >
@@ -2480,6 +3693,37 @@ Array [
 
 exports[`Storyshots Library Components/YouTube Invalid Url 1`] = `
 Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
   <div
     className="article"
   />,

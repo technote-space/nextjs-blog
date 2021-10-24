@@ -22,7 +22,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
   useAutoResizeIframe();
 
   return <SimpleReactLightbox>
-    <ArticleComponent backgroundColor="white" p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
+    <ArticleComponent p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">
       <header>
         {!hideDate && <Date
           date={createdAt}

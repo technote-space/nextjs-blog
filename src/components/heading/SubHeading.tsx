@@ -7,7 +7,6 @@ type Props = StyleProps;
 const defaultProps: Props = {
   fontSize: ['0.8em', '0.8em', '1em', '1em'],
   lineHeight: '1.35em',
-  color: '#333',
   wordBreak: 'break-word',
 };
 
