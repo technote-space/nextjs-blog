@@ -90,7 +90,6 @@
   h2 {
     font-size: 24px;
     padding: 25px;
-    background-color: #e1f1ff;
     border-radius: 2px;
     border-bottom: #1A94DA solid 4px;
   }
@@ -123,19 +122,6 @@
     }
   }
 
-  a {
-    color: #1967d2;
-    text-decoration: underline;
-
-    &:visited {
-      color: #9967d2;
-    }
-
-    &:hover {
-      color: #e53900;
-    }
-  }
-
   ol, ul {
     margin: 1em 0;
     padding-left: 40px;
@@ -153,14 +139,6 @@
     border-spacing: 0;
   }
 
-  table th {
-    background-color: #f5f6f7;
-  }
-
-  table tr:nth-of-type(2n+1) {
-    background-color: #fafbfc;
-  }
-
   table th,
   table td {
     border: 1px solid #eee;
@@ -172,32 +150,7 @@
     max-width: 100%;
   }
 
-  :global .scrollable-table {
-    -webkit-overflow-scrolling: touch;
-
-    table {
-      border-collapse: collapse;
-      max-width: none;
-    }
-
-    th {
-      background-color: #eee;
-    }
-
-    th,
-    td {
-      border: solid 1px #ccc;
-      padding: 3px 5px;
-      white-space: nowrap;
-    }
-
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    margin-bottom: 1em;
-  }
-
   blockquote {
-    background-color: #fafbfc;
     border: 1px solid #ddd;
     margin: 1em 0;
     padding: 10px 1.2em;
@@ -231,7 +184,6 @@
 
   p code {
     font-style: italic;
-    background-color: #eee;
     padding: 4px;
     line-height: 1.5;
   }
@@ -360,47 +312,38 @@
   }
 
   :global .alert-box {
-    background: #fdf2f2;
     border: 1px solid #f6b9b9;
   }
 
   :global .memo-box {
-    background: #ebf8f4;
     border: 1px solid #8dd7c1;
   }
 
   :global .information-box {
-    background: #f3fafe;
     border: 1px solid #bde4fc;
   }
 
   :global .comment-box {
-    background: #fefefe;
     border: 1px solid #ccd;
   }
 
   :global .ok-box {
-    background: #f2fafb;
     border: 1px solid #3cb2cc;
   }
 
   :global .ng-box {
-    background: #ffe7e7;
     border: 1px solid #dd5454;
   }
 
   :global .good-box {
-    background: #f7fcf7;
     border: 1px solid #98e093;
   }
 
   :global .bad-box {
-    background: #fff1f4;
     border: 1px solid #eb6980;
   }
 
   :global .profile-box {
-    background: #fefefe;
     border: 1px solid #ccd;
   }
 
@@ -436,10 +379,9 @@
     width: 90%;
 
     :global .toc-title {
-      background: whitesmoke;
-      color: #292929;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
+      border-bottom: 2px solid whitesmoke;
       font-size: 1.1em;
       text-align: center;
       display: block;
@@ -511,10 +453,8 @@
         text-decoration: none;
 
         &:hover {
-          color: #ccc;
+          color: #aaa;
         }
-
-        color: #545454;
       }
     }
   }
@@ -529,20 +469,5 @@
   :global .double-underline {
     font-weight: bold;
     text-decoration: double underline red;
-  }
-}
-
-.back {
-  display: inline-block;
-  margin-top: 1em;
-  color: #1967d2;
-  text-decoration: underline;
-
-  &:visited {
-    color: #9967d2;
-  }
-
-  &:hover {
-    color: #e53900;
   }
 }
