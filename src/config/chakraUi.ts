@@ -119,6 +119,4 @@ export default {
   fonts: {
     body: '"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
   },
-  initialColorMode: 'system',
-  useSystemColorMode: false,
 } as Parameters<typeof extendTheme>[number];
