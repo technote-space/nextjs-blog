@@ -1,11 +1,12 @@
 import type { StyleProps } from '@/components/wrap';
 import type { VFC } from 'react';
+import type { IconType } from 'react-icons';
 import { memo } from 'react';
 import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
-import { Header as HeaderComponent } from '@/components/wrap';
+import { Header as HeaderComponent, IconButton } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type PostData = {
@@ -19,6 +20,7 @@ type Props = StyleProps & {
   pages?: PostData[];
   pagesStyle?: StyleProps;
   toggleColorMode?: () => void;
+  ToggleIcon?: IconType;
 }
 
 const defaultProps: StyleProps & Pick<Props, 'titleStyle' | 'pagesStyle'> = {
@@ -44,7 +46,7 @@ const defaultPagesStyle: StyleProps = {
   maxWidth: ['none', 'none', '25%', '25%'],
 };
 
-const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorMode, ...props }) => {
+const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorMode, ToggleIcon, ...props }) => {
   const createPagesComponent = (hide?: boolean) => pages?.length ?
     <Flex {...defaultPagesStyle} {...pagesStyle} {...(hide ? { visibility: 'hidden', maxHeight: '1.5em' } : {})}>
       <List display={['flex', 'flex', 'block', 'block']} flexWrap="wrap">
@@ -62,7 +64,16 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorM
         </Link>
       </Flex>
       {createPagesComponent()}
-      {toggleColorMode && <Flex onClick={toggleColorMode}>test</Flex>}
+      {toggleColorMode && ToggleIcon && <IconButton
+        size="md"
+        fontSize="lg"
+        aria-label="Switch dark mode"
+        variant="ghost"
+        color="current"
+        onClick={toggleColorMode}
+        icon={<ToggleIcon/>}
+        minW={'auto'}
+      />}
     </Flex>
   </HeaderComponent>;
 };
