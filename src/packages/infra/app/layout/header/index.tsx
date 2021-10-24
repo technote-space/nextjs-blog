@@ -1,5 +1,6 @@
 import type { IHeaderComponent, Props } from '$/domain/app/layout/header';
 import type { Settings } from '$/domain/app/settings';
+import type { IDarkMode } from '$/domain/app/theme/darkMode';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
@@ -11,12 +12,13 @@ import { BaseComponent } from '$/infra/shared/component';
 export class HeaderComponent extends BaseComponent<Props> implements IHeaderComponent {
   public constructor(
     @inject('Settings') private settings: Settings,
+    @inject('IDarkMode') private darkMode: IDarkMode,
   ) {
     super();
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo((props: Props) => <View {...useHooks(props, this.settings)}/>);
+    const component = memo((props: Props) => <View {...useHooks(props, this.settings, this.darkMode)}/>);
     component.displayName = 'HeaderComponent';
 
     return component;

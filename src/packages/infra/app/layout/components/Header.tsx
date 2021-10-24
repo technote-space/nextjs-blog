@@ -18,6 +18,7 @@ type Props = StyleProps & {
   titleStyle?: StyleProps;
   pages?: PostData[];
   pagesStyle?: StyleProps;
+  toggleColorMode?: () => void;
 }
 
 const defaultProps: StyleProps & Pick<Props, 'titleStyle' | 'pagesStyle'> = {
@@ -43,7 +44,7 @@ const defaultPagesStyle: StyleProps = {
   maxWidth: ['none', 'none', '25%', '25%'],
 };
 
-const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) => {
+const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorMode, ...props }) => {
   const createPagesComponent = (hide?: boolean) => pages?.length ?
     <Flex {...defaultPagesStyle} {...pagesStyle} {...(hide ? { visibility: 'hidden', maxHeight: '1.5em' } : {})}>
       <List display={['flex', 'flex', 'block', 'block']} flexWrap="wrap">
@@ -52,7 +53,7 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
         </ListItem>)}
       </List>
     </Flex> : null;
-  return <HeaderComponent backgroundColor="white">
+  return <HeaderComponent>
     <Flex {...defaultProps} {...props}>
       {createPagesComponent(true)}
       <Flex {...defaultTitleStyle} {...titleStyle}>
@@ -61,6 +62,7 @@ const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, ...props }) 
         </Link>
       </Flex>
       {createPagesComponent()}
+      {toggleColorMode && <Flex onClick={toggleColorMode}>test</Flex>}
     </Flex>
   </HeaderComponent>;
 };

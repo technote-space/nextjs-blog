@@ -12,6 +12,12 @@ export default {
       main: {
         width: '100%',
       },
+      header: {
+        bg: mode('white', 'gray.800')(props),
+      },
+      footer: {
+        bg: mode('white', 'gray.800')(props),
+      },
     }),
   },
   components: {
@@ -37,4 +43,6 @@ export default {
   fonts: {
     body: '"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
   },
+  initialColorMode: 'system',
+  useSystemColorMode: false,
 } as Parameters<typeof extendTheme>[number];

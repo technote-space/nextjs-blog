@@ -35,9 +35,7 @@ const defaultPagesStyle: StyleProps = {
   mb: 2,
 };
 
-const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <FooterComponent
-  backgroundColor="white"
->
+const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <FooterComponent>
   <Flex {...defaultProps} {...props}>
     {!!pages?.length && <Flex {...defaultPagesStyle} {...pagesStyle}>
       <List display="flex" flexWrap="wrap" justifyContent="center">
