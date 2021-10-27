@@ -19,7 +19,7 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   trailingSlash: true,
   distDir: !process.env.VERCEL && process.env.NODE_ENV === 'production' ? 'build' : '.next',
-  webpack: (config, {isServer, webpack}) => {
+  webpack: (config, {isServer}) => {
     config.resolve.fallback = {
       fs: false,
       path: false,
@@ -30,18 +30,15 @@ module.exports = withBundleAnalyzer({
       timers: false,
     };
     if (!isServer) {
-      config.externals.push({'./registry.server': 'var {}'});
+      config.externals['./registry.server'] = 'var {}';
     }
-
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        React: 'react',
-      }),
-    );
 
     return config;
   },
   eslint: {
     dirs: ['src']
+  },
+  experimental: {
+    esmExternals: false
   }
 });
