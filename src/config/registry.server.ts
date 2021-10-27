@@ -11,7 +11,6 @@ import { WordPressExportPostRepository } from '$/infra/post/repository/wpExport'
 import { WordPressPostRepository } from '$/infra/post/repository/wpPost';
 import { CodeService } from '$/infra/post/service/code';
 import { ColorService } from '$/infra/post/service/color';
-import { ColorServiceForVercel } from '$/infra/post/service/colorForVercel';
 import { HtmlService } from '$/infra/post/service/html';
 import { OembedService } from '$/infra/post/service/oembed';
 import { ThumbnailService } from '$/infra/post/service/thumbnail';
@@ -24,7 +23,7 @@ import { postSources } from '^/config/settings';
 
 container.registerSingleton('ICache', Cache);
 container.registerSingleton('ISlack', Slack);
-container.registerSingleton('IColorService', process.env.VERCEL ? ColorServiceForVercel : ColorService);
+container.registerSingleton('IColorService', ColorService);
 container.registerSingleton('IOembedService', OembedService);
 container.registerSingleton('ITocService', TocService);
 container.registerSingleton('ICodeService', CodeService);
