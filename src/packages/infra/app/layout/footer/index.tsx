@@ -1,5 +1,6 @@
 import type { IFooterComponent, Props } from '$/domain/app/layout/footer';
 import type { Settings } from '$/domain/app/settings';
+import type { IDarkMode } from '$/domain/app/theme/darkMode';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
@@ -11,12 +12,13 @@ import { BaseComponent } from '$/infra/shared/component';
 export class FooterComponent extends BaseComponent<Props> implements IFooterComponent {
   public constructor(
     @inject('Settings') private settings: Settings,
+    @inject('IDarkMode') private darkMode: IDarkMode,
   ) {
     super();
   }
 
   protected getComponent(): VFC<Props> {
-    const component = memo((props: Props) => <View {...useHooks(props, this.settings)}/>);
+    const component = memo((props: Props) => <View {...useHooks(props, this.settings, this.darkMode)}/>);
     component.displayName = 'FooterComponent';
 
     return component;
