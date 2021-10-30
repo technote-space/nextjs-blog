@@ -31,57 +31,77 @@ class TestBase extends Base {
 
     return instance;
   }
+
+  public _checkNotEmpty(property: string): void | never {
+    this.checkNotEmpty(property);
+  }
 }
 
 describe('Entity Base', () => {
-  it('should not throw error', () => {
-    let error: ValidationException | undefined;
-    try {
-      TestBase.create(TestId.create(1), TestId.create('1')).validate();
-    } catch (e) {
-      error = e as ValidationException;
-    }
+  describe('validate', () => {
+    it('should not throw error', () => {
+      let error: ValidationException | undefined;
+      try {
+        TestBase.create(TestId.create(1), TestId.create('1')).validate();
+      } catch (e) {
+        error = e as ValidationException;
+      }
 
-    expect(error).toBeUndefined();
-  });
+      expect(error).toBeUndefined();
+    });
 
-  it('should throw error 1', () => {
-    let error: ValidationException | undefined;
-    try {
-      TestBase.create(TestId.create(1), TestId.create(0)).validate();
-    } catch (e) {
-      error = e as ValidationException;
-    }
+    it('should throw error 1', () => {
+      let error: ValidationException | undefined;
+      try {
+        TestBase.create(TestId.create(1), TestId.create(0)).validate();
+      } catch (e) {
+        error = e as ValidationException;
+      }
 
-    expect(error).not.toBeUndefined();
-    expect(error?.message).toBe('バリデーションエラーが発生しました');
-    expect(error?.errors).toEqual({
-      id4: {
-        errors: ['１以上を指定してください'],
-        name: 'test',
-      },
+      expect(error).not.toBeUndefined();
+      expect(error?.message).toBe('バリデーションエラーが発生しました');
+      expect(error?.errors).toEqual({
+        id4: {
+          errors: ['１以上を指定してください'],
+          name: 'test',
+        },
+      });
+    });
+
+    it('should throw error 2', () => {
+      let error: ValidationException | undefined;
+      try {
+        TestBase.reconstruct(TestId.create(1), TestId.create(0), TestId.create(1), TestId.create('abc')).validate();
+      } catch (e) {
+        error = e as ValidationException;
+      }
+
+      expect(error).not.toBeUndefined();
+      expect(error?.message).toBe('バリデーションエラーが発生しました');
+      expect(error?.errors).toEqual({
+        id2: {
+          errors: ['１以上を指定してください'],
+          name: 'test',
+        },
+        id4: {
+          errors: ['数値の形式が正しくありません'],
+          name: 'test',
+        },
+      });
     });
   });
 
-  it('should throw error 2', () => {
-    let error: ValidationException | undefined;
-    try {
-      TestBase.reconstruct(TestId.create(1), TestId.create(0), TestId.create(1), TestId.create('abc')).validate();
-    } catch (e) {
-      error = e as ValidationException;
-    }
+  describe('checkNotEmpty', () => {
+    it('should not throw error', () => {
+      const test = TestBase.reconstruct(TestId.create(1), TestId.create(0), TestId.create(1), TestId.create(0));
+      expect(() => test._checkNotEmpty('id1')).not.toThrow();
+      expect(() => test._checkNotEmpty('id3')).not.toThrow();
+    });
 
-    expect(error).not.toBeUndefined();
-    expect(error?.message).toBe('バリデーションエラーが発生しました');
-    expect(error?.errors).toEqual({
-      id2: {
-        errors: ['１以上を指定してください'],
-        name: 'test',
-      },
-      id4: {
-        errors: ['数値の形式が正しくありません'],
-        name: 'test',
-      },
+    it('should throw error', () => {
+      const test = TestBase.reconstruct(TestId.create(1), TestId.create(0), TestId.create(1), TestId.create(0));
+      expect(() => test._checkNotEmpty('id2')).toThrow();
+      expect(() => test._checkNotEmpty('id4')).toThrow();
     });
   });
 });
