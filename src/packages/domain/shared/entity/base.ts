@@ -33,6 +33,7 @@ export default abstract class Base {
       throw InvalidValueException;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const member = this[property as keyof this] as any;
     if (!member || !('value' in member) || !member.value) {
       throw InvalidValueException;
