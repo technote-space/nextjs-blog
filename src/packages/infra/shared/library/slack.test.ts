@@ -61,11 +61,26 @@ describe('Slack', () => {
     expect(sendMock).toBeCalledWith({
       attachments: [{
         color: 'danger',
-        text: expect.stringMatching(/^Error: test message/)
+        text: expect.stringMatching(/^Error: test message/),
       }],
       text: 'test message',
-      "icon_emoji": "no_entry",
+      'icon_emoji': 'no_entry',
       username: 'Slack Bot',
     });
+  });
+
+  it('should do nothing if not set webhookUrl', async () => {
+    const sendMock = jest.fn();
+    (IncomingWebhook as jest.Mock).mockReturnValue({
+      send: sendMock,
+    });
+
+    const slack = new Slack({} as Settings);
+    await slack.sendOk('test message', [
+      { title: 'title1', value: 'value1' },
+      { title: 'title2', value: 'value2', short: true },
+    ]);
+
+    expect(sendMock).not.toBeCalled();
   });
 });
