@@ -40,3 +40,12 @@ package-lock.json
 /tmp
 /sh
 /*.zip
+tsconfig.tsbuildinfo
+
+# 開発用
+# リリース時には削除
+public/*
+!public/favicon.ico
+!public/nprogress.css
+!public/images/
+contents/*

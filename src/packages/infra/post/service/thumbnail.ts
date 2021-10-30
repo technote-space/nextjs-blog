@@ -1,23 +1,11 @@
 import type { IThumbnailService, Props } from '$/domain/post/service/thumbnail';
-import { promises, existsSync } from 'fs';
-import { join } from 'path';
-import axios from 'axios';
 import sharp from 'sharp';
 import { singleton } from 'tsyringe';
-import { getAbsoluteUrl } from '@/lib/helpers/url';
+import { loadImage } from '@/lib/helpers/image';
 
 @singleton()
 export class ThumbnailService implements IThumbnailService {
   private static __cache: Record<string, string | undefined> = {};
-
-  private static async getImageBuffer(settings: { siteUrl: string }, thumbnail: string): Promise<Buffer> {
-    if (!/^https?/.test(thumbnail) && existsSync(join(process.cwd(), 'public', thumbnail))) {
-      return promises.readFile(join(process.cwd(), 'public', thumbnail));
-    }
-
-    const response = await axios.get(getAbsoluteUrl(thumbnail, settings), { responseType: 'arraybuffer' });
-    return Buffer.from(response.data, 'binary');
-  }
 
   public async toBase64(settings: { siteUrl: string }, thumbnail?: string, props?: Props): Promise<string | undefined> {
     if (!thumbnail) {
@@ -30,7 +18,7 @@ export class ThumbnailService implements IThumbnailService {
 
     if (!(thumbnail in ThumbnailService.__cache)) {
       try {
-        const imageBuffer = await ThumbnailService.getImageBuffer(settings, thumbnail);
+        const imageBuffer = await loadImage(thumbnail, settings.siteUrl);
         const dimensions = { width: props?.width ?? 200, height: props?.height ?? 120 };
         ThumbnailService.__cache[thumbnail] = `data:image/webp;base64,${(await sharp(imageBuffer)
           .resize({

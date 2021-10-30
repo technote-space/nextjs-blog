@@ -5,7 +5,7 @@ import { memo } from 'react';
 import { pagesPath } from '@/lib/$path';
 
 const Card = dynamic(() => import('$/infra/pages/index/components/Card'));
-const Pagination = dynamic(() => import('$/infra/pages/index/components/Pagination'));
+const Pagination = dynamic(() => import('$/infra/pages/index/components/Pagination'), { ssr: false });
 const Flex = dynamic(() => import('@/components/layout/Flex'));
 const List = dynamic(() => import('@/components/layout/List'));
 const ListItem = dynamic(() => import('@/components/layout/ListItem'));

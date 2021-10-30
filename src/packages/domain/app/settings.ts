@@ -13,7 +13,7 @@ type Replace = {
 type Exclude = PostData<string[]> & {
   type?: string;
 };
-type UrlMap = {
+export type UrlMap = {
   source: string;
   destination: PostData<string>;
 };
@@ -27,14 +27,6 @@ type SEO = {
   blogImage?: string;
   twitter?: string;
 };
-type BreakPoints = {
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-  '2xl'?: string;
-  [key: string]: string | undefined;
-}
 export type Settings = {
   isIsr?: boolean;
   isrRevalidate?: number;
@@ -47,7 +39,6 @@ export type Settings = {
     headings?: HeadingTagName[];
   };
   seo: SEO;
-  breakpoints?: BreakPoints;
   analytics?: {
     googleAnalyticsId?: string;
   };
@@ -71,5 +62,9 @@ export type Settings = {
   };
   wpExportXml?: {
     path: string;
-  }
+    urlMaps?: boolean;
+  };
+  slack?: {
+    webhookUrl?: string;
+  };
 };

@@ -1,6 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { Props, Params, IPostPageProps } from '$/domain/pages/post';
-import type { IPostManager } from '$/domain/post/manager';
+import type { IPostFactory } from '$/domain/post/factory';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
 import { fromEntity } from '$/domain/post/dto/postDetail';
@@ -12,7 +12,7 @@ import NotFoundException from '$/domain/shared/exceptions/notFound';
 export class PostPageProps implements IPostPageProps {
   public constructor(
     @inject('Settings') private settings: Settings,
-    @inject('IPostManager') private postManager: IPostManager,
+    @inject('IPostFactory') private postFactory: IPostFactory,
   ) {
   }
 
@@ -25,7 +25,7 @@ export class PostPageProps implements IPostPageProps {
     }
 
     return {
-      paths: (await this.postManager.getIds(postType)).map(id => ({
+      paths: (await this.postFactory.getIds(postType)).map(id => ({
         params: { id: id.value },
       })),
       fallback: false,
@@ -40,7 +40,7 @@ export class PostPageProps implements IPostPageProps {
     }
 
     try {
-      const post = await this.postManager.fetch(Id.create(params.id), postType);
+      const post = await this.postFactory.fetch(Id.create(params.id), postType);
       return {
         props: {
           post: await fromEntity(post),

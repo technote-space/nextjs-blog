@@ -1,4 +1,4 @@
-import type { Settings } from '$/domain/app/settings';
+import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
@@ -92,4 +92,8 @@ export abstract class BasePostRepository implements IPostRepository {
   public abstract getIds(postType?: string): Promise<Id[]>;
 
   public abstract fetch(id: Id, postType?: string): Promise<PostDetail>;
+
+  public async getUrlMaps(): Promise<UrlMap[]> {
+    return [];
+  }
 }

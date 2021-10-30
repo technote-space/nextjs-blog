@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import type { VFC } from 'react';
 import { escapeHtml } from '@/lib/helpers/string';
 import { extractYoutubeVideoParameters } from '@/lib/helpers/url';
 

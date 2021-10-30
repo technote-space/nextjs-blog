@@ -8,7 +8,8 @@ export type Props = ServerProps & {
 export type Params = {
   id: string;
 };
-export type IPostPage = IPage<Props>
+
+export type IPostPage = IPage<Props>;
 
 export interface IPostPageProps {
   getStaticPaths(postType?: string): Promise<GetStaticPathsResult<Params>>;
