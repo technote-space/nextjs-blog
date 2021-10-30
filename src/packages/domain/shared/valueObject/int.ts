@@ -2,21 +2,21 @@ import isInt from 'validator/lib/isInt';
 import Float from '$/domain/shared/valueObject/float';
 
 export default abstract class Int extends Float {
-  protected fromInput(value: number | string): number {
-    return Math.floor(super.fromInput(value));
+  protected fromInput(): number {
+    return Math.floor(super.fromInput());
   }
 
-  public validate(value: number | string): string[] | undefined {
-    const results = super.validate(value);
+  public validate(): string[] | undefined {
+    const results = super.validate();
     if (results?.length) {
       return results;
     }
 
-    if (typeof value === 'string' && !isInt(value)) {
+    if (typeof this.input === 'string' && !isInt(this.input)) {
       return ['整数の形式が正しくありません'];
     }
 
-    const num = this.fromInput(value);
+    const num = this.fromInput();
     if (!Number.isSafeInteger(num)) {
       return ['有効な整数ではありません'];
     }

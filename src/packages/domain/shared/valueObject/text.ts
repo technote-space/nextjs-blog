@@ -1,13 +1,13 @@
 import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class Text extends Base<number | string, string>() {
-  protected fromInput(value: number | string): string {
-    if (typeof value === 'number') {
-      return `${value}`;
+  protected fromInput(): string {
+    if (typeof this.input === 'number') {
+      return `${this.input}`;
     }
 
-    if (value) {
-      return value;
+    if (this.input) {
+      return this.input;
     }
 
     return '';
@@ -21,8 +21,8 @@ export default abstract class Text extends Base<number | string, string>() {
     return undefined;
   }
 
-  public validate(value: number | string): string[] | undefined {
-    const text = this.fromInput(value);
+  public validate(): string[] | undefined {
+    const text = this.fromInput();
     const results: string[] = [];
 
     if (!text.length) {
