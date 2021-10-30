@@ -1,5 +1,4 @@
 import type { ValidationErrors } from '$/domain/shared/exceptions/validation';
-import InvalidValueException from '$/domain/shared/exceptions/invalidValue';
 import ValidationException from '$/domain/shared/exceptions/validation';
 
 export default abstract class Base {
@@ -24,13 +23,6 @@ export default abstract class Base {
 
     if (Object.keys(errors).length) {
       throw new ValidationException(errors);
-    }
-  }
-
-  protected checkNotEmpty(property: string): void | never {
-    const keys = Object.keys(this);
-    if (!keys.includes(property)) {
-      throw InvalidValueException;
     }
   }
 }
