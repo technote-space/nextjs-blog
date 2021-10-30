@@ -35,7 +35,7 @@ class TestBase extends Base {
 
 describe('Entity Base', () => {
   it('should not throw error', () => {
-    let error: ValidationException | undefined = undefined;
+    let error: ValidationException | undefined;
     try {
       TestBase.create(TestId.create(1), TestId.create('1')).validate();
     } catch (e) {
@@ -46,7 +46,7 @@ describe('Entity Base', () => {
   });
 
   it('should throw error 1', () => {
-    let error: ValidationException | undefined = undefined;
+    let error: ValidationException | undefined;
     try {
       TestBase.create(TestId.create(1), TestId.create(0)).validate();
     } catch (e) {
@@ -64,7 +64,7 @@ describe('Entity Base', () => {
   });
 
   it('should throw error 2', () => {
-    let error: ValidationException | undefined = undefined;
+    let error: ValidationException | undefined;
     try {
       TestBase.reconstruct(TestId.create(1), TestId.create(0), TestId.create(1), TestId.create('abc')).validate();
     } catch (e) {
