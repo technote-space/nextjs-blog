@@ -63,7 +63,7 @@
         },
         {
           "module": "src/components",
-          "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx"],
+          "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx", "src/packages/infra/**/view.tsx"],
           "allowSameModule": true
         },
         {

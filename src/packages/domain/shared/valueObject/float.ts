@@ -2,13 +2,12 @@ import isNumeric from 'validator/lib/isNumeric';
 import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class Float extends Base<number | string, number>() {
-  protected fromInput(value: number | string): number {
-    if (typeof value === 'number') {
-      return value;
+  protected fromInput(): number {
+    if (typeof this.input === 'number') {
+      return this.input;
     }
 
-    let num = parseFloat(value);
-
+    let num = parseFloat(this.input);
     const max = this.getMaxNumber();
     if (max !== undefined && num > max && this.isTruncateMode()) {
       num = Math.min(max, num);
@@ -34,13 +33,12 @@ export default abstract class Float extends Base<number | string, number>() {
     return false;
   }
 
-  public validate(value: number | string): string[] | undefined {
-    if (typeof value === 'string' && !isNumeric(value)) {
+  public validate(): string[] | undefined {
+    if (typeof this.input === 'string' && !isNumeric(this.input)) {
       return ['数値の形式が正しくありません'];
     }
 
-    const num = this.fromInput(value);
-
+    const num = this.fromInput();
     const max = this.getMaxNumber();
     if (max !== undefined && num > max) {
       return [`${max}以下の値を入力してください`];
@@ -55,6 +53,9 @@ export default abstract class Float extends Base<number | string, number>() {
   }
 
   public compare(value: this): number {
-    return this.value - value.value;
+    const diff = this.value - value.value;
+    if (diff < 0) return -1;
+    if (diff > 0) return 1;
+    return 0;
   }
 }
