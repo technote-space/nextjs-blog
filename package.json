@@ -29,6 +29,7 @@
     "@next/bundle-analyzer": "^12.0.1",
     "@slack/webhook": "^6.0.0",
     "axios": "^0.24.0",
+    "clsx": "^1.1.1",
     "dayjs": "^1.10.7",
     "fast-average-color-node": "^2.0.0",
     "framer-motion": "^5",

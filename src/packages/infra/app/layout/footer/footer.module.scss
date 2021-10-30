@@ -1,0 +1,20 @@
+.scroll {
+  img {
+    position: fixed;
+    cursor: pointer;
+    bottom: 30px;
+    right: 20px;
+    transition: visibility 0.2s ease, opacity 0.2s ease;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  :global .active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  :global .dark {
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+  }
+}
