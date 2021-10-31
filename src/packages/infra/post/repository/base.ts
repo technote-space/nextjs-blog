@@ -1,6 +1,6 @@
 import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
-import type { IPostRepository } from '$/domain/post/repository/post';
+import type { IPostRepository, SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
@@ -87,9 +87,9 @@ export abstract class BasePostRepository implements IPostRepository {
     this.__sourceId = sourceId;
   }
 
-  public abstract all(postType?: string): Promise<Post[]>;
+  public abstract all(postType?: string, params?: SearchParams): Promise<Post[]>;
 
-  public abstract getIds(postType?: string): Promise<Id[]>;
+  public abstract getIds(postType?: string, params?: SearchParams): Promise<Id[]>;
 
   public abstract fetch(id: Id, postType?: string): Promise<PostDetail>;
 
