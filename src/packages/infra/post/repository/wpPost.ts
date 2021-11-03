@@ -176,7 +176,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
              INNER JOIN wp_posts on wp_posts.ID = rel.object_id
       WHERE wp_posts.id = ?
-    `, results[0].id);
+    `, ['post_tag', results[0].id]);
 
     await this.mysql.end();
 

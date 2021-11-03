@@ -21,4 +21,8 @@ export class Tag extends Base {
   public getName(): Name | undefined {
     return this.name;
   }
+
+  public getDisplayValue(): string {
+    return this.name ? this.name.value : this.slug.value;
+  }
 }

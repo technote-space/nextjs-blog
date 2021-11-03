@@ -1,10 +1,7 @@
-import type { PostDTO } from '$/domain/post/dto/post';
-import type { IPage, ServerProps } from '$/domain/shared/page';
+import type { Props } from '$/domain/pages';
+import type { IPage } from '$/domain/shared/page';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 
-export type Props = ServerProps & {
-  posts: PostDTO[];
-};
 export type Params = {
   tag: string;
 }

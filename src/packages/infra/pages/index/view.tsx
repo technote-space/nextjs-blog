@@ -2,6 +2,7 @@ import type { HooksParams } from '$/infra/pages/index/hooks';
 import type { VFC } from 'react';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
+import Tag from '@/components/chip/Tag';
 import { pagesPath } from '@/lib/$path';
 
 const Card = dynamic(() => import('$/infra/pages/index/components/Card'));
@@ -11,7 +12,13 @@ const List = dynamic(() => import('@/components/layout/List'));
 const ListItem = dynamic(() => import('@/components/layout/ListItem'));
 const Link = dynamic(() => import('@/components/link/Link'));
 
-const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange }) => <>
+const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange, tag }) => <>
+  {!!tag && <Tag
+    tag={tag.getDisplayValue()}
+    display="inline-flex"
+    border="none"
+    fontSize={[15, 18, 25, 25]}
+  />}
   <List>
     {posts.map((post) => (
       <ListItem key={post.getId().value}>
