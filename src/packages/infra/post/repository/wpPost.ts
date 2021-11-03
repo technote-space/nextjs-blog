@@ -11,6 +11,7 @@ import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
@@ -183,5 +184,9 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),
     );
+  }
+
+  public async tags(): Promise<Tag[]> {
+    return Promise.resolve([]);
   }
 }

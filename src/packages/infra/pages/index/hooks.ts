@@ -41,6 +41,7 @@ export const useHooks = ({ posts }: Props) => {
     perPage: _perPage,
     currentPage: _page - 1,
     totalCount: posts.length,
+    pageCount,
     handlePageChange,
   };
 };

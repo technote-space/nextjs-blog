@@ -1,17 +1,18 @@
 import type { UrlMap } from '$/domain/app/settings';
 import type { Post } from '$/domain/post/entity/post';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
+import type { Tag } from '$/domain/post/entity/tag';
+import type { SearchParams } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
-import type Source from '$/domain/post/valueObject/source';
 
 export interface IPostFactory {
-  getSources(): Source[];
+  all(postType?: string, params?: SearchParams, sortByUpdatedAt?: boolean): Promise<Post[]>;
 
-  all(postType?: string, sortByUpdatedAt?: boolean): Promise<Post[]>;
-
-  getIds(postType?: string): Promise<Id[]>;
+  getIds(postType?: string, params?: SearchParams): Promise<Id[]>;
 
   fetch(id: Id, postType?: string): Promise<PostDetail> | never;
+
+  tags(): Promise<Tag[]>;
 
   getUrlMaps(): Promise<UrlMap[]>;
 }

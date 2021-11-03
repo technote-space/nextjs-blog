@@ -17,6 +17,7 @@ import removeMd from 'remove-markdown';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
@@ -207,5 +208,9 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     );
+  }
+
+  public async tags(): Promise<Tag[]> {
+    return Promise.resolve([]);
   }
 }

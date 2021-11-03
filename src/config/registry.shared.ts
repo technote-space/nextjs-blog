@@ -8,6 +8,7 @@ import { FooterComponent } from '$/infra/app/layout/footer';
 import { HeaderComponent } from '$/infra/app/layout/header';
 import { IndexPage } from '$/infra/pages/index';
 import { PostPage } from '$/infra/pages/post';
+import { TagPage } from '$/infra/pages/tag';
 
 container.registerSingleton('IFooterComponent', FooterComponent);
 container.registerSingleton('IHeaderComponent', HeaderComponent);
@@ -20,3 +21,4 @@ container.registerSingleton('IAdvertising', GoogleAdsense);
 // pages
 container.registerSingleton('IIndexPage', IndexPage);
 container.registerSingleton('IPostPage', PostPage);
+container.registerSingleton('ITagPage', TagPage);

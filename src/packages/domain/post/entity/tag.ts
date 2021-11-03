@@ -1,25 +1,24 @@
-import Id from '$/domain/post/valueObject/id';
 import Name from '$/domain/post/valueObject/name';
+import Slug from '$/domain/post/valueObject/slug';
 import Base from '$/domain/shared/entity/base';
 
 export class Tag extends Base {
-  private id?: Id;
-  private name!: Name;
+  private slug!: Slug;
+  private name?: Name;
 
-  public static reconstruct(id: Id, name: Name): Tag {
+  public static reconstruct(slug: Slug, name?: Name): Tag {
     const instance = new this();
-    instance.id = id;
+    instance.slug = slug;
     instance.name = name;
 
     return instance;
   }
 
-  public getId(): Id {
-    this.checkNotEmpty('id');
-    return this.id!;
+  public getSlug(): Slug {
+    return this.slug;
   }
 
-  public getName(): Name {
+  public getName(): Name | undefined {
     return this.name;
   }
 }

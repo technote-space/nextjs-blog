@@ -1,5 +1,6 @@
 import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
+import type { Tag } from '$/domain/post/entity/tag';
 import type { IPostRepository, SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
@@ -92,6 +93,8 @@ export abstract class BasePostRepository implements IPostRepository {
   public abstract getIds(postType?: string, params?: SearchParams): Promise<Id[]>;
 
   public abstract fetch(id: Id, postType?: string): Promise<PostDetail>;
+
+  public abstract tags(): Promise<Tag[]>;
 
   public async getUrlMaps(): Promise<UrlMap[]> {
     return [];

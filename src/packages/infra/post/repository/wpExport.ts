@@ -13,6 +13,7 @@ import { join } from 'path';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
@@ -222,6 +223,10 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.post_date),
     );
+  }
+
+  public async tags(): Promise<Tag[]> {
+    return Promise.resolve([]);
   }
 
   public async getUrlMaps(): Promise<UrlMap[]> {
