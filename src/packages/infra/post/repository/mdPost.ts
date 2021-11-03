@@ -23,6 +23,7 @@ import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -211,6 +212,6 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
   }
 
   public async tags(): Promise<Tag[]> {
-    return Promise.resolve([]);
+    return (await this.getPostDataList()).flatMap(post => post.tags.map(tag => Tag.reconstruct(Slug.create(tag))));
   }
 }

@@ -17,6 +17,7 @@ import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -187,6 +188,18 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async tags(): Promise<Tag[]> {
-    return Promise.resolve([]);
+    const { whereParams, whereQuery } = this.getWhere();
+    const results = await this.mysql.query<Array<{ post_tag: string }>>(`
+      SELECT DISTINCT wp_terms.slug as post_tag
+      FROM wp_terms
+             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
+             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
+             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
+    `, ['post_tag', this.getPostType(), 'publish', 'future', ...whereParams]);
+
+    await this.mysql.end();
+
+    return results.map(item => Tag.reconstruct(Slug.create(item.post_tag)));
   }
 }

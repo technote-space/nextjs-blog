@@ -19,6 +19,7 @@ import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -226,7 +227,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
   }
 
   public async tags(): Promise<Tag[]> {
-    return Promise.resolve([]);
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData())).flatMap(post => (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.nicename))));
   }
 
   public async getUrlMaps(): Promise<UrlMap[]> {
