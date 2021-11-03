@@ -7,10 +7,10 @@ import DominantColor from '$/domain/post/valueObject/dominantColor';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
-import Slug from '$/domain/post/valueObject/slug';
 
 export type PostDetailDTO = PostDTO & {
   content: string;
