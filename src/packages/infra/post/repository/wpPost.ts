@@ -26,6 +26,7 @@ import NotFoundException from '$/domain/shared/exceptions/notFound';
 import { BasePostRepository } from '$/infra/post/repository/base';
 
 type PostData = {
+  id: number;
   post_name: string;
   post_date: string;
   post_modified: string;
@@ -80,7 +81,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
     const { whereParams, whereQuery } = this.getWhere(postType, params);
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT REPLACE(
+      SELECT wp_posts.ID          as id,
+             REPLACE(
                TRIM(TRAILING '/' FROM
                     IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value)
                  ),
@@ -105,6 +107,23 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       WHERE ID in (${(new Array<string>(thumbnailIds.length)).fill('?').join(',')})
     `, thumbnailIds)).map(({ ID, guid }) => ({ [ID]: guid }))) : {};
 
+    const postIds = results.map(result => result.id);
+    const tags = postIds.length ? (await this.mysql.query<Array<{ ID: number; post_tag: string }>>(`
+      SELECT wp_terms.slug as post_tag,
+             wp_posts.ID
+      FROM wp_terms
+             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
+             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
+             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
+      WHERE wp_posts.id in (${(new Array<string>(postIds.length)).fill('?').join(',')})
+    `, postIds)).reduce((prev, { ID, post_tag }) => ID in prev ? {
+      ...prev,
+      [ID]: prev[ID].concat(post_tag),
+    } : {
+      ...prev,
+      [ID]: [post_tag],
+    }, {} as Record<string, Array<string>>) : {};
+
     await this.mysql.end();
 
     return results.reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
@@ -116,6 +135,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
       await this.getThumbnail(result.thumbnail_id ? thumbnails[result.thumbnail_id] : undefined),
+      result.id in tags ? tags[result.id].map(tag => Tag.reconstruct(Slug.create(tag))) : [],
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
     )), Promise.resolve([] as Post[]));
@@ -195,7 +215,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
              INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
              INNER JOIN wp_posts on wp_posts.ID = rel.object_id
-      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?) ${whereQuery}
     `, ['post_tag', this.getPostType(), 'publish', 'future', ...whereParams]);
 
     await this.mysql.end();

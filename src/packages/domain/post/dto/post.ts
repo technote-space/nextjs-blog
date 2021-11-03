@@ -1,8 +1,10 @@
 import { Post } from '$/domain/post/entity/post';
+import { Tag } from '$/domain/post/entity/tag';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
@@ -15,6 +17,7 @@ export type PostDTO = {
   thumbnail: string | null;
   createdAt: string;
   updatedAt: string | null;
+  tags: string[];
 }
 
 export const fromEntity = (post: Post): PostDTO => ({
@@ -23,6 +26,7 @@ export const fromEntity = (post: Post): PostDTO => ({
   excerpt: post.getExcerpt().value,
   postType: post.getPostType().value,
   thumbnail: post.getThumbnail()?.value ?? null,
+  tags: post.getTags().map(tag => tag.getSlug().value),
   createdAt: post.getCreatedAt().value.toISOString(),
   updatedAt: post.getUpdatedAt()?.value.toISOString() ?? null,
 });
@@ -33,6 +37,7 @@ export const toEntity = (post: PostDTO): Post => Post.reconstruct(
   Excerpt.create(post.excerpt),
   PostType.create(post.postType),
   post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
+  post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
   CreatedAt.create(post.createdAt),
   post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
 );
