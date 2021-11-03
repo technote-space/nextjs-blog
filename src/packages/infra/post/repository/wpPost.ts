@@ -107,23 +107,6 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       WHERE ID in (${(new Array<string>(thumbnailIds.length)).fill('?').join(',')})
     `, thumbnailIds)).map(({ ID, guid }) => ({ [ID]: guid }))) : {};
 
-    const postIds = results.map(result => result.id);
-    const tags = postIds.length ? (await this.mysql.query<Array<{ ID: number; post_tag: string }>>(`
-      SELECT wp_terms.slug as post_tag,
-             wp_posts.ID
-      FROM wp_terms
-             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
-             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
-             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
-      WHERE wp_posts.id in (${(new Array<string>(postIds.length)).fill('?').join(',')})
-    `, postIds)).reduce((prev, { ID, post_tag }) => ID in prev ? {
-      ...prev,
-      [ID]: prev[ID].concat(post_tag),
-    } : {
-      ...prev,
-      [ID]: [post_tag],
-    }, {} as Record<string, Array<string>>) : {};
-
     await this.mysql.end();
 
     return results.reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
@@ -135,7 +118,6 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
       await this.getThumbnail(result.thumbnail_id ? thumbnails[result.thumbnail_id] : undefined),
-      result.id in tags ? tags[result.id].map(tag => Tag.reconstruct(Slug.create(tag))) : [],
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
     )), Promise.resolve([] as Post[]));
@@ -166,7 +148,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
     const { whereParams, whereQuery } = this.getWhere(postType);
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT wp_posts.post_date,
+      SELECT wp_posts.ID as id,
+             wp_posts.post_date,
              wp_posts.post_modified,
              wp_posts.post_title,
              wp_posts.post_content,
@@ -186,6 +169,15 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                 ), '/', '-') = ?${whereQuery}
     `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', id.postId, ...whereParams]);
 
+    const tags = await this.mysql.query<Array<{ post_tag: string }>>(`
+      SELECT wp_terms.slug as post_tag
+      FROM wp_terms
+             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
+             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
+             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
+      WHERE wp_posts.id = ?
+    `, results[0].id);
+
     await this.mysql.end();
 
     if (!results.length) {
@@ -200,6 +192,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(results[0].post_content))),
       PostType.create(this.getPostType(postType)),
+      tags.map(tag => Tag.reconstruct(Slug.create(tag.post_tag))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),

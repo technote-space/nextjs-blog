@@ -151,7 +151,6 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
       await this.getThumbnail(post.thumbnail),
-      post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     )), Promise.resolve([] as Post[]));
@@ -205,6 +204,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Content.create(await this.processContent(post.contentHtml, postType)),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
+      post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.createdAt),

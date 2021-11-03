@@ -1,4 +1,5 @@
 import { Post } from '$/domain/post/entity/post';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
@@ -17,16 +18,26 @@ export class PostDetail extends Base {
   private excerpt!: Excerpt;
   private postType!: PostType;
   private thumbnail?: Thumbnail;
+  private tags!: Tag[];
   private dominantColor?: DominantColor;
   private createdAt!: CreatedAt;
   private updatedAt?: UpdatedAt;
 
-  public static create(title: Title, content: Content, excerpt: Excerpt, postType: PostType, thumbnail?: Thumbnail, dominantColor?: DominantColor): PostDetail | never {
+  public static create(
+    title: Title,
+    content: Content,
+    excerpt: Excerpt,
+    postType: PostType,
+    tags: Tag[],
+    thumbnail?: Thumbnail,
+    dominantColor?: DominantColor,
+  ): PostDetail | never {
     const instance = new this();
     instance.title = title;
     instance.content = content;
     instance.excerpt = excerpt;
     instance.postType = postType;
+    instance.tags = tags;
     instance.thumbnail = thumbnail;
     instance.dominantColor = dominantColor;
     instance.createdAt = CreatedAt.create(undefined);
@@ -36,13 +47,25 @@ export class PostDetail extends Base {
     return instance;
   }
 
-  public static reconstruct(id: Id, title: Title, content: Content, excerpt: Excerpt, postType: PostType, thumbnail: Thumbnail | undefined, dominantColor: DominantColor | undefined, createdAt: CreatedAt, updatedAt?: UpdatedAt): PostDetail {
+  public static reconstruct(
+    id: Id,
+    title: Title,
+    content: Content,
+    excerpt: Excerpt,
+    postType: PostType,
+    tags: Tag[],
+    thumbnail: Thumbnail | undefined,
+    dominantColor: DominantColor | undefined,
+    createdAt: CreatedAt,
+    updatedAt?: UpdatedAt,
+  ): PostDetail {
     const instance = new this();
     instance.id = id;
     instance.title = title;
     instance.content = content;
     instance.excerpt = excerpt;
     instance.postType = postType;
+    instance.tags = tags;
     instance.thumbnail = thumbnail;
     instance.dominantColor = dominantColor;
     instance.createdAt = createdAt;
@@ -70,6 +93,10 @@ export class PostDetail extends Base {
 
   public getPostType(): PostType {
     return this.postType;
+  }
+
+  public getTags(): Tag[] {
+    return this.tags;
   }
 
   public getThumbnail(): Thumbnail | undefined {

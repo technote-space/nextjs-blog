@@ -1,5 +1,4 @@
 import type { PostData, Settings } from '$/domain/app/settings';
-import { Tag } from '$/domain/post/entity/tag';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
@@ -16,7 +15,6 @@ export class Post extends Base {
   private excerpt!: Excerpt;
   private postType!: PostType;
   private thumbnail?: Thumbnail;
-  private tags!: Tag[];
   private createdAt!: CreatedAt;
   private updatedAt?: UpdatedAt;
 
@@ -26,7 +24,6 @@ export class Post extends Base {
     excerpt: Excerpt,
     postType: PostType,
     thumbnail: Thumbnail | undefined,
-    tags: Tag[],
     createdAt: CreatedAt,
     updatedAt?: UpdatedAt,
   ): Post {
@@ -36,7 +33,6 @@ export class Post extends Base {
     instance.excerpt = excerpt;
     instance.postType = postType;
     instance.thumbnail = thumbnail;
-    instance.tags = tags;
     instance.createdAt = createdAt;
     instance.updatedAt = updatedAt;
 
@@ -62,10 +58,6 @@ export class Post extends Base {
 
   public getThumbnail(): Thumbnail | undefined {
     return this.thumbnail;
-  }
-
-  public getTags(): Tag[] {
-    return this.tags;
   }
 
   public getCreatedAt(): CreatedAt {

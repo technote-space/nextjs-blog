@@ -190,7 +190,6 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
       await this.getThumbnail(result.thumbnail),
-      (result.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.nicename))),
       CreatedAt.create(result.post_date),
     )), Promise.resolve([] as Post[]));
   }
@@ -221,6 +220,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(post.post_content))),
       PostType.create(this.getPostType(postType)),
+      (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.nicename))),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.post_date),
