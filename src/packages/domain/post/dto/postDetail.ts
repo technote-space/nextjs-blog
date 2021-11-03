@@ -1,5 +1,6 @@
 import type { PostDTO } from '$/domain/post/dto/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
@@ -9,10 +10,12 @@ import PostType from '$/domain/post/valueObject/postType';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
+import Slug from '$/domain/post/valueObject/slug';
 
 export type PostDetailDTO = PostDTO & {
   content: string;
   dominantColor: string | null;
+  tags: string[];
 }
 
 export const fromEntity = async (post: PostDetail): Promise<PostDetailDTO> => {
@@ -22,6 +25,7 @@ export const fromEntity = async (post: PostDetail): Promise<PostDetailDTO> => {
     content: post.getContent().value,
     excerpt: post.getExcerpt().value,
     postType: post.getPostType().value,
+    tags: post.getTags().map(tag => tag.getSlug().value),
     thumbnail: post.getThumbnail()?.value ?? null,
     dominantColor: post.getDominantColor()?.value ?? null,
     createdAt: post.getCreatedAt().value.toISOString(),
@@ -35,6 +39,7 @@ export const toEntity = (post: PostDetailDTO): PostDetail => PostDetail.reconstr
   Content.create(post.content),
   Excerpt.create(post.excerpt),
   PostType.create(post.postType),
+  post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
   post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
   post.dominantColor ? DominantColor.create(post.dominantColor) : undefined,
   CreatedAt.create(post.createdAt),

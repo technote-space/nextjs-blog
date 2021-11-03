@@ -4,9 +4,10 @@ import { memo } from 'react';
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
 import useAutoResizeIframe from '$/infra/pages/post/hooks/useAutoResizeIframe';
 import Date from '@/components/date/Date';
+import Tag from '@/components/chip/Tag';
 import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
-import { Article as ArticleComponent } from '@/components/wrap';
+import { Article as ArticleComponent, Flex } from '@/components/wrap';
 import styles from './Article.module.scss';
 
 type Props = {
@@ -16,9 +17,10 @@ type Props = {
   createdAt: dayjs.ConfigType;
   content: string;
   hideDate?: boolean;
+  tags?: string[];
 };
 
-const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate }) => {
+const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate, tags }) => {
   useAutoResizeIframe();
 
   return <SimpleReactLightbox>
@@ -36,6 +38,9 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
         <CoverImage src={thumbnail} backgroundColor={backgroundColor}>
           <h1>{title}</h1>
         </CoverImage>
+        {!!tags?.length && <Flex mt={3} flexWrap="wrap">
+          {tags.map(tag => <Tag tag={tag}/>)}
+        </Flex>}
       </header>
       <SRLWrapper>
         <Box className={styles.article} dangerouslySetInnerHTML={{ __html: content }}/>

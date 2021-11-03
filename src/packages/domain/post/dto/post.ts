@@ -17,7 +17,6 @@ export type PostDTO = {
   thumbnail: string | null;
   createdAt: string;
   updatedAt: string | null;
-  tags: string[];
 }
 
 export const fromEntity = (post: Post): PostDTO => ({
@@ -26,7 +25,6 @@ export const fromEntity = (post: Post): PostDTO => ({
   excerpt: post.getExcerpt().value,
   postType: post.getPostType().value,
   thumbnail: post.getThumbnail()?.value ?? null,
-  tags: post.getTags().map(tag => tag.getSlug().value),
   createdAt: post.getCreatedAt().value.toISOString(),
   updatedAt: post.getUpdatedAt()?.value.toISOString() ?? null,
 });
@@ -37,7 +35,6 @@ export const toEntity = (post: PostDTO): Post => Post.reconstruct(
   Excerpt.create(post.excerpt),
   PostType.create(post.postType),
   post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
-  post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
   CreatedAt.create(post.createdAt),
   post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
 );

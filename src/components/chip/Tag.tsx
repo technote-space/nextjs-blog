@@ -12,10 +12,11 @@ type Props = StyleProps & {
 };
 
 const defaultProps: StyleProps = {
-  px: 12,
+  px: '12px',
+  m: '3px',
   display: 'flex',
   alignItems: 'center',
-  minH: 32,
+  minH: '32px',
   borderWidth: 1,
   borderRadius: 'md',
   _hover: {
@@ -25,10 +26,11 @@ const defaultProps: StyleProps = {
 };
 
 const TagChip: VFC<Props> = ({ tag, iconColor, ...props }) => {
-  return <WrapItem>
+  return <WrapItem
+    {...defaultProps}
+    {...props}
+  >
     <Link
-      {...defaultProps}
-      {...props}
       href={pagesPath.tags._tag(tag).$url()}
     >
       <HStack>
