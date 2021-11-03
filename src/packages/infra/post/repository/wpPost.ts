@@ -16,6 +16,7 @@ import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
+import Name from '$/domain/post/valueObject/name';
 import PostType from '$/domain/post/valueObject/postType';
 import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
@@ -169,8 +170,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                 ), '/', '-') = ?${whereQuery}
     `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', id.postId, ...whereParams]);
 
-    const tags = await this.mysql.query<Array<{ post_tag: string }>>(`
-      SELECT wp_terms.slug as post_tag
+    const tags = await this.mysql.query<Array<{ slug: string; name: string }>>(`
+      SELECT wp_terms.slug, wp_terms.name
       FROM wp_terms
              INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
              INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
@@ -192,7 +193,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(results[0].post_content))),
       PostType.create(this.getPostType(postType)),
-      tags.map(tag => Tag.reconstruct(Slug.create(tag.post_tag))),
+      tags.map(tag => Tag.reconstruct(Slug.create(tag.slug), Name.create(tag.name))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),
@@ -202,8 +203,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
 
   public async tags(): Promise<Tag[]> {
     const { whereParams, whereQuery } = this.getWhere();
-    const results = await this.mysql.query<Array<{ post_tag: string }>>(`
-      SELECT DISTINCT wp_terms.slug as post_tag
+    const results = await this.mysql.query<Array<{ slug: string; name: string }>>(`
+      SELECT DISTINCT wp_terms.slug, wp_terms.name
       FROM wp_terms
              INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
              INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
@@ -213,6 +214,6 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
 
     await this.mysql.end();
 
-    return results.map(item => Tag.reconstruct(Slug.create(item.post_tag)));
+    return results.map(item => Tag.reconstruct(Slug.create(item.slug), Name.create(item.name)));
   }
 }

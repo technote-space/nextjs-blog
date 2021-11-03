@@ -7,14 +7,15 @@ import { Icon, WrapItem, HStack, Text } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type Props = StyleProps & {
-  tag: string;
+  slug?: string;
+  name: string;
   iconColor?: string;
 };
 
 const defaultProps: StyleProps = {
   px: '12px',
   m: '3px',
-  display: 'flex',
+  display: 'inline-flex',
   alignItems: 'center',
   minH: '32px',
   borderWidth: 1,
@@ -25,17 +26,31 @@ const defaultProps: StyleProps = {
   },
 };
 
-const TagChip: VFC<Props> = ({ tag, iconColor, ...props }) => {
+const TagChip: VFC<Props> = ({ slug, name, iconColor, ...props }) => {
+  if (!slug) {
+    return <WrapItem
+      {...defaultProps}
+      border="none"
+      _hover={undefined}
+      {...props}
+    >
+      <HStack>
+        <Icon as={FaTag} color={iconColor}/>
+        <Text>{name}</Text>
+      </HStack>
+    </WrapItem>;
+  }
+
   return <WrapItem
     {...defaultProps}
     {...props}
   >
     <Link
-      href={pagesPath.tags._tag(tag).$url()}
+      href={pagesPath.tags._tag(slug).$url()}
     >
       <HStack>
         <Icon as={FaTag} color={iconColor}/>
-        <Text>{tag}</Text>
+        <Text>{name}</Text>
       </HStack>
     </Link>
   </WrapItem>;

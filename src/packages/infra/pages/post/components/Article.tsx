@@ -17,7 +17,7 @@ type Props = {
   createdAt: dayjs.ConfigType;
   content: string;
   hideDate?: boolean;
-  tags?: string[];
+  tags?: { slug: string; name: string }[];
 };
 
 const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate, tags }) => {
@@ -39,7 +39,7 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
           <h1>{title}</h1>
         </CoverImage>
         {!!tags?.length && <Flex mt={3} flexWrap="wrap">
-          {tags.map(tag => <Tag key={tag} tag={tag}/>)}
+          {tags.map(tag => <Tag key={tag.slug} slug={tag.slug} name={tag.name}/>)}
         </Flex>}
       </header>
       <SRLWrapper>

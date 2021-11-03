@@ -14,9 +14,7 @@ const Link = dynamic(() => import('@/components/link/Link'));
 
 const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange, tag }) => <>
   {!!tag && <Tag
-    tag={tag.getDisplayValue()}
-    display="inline-flex"
-    border="none"
+    name={tag.getDisplayValue()}
     fontSize={[15, 18, 25, 25]}
   />}
   <List>

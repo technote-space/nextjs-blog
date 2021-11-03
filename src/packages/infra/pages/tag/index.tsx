@@ -1,5 +1,6 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
-import type { ITagPage, Props } from '$/domain/pages/tag';
+import type { Props } from '$/domain/pages';
+import type { ITagPage } from '$/domain/pages/tag';
 import type { VFC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
