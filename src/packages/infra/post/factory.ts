@@ -47,10 +47,10 @@ export class PostFactory implements IPostFactory {
   }
 
   public async tags(): Promise<Tag[]> {
-    return (await this.__sources.reduce(async (prev, source) => {
+    return this.__sources.reduce(async (prev, source) => {
       const acc = await prev;
       return acc.concat(...await this.__postRepositories[source.value].tags());
-    }, Promise.resolve([] as Tag[])));
+    }, Promise.resolve([] as Tag[]));
   }
 
   public async getUrlMaps(): Promise<UrlMap[]> {
