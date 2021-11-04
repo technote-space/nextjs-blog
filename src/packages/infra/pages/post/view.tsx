@@ -11,6 +11,7 @@ const View: VFC<HooksParams['viewProps']> = ({ post, hideDate }) => <Article
   createdAt={post.getCreatedAt().value}
   content={post.getContent().value}
   hideDate={hideDate}
+  tags={post.getTags().map(tag => ({ slug: tag.getSlug().value, name: tag.getDisplayValue() }))}
 />;
 
 View.displayName = 'PostView';

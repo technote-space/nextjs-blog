@@ -5,6 +5,7 @@ import { IndexPageProps } from '$/infra/pages/index/server';
 import { PostPageProps } from '$/infra/pages/post/server';
 import { RobotsPageProps } from '$/infra/pages/robots';
 import { SitemapPageProps } from '$/infra/pages/sitemap';
+import { TagPageProps } from '$/infra/pages/tag/server';
 import { PostFactory } from '$/infra/post/factory';
 import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
 import { WordPressExportPostRepository } from '$/infra/post/repository/wpExport';
@@ -52,6 +53,7 @@ container.registerInstance('postRepositories', Object.assign({},
 // pages
 container.registerSingleton('IIndexPageProps', IndexPageProps);
 container.registerSingleton('IPostPageProps', PostPageProps);
+container.registerSingleton('ITagPageProps', TagPageProps);
 container.registerSingleton('IAnyPageProps', AnyPageProps);
 container.registerSingleton('ISitemapPageProps', SitemapPageProps);
 container.registerSingleton('IRobotsPageProps', RobotsPageProps);

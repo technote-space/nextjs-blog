@@ -18,7 +18,15 @@ export class Post extends Base {
   private createdAt!: CreatedAt;
   private updatedAt?: UpdatedAt;
 
-  public static reconstruct(id: Id, title: Title, excerpt: Excerpt, postType: PostType, thumbnail: Thumbnail | undefined, createdAt: CreatedAt, updatedAt?: UpdatedAt): Post {
+  public static reconstruct(
+    id: Id,
+    title: Title,
+    excerpt: Excerpt,
+    postType: PostType,
+    thumbnail: Thumbnail | undefined,
+    createdAt: CreatedAt,
+    updatedAt?: UpdatedAt,
+  ): Post {
     const instance = new this();
     instance.id = id;
     instance.title = title;

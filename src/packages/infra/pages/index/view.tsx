@@ -2,6 +2,7 @@ import type { HooksParams } from '$/infra/pages/index/hooks';
 import type { VFC } from 'react';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
+import Tag from '@/components/chip/Tag';
 import { pagesPath } from '@/lib/$path';
 
 const Card = dynamic(() => import('$/infra/pages/index/components/Card'));
@@ -11,7 +12,11 @@ const List = dynamic(() => import('@/components/layout/List'));
 const ListItem = dynamic(() => import('@/components/layout/ListItem'));
 const Link = dynamic(() => import('@/components/link/Link'));
 
-const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, handlePageChange }) => <>
+const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange, tag }) => <>
+  {!!tag && <Tag
+    name={tag.getDisplayValue()}
+    fontSize={[15, 18, 25, 25]}
+  />}
   <List>
     {posts.map((post) => (
       <ListItem key={post.getId().value}>
@@ -27,14 +32,17 @@ const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, handl
       </ListItem>
     ))}
   </List>
-  <Flex my={5}>
+  {pageCount > 1 && <Flex my={5}>
     <Pagination
       perPage={perPage}
       page={currentPage}
       totalCount={totalCount}
       onPageChange={handlePageChange}
     />
-  </Flex>
+  </Flex>}
+  {!totalCount && <Flex>
+    記事がありません
+  </Flex>}
 </>;
 
 View.displayName = 'IndexView';

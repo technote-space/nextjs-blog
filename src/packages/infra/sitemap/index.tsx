@@ -19,13 +19,13 @@ export class Sitemap implements ISitemap {
   }
 
   public async getFields(): Promise<Field[]> {
-    const posts = (await this.postFactory.all('post', true)).map(post => Field.reconstruct(
+    const posts = (await this.postFactory.all('post', undefined, true)).map(post => Field.reconstruct(
       Loc.create(getAbsoluteUrl(post.getUrl(), this.settings)),
       Lastmod.create((post.getUpdatedAt() ?? post.getCreatedAt()).value),
       Changefreq.create('monthly'),
       Priority.create(1),
     ));
-    const pages = (await this.postFactory.all('page', true)).map(page => Field.reconstruct(
+    const pages = (await this.postFactory.all('page', undefined, true)).map(page => Field.reconstruct(
       Loc.create(getAbsoluteUrl(page.getUrl(), this.settings)),
       Lastmod.create((page.getUpdatedAt() ?? page.getCreatedAt()).value),
       Changefreq.create('yearly'),
