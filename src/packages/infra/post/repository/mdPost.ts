@@ -1,5 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
@@ -16,11 +17,13 @@ import removeMd from 'remove-markdown';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -38,6 +41,7 @@ type MaybePost = {
   contentHtml?: string;
   thumbnail?: string;
   published?: boolean;
+  tags?: string[];
 };
 type PostData = Required<Omit<MaybePost, 'updatedAt' | 'thumbnail'>>
   & Pick<MaybePost, 'updatedAt' | 'postType' | 'thumbnail'>;
@@ -65,8 +69,25 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       .map(setting => `${setting.id}`);
   }
 
-  private filterPost(postType?: string): (post?: MaybePost) => post is PostData {
-    return (post?: MaybePost): post is PostData => !!post && !!post.title && !!post.createdAt && post.published === true && this.getPostType(postType) === this.getPostType(post.postType);
+  private static filterByTag(post: MaybePost, params?: SearchParams): boolean {
+    const paramsTag = params?.tag;
+    if (!paramsTag) {
+      return true;
+    }
+
+    const postTags = post.tags;
+    if (!postTags) {
+      return false;
+    }
+
+    return postTags.includes(paramsTag);
+  }
+
+  private filterPost(postType?: string, params?: SearchParams): (post?: MaybePost) => post is PostData {
+    return (post?: MaybePost): post is PostData =>
+      !!post && !!post.title && !!post.createdAt && post.published === true &&
+      this.getPostType(postType) === this.getPostType(post.postType) &&
+      MarkdownPostRepository.filterByTag(post, params);
   }
 
   private static getPostsDirectory(): string {
@@ -97,7 +118,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return filePaths;
   }
 
-  private async getPostDataList(postType?: string): Promise<PostData[]> {
+  private async getPostDataList(postType?: string, params?: SearchParams): Promise<PostData[]> {
     const exclude = this.getExcludeIds(postType);
     const filePaths = this.readdirRecursively();
     const posts = await filePaths.reduce(async (prev, filePath) => {
@@ -117,11 +138,11 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       return acc.concat(MarkdownPostRepository.toMaybePost(id, matterResult));
     }, Promise.resolve([] as MaybePost[]));
 
-    return posts.filter(this.filterPost(postType));
+    return posts.filter(this.filterPost(postType, params));
   }
 
-  public async all(postType?: string): Promise<Post[]> {
-    return (await this.getPostDataList(postType)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).reduce(async (prev, post) => (await prev).concat(Post.reconstruct(
+  public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
+    return (await this.getPostDataList(postType, params)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).reduce(async (prev, post) => (await prev).concat(Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: post.id,
@@ -135,8 +156,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     )), Promise.resolve([] as Post[]));
   }
 
-  public async getIds(postType?: string): Promise<Id[]> {
-    return (await this.getPostDataList(postType)).map(post => Id.create({
+  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
+    return (await this.getPostDataList(postType, params)).map(post => Id.create({
       source: Source.create(this.sourceId),
       id: post.id,
     }));
@@ -183,10 +204,15 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Content.create(await this.processContent(post.contentHtml, postType)),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
+      post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     );
+  }
+
+  public async tags(): Promise<Tag[]> {
+    return (await this.getPostDataList()).flatMap(post => post.tags.map(tag => Tag.reconstruct(Slug.create(tag))));
   }
 }

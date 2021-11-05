@@ -16,7 +16,7 @@ export class PostPageProps implements IPostPageProps {
   ) {
   }
 
-  public async getStaticPaths(postType: string): Promise<GetStaticPathsResult<Params>> {
+  public async getStaticPaths(postType?: string): Promise<GetStaticPathsResult<Params>> {
     if (this.settings.isIsr) {
       return {
         paths: [],

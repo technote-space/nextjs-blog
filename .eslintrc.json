@@ -72,7 +72,7 @@
           "allowSameModule": true
         },
         {
-          "module": "src/lib",
+          "module": "src/lib/helpers",
           "allowReferenceFrom": ["src/packages/infra/**"],
           "allowSameModule": true
         },

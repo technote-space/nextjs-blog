@@ -1,5 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IHtmlService } from '$/domain/post/service/html';
@@ -10,11 +11,14 @@ import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
+import Name from '$/domain/post/valueObject/name';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -23,6 +27,7 @@ import NotFoundException from '$/domain/shared/exceptions/notFound';
 import { BasePostRepository } from '$/infra/post/repository/base';
 
 type PostData = {
+  id: number;
   post_name: string;
   post_date: string;
   post_modified: string;
@@ -51,7 +56,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     });
   }
 
-  private getExcludeSettings(postType?: string) {
+  private getWhere(postType?: string, params?: SearchParams) {
     const excludeIds = (this.settings.exclude ?? [])
       .filter(setting => !setting.type && this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId))
       .map(setting => Number(setting.id));
@@ -61,21 +66,24 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     const excludeTermCategorySlugs = (this.settings.exclude ?? [])
       .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId) && setting.type === 'category')
       .map(setting => setting.id);
+    const includePostTagSlug = params?.tag ? [params.tag] : [];
 
     const excludeIdsWhere = `${excludeIds.length ? ` && wp_posts.ID NOT IN (${Array<string>(excludeIds.length).fill('?').join(', ')})` : ''}`;
     const excludeTermPostTagSlugsWhere = `${excludeTermPostTagSlugs.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (SELECT term_id FROM wp_term_taxonomy WHERE taxonomy = "post_tag" AND term_id IN (SELECT term_id FROM wp_terms WHERE slug IN (${Array<string>(excludeTermPostTagSlugs.length).fill('?').join(', ')}))))` : ''}`;
     const excludeTermCategorySlugsWhere = `${excludeTermCategorySlugs.length ? ` && wp_posts.ID NOT IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (SELECT term_id FROM wp_term_taxonomy WHERE taxonomy = "category" AND term_id IN (SELECT term_id FROM wp_terms WHERE slug IN (${Array<string>(excludeTermCategorySlugs.length).fill('?').join(', ')}))))` : ''}`;
+    const includePostTagSlugWhere = params?.tag ? ` && wp_posts.ID IN (SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (SELECT term_id FROM wp_term_taxonomy WHERE taxonomy = "post_tag" AND term_id IN (SELECT term_id FROM wp_terms WHERE slug = ?)))` : '';
 
     return {
-      exclude: [...excludeIds, ...excludeTermPostTagSlugs, ...excludeTermCategorySlugs],
-      excludeWhere: excludeIdsWhere + excludeTermPostTagSlugsWhere + excludeTermCategorySlugsWhere,
+      whereParams: [...excludeIds, ...excludeTermPostTagSlugs, ...excludeTermCategorySlugs, ...includePostTagSlug],
+      whereQuery: excludeIdsWhere + excludeTermPostTagSlugsWhere + excludeTermCategorySlugsWhere + includePostTagSlugWhere,
     };
   }
 
-  public async all(postType?: string): Promise<Post[]> {
-    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
+  public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
+    const { whereParams, whereQuery } = this.getWhere(postType, params);
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT REPLACE(
+      SELECT wp_posts.ID          as id,
+             REPLACE(
                TRIM(TRAILING '/' FROM
                     IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value)
                  ),
@@ -90,8 +98,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
-      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', ...exclude]);
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', ...whereParams]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
     const thumbnails = thumbnailIds.length ? Object.assign({}, ...(await this.mysql.query<Array<{ ID: number; guid: string }>>(`
@@ -116,8 +124,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     )), Promise.resolve([] as Post[]));
   }
 
-  public async getIds(postType?: string): Promise<Id[]> {
-    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
+  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
+    const { whereParams, whereQuery } = this.getWhere(postType, params);
     const results = await this.mysql.query<Array<{ post_name: string }>>(`
       SELECT REPLACE(
                TRIM(TRAILING '/' FROM
@@ -128,8 +136,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                ) AS post_name
       FROM wp_posts
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
-      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${excludeWhere}
-    `, ['custom_permalink', this.getPostType(postType), 'publish', 'future', ...exclude]);
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
+    `, ['custom_permalink', this.getPostType(postType), 'publish', 'future', ...whereParams]);
     await this.mysql.end();
 
     return results.map(result => Id.create({
@@ -139,9 +147,10 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
   }
 
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
-    const { exclude, excludeWhere } = this.getExcludeSettings(postType);
+    const { whereParams, whereQuery } = this.getWhere(postType);
     const results = await this.mysql.query<Array<PostData>>(`
-      SELECT wp_posts.post_date,
+      SELECT wp_posts.ID as id,
+             wp_posts.post_date,
              wp_posts.post_modified,
              wp_posts.post_title,
              wp_posts.post_content,
@@ -158,8 +167,17 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
                        wp_posts.post_name,
                        permalink.meta_value
                      )
-                ), '/', '-') = ?${excludeWhere}
-    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', id.postId, ...exclude]);
+                ), '/', '-') = ?${whereQuery}
+    `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', id.postId, ...whereParams]);
+
+    const tags = await this.mysql.query<Array<{ slug: string; name: string }>>(`
+      SELECT wp_terms.slug, wp_terms.name
+      FROM wp_terms
+             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
+             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
+             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
+      WHERE wp_posts.id = ?
+    `, ['post_tag', results[0].id]);
 
     await this.mysql.end();
 
@@ -175,10 +193,27 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(results[0].post_content))),
       PostType.create(this.getPostType(postType)),
+      tags.map(tag => Tag.reconstruct(Slug.create(tag.slug), Name.create(tag.name))),
       results[0].thumbnail ? Thumbnail.create(results[0].thumbnail) : undefined,
       await this.getDominantColor(results[0].thumbnail),
       CreatedAt.create(results[0].post_date),
       UpdatedAt.create(results[0].post_modified),
     );
+  }
+
+  public async tags(): Promise<Tag[]> {
+    const { whereParams, whereQuery } = this.getWhere();
+    const results = await this.mysql.query<Array<{ slug: string; name: string }>>(`
+      SELECT DISTINCT wp_terms.slug, wp_terms.name
+      FROM wp_terms
+             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
+             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
+             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?) ${whereQuery}
+    `, ['post_tag', this.getPostType(), 'publish', 'future', ...whereParams]);
+
+    await this.mysql.end();
+
+    return results.map(item => Tag.reconstruct(Slug.create(item.slug), Name.create(item.name)));
   }
 }
