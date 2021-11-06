@@ -19,7 +19,7 @@ export type PostDetailDTO = PostDTO & {
   tags: { slug: string; name: string }[];
 }
 
-export const fromEntity = async (post: PostDetail): Promise<PostDetailDTO> => {
+export const fromEntity = (post: PostDetail): PostDetailDTO => {
   return {
     id: post.getId().value,
     title: post.getTitle().value,
