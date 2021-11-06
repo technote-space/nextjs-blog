@@ -6,8 +6,6 @@ import { singleton, inject } from 'tsyringe';
 import { fromEntity as fromPostEntity } from '$/domain/post/dto/post';
 import { fromEntity as fromTagEntity } from '$/domain/post/dto/tag';
 import { Post } from '$/domain/post/entity/post';
-import { Tag } from '$/domain/post/entity/tag';
-import Slug from '$/domain/post/valueObject/slug';
 
 @singleton()
 export class TagPageProps implements ITagPageProps {
