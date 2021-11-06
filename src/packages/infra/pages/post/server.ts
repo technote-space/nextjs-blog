@@ -43,7 +43,7 @@ export class PostPageProps implements IPostPageProps {
       const post = await this.postFactory.fetch(Id.create(params.id), postType);
       return {
         props: {
-          post: await fromEntity(post),
+          post: fromEntity(post),
           headerPages: (this.settings.pages?.header ?? []).map(page => ({
             label: page.title,
             url: Post.createUrlFromPostData(page, this.settings),
