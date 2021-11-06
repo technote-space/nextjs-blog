@@ -33,11 +33,16 @@ export class TagPageProps implements ITagPageProps {
 
   public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
     const tag = params?.tag ? (await this.postFactory.tags()).find(tag => tag.getSlug().value === params.tag) : undefined;
+    if (!tag) {
+      return {
+        notFound: true,
+      };
+    }
 
     return {
       props: {
         posts: (await this.postFactory.all(undefined, params)).map(post => fromPostEntity(post)),
-        tag: tag ? fromTagEntity(tag) : undefined,
+        tag: fromTagEntity(tag),
         headerPages: (this.settings.pages?.header ?? []).map(page => ({
           label: page.title,
           url: Post.createUrlFromPostData(page, this.settings),
