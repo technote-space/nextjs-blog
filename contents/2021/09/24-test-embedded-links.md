@@ -1,9 +1,9 @@
 ---
 title: "URL埋め込みのテスト"
 createdAt: "2021-09-24"
-updatedAt: "2021-09-24"
+updatedAt: "2021-11-07"
 thumbnail: "/images/cat_russian_blue.png"
-tags: ["test"]
+tags: ["test", "テスト"]
 published: true
 ---
 
