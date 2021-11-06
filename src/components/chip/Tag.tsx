@@ -41,19 +41,19 @@ const TagChip: VFC<Props> = ({ slug, name, iconColor, ...props }) => {
     </WrapItem>;
   }
 
-  return <WrapItem
-    {...defaultProps}
-    {...props}
+  return <Link
+    href={pagesPath.tags._tag(slug).$url()}
   >
-    <Link
-      href={pagesPath.tags._tag(slug).$url()}
+    <WrapItem
+      {...defaultProps}
+      {...props}
     >
       <HStack>
         <Icon as={FaTag} color={iconColor}/>
         <Text>{name}</Text>
       </HStack>
-    </Link>
-  </WrapItem>;
+    </WrapItem>
+  </Link>;
 };
 
 TagChip.displayName = 'TagChip';
