@@ -6,8 +6,6 @@ import { singleton, inject } from 'tsyringe';
 import { fromEntity as fromPostEntity } from '$/domain/post/dto/post';
 import { fromEntity as fromTagEntity } from '$/domain/post/dto/tag';
 import { Post } from '$/domain/post/entity/post';
-import { Tag } from '$/domain/post/entity/tag';
-import Slug from '$/domain/post/valueObject/slug';
 
 @singleton()
 export class TagPageProps implements ITagPageProps {
@@ -34,10 +32,17 @@ export class TagPageProps implements ITagPageProps {
   }
 
   public async getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>> {
+    const tag = params?.tag ? (await this.postFactory.tags()).find(tag => tag.getSlug().value === params.tag) : undefined;
+    if (!tag) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
       props: {
         posts: (await this.postFactory.all(undefined, params)).map(post => fromPostEntity(post)),
-        tag: params?.tag ? fromTagEntity(Tag.reconstruct(Slug.create(params.tag))) : undefined,
+        tag: fromTagEntity(tag),
         headerPages: (this.settings.pages?.header ?? []).map(page => ({
           label: page.title,
           url: Post.createUrlFromPostData(page, this.settings),

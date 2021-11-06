@@ -1,9 +1,9 @@
 ---
 title: "目次の動作テスト"
 createdAt: "2021-09-27"
-updatedAt: "2021-09-27"
+updatedAt: "2021-11-07"
 thumbnail: "/images/pet_cat_oddeye_black.png"
-tags: ["test", "toc"]
+tags: ["test", "テスト", "toc"]
 published: true
 ---
 

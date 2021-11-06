@@ -1,9 +1,9 @@
 ---
 title: "Markdown 記法のテスト"
 createdAt: "2021-09-21"
-updatedAt: "2021-09-27"
+updatedAt: "2021-11-07"
 thumbnail: "/images/kotowaza_neko_koban.png"
-tags: ["test"]
+tags: ["test", "テスト", "markdown"]
 published: true
 ---
 
