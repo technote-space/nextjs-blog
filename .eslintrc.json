@@ -67,6 +67,11 @@
           "allowSameModule": true
         },
         {
+          "module": "src/components/wrap",
+          "allowReferenceFrom": ["src/components/**/*.tsx"],
+          "allowSameModule": true
+        },
+        {
           "module": "src/packages/domain",
           "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**", "src/config/settings.*"],
           "allowSameModule": true

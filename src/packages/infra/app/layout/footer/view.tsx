@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import clsx from 'clsx';
 import { memo } from 'react';
 import Footer from '$/infra/app/layout/components/Footer';
-import { Image } from '@/components/wrap';
+import { Image } from '@/components';
 import styles from './footer.module.scss';
 
 const View: VFC<HooksParams> = ({ author, pages, scrollButtonClass, scrollToTop, darkModeClass }) => <>
