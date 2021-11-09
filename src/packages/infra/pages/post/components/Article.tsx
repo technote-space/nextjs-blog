@@ -3,11 +3,12 @@ import dayjs from 'dayjs';
 import { memo } from 'react';
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
 import useAutoResizeIframe from '$/infra/pages/post/hooks/useAutoResizeIframe';
+import { Article as ArticleComponent } from '@/components';
 import Tag from '@/components/chip/Tag';
 import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
 import Box from '@/components/layout/Box';
-import { Article as ArticleComponent, Flex } from '@/components/wrap';
+import Flex from '@/components/layout/Flex';
 import styles from './Article.module.scss';
 
 type Props = {

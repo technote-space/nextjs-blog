@@ -1,12 +1,13 @@
-import type { StyleProps } from '@/components/wrap';
+import type { StyleProps } from '@/components';
 import type { VFC } from 'react';
 import type { IconType } from 'react-icons';
 import { memo } from 'react';
+import { Header as HeaderComponent } from '@/components';
+import IconButton from '@/components/button/IconButton';
 import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
-import { Header as HeaderComponent, IconButton } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type PostData = {
