@@ -47,6 +47,7 @@ tsconfig.tsbuildinfo
 public/*
 !public/favicon.ico
 !public/arrow.png
+!public/arrow2.png
 !public/nprogress.css
 !public/images/
 contents/*
