@@ -88,6 +88,10 @@ export class Post extends Base {
     return postType ?? settings.postType?.default ?? PostType.DEFAULT_POST_TYPE;
   }
 
+  public static isDefaultPostType(postType: string | undefined, settings: Settings): boolean {
+    return !postType || postType === (settings.postType?.default ?? PostType.DEFAULT_POST_TYPE);
+  }
+
   public static createUrlFromPostData(postData: PostData<string>, settings: Settings): string {
     return Post.createUrl(Id.create({
       source: Source.create(postData.source),
