@@ -1,11 +1,19 @@
 import type { Settings } from '$/domain/app/settings';
+import type { IDarkMode } from '$/domain/app/theme/darkMode';
 import type { Props } from '$/domain/pages/post';
 import { toEntity as toPostEntity } from '$/domain/post/dto/post';
 import { toEntity as toPostDetailEntity } from '$/domain/post/dto/postDetail';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useHooks = ({ headerPages, footerPages, post, prev, next }: Props, settings: Settings) => {
+export const useHooks = ({
+  headerPages,
+  footerPages,
+  post,
+  prev,
+  next,
+}: Props, settings: Settings, darkMode: IDarkMode) => {
   const entity = toPostDetailEntity(post);
+  const darkModeClass = darkMode.useColorModeValue('light', 'dark');
 
   return {
     layoutProps: {
@@ -23,6 +31,7 @@ export const useHooks = ({ headerPages, footerPages, post, prev, next }: Props, 
       prev: prev ? toPostEntity(prev) : undefined,
       next: next ? toPostEntity(next) : undefined,
       hideDate: (settings.postType?.hideDate ?? []).includes(entity.getPostType().value),
+      darkModeClass,
     },
   };
 };

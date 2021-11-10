@@ -2,8 +2,10 @@ import type { VFC } from 'react';
 import dayjs from 'dayjs';
 import { memo } from 'react';
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
+import NextArticle from '$/infra/pages/post/components/NextArticle';
+import PrevArticle from '$/infra/pages/post/components/PrevArticle';
 import useAutoResizeIframe from '$/infra/pages/post/hooks/useAutoResizeIframe';
-import { Article as ArticleComponent } from '@/components';
+import { Article as ArticleComponent, Divider } from '@/components';
 import Tag from '@/components/chip/Tag';
 import Date from '@/components/date/Date';
 import CoverImage from '@/components/image/CoverImage';
@@ -19,9 +21,31 @@ type Props = {
   content: string;
   hideDate?: boolean;
   tags?: { slug: string; name: string }[];
+  prevTitle?: string;
+  prevThumbnail?: string;
+  prevUrl?: string;
+  nextTitle?: string;
+  nextThumbnail?: string;
+  nextUrl?: string;
+  darkModeClass?: string;
 };
 
-const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, content, hideDate, tags }) => {
+const Article: VFC<Props> = ({
+  thumbnail,
+  backgroundColor,
+  title,
+  createdAt,
+  content,
+  hideDate,
+  tags,
+  prevTitle,
+  prevThumbnail,
+  prevUrl,
+  nextTitle,
+  nextThumbnail,
+  nextUrl,
+  darkModeClass,
+}) => {
   useAutoResizeIframe();
 
   return <SimpleReactLightbox>
@@ -46,6 +70,19 @@ const Article: VFC<Props> = ({ thumbnail, backgroundColor, title, createdAt, con
       <SRLWrapper>
         <Box className={styles.article} dangerouslySetInnerHTML={{ __html: content }}/>
       </SRLWrapper>
+      {((prevTitle && prevUrl) || (nextTitle && nextUrl)) && <Divider my={10}/>}
+      {prevTitle && prevUrl && <PrevArticle
+        title={prevTitle}
+        thumbnail={prevThumbnail}
+        url={prevUrl}
+        darkModeClass={darkModeClass}
+      />}
+      {nextTitle && nextUrl && <NextArticle
+        title={nextTitle}
+        thumbnail={nextThumbnail}
+        url={nextUrl}
+        darkModeClass={darkModeClass}
+      />}
     </ArticleComponent>
   </SimpleReactLightbox>;
 };
