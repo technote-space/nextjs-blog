@@ -43,7 +43,7 @@ export class PostPageProps implements IPostPageProps {
     try {
       const id = Id.create(params.id);
       const post = await this.postFactory.fetch(Id.create(params.id), postType);
-      const all = await this.postFactory.all(postType);
+      const all = Post.isDefaultPostType(postType, this.settings) ? await this.postFactory.all(postType) : [];
       const index = all.findIndex(post => post.getId().equals(id));
       return {
         props: {
