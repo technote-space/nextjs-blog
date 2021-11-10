@@ -1,0 +1,27 @@
+.article {
+  align-items: center;
+  height: 120px;
+  transition: all 0.3s;
+
+  &__thumbnail {
+    height: 100px;
+  }
+
+  &__title {
+    margin: 0 20px;
+  }
+
+  &__arrow {
+    height: 50px;
+  }
+
+  :global .dark {
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+  }
+
+  &:hover {
+    opacity: 0.7;
+    box-shadow: 0 2px 6px #ccc;
+    transform: translateY(-3px);
+  }
+}
