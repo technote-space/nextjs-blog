@@ -14,6 +14,7 @@ import Flex from '@/components/layout/Flex';
 import styles from './Article.module.scss';
 
 type Props = {
+  id?: string;
   thumbnail?: string;
   backgroundColor?: string;
   title: string;
@@ -31,6 +32,7 @@ type Props = {
 };
 
 const Article: VFC<Props> = ({
+  id,
   thumbnail,
   backgroundColor,
   title,
@@ -46,7 +48,7 @@ const Article: VFC<Props> = ({
   nextUrl,
   darkModeClass,
 }) => {
-  useAutoResizeIframe();
+  useAutoResizeIframe(id);
 
   return <SimpleReactLightbox>
     <ArticleComponent p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">

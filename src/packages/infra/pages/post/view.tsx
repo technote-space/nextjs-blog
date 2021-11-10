@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 const Article = dynamic(() => import('$/infra/pages/post/components/Article'));
 
 const View: VFC<HooksParams['viewProps']> = ({ post, hideDate, prev, next, darkModeClass }) => <Article
+  id={post.getId().value}
   thumbnail={post.getThumbnail()?.value}
   backgroundColor={post.getDominantColor()?.value}
   title={post.getTitle().value}

@@ -12,7 +12,7 @@ const debounce = <T extends (...args: any[]) => unknown>(
   };
 };
 
-const useAutoResizeIframe = (): void => {
+const useAutoResizeIframe = (id?: string): void => {
   useEffect(() => {
     const targets = document.body.querySelectorAll('.blog-card iframe');
     targets.forEach(target => {
@@ -30,7 +30,7 @@ const useAutoResizeIframe = (): void => {
         contentWindow.onresize = debounce(setHeight);
       }
     });
-  }, []);
+  }, [id]);
 };
 
 export default useAutoResizeIframe;
