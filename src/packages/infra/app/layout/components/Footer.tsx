@@ -1,11 +1,11 @@
-import type { StyleProps } from '@/components/wrap';
+import type { StyleProps } from '@/components';
 import type { VFC } from 'react';
 import { memo } from 'react';
+import { Footer as FooterComponent } from '@/components';
 import Flex from '@/components/layout/Flex';
 import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
-import { Footer as FooterComponent } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
 
 type PostData = {

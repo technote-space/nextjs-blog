@@ -378,6 +378,69 @@ Array [
 ]
 `;
 
+exports[`Storyshots Common Components/IconButton Default 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <button
+    aria-label="アイコンボタン"
+    className="chakra-button css-dn5esd"
+    type="button"
+  >
+    <svg
+      aria-hidden={true}
+      fill="currentColor"
+      focusable={false}
+      height="1em"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 512 512"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
+      />
+    </svg>
+  </button>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Common Components/List Empty 1`] = `
 Array [
   <script
@@ -3379,6 +3442,286 @@ Array [
 ]
 `;
 
+exports[`Storyshots Domain Components/NextArticle Dark 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-1uwjw6e"
+      >
+        <div
+          className="article__title css-0"
+        >
+          記事タイトル
+        </div>
+        <img
+          alt="next thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <img
+          alt="next article"
+          className="article__arrow dark css-1qx34im"
+          src="/arrow2.png"
+        />
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/NextArticle Default 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-1uwjw6e"
+      >
+        <div
+          className="article__title css-0"
+        >
+          記事タイトル
+        </div>
+        <img
+          alt="next thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <img
+          alt="next article"
+          className="article__arrow css-1qx34im"
+          src="/arrow2.png"
+        />
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/NextArticle Light 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-1uwjw6e"
+      >
+        <div
+          className="article__title css-0"
+        >
+          記事タイトル
+        </div>
+        <img
+          alt="next thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <img
+          alt="next article"
+          className="article__arrow light css-1qx34im"
+          src="/arrow2.png"
+        />
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/NextArticle Long Title 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-1uwjw6e"
+      >
+        <div
+          className="article__title css-0"
+        >
+          長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト
+        </div>
+        <img
+          alt="next thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <img
+          alt="next article"
+          className="article__arrow css-1qx34im"
+          src="/arrow2.png"
+        />
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
 exports[`Storyshots Domain Components/Pagination Default 1`] = `
 Array [
   <script
@@ -3421,6 +3764,7 @@ Array [
       <a
         aria-disabled="false"
         aria-label="Previous page"
+        className=""
         onClick={[Function]}
         onKeyPress={[Function]}
         rel="prev"
@@ -3442,16 +3786,16 @@ Array [
         1
       </a>
     </li>
-    <li
-      className="break"
-    >
+    <li>
       <a
+        aria-current={null}
+        aria-label="Page 2"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
         tabIndex="0"
       >
-        ...
+        2
       </a>
     </li>
     <li>
@@ -3460,6 +3804,7 @@ Array [
         aria-label="Page 3"
         onClick={[Function]}
         onKeyPress={[Function]}
+        rel="prev"
         role="button"
         tabIndex="0"
       >
@@ -3474,8 +3819,9 @@ Array [
         aria-label="Page 4 is your current page"
         onClick={[Function]}
         onKeyPress={[Function]}
+        rel="canonical"
         role="button"
-        tabIndex="0"
+        tabIndex="-1"
       >
         4
       </a>
@@ -3486,6 +3832,7 @@ Array [
         aria-label="Page 5"
         onClick={[Function]}
         onKeyPress={[Function]}
+        rel="next"
         role="button"
         tabIndex="0"
       >
@@ -3522,6 +3869,7 @@ Array [
       <a
         aria-disabled="false"
         aria-label="Next page"
+        className=""
         onClick={[Function]}
         onKeyPress={[Function]}
         rel="next"
@@ -3532,6 +3880,286 @@ Array [
       </a>
     </li>
   </ul>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/PrevArticle Dark 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-k008qs"
+      >
+        <img
+          alt="prev article"
+          className="article__arrow dark css-4dsd3s"
+          src="/arrow2.png"
+        />
+        <img
+          alt="prev thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="article__title css-0"
+        >
+          記事タイトル
+        </div>
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/PrevArticle Default 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-k008qs"
+      >
+        <img
+          alt="prev article"
+          className="article__arrow css-4dsd3s"
+          src="/arrow2.png"
+        />
+        <img
+          alt="prev thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="article__title css-0"
+        >
+          記事タイトル
+        </div>
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/PrevArticle Light 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-k008qs"
+      >
+        <img
+          alt="prev article"
+          className="article__arrow light css-4dsd3s"
+          src="/arrow2.png"
+        />
+        <img
+          alt="prev thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="article__title css-0"
+        >
+          記事タイトル
+        </div>
+      </div>
+    </a>
+  </div>,
+  <span />,
+]
+`;
+
+exports[`Storyshots Domain Components/PrevArticle Long Title 1`] = `
+Array [
+  <script
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "(function setScript(initialValue) {
+  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
+  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
+  var persistedPreference;
+
+  try {
+    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
+  } catch (error) {
+    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
+  }
+
+  var isInStorage = typeof persistedPreference === \\"string\\";
+  var colorMode;
+
+  if (isInStorage) {
+    colorMode = persistedPreference;
+  } else {
+    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
+  }
+
+  if (colorMode) {
+    var root = document.documentElement;
+    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
+  }
+})('system')",
+      }
+    }
+  />,
+  <div
+    style={
+      Object {
+        "maxWidth": "1000px",
+      }
+    }
+  >
+    <a
+      href="https://example.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="article css-k008qs"
+      >
+        <img
+          alt="prev article"
+          className="article__arrow css-4dsd3s"
+          src="/arrow2.png"
+        />
+        <img
+          alt="prev thumbnail"
+          className="article__thumbnail css-0"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="article__title css-0"
+        >
+          長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト
+        </div>
+      </div>
+    </a>
+  </div>,
   <span />,
 ]
 `;
