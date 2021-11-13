@@ -122,28 +122,6 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     )), Promise.resolve([] as Post[]));
   }
 
-  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
-    const { whereParams, whereQuery } = this.getWhere(postType, params);
-    const results = await this.mysql.query<Array<{ post_name: string }>>(`
-      SELECT REPLACE(
-               TRIM(TRAILING '/' FROM
-                    IF(COALESCE(permalink.meta_value, '') = '', wp_posts.post_name, permalink.meta_value)
-                 ),
-               '/',
-               '-'
-               ) AS post_name
-      FROM wp_posts
-             LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
-      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
-    `, ['custom_permalink', this.getPostType(postType), 'publish', 'future', ...whereParams]);
-    await this.mysql.end();
-
-    return results.map(result => Id.create({
-      source: Source.create(this.sourceId),
-      id: result.post_name,
-    }));
-  }
-
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {
     const { whereParams, whereQuery } = this.getWhere(postType);
     const results = await this.mysql.query<Array<PostData>>(`

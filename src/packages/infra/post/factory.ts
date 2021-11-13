@@ -1,12 +1,14 @@
 import type { UrlMap } from '$/domain/app/settings';
-import type { Post } from '$/domain/post/entity/post';
+import type { Settings } from '$/domain/app/settings';
 import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { Tag } from '$/domain/post/entity/tag';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type { SearchParams } from '$/domain/post/repository/post';
 import type Id from '$/domain/post/valueObject/id';
+import type { ICache } from '$/domain/shared/library/cache';
 import { singleton, inject, container } from 'tsyringe';
+import { Post } from '$/domain/post/entity/post';
 import Source from '$/domain/post/valueObject/source';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 
@@ -15,7 +17,11 @@ export class PostFactory implements IPostFactory {
   private readonly __sources: Source[];
   private readonly __postRepositories: { [source: string]: IPostRepository };
 
-  public constructor(@inject('postRepositories') postRepositories: { [source: string]: { sourceId: string; repository: string } }) {
+  public constructor(
+    @inject('postRepositories') postRepositories: { [source: string]: { sourceId: string; repository: string } },
+    @inject('Settings') private settings: Settings,
+    @inject('ICache') private cache: ICache,
+  ) {
     this.__postRepositories = Object.assign({}, ...Object.keys(postRepositories).map(source => {
       const repository = container.resolve<IPostRepository>(postRepositories[source].repository);
       repository.setSourceId(postRepositories[source].sourceId);
@@ -25,17 +31,15 @@ export class PostFactory implements IPostFactory {
   }
 
   public async all(postType?: string, params?: SearchParams, sortByUpdatedAt?: boolean): Promise<Post[]> {
-    return (await this.__sources.reduce(async (prev, source) => {
+    const key = `PostFactory::all::${Post.ensurePostType(postType, this.settings)}::${params?.tag}::${sortByUpdatedAt ? 1 : 0}`;
+    return this.cache.getOrGenerate(key, async () => (await this.__sources.reduce(async (prev, source) => {
       const acc = await prev;
       return acc.concat(...await this.__postRepositories[source.value].all(postType, params));
-    }, Promise.resolve([] as Post[]))).sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b));
+    }, Promise.resolve([] as Post[]))).sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b)), 60 * 10);
   }
 
   public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
-    return this.__sources.reduce(async (prev, source) => {
-      const acc = await prev;
-      return acc.concat(...await this.__postRepositories[source.value].getIds(postType, params));
-    }, Promise.resolve([] as Id[]));
+    return (await this.all(postType, params)).map(post => post.getId());
   }
 
   public async fetch(id: Id, postType?: string): Promise<PostDetail> {

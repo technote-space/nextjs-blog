@@ -199,13 +199,6 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     )), Promise.resolve([] as Post[]));
   }
 
-  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
-    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType, params)).map(result => Id.create({
-      source: Source.create(this.sourceId),
-      id: result.post_name,
-    }));
-  }
-
   private static removeBaseSiteUrl(content: string, data: WpXmlData): string {
     return content.replace(new RegExp(`${pregQuote(`${data.rss.channel[0].base_site_url[0].replace(/\/$/, '')}`, '/')}`, 'g'), '');
   }
