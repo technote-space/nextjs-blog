@@ -17,8 +17,8 @@
     "update": "npm_config_yes=true npx npm-check-updates -x eslint,react-paginate,@types/react-paginate -u --timeout 100000 && yarn install && yarn upgrade && yarn audit",
     "serve": "next export && cd out && http-server -o",
     "prepare": "if [ ! -f .env ]; then cp .env.example .env; fi && if [ ! -f src/config/settings.ts ]; then cp src/config/settings.example.ts src/config/settings.ts; fi && husky install && pathpida",
-    "sb": "start-storybook -p 6006",
-    "build-sb": "build-storybook",
+    "sb": "start-storybook -p 6006 -s ./public",
+    "build-sb": "build-storybook -s public",
     "analyze": "pathpida && ANALYZE=true next build"
   },
   "dependencies": {
