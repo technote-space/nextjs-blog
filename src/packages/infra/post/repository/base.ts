@@ -87,8 +87,6 @@ export abstract class BasePostRepository implements IPostRepository {
 
   public abstract all(postType?: string, params?: SearchParams): Promise<Post[]>;
 
-  public abstract getIds(postType?: string, params?: SearchParams): Promise<Id[]>;
-
   public abstract fetch(id: Id, postType?: string): Promise<PostDetail>;
 
   public abstract tags(): Promise<Tag[]>;

@@ -154,13 +154,6 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     )), Promise.resolve([] as Post[]));
   }
 
-  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
-    return (await this.getPostDataList(postType, params)).map(post => Id.create({
-      source: Source.create(this.sourceId),
-      id: post.id,
-    }));
-  }
-
   private static searchPost(postId: string): string | never {
     const split = postId.split('-');
     for (let pos = 0; pos < split.length; ++pos) {

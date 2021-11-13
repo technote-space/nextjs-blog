@@ -13,8 +13,6 @@ export interface IPostRepository {
 
   all(postType?: string, params?: SearchParams): Promise<Post[]>;
 
-  getIds(postType?: string, params?: SearchParams): Promise<Id[]>;
-
   fetch(id: Id, postType?: string): Promise<PostDetail> | never;
 
   tags(): Promise<Tag[]>;
