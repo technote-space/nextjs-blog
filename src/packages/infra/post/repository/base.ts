@@ -5,7 +5,6 @@ import type { IPostRepository, SearchParams } from '$/domain/post/repository/pos
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
-import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import type Id from '$/domain/post/valueObject/id';
 import { Post } from '$/domain/post/entity/post';
@@ -21,7 +20,6 @@ export abstract class BasePostRepository implements IPostRepository {
     protected oembed: IOembedService,
     protected toc: ITocService,
     protected code: ICodeService,
-    protected thumbnail: IThumbnailService,
   ) {
   }
 
@@ -41,13 +39,12 @@ export abstract class BasePostRepository implements IPostRepository {
     return this.color.getDominantColor(thumbnail, this.settings.siteUrl, retry);
   }
 
-  protected async getThumbnail(thumbnail?: string): Promise<Thumbnail | undefined> {
-    const base64 = await this.thumbnail.toBase64(this.settings, thumbnail);
-    if (!base64) {
+  protected getThumbnail(thumbnail?: string): Thumbnail | undefined {
+    if (!thumbnail) {
       return undefined;
     }
 
-    return Thumbnail.create(base64);
+    return Thumbnail.create(thumbnail);
   }
 
   protected processExcerpt(excerpt: string): string {
