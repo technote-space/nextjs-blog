@@ -19,16 +19,13 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/lib/*": [
-        "lib/*"
-      ],
       "$/*": [
-        "packages/*"
+        "./packages/*"
       ],
       "^/*": [
+        "./*"
+      ],
+      "@/*": [
         "./*"
       ]
     },

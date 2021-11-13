@@ -1,9 +1,9 @@
 ---
 title: "ブログカードのテスト"
 createdAt: "2021-09-25"
-updatedAt: "2021-09-25"
+updatedAt: "2021-11-07"
 thumbnail: "/images/pet_cat_sit.png"
-tags: ["test"]
+tags: ["test", "テスト", "ブログカード"]
 published: true
 ---
 

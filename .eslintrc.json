@@ -63,7 +63,12 @@
         },
         {
           "module": "src/components",
-          "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx"],
+          "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx", "src/packages/infra/**/view.tsx"],
+          "allowSameModule": true
+        },
+        {
+          "module": "src/components/wrap",
+          "allowReferenceFrom": ["src/components/**/*.tsx"],
           "allowSameModule": true
         },
         {
@@ -72,7 +77,7 @@
           "allowSameModule": true
         },
         {
-          "module": "src/lib",
+          "module": "src/lib/helpers",
           "allowReferenceFrom": ["src/packages/infra/**"],
           "allowSameModule": true
         },

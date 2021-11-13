@@ -46,6 +46,8 @@ tsconfig.tsbuildinfo
 # リリース時には削除
 public/*
 !public/favicon.ico
+!public/arrow.png
+!public/arrow2.png
 !public/nprogress.css
 !public/images/
 contents/*

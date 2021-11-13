@@ -1,4 +1,4 @@
-import type { StyleProps } from '@/components/wrap';
+import type { StyleProps } from '@/components';
 import type { VFC } from 'react';
 import dayjs from 'dayjs';
 import { memo } from 'react';

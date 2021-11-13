@@ -15,9 +15,9 @@ export default class Id extends Base<IdProps, string, IdPropsInner>() {
     return '記事ID';
   }
 
-  protected fromInput(value: IdProps): IdPropsInner {
-    if (typeof value === 'string') {
-      const split = value.split('-');
+  protected fromInput(): IdPropsInner {
+    if (typeof this.input === 'string') {
+      const split = this.input.split('-');
       const source = split.shift();
       return {
         source: Source.create(source!),
@@ -26,18 +26,18 @@ export default class Id extends Base<IdProps, string, IdPropsInner>() {
     }
 
     return {
-      source: value.source,
-      id: `${value.id}`,
+      source: this.input.source,
+      id: `${this.input.id}`,
     };
   }
 
-  protected toOutput(value: IdPropsInner): string {
-    return `${value.source.value}-${value.id}`;
+  protected toOutput(): string {
+    return `${this.inner.source.value}-${this.inner.id}`;
   }
 
-  public validate(value: IdProps): string[] | undefined {
-    if (typeof value === 'string') {
-      const split = value.split('-');
+  public validate(): string[] | undefined {
+    if (typeof this.input === 'string') {
+      const split = this.input.split('-');
       if (split.length < 2) {
         return ['記事IDの形式が正しくありません'];
       }
@@ -51,10 +51,10 @@ export default class Id extends Base<IdProps, string, IdPropsInner>() {
   }
 
   public get source(): Source {
-    return this._value.source;
+    return this.inner.source;
   }
 
   public get postId(): string {
-    return this._value.id;
+    return this.inner.id;
   }
 }

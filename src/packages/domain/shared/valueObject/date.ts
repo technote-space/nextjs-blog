@@ -4,16 +4,16 @@ import Base from '$/domain/shared/valueObject/base';
 
 // Inner type = string: consider serialization
 export default abstract class Date extends Base<dayjs.ConfigType, dayjs.Dayjs, string>() {
-  protected fromInput(value: dayjs.ConfigType): string {
-    return dayjs(value).toISOString();
+  protected fromInput(): string {
+    return dayjs(this.input).toISOString();
   }
 
-  protected toOutput(value: string): dayjs.Dayjs {
-    return dayjs(value);
+  protected toOutput(): dayjs.Dayjs {
+    return dayjs(this.inner);
   }
 
-  public validate(value: dayjs.ConfigType): string[] | undefined {
-    if (typeof value === 'string' && !isDate(value)) {
+  public validate(): string[] | undefined {
+    if (typeof this.input === 'string' && !isDate(this.input)) {
       return ['日付の形式が正しくありません'];
     }
 

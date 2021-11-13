@@ -20,17 +20,8 @@ module.exports = withBundleAnalyzer({
   trailingSlash: true,
   distDir: !process.env.VERCEL && process.env.NODE_ENV === 'production' ? 'build' : '.next',
   webpack: (config, {isServer}) => {
-    config.resolve.fallback = {
-      fs: false,
-      path: false,
-      crypto: false,
-      net: false,
-      tls: false,
-      stream: false,
-      timers: false,
-    };
     if (!isServer) {
-      config.externals['./registry.server'] = 'var {}';
+      config.externals.push({'./registry.server': 'var {}'})
     }
 
     return config;
@@ -38,7 +29,4 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['src']
   },
-  experimental: {
-    esmExternals: false
-  }
 });

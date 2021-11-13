@@ -1,12 +1,12 @@
 import Base from '$/domain/shared/valueObject/base';
 
 export default abstract class StringId extends Base<number | string, string>() {
-  protected fromInput(value: number | string): string {
-    return `${value}`;
+  protected fromInput(): string {
+    return `${this.input}`;
   }
 
-  public validate(value: number | string): string[] | undefined {
-    const text = this.fromInput(value);
+  public validate(): string[] | undefined {
+    const text = this.fromInput();
     if (!text.length) {
       return ['値を指定してください'];
     }

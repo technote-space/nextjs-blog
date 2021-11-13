@@ -1,5 +1,6 @@
 import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { IPostRepository } from '$/domain/post/repository/post';
+import type { SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IHtmlService } from '$/domain/post/service/html';
@@ -12,11 +13,14 @@ import { join } from 'path';
 import { inject, singleton } from 'tsyringe';
 import { Post } from '$/domain/post/entity/post';
 import { PostDetail } from '$/domain/post/entity/postDetail';
+import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
 import CreatedAt from '$/domain/post/valueObject/createdAt';
 import Excerpt from '$/domain/post/valueObject/excerpt';
 import Id from '$/domain/post/valueObject/id';
+import Name from '$/domain/post/valueObject/name';
 import PostType from '$/domain/post/valueObject/postType';
+import Slug from '$/domain/post/valueObject/slug';
 import Source from '$/domain/post/valueObject/source';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
@@ -40,6 +44,7 @@ type WpXmlPostItem = {
   status: ('publish' | 'future' | 'draft' | 'pending' | 'private' | 'trash' | 'auto-draft' | 'inherit')[];
   post_password: string[];
   category?: {
+    _: string;
     $: {
       domain: 'post_tag' | 'category';
       nicename: string;
@@ -85,7 +90,8 @@ type PostData = {
   thumbnail?: string;
   category?: {
     domain: 'post_tag' | 'category';
-    nicename: string;
+    slug: string;
+    name: string;
   }[];
   link: string;
   post_type: string;
@@ -123,10 +129,28 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       .replace('/', '-');
   }
 
-  private collectPosts(data: WpXmlData, postType?: string | null): PostData[] {
+  private static filterByTag(item: WpXmlPostItem, params?: SearchParams): boolean {
+    const paramsTag = params?.tag;
+    if (!paramsTag) {
+      return true;
+    }
+
+    const postTags = item.category?.filter(setting => setting.$.domain === 'post_tag').map(setting => setting.$.nicename);
+    if (!postTags?.length) {
+      return false;
+    }
+
+    return postTags.includes(paramsTag);
+  }
+
+  private collectPosts(data: WpXmlData, postType?: string | null, params?: SearchParams): PostData[] {
     const _postType = postType === null ? undefined : this.getPostType(postType);
     return data.rss.channel[0].item
-      .filter(item => (!_postType || item.post_type[0] === _postType) && (item.status[0] === 'publish' || item.status[0] === 'future'))
+      .filter(item =>
+        (!_postType || item.post_type[0] === _postType) &&
+        (item.status[0] === 'publish' || item.status[0] === 'future') &&
+        WordPressExportPostRepository.filterByTag(item, params),
+      )
       .map(item => ({
         id: Number(item.post_id[0]),
         post_name: WordPressExportPostRepository.getPostName(data.rss.channel[0].base_site_url[0], item),
@@ -135,7 +159,11 @@ export class WordPressExportPostRepository extends BasePostRepository implements
         post_content: item.encoded[0],
         post_excerpt: item.encoded[1],
         thumbnail: this.getThumbnailUrl(data, item.postmeta?.find(meta => meta.meta_key[0] === '_thumbnail_id')?.meta_value[0]),
-        category: item.category?.map(item => item.$),
+        category: item.category?.map(item => ({
+          domain: item.$.domain,
+          slug: item.$.nicename,
+          name: item._,
+        })),
         link: WordPressExportPostRepository.removeBaseSiteUrl(item.link[0], data),
         post_type: item.post_type[0],
       }));
@@ -155,12 +183,12 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     const excludeCategory = exclude.filter(setting => !!setting.type);
     return posts.filter(post => {
       if (excludeIds.includes(post.id)) return false;
-      return !post.category?.some(category => excludeCategory.some(exclude => exclude.type === category.domain && exclude.id === category.nicename));
+      return !post.category?.some(category => excludeCategory.some(exclude => exclude.type === category.domain && exclude.id === category.slug));
     });
   }
 
-  public async all(postType?: string): Promise<Post[]> {
-    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType)).reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
+  public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType, params)).reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: result.post_name,
@@ -173,8 +201,8 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     )), Promise.resolve([] as Post[]));
   }
 
-  public async getIds(postType?: string): Promise<Id[]> {
-    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType)).map(result => Id.create({
+  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType, params)).map(result => Id.create({
       source: Source.create(this.sourceId),
       id: result.post_name,
     }));
@@ -199,10 +227,15 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       Content.create(isClassicEditor ? processedContent.replace(/\r?\n/g, '<br />') : processedContent),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(post.post_content))),
       PostType.create(this.getPostType(postType)),
+      (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.slug), Name.create(cat.name))),
       post.thumbnail ? Thumbnail.create(post.thumbnail) : undefined,
       await this.getDominantColor(post.thumbnail),
       CreatedAt.create(post.post_date),
     );
+  }
+
+  public async tags(): Promise<Tag[]> {
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData())).flatMap(post => (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.slug), Name.create(cat.name))));
   }
 
   public async getUrlMaps(): Promise<UrlMap[]> {
