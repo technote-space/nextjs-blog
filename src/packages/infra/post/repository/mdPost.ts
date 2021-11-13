@@ -4,7 +4,6 @@ import type { SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
-import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import { promises, existsSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
@@ -58,9 +57,8 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
     @inject('ICodeService') code: ICodeService,
-    @inject('IThumbnailService') thumbnail: IThumbnailService,
   ) {
-    super(settings, color, oembed, toc, code, thumbnail);
+    super(settings, color, oembed, toc, code);
   }
 
   private getExcludeIds(postType?: string) {
@@ -150,7 +148,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Title.create(post.title),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
-      await this.getThumbnail(post.thumbnail),
+      this.getThumbnail(post.thumbnail),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
     )), Promise.resolve([] as Post[]));

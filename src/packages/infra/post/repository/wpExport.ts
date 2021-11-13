@@ -5,7 +5,6 @@ import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IHtmlService } from '$/domain/post/service/html';
 import type { IOembedService } from '$/domain/post/service/oembed';
-import type { IThumbnailService } from '$/domain/post/service/thumbnail';
 import type { ITocService } from '$/domain/post/service/toc';
 import type { IXmlService } from '$/domain/post/service/xml';
 import { promises, readdirSync } from 'fs';
@@ -109,11 +108,10 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     @inject('IOembedService') oembed: IOembedService,
     @inject('ITocService') toc: ITocService,
     @inject('ICodeService') code: ICodeService,
-    @inject('IThumbnailService') thumbnail: IThumbnailService,
     @inject('IXmlService') private xml: IXmlService,
     @inject('IHtmlService') private html: IHtmlService,
   ) {
-    super(settings, color, oembed, toc, code, thumbnail);
+    super(settings, color, oembed, toc, code);
   }
 
   private async getExportXmlData(): Promise<WpXmlData> {
@@ -196,7 +194,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       Title.create(result.post_title),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
-      await this.getThumbnail(result.thumbnail),
+      this.getThumbnail(result.thumbnail),
       CreatedAt.create(result.post_date),
     )), Promise.resolve([] as Post[]));
   }
