@@ -81,7 +81,7 @@ export class Post extends Base {
   }
 
   public static createUrl(id: Id, postType: PostType): string {
-    return `/${postType.pluralized}/${id.value}/`;
+    return `/${postType.pluralized}/${encodeURIComponent(id.value)}/`;
   }
 
   public static ensurePostType(postType: string | undefined, settings: Settings): string {
