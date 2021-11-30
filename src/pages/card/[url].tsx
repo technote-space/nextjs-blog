@@ -7,4 +7,4 @@ export default function CardPage(): null {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getServerSideProps: GetServerSideProps<{ [key: string]: any }, Params> = async (context) => (container.resolve('ICardPageProps') as ICardPageProps).getServerSideProps(context);
+export const getServerSideProps: GetServerSideProps<{ [key: string]: any }, Params> = async (context) => container.resolve<ICardPageProps>('ICardPageProps').getServerSideProps(context);

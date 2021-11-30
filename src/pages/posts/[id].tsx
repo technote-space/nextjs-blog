@@ -2,8 +2,8 @@ import type { IPostPage, IPostPageProps, Props, Params } from '$/domain/pages/po
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { container } from 'tsyringe';
 
-export default (container.resolve('IPostPage') as IPostPage).create();
+export default container.resolve<IPostPage>('IPostPage').create();
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => (container.resolve('IPostPageProps') as IPostPageProps).getStaticPaths();
+export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<IPostPageProps>('IPostPageProps').getStaticPaths();
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => (container.resolve('IPostPageProps') as IPostPageProps).getStaticProps(params);
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<IPostPageProps>('IPostPageProps').getStaticProps(params);
