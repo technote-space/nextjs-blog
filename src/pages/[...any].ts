@@ -6,6 +6,6 @@ export default function AnyPage(): null {
   return null;
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => (container.resolve('IAnyPageProps') as IAnyPageProps).getStaticPaths();
+export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<IAnyPageProps>('IAnyPageProps').getStaticPaths();
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => (container.resolve('IAnyPageProps') as IAnyPageProps).getStaticProps(params);
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<IAnyPageProps>('IAnyPageProps').getStaticProps(params);
