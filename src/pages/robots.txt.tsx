@@ -6,4 +6,4 @@ export default function RobotsTxtPage(): null {
   return null;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => (container.resolve('IRobotsPageProps') as IRobotsPageProps).getServerSideProps(context);
+export const getServerSideProps: GetServerSideProps = async (context) => container.resolve<IRobotsPageProps>('IRobotsPageProps').getServerSideProps(context);
