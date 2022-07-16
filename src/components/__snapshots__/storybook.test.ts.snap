@@ -3764,6 +3764,7 @@ Array [
       <a
         aria-disabled="false"
         aria-label="Previous page"
+        className=""
         onClick={[Function]}
         onKeyPress={[Function]}
         rel="prev"
@@ -3785,16 +3786,16 @@ Array [
         1
       </a>
     </li>
-    <li
-      className="break"
-    >
+    <li>
       <a
+        aria-current={null}
+        aria-label="Page 2"
         onClick={[Function]}
         onKeyPress={[Function]}
         role="button"
         tabIndex="0"
       >
-        ...
+        2
       </a>
     </li>
     <li>
@@ -3803,6 +3804,7 @@ Array [
         aria-label="Page 3"
         onClick={[Function]}
         onKeyPress={[Function]}
+        rel="prev"
         role="button"
         tabIndex="0"
       >
@@ -3817,8 +3819,9 @@ Array [
         aria-label="Page 4 is your current page"
         onClick={[Function]}
         onKeyPress={[Function]}
+        rel="canonical"
         role="button"
-        tabIndex="0"
+        tabIndex="-1"
       >
         4
       </a>
@@ -3829,6 +3832,7 @@ Array [
         aria-label="Page 5"
         onClick={[Function]}
         onKeyPress={[Function]}
+        rel="next"
         role="button"
         tabIndex="0"
       >
@@ -3865,6 +3869,7 @@ Array [
       <a
         aria-disabled="false"
         aria-label="Next page"
+        className=""
         onClick={[Function]}
         onKeyPress={[Function]}
         rel="next"
