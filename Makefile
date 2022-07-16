@@ -2,10 +2,8 @@ setup:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 	. ${NVM_DIR}/nvm.sh && nvm use
 	yarn
-	sed '45,52d' .gitignore > .gitignore.tmp
-	mv -f .gitignore.tmp .gitignore
-	rm src/config/settings.example.ts
-	rm .env.example
+	cat .gitignore | grep -q "public" && sed '45,54d' .gitignore > .gitignore.tmp
+	cat .gitignore | grep -q "public" && mv -f .gitignore.tmp .gitignore
 up:
 	docker-compose -f infra/docker-compose.yml --env-file .env up -d
 stop:

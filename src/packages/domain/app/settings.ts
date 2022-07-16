@@ -11,7 +11,7 @@ type Replace = {
   to: string;
 };
 type Exclude = PostData<string[]> & {
-  type?: string;
+  type?: 'post_tag' | 'category';
 };
 export type UrlMap = {
   source: string;

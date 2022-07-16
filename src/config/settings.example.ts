@@ -29,24 +29,24 @@ export const settings: Settings = {
   exclude: [
     // WordPress の ID = 123 の投稿を除外
     // {
-    //   source: postSources['wpxml'],
+    //   source: [postSources['wpdb'], postSources['wpxml']],
     //   id: '123',
     // },
     // WordPress の wp_terms.slug = 'test' のタグ に紐付いた投稿を除外
     // type = category でカテゴリー
     // {
-    //   source: postSources['wpxml'],
+    //   source: [postSources['wpdb'], postSources['wpxml']],
     //   type: 'post_tag',
     //   id: 'test',
     // },
   ],
+  // 移行前のURLと新しいURLの紐付け設定
   urlMaps: [
-    // 移行前のURLと新しいURLの紐付け設定
     // {
-    //   source: '/old/graph-structured-program-evolution',
+    //   source: '/blog/archives/192',
     //   destination: {
     //     source: postSources['wpxml'],
-    //     id: 'graph-structured-program-evolution',
+    //     id: 'mapped-page',
     //   },
     // },
   ],
@@ -55,8 +55,9 @@ export const settings: Settings = {
     postTypes: ['post'],
     headings: ['h1', 'h2', 'h3', 'h4'],
   },
-  // 固定ページは日付を表示しない設定
+  // 日付を表示しない設定
   postType: {
+    // 固定ページ
     hideDate: ['page'],
   },
   // 固定ページへのリンク表示
