@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import * as React from 'react';
 import ReactPaginate from 'react-paginate';
@@ -16,7 +16,7 @@ type Props = {
   onPageChange?(selectedItem: { selected: number }): void;
 }
 
-const Pagination: VFC<Props> = ({
+const Pagination: FC<Props> = ({
   perPage,
   page,
   totalCount,

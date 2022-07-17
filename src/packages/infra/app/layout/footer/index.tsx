@@ -1,7 +1,7 @@
 import type { IFooterComponent, Props } from '$/domain/app/layout/footer';
 import type { Settings } from '$/domain/app/settings';
 import type { IDarkMode } from '$/domain/app/theme/darkMode';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
 import { useHooks } from '$/infra/app/layout/footer/hooks';
@@ -17,7 +17,7 @@ export class FooterComponent extends BaseComponent<Props> implements IFooterComp
     super();
   }
 
-  protected getComponent(): VFC<Props> {
+  protected getComponent(): FC<Props> {
     const component = memo((props: Props) => <View {...useHooks(props, this.settings, this.darkMode)}/>);
     component.displayName = 'FooterComponent';
 

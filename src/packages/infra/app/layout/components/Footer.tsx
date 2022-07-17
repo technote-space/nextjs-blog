@@ -1,5 +1,5 @@
 import type { StyleProps } from '@/components';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { Footer as FooterComponent } from '@/components';
 import Flex from '@/components/layout/Flex';
@@ -35,7 +35,7 @@ const defaultPagesStyle: StyleProps = {
   mb: 2,
 };
 
-const Footer: VFC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <FooterComponent>
+const Footer: FC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props }) => <FooterComponent>
   <Flex {...defaultProps} {...props}>
     {!!pages?.length && <Flex {...defaultPagesStyle} {...pagesStyle}>
       <List display="flex" flexWrap="wrap" justifyContent="center">

@@ -1,11 +1,11 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 
 type Props = {
   googleAdsenseClientId: string;
 }
 
-const View: VFC<Props> = ({ googleAdsenseClientId }) => {
+const View: FC<Props> = ({ googleAdsenseClientId }) => {
   if (!googleAdsenseClientId) {
     return null;
   }

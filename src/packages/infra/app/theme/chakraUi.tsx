@@ -1,5 +1,5 @@
 import type { ITheme, Props } from '$/domain/app/theme';
-import type { VFC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { ChakraProvider, extendTheme, ColorModeScript } from '@chakra-ui/react';
 import { memo } from 'react';
 import { singleton } from 'tsyringe';
@@ -15,8 +15,8 @@ export class ChakraUiTheme extends BaseComponent<Props> implements ITheme {
     this.__theme = extendTheme(chakraUiConfig);
   }
 
-  protected getComponent(): VFC<Props> {
-    const component = memo(({ children }) => <ChakraProvider theme={this.__theme}>
+  protected getComponent(): FC<PropsWithChildren<Props>> {
+    const component = memo<PropsWithChildren>(({ children }) => <ChakraProvider theme={this.__theme}>
       <ColorModeScript initialColorMode="system"/>
       {children}
     </ChakraProvider>);

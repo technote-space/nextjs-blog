@@ -1,6 +1,6 @@
+import type { Settings } from '$/domain/app/settings';
 import type { IColorService } from '$/domain/post/service/color';
 import { inject, singleton } from 'tsyringe';
-import { Settings } from '$/domain/app/settings';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
 import { loadImage } from '@/lib/helpers/image';
 

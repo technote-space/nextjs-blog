@@ -1,5 +1,5 @@
 import type { StyleProps } from '@/components/wrap';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { FaTag } from 'react-icons/fa';
 import Link from '@/components/link/Link';
@@ -26,7 +26,7 @@ const defaultProps: StyleProps = {
   },
 };
 
-const TagChip: VFC<Props> = ({ slug, name, iconColor, ...props }) => {
+const TagChip: FC<Props> = ({ slug, name, iconColor, ...props }) => {
   if (!slug) {
     return <WrapItem
       {...defaultProps}

@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 type Page = { label: string; url: string };
 export type ServerProps = {
@@ -8,5 +8,5 @@ export type ServerProps = {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export interface IPage<P = {}> {
-  create(): VFC<P>;
+  create(): FC<P>;
 }

@@ -1,5 +1,5 @@
 import type { BoxProps } from '@/components/wrap';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { Box as BoxComponent } from '@/components/wrap';
 
@@ -7,7 +7,7 @@ type Props = BoxProps;
 
 const defaultProps: Props = {};
 
-const Box: VFC<Props> = (props) => {
+const Box: FC<Props> = (props) => {
   return <BoxComponent {...defaultProps} {...props} />;
 };
 

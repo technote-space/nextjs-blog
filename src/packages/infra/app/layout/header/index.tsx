@@ -1,7 +1,7 @@
 import type { IHeaderComponent, Props } from '$/domain/app/layout/header';
 import type { Settings } from '$/domain/app/settings';
 import type { IDarkMode } from '$/domain/app/theme/darkMode';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import { useHooks } from '$/infra/app/layout/header/hooks';
@@ -17,7 +17,7 @@ export class HeaderComponent extends BaseComponent<Props> implements IHeaderComp
     super();
   }
 
-  protected getComponent(): VFC<Props> {
+  protected getComponent(): FC<Props> {
     const component = memo((props: Props) => <View {...useHooks(props, this.settings, this.darkMode)}/>);
     component.displayName = 'HeaderComponent';
 

@@ -1,8 +1,8 @@
 import type { Props } from '$/infra/app/layout/components/Layout';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import Layout from '$/infra/app/layout/components/Layout';
 
-const View: FC<Props> = ({ children, ...props }) => {
+const View: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
   return <Layout
     {...props}
   >

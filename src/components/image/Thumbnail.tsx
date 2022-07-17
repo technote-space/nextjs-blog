@@ -1,5 +1,5 @@
 import type { ImageProps } from '@/components/wrap';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { Image } from '@/components/wrap';
 
@@ -24,7 +24,7 @@ const processProps = (props: Props) => {
   };
 };
 
-const Thumbnail: VFC<Props> = (props) => {
+const Thumbnail: FC<Props> = (props) => {
   if (!props.src) {
     return null;
   }

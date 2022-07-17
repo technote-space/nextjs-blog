@@ -1,5 +1,5 @@
 import type { StyleProps } from '@/components/wrap';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import dayjs from 'dayjs';
 import { memo } from 'react';
 import { Time } from '@/components/wrap';
@@ -13,7 +13,7 @@ const defaultProps: StyleProps = {
   fontSize: ['0.8em', '0.9em', '1em', '1em'],
 };
 
-const Date: VFC<Props> = ({ date, format, ...props }) => {
+const Date: FC<Props> = ({ date, format, ...props }) => {
   const instance = dayjs(date);
   return <Time
     dateTime={instance.toISOString()}

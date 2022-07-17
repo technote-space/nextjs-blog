@@ -1,11 +1,11 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 
 type Props = {
   gaMeasurementId: string;
 }
 
-const View: VFC<Props> = ({ gaMeasurementId }) => {
+const View: FC<Props> = ({ gaMeasurementId }) => {
   if (!gaMeasurementId) {
     return null;
   }

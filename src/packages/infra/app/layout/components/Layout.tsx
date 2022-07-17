@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, PropsWithChildren, ReactNode } from 'react';
 import Box from '@/components/layout/Box';
 
 export type Props = {
@@ -7,7 +7,7 @@ export type Props = {
   footer: ReactNode;
 };
 
-const Layout: FC<Props> = ({ head, header, footer, children }) => {
+const Layout: FC<PropsWithChildren<Props>> = ({ head, header, footer, children }) => {
   return <Box>
     {head}
     {header}

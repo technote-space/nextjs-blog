@@ -1,5 +1,5 @@
 import type { FlexProps } from '@/components/wrap';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { Flex as FlexComponent } from '@/components/wrap';
 
@@ -7,7 +7,7 @@ type Props = FlexProps;
 
 const defaultProps: Props = {};
 
-const Flex: VFC<Props> = (props) => {
+const Flex: FC<Props> = (props) => {
   return <FlexComponent {...defaultProps} {...props} />;
 };
 

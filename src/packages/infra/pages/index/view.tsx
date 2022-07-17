@@ -1,5 +1,5 @@
 import type { HooksParams } from '$/infra/pages/index/hooks';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
 import Tag from '@/components/chip/Tag';
@@ -12,7 +12,7 @@ const List = dynamic(() => import('@/components/layout/List'));
 const ListItem = dynamic(() => import('@/components/layout/ListItem'));
 const Link = dynamic(() => import('@/components/link/Link'));
 
-const View: VFC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange, tag }) => <>
+const View: FC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange, tag }) => <>
   {!!tag && <Tag
     name={tag.getDisplayValue()}
     fontSize={[15, 18, 25, 25]}

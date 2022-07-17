@@ -1,6 +1,6 @@
 import type { IAnalytics } from '$/domain/analytics';
 import type { Settings } from '$/domain/app/settings';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
 import View from '$/infra/analytics/google/view';
@@ -18,7 +18,7 @@ export class GoogleAnalytics extends BaseComponent implements IAnalytics {
     this.__gaMeasurementId = settings.analytics?.googleAnalyticsId ?? '';
   }
 
-  protected getComponent(): VFC {
+  protected getComponent(): FC {
     const component = memo(() => <View gaMeasurementId={this.__gaMeasurementId}/>);
     component.displayName = 'GoogleAnalytics';
 

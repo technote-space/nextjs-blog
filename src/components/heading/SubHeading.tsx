@@ -1,5 +1,5 @@
 import type { StyleProps } from '@/components/wrap';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { Heading3 } from '@/components/wrap';
 
 type Props = StyleProps;
@@ -10,7 +10,7 @@ const defaultProps: Props = {
   wordBreak: 'break-word',
 };
 
-const SubHeading: FC<Props> = ({ children, ...props }) => {
+const SubHeading: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
   return <Heading3
     {...defaultProps}
     {...props}

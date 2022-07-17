@@ -1,10 +1,10 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   url: string;
 };
 
-const StackBlitz: VFC<Props> = ({ url }) => {
+const StackBlitz: FC<Props> = ({ url }) => {
   const _url = url.includes('embed') ? url : `${url.includes('?') ? `${url}&embed=1` : `${url}?embed=1`}`;
   return <div className="embed-stackblitz" style={{
     width: '100%',
