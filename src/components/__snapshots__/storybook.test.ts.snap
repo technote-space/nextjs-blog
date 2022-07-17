@@ -1,786 +1,207 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Common Components/Box Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <div
-    className="css-0"
-  >
-    Hello World!
-  </div>,
-  <span />,
-]
+<div
+  className="css-0"
+>
+  Hello World!
+</div>
 `;
 
 exports[`Storyshots Common Components/CoverImage Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="css-79elbk"
+>
+  <img
+    alt="thumbnail"
+    className="chakra-image css-be1tbo"
+    height={200}
+    loading="lazy"
+    src="https://placehold.jp/150x150.png"
+  />
   <div
-    className="css-79elbk"
+    className="css-1grj8f"
   >
-    <img
-      alt="thumbnail"
-      className="chakra-image css-17crems"
-      height={200}
-      loading="lazy"
-      src="https://placehold.jp/150x150.png"
-    />
-    <div
-      className="css-x2qbky"
-    >
-      Hello World!
-    </div>
-  </div>,
-  <span />,
-]
+    Hello World!
+  </div>
+</div>
 `;
 
 exports[`Storyshots Common Components/CoverImage Long Text 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="css-79elbk"
+>
+  <img
+    alt="thumbnail"
+    className="chakra-image css-be1tbo"
+    height={200}
+    loading="lazy"
+    src="https://placehold.jp/150x150.png"
+  />
   <div
-    className="css-79elbk"
+    className="css-1grj8f"
   >
-    <img
-      alt="thumbnail"
-      className="chakra-image css-17crems"
-      height={200}
-      loading="lazy"
-      src="https://placehold.jp/150x150.png"
-    />
-    <div
-      className="css-x2qbky"
-    >
-      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
-    </div>
-  </div>,
-  <span />,
-]
+    吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+  </div>
+</div>
 `;
 
 exports[`Storyshots Common Components/CoverImage No Src 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="css-79elbk"
+>
   <div
-    className="css-79elbk"
+    className="css-1d17uzi"
+  />
+  <div
+    className="css-1grj8f"
   >
-    <div
-      className="css-g63t4c"
-    />
-    <div
-      className="css-x2qbky"
-    >
-      Hello World!
-    </div>
-  </div>,
-  <span />,
-]
+    Hello World!
+  </div>
+</div>
 `;
 
 exports[`Storyshots Common Components/CoverImage Set Size 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="css-79elbk"
+>
+  <img
+    alt="thumbnail"
+    className="chakra-image css-1awnk4n"
+    height={180}
+    loading="lazy"
+    src="https://placehold.jp/150x150.png"
+  />
   <div
-    className="css-79elbk"
+    className="css-1grj8f"
   >
-    <img
-      alt="thumbnail"
-      className="chakra-image css-1awnk4n"
-      height={180}
-      loading="lazy"
-      src="https://placehold.jp/150x150.png"
-    />
-    <div
-      className="css-x2qbky"
-    >
-      Hello World!
-    </div>
-  </div>,
-  <span />,
-]
+    Hello World!
+  </div>
+</div>
 `;
 
 exports[`Storyshots Common Components/Date Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <time
-    className="css-15hwmdh"
-    dateTime="2000-11-22T00:00:00.000Z"
-  >
-    2000/11/22
-  </time>,
-  <span />,
-]
+<time
+  className="css-emkzde"
+  dateTime="2000-11-22T00:00:00.000Z"
+>
+  2000/11/22
+</time>
 `;
 
 exports[`Storyshots Common Components/Date Format 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <time
-    className="css-15hwmdh"
-    dateTime="2000-11-22T00:00:00.000Z"
-  >
-    2000年11月22日
-  </time>,
-  <span />,
-]
+<time
+  className="css-emkzde"
+  dateTime="2000-11-22T00:00:00.000Z"
+>
+  2000年11月22日
+</time>
 `;
 
 exports[`Storyshots Common Components/Flex Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <div
-    className="css-k008qs"
-  >
-    Hello World!
-  </div>,
-  <span />,
-]
+<div
+  className="css-k008qs"
+>
+  Hello World!
+</div>
 `;
 
 exports[`Storyshots Common Components/IconButton Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
+<button
+  aria-label="アイコンボタン"
+  className="chakra-button css-p7mkev"
+  type="button"
+>
+  <svg
+    aria-hidden={true}
+    fill="currentColor"
+    focusable={false}
+    height="1em"
+    stroke="currentColor"
+    strokeWidth="0"
+    style={
       Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
+        "color": undefined,
       }
     }
-  />,
-  <button
-    aria-label="アイコンボタン"
-    className="chakra-button css-dn5esd"
-    type="button"
+    viewBox="0 0 512 512"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    <svg
-      aria-hidden={true}
-      fill="currentColor"
-      focusable={false}
-      height="1em"
-      stroke="currentColor"
-      strokeWidth="0"
-      style={
-        Object {
-          "color": undefined,
-        }
-      }
-      viewBox="0 0 512 512"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
-      />
-    </svg>
-  </button>,
-  <span />,
-]
+    <path
+      d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
+    />
+  </svg>
+</button>
 `;
 
 exports[`Storyshots Common Components/List Empty 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <ul
-    className="css-155za0w"
-    role="list"
-  />,
-  <span />,
-]
+<ul
+  className="css-155za0w"
+  role="list"
+/>
 `;
 
 exports[`Storyshots Common Components/List Multiple Items 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <ul
-    className="css-155za0w"
-    role="list"
+<ul
+  className="css-155za0w"
+  role="list"
+>
+  <li
+    className="css-0"
   >
-    <li
-      className="css-0"
-    >
-      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-    </li>
-    <li
-      className="css-0"
-    >
-      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-    </li>
-    <li
-      className="css-0"
-    >
-      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-    </li>
-  </ul>,
-  <span />,
-]
+    吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+  </li>
+  <li
+    className="css-0"
+  >
+    吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+  </li>
+  <li
+    className="css-0"
+  >
+    吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+  </li>
+</ul>
 `;
 
 exports[`Storyshots Common Components/List One Item 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <ul
-    className="css-155za0w"
-    role="list"
+<ul
+  className="css-155za0w"
+  role="list"
+>
+  <li
+    className="css-0"
   >
-    <li
-      className="css-0"
-    >
-      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-    </li>
-  </ul>,
-  <span />,
-]
+    吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+  </li>
+</ul>
 `;
 
 exports[`Storyshots Common Components/MainHeading Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <h2
-    className="css-ratmk4"
-  >
-    Hello World!
-  </h2>,
-  <span />,
-]
+<h2
+  className="css-1op5o10"
+>
+  Hello World!
+</h2>
 `;
 
 exports[`Storyshots Common Components/SubHeading Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <h3
-    className="css-15qp5m4"
-  >
-    Hello World!
-  </h3>,
-  <span />,
-]
+<h3
+  className="css-1im3ft0"
+>
+  Hello World!
+</h3>
 `;
 
 exports[`Storyshots Common Components/Tag Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <a
-    href="/tags/hello-world"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-  >
-    <li
-      className="chakra-wrap__listitem css-6m5bbl"
-    >
-      <div
-        className="chakra-stack css-84zodg"
-      >
-        <svg
-          className="chakra-icon css-13otjrl"
-          fill="currentColor"
-          focusable={false}
-          height="1em"
-          stroke="currentColor"
-          strokeWidth="0"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-          />
-        </svg>
-        <p
-          className="chakra-text css-0"
-        >
-          Hello World!
-        </p>
-      </div>
-    </li>
-  </a>,
-  <span />,
-]
-`;
-
-exports[`Storyshots Common Components/Tag Without Slug 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<a
+  href="/tags/hello-world"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
   <li
-    className="chakra-wrap__listitem css-mrcvwr"
+    className="chakra-wrap__listitem css-1r5d00a"
   >
     <div
       className="chakra-stack css-84zodg"
@@ -811,294 +232,194 @@ Array [
         Hello World!
       </p>
     </div>
-  </li>,
-  <span />,
-]
+  </li>
+</a>
+`;
+
+exports[`Storyshots Common Components/Tag Without Slug 1`] = `
+<li
+  className="chakra-wrap__listitem css-li7f10"
+>
+  <div
+    className="chakra-stack css-84zodg"
+  >
+    <svg
+      className="chakra-icon css-13otjrl"
+      fill="currentColor"
+      focusable={false}
+      height="1em"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 512 512"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+      />
+    </svg>
+    <p
+      className="chakra-text css-0"
+    >
+      Hello World!
+    </p>
+  </div>
+</li>
 `;
 
 exports[`Storyshots Common Components/Thumbnail Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <img
-    alt="thumbnail"
-    className="chakra-image css-1sv9k7u"
-    height={150}
-    loading="lazy"
-    src="https://placehold.jp/150x150.png"
-    width={150}
-  />,
-  <span />,
-]
+<img
+  alt="thumbnail"
+  className="chakra-image css-1sv9k7u"
+  height={150}
+  loading="lazy"
+  src="https://placehold.jp/150x150.png"
+  width={150}
+/>
 `;
 
-exports[`Storyshots Common Components/Thumbnail No Src 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <span />,
-]
-`;
+exports[`Storyshots Common Components/Thumbnail No Src 1`] = `null`;
 
 exports[`Storyshots Common Components/Thumbnail Set Size 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <img
-    alt="thumbnail"
-    className="chakra-image css-9yxp9o"
-    height={180}
-    loading="lazy"
-    src="https://placehold.jp/150x150.png"
-    width={300}
-  />,
-  <span />,
-]
+<img
+  alt="thumbnail"
+  className="chakra-image css-9yxp9o"
+  height={180}
+  loading="lazy"
+  src="https://placehold.jp/150x150.png"
+  width={300}
+/>
 `;
 
 exports[`Storyshots Domain Components/Article Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <article
+    className="css-1u5s4wo"
   >
-    <article
-      className="css-st6isk"
-    >
-      <header>
-        <time
-          className="css-1ni8tdr"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-        <div
-          className="css-79elbk"
-        >
-          <img
-            alt="thumbnail"
-            className="chakra-image css-17crems"
-            height={200}
-            loading="lazy"
-            src="https://placehold.jp/150x150.png"
-          />
-          <div
-            className="css-x2qbky"
-          >
-            <h1>
-              Markdown 記法のテスト
-            </h1>
-          </div>
-        </div>
-        <div
-          className="css-kd1rih"
-        >
-          <a
-            href="/tags/hello"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  Hello
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World
-                </p>
-              </div>
-            </li>
-          </a>
-        </div>
-      </header>
+    <header>
+      <time
+        className="css-lh6o88"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
       <div
-        className="article css-0"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<h2>見出し</h2>
+        className="css-79elbk"
+      >
+        <img
+          alt="thumbnail"
+          className="chakra-image css-be1tbo"
+          height={200}
+          loading="lazy"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="css-1grj8f"
+        >
+          <h1>
+            Markdown 記法のテスト
+          </h1>
+        </div>
+      </div>
+      <div
+        className="css-go1d2f"
+      >
+        <a
+          href="/tags/hello"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                Hello
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World
+              </p>
+            </div>
+          </li>
+        </a>
+      </div>
+    </header>
+    <div
+      className="article css-0"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h2>見出し</h2>
 <p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
 <pre><code class=\\"language-markdown\\">## 見出し2
 
@@ -1302,161 +623,127 @@ console.log('Hello World!');
 <p>これは<br>
 <img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
 画像です。</p>",
-          }
         }
-      />
-    </article>
-  </div>,
-  <span />,
-]
+      }
+    />
+  </article>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Article Hide Date 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <article
+    className="css-1u5s4wo"
   >
-    <article
-      className="css-st6isk"
-    >
-      <header>
-        <div
-          className="css-79elbk"
-        >
-          <div
-            className="css-g63t4c"
-          />
-          <div
-            className="css-x2qbky"
-          >
-            <h1>
-              Markdown 記法のテスト
-            </h1>
-          </div>
-        </div>
-        <div
-          className="css-kd1rih"
-        >
-          <a
-            href="/tags/hello"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  Hello
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World
-                </p>
-              </div>
-            </li>
-          </a>
-        </div>
-      </header>
+    <header>
       <div
-        className="article css-0"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<h2>見出し</h2>
+        className="css-79elbk"
+      >
+        <div
+          className="css-1d17uzi"
+        />
+        <div
+          className="css-1grj8f"
+        >
+          <h1>
+            Markdown 記法のテスト
+          </h1>
+        </div>
+      </div>
+      <div
+        className="css-go1d2f"
+      >
+        <a
+          href="/tags/hello"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                Hello
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World
+              </p>
+            </div>
+          </li>
+        </a>
+      </div>
+    </header>
+    <div
+      className="article css-0"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h2>見出し</h2>
 <p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
 <pre><code class=\\"language-markdown\\">## 見出し2
 
@@ -1660,522 +947,488 @@ console.log('Hello World!');
 <p>これは<br>
 <img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
 画像です。</p>",
-          }
         }
-      />
-    </article>
-  </div>,
-  <span />,
-]
+      }
+    />
+  </article>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Article Many Tags 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <article
+    className="css-1u5s4wo"
   >
-    <article
-      className="css-st6isk"
-    >
-      <header>
-        <time
-          className="css-1ni8tdr"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-        <div
-          className="css-79elbk"
-        >
-          <img
-            alt="thumbnail"
-            className="chakra-image css-17crems"
-            height={200}
-            loading="lazy"
-            src="https://placehold.jp/150x150.png"
-          />
-          <div
-            className="css-x2qbky"
-          >
-            <h1>
-              Markdown 記法のテスト
-            </h1>
-          </div>
-        </div>
-        <div
-          className="css-kd1rih"
-        >
-          <a
-            href="/tags/hello"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  Hello
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world2"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World2
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world3"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World3
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world4"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World4
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world5"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World5
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world6"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World6
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world7"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World7
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world8"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World8
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world9"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World9
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world10"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World10
-                </p>
-              </div>
-            </li>
-          </a>
-        </div>
-      </header>
+    <header>
+      <time
+        className="css-lh6o88"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
       <div
-        className="article css-0"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<h2>見出し</h2>
+        className="css-79elbk"
+      >
+        <img
+          alt="thumbnail"
+          className="chakra-image css-be1tbo"
+          height={200}
+          loading="lazy"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="css-1grj8f"
+        >
+          <h1>
+            Markdown 記法のテスト
+          </h1>
+        </div>
+      </div>
+      <div
+        className="css-go1d2f"
+      >
+        <a
+          href="/tags/hello"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                Hello
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world2"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World2
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world3"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World3
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world4"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World4
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world5"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World5
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world6"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World6
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world7"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World7
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world8"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World8
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world9"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World9
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world10"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World10
+              </p>
+            </div>
+          </li>
+        </a>
+      </div>
+    </header>
+    <div
+      className="article css-0"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h2>見出し</h2>
 <p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
 <pre><code class=\\"language-markdown\\">## 見出し2
 
@@ -2379,89 +1632,55 @@ console.log('Hello World!');
 <p>これは<br>
 <img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
 画像です。</p>",
-          }
         }
-      />
-    </article>
-  </div>,
-  <span />,
-]
+      }
+    />
+  </article>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Article No Tags 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <article
+    className="css-1u5s4wo"
   >
-    <article
-      className="css-st6isk"
-    >
-      <header>
-        <time
-          className="css-1ni8tdr"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-        <div
-          className="css-79elbk"
-        >
-          <img
-            alt="thumbnail"
-            className="chakra-image css-17crems"
-            height={200}
-            loading="lazy"
-            src="https://placehold.jp/150x150.png"
-          />
-          <div
-            className="css-x2qbky"
-          >
-            <h1>
-              Markdown 記法のテスト
-            </h1>
-          </div>
-        </div>
-      </header>
+    <header>
+      <time
+        className="css-lh6o88"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
       <div
-        className="article css-0"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<h2>見出し</h2>
+        className="css-79elbk"
+      >
+        <img
+          alt="thumbnail"
+          className="chakra-image css-be1tbo"
+          height={200}
+          loading="lazy"
+          src="https://placehold.jp/150x150.png"
+        />
+        <div
+          className="css-1grj8f"
+        >
+          <h1>
+            Markdown 記法のテスト
+          </h1>
+        </div>
+      </div>
+    </header>
+    <div
+      className="article css-0"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h2>見出し</h2>
 <p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
 <pre><code class=\\"language-markdown\\">## 見出し2
 
@@ -2665,167 +1884,133 @@ console.log('Hello World!');
 <p>これは<br>
 <img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
 画像です。</p>",
-          }
         }
-      />
-    </article>
-  </div>,
-  <span />,
-]
+      }
+    />
+  </article>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Article No Thumbnail 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <article
+    className="css-1u5s4wo"
   >
-    <article
-      className="css-st6isk"
-    >
-      <header>
-        <time
-          className="css-1ni8tdr"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-        <div
-          className="css-79elbk"
-        >
-          <div
-            className="css-g63t4c"
-          />
-          <div
-            className="css-x2qbky"
-          >
-            <h1>
-              Markdown 記法のテスト
-            </h1>
-          </div>
-        </div>
-        <div
-          className="css-kd1rih"
-        >
-          <a
-            href="/tags/hello"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  Hello
-                </p>
-              </div>
-            </li>
-          </a>
-          <a
-            href="/tags/world"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <li
-              className="chakra-wrap__listitem css-6m5bbl"
-            >
-              <div
-                className="chakra-stack css-84zodg"
-              >
-                <svg
-                  className="chakra-icon css-13otjrl"
-                  fill="currentColor"
-                  focusable={false}
-                  height="1em"
-                  stroke="currentColor"
-                  strokeWidth="0"
-                  style={
-                    Object {
-                      "color": undefined,
-                    }
-                  }
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
-                  />
-                </svg>
-                <p
-                  className="chakra-text css-0"
-                >
-                  World
-                </p>
-              </div>
-            </li>
-          </a>
-        </div>
-      </header>
+    <header>
+      <time
+        className="css-lh6o88"
+        dateTime="2000-11-22T00:00:00.000Z"
+      >
+        2000.11.22
+      </time>
       <div
-        className="article css-0"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<h2>見出し</h2>
+        className="css-79elbk"
+      >
+        <div
+          className="css-1d17uzi"
+        />
+        <div
+          className="css-1grj8f"
+        >
+          <h1>
+            Markdown 記法のテスト
+          </h1>
+        </div>
+      </div>
+      <div
+        className="css-go1d2f"
+      >
+        <a
+          href="/tags/hello"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                Hello
+              </p>
+            </div>
+          </li>
+        </a>
+        <a
+          href="/tags/world"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <li
+            className="chakra-wrap__listitem css-1r5d00a"
+          >
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <svg
+                className="chakra-icon css-13otjrl"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                stroke="currentColor"
+                strokeWidth="0"
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                />
+              </svg>
+              <p
+                className="chakra-text css-0"
+              >
+                World
+              </p>
+            </div>
+          </li>
+        </a>
+      </div>
+    </header>
+    <div
+      className="article css-0"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h2>見出し</h2>
 <p>見出し1 はカバー画像内のタイトル表示部分で使用するため使用しない</p>
 <pre><code class=\\"language-markdown\\">## 見出し2
 
@@ -3029,1836 +2214,1122 @@ console.log('Hello World!');
 <p>これは<br>
 <img src=\\"https://user-images.githubusercontent.com/39912269/134113296-70284f44-e1cc-4382-9267-6ff4ccbc1dcb.png\\" alt=\\"pet_cat_oddeye_black\\"><br>
 画像です。</p>",
-          }
         }
-      />
-    </article>
-  </div>,
-  <span />,
-]
+      }
+    />
+  </article>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Card Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="article-card css-121lm1p"
+>
   <div
-    className="article-card css-1y9794"
+    className="css-1awfsko"
   >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-pvuh9h"
+      height={70}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={120}
+    />
     <div
-      className="css-ojlcd6"
+      className="css-sb96v"
     >
-      <img
-        alt="thumbnail"
-        className="chakra-image css-3j5kgf"
-        height={70}
-        loading="lazy"
-        src="https://placehold.jp/150x150.png"
-        width={120}
-      />
-      <div
-        className="css-xg5s6b"
+      <h2
+        className="css-j6h8mr"
       >
-        <h2
-          className="css-1i8ukke"
-        >
-          吾輩は猫である
-        </h2>
-        <h3
-          className="css-15qp5m4"
-        >
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-        </h3>
-        <time
-          className="css-o30iye"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-      </div>
-    </div>
-    <div
-      className="css-fozpxd"
-    >
-      <div
-        className="css-1eskh14"
-      >
-        <img
-          alt="thumbnail"
-          className="chakra-image css-i96gla"
-          height={70}
-          loading="lazy"
-          src="https://placehold.jp/150x150.png"
-          width={120}
-        />
-        <h2
-          className="css-j0vfib"
-        >
-          吾輩は猫である
-        </h2>
-      </div>
+        吾輩は猫である
+      </h2>
       <h3
-        className="css-xf98z4"
+        className="css-1im3ft0"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-o30iye"
+        className="css-1eu3ubf"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
     </div>
-  </div>,
-  <span />,
-]
+  </div>
+  <div
+    className="css-cetvc6"
+  >
+    <div
+      className="css-xlxwlu"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-82oyji"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <h2
+        className="css-7db157"
+      >
+        吾輩は猫である
+      </h2>
+    </div>
+    <h3
+      className="css-1llq162"
+    >
+      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+    </h3>
+    <time
+      className="css-1eu3ubf"
+      dateTime="2000-11-22T00:00:00.000Z"
+    >
+      2000.11.22
+    </time>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Card Long 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="article-card css-121lm1p"
+>
   <div
-    className="article-card css-1y9794"
+    className="css-1awfsko"
   >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-pvuh9h"
+      height={70}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={120}
+    />
     <div
-      className="css-ojlcd6"
+      className="css-sb96v"
     >
-      <img
-        alt="thumbnail"
-        className="chakra-image css-3j5kgf"
-        height={70}
-        loading="lazy"
-        src="https://placehold.jp/150x150.png"
-        width={120}
-      />
-      <div
-        className="css-xg5s6b"
+      <h2
+        className="css-j6h8mr"
       >
-        <h2
-          className="css-1i8ukke"
-        >
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
-        </h2>
-        <h3
-          className="css-15qp5m4"
-        >
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-        </h3>
-        <time
-          className="css-o30iye"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-      </div>
-    </div>
-    <div
-      className="css-fozpxd"
-    >
-      <div
-        className="css-1eskh14"
-      >
-        <img
-          alt="thumbnail"
-          className="chakra-image css-i96gla"
-          height={70}
-          loading="lazy"
-          src="https://placehold.jp/150x150.png"
-          width={120}
-        />
-        <h2
-          className="css-j0vfib"
-        >
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
-        </h2>
-      </div>
+        吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+      </h2>
       <h3
-        className="css-xf98z4"
+        className="css-1im3ft0"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-o30iye"
+        className="css-1eu3ubf"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
     </div>
-  </div>,
-  <span />,
-]
+  </div>
+  <div
+    className="css-cetvc6"
+  >
+    <div
+      className="css-xlxwlu"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-82oyji"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <h2
+        className="css-7db157"
+      >
+        吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+      </h2>
+    </div>
+    <h3
+      className="css-1llq162"
+    >
+      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+    </h3>
+    <time
+      className="css-1eu3ubf"
+      dateTime="2000-11-22T00:00:00.000Z"
+    >
+      2000.11.22
+    </time>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="article-card css-121lm1p"
+>
   <div
-    className="article-card css-1y9794"
+    className="css-1awfsko"
   >
     <div
-      className="css-ojlcd6"
+      className="css-sb96v"
     >
-      <div
-        className="css-xg5s6b"
+      <h2
+        className="css-j6h8mr"
       >
-        <h2
-          className="css-1i8ukke"
-        >
-          吾輩は猫である
-        </h2>
-        <h3
-          className="css-15qp5m4"
-        >
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-        </h3>
-        <time
-          className="css-o30iye"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-      </div>
-    </div>
-    <div
-      className="css-fozpxd"
-    >
-      <div
-        className="css-1eskh14"
-      >
-        <h2
-          className="css-j0vfib"
-        >
-          吾輩は猫である
-        </h2>
-      </div>
+        吾輩は猫である
+      </h2>
       <h3
-        className="css-xf98z4"
+        className="css-1im3ft0"
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
       <time
-        className="css-o30iye"
+        className="css-1eu3ubf"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
     </div>
-  </div>,
-  <span />,
-]
+  </div>
+  <div
+    className="css-cetvc6"
+  >
+    <div
+      className="css-xlxwlu"
+    >
+      <h2
+        className="css-7db157"
+      >
+        吾輩は猫である
+      </h2>
+    </div>
+    <h3
+      className="css-1llq162"
+    >
+      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+    </h3>
+    <time
+      className="css-1eu3ubf"
+      dateTime="2000-11-22T00:00:00.000Z"
+    >
+      2000.11.22
+    </time>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Card Short 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="article-card css-121lm1p"
+>
   <div
-    className="article-card css-1y9794"
+    className="css-1awfsko"
   >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-pvuh9h"
+      height={70}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={120}
+    />
     <div
-      className="css-ojlcd6"
+      className="css-sb96v"
     >
-      <img
-        alt="thumbnail"
-        className="chakra-image css-3j5kgf"
-        height={70}
-        loading="lazy"
-        src="https://placehold.jp/150x150.png"
-        width={120}
-      />
-      <div
-        className="css-xg5s6b"
+      <h2
+        className="css-j6h8mr"
       >
-        <h2
-          className="css-1i8ukke"
-        >
-          吾輩は猫である
-        </h2>
-        <h3
-          className="css-15qp5m4"
-        >
-          吾輩は猫である。
-        </h3>
-        <time
-          className="css-o30iye"
-          dateTime="2000-11-22T00:00:00.000Z"
-        >
-          2000.11.22
-        </time>
-      </div>
-    </div>
-    <div
-      className="css-fozpxd"
-    >
-      <div
-        className="css-1eskh14"
-      >
-        <img
-          alt="thumbnail"
-          className="chakra-image css-i96gla"
-          height={70}
-          loading="lazy"
-          src="https://placehold.jp/150x150.png"
-          width={120}
-        />
-        <h2
-          className="css-j0vfib"
-        >
-          吾輩は猫である
-        </h2>
-      </div>
+        吾輩は猫である
+      </h2>
       <h3
-        className="css-xf98z4"
+        className="css-1im3ft0"
       >
         吾輩は猫である。
       </h3>
       <time
-        className="css-o30iye"
+        className="css-1eu3ubf"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
       </time>
     </div>
-  </div>,
-  <span />,
-]
+  </div>
+  <div
+    className="css-cetvc6"
+  >
+    <div
+      className="css-xlxwlu"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-82oyji"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <h2
+        className="css-7db157"
+      >
+        吾輩は猫である
+      </h2>
+    </div>
+    <h3
+      className="css-1llq162"
+    >
+      吾輩は猫である。
+    </h3>
+    <time
+      className="css-1eu3ubf"
+      dateTime="2000-11-22T00:00:00.000Z"
+    >
+      2000.11.22
+    </time>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Domain Components/NextArticle Dark 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-1uwjw6e"
     >
       <div
-        className="article css-1uwjw6e"
+        className="article__title css-0"
       >
-        <div
-          className="article__title css-0"
-        >
-          記事タイトル
-        </div>
-        <img
-          alt="next thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <img
-          alt="next article"
-          className="article__arrow dark css-1qx34im"
-          src="/arrow2.png"
-        />
+        記事タイトル
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+      <img
+        alt="next thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
+      <img
+        alt="next article"
+        className="article__arrow dark css-1qx34im"
+        src="/arrow2.png"
+      />
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/NextArticle Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-1uwjw6e"
     >
       <div
-        className="article css-1uwjw6e"
+        className="article__title css-0"
       >
-        <div
-          className="article__title css-0"
-        >
-          記事タイトル
-        </div>
-        <img
-          alt="next thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <img
-          alt="next article"
-          className="article__arrow css-1qx34im"
-          src="/arrow2.png"
-        />
+        記事タイトル
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+      <img
+        alt="next thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
+      <img
+        alt="next article"
+        className="article__arrow css-1qx34im"
+        src="/arrow2.png"
+      />
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/NextArticle Light 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-1uwjw6e"
     >
       <div
-        className="article css-1uwjw6e"
+        className="article__title css-0"
       >
-        <div
-          className="article__title css-0"
-        >
-          記事タイトル
-        </div>
-        <img
-          alt="next thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <img
-          alt="next article"
-          className="article__arrow light css-1qx34im"
-          src="/arrow2.png"
-        />
+        記事タイトル
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+      <img
+        alt="next thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
+      <img
+        alt="next article"
+        className="article__arrow light css-1qx34im"
+        src="/arrow2.png"
+      />
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/NextArticle Long Title 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-1uwjw6e"
     >
       <div
-        className="article css-1uwjw6e"
+        className="article__title css-0"
       >
-        <div
-          className="article__title css-0"
-        >
-          長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト
-        </div>
-        <img
-          alt="next thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <img
-          alt="next article"
-          className="article__arrow css-1qx34im"
-          src="/arrow2.png"
-        />
+        長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+      <img
+        alt="next thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
+      <img
+        alt="next article"
+        className="article__arrow css-1qx34im"
+        src="/arrow2.png"
+      />
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/Pagination Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <ul
-    className="pagination"
+<ul
+  className="pagination"
+>
+  <li
+    className="pagination__previous"
   >
-    <li
-      className="pagination__previous"
+    <a
+      aria-disabled="false"
+      aria-label="Previous page"
+      className=""
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      rel="prev"
+      role="button"
+      tabIndex="0"
     >
-      <a
-        aria-disabled="false"
-        aria-label="Previous page"
-        className=""
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="prev"
-        role="button"
-        tabIndex="0"
-      >
-        &lt;
-      </a>
-    </li>
-    <li>
-      <a
-        aria-current={null}
-        aria-label="Page 1"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        1
-      </a>
-    </li>
-    <li>
-      <a
-        aria-current={null}
-        aria-label="Page 2"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        2
-      </a>
-    </li>
-    <li>
-      <a
-        aria-current={null}
-        aria-label="Page 3"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="prev"
-        role="button"
-        tabIndex="0"
-      >
-        3
-      </a>
-    </li>
-    <li
-      className="active"
+      &lt;
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={null}
+      aria-label="Page 1"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
     >
-      <a
-        aria-current="page"
-        aria-label="Page 4 is your current page"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="canonical"
-        role="button"
-        tabIndex="-1"
-      >
-        4
-      </a>
-    </li>
-    <li>
-      <a
-        aria-current={null}
-        aria-label="Page 5"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="next"
-        role="button"
-        tabIndex="0"
-      >
-        5
-      </a>
-    </li>
-    <li
-      className="break"
+      1
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={null}
+      aria-label="Page 2"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
     >
-      <a
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        ...
-      </a>
-    </li>
-    <li>
-      <a
-        aria-current={null}
-        aria-label="Page 10"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        10
-      </a>
-    </li>
-    <li
-      className="pagination__next"
+      2
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={null}
+      aria-label="Page 3"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      rel="prev"
+      role="button"
+      tabIndex="0"
     >
-      <a
-        aria-disabled="false"
-        aria-label="Next page"
-        className=""
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        rel="next"
-        role="button"
-        tabIndex="0"
-      >
-        &gt;
-      </a>
-    </li>
-  </ul>,
-  <span />,
-]
+      3
+    </a>
+  </li>
+  <li
+    className="active"
+  >
+    <a
+      aria-current="page"
+      aria-label="Page 4 is your current page"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      rel="canonical"
+      role="button"
+      tabIndex="-1"
+    >
+      4
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={null}
+      aria-label="Page 5"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      rel="next"
+      role="button"
+      tabIndex="0"
+    >
+      5
+    </a>
+  </li>
+  <li
+    className="break"
+  >
+    <a
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      ...
+    </a>
+  </li>
+  <li>
+    <a
+      aria-current={null}
+      aria-label="Page 10"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      10
+    </a>
+  </li>
+  <li
+    className="pagination__next"
+  >
+    <a
+      aria-disabled="false"
+      aria-label="Next page"
+      className=""
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      rel="next"
+      role="button"
+      tabIndex="0"
+    >
+      &gt;
+    </a>
+  </li>
+</ul>
 `;
 
 exports[`Storyshots Domain Components/PrevArticle Dark 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-k008qs"
     >
+      <img
+        alt="prev article"
+        className="article__arrow dark css-4dsd3s"
+        src="/arrow2.png"
+      />
+      <img
+        alt="prev thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
       <div
-        className="article css-k008qs"
+        className="article__title css-0"
       >
-        <img
-          alt="prev article"
-          className="article__arrow dark css-4dsd3s"
-          src="/arrow2.png"
-        />
-        <img
-          alt="prev thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <div
-          className="article__title css-0"
-        >
-          記事タイトル
-        </div>
+        記事タイトル
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/PrevArticle Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-k008qs"
     >
+      <img
+        alt="prev article"
+        className="article__arrow css-4dsd3s"
+        src="/arrow2.png"
+      />
+      <img
+        alt="prev thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
       <div
-        className="article css-k008qs"
+        className="article__title css-0"
       >
-        <img
-          alt="prev article"
-          className="article__arrow css-4dsd3s"
-          src="/arrow2.png"
-        />
-        <img
-          alt="prev thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <div
-          className="article__title css-0"
-        >
-          記事タイトル
-        </div>
+        記事タイトル
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/PrevArticle Light 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-k008qs"
     >
+      <img
+        alt="prev article"
+        className="article__arrow light css-4dsd3s"
+        src="/arrow2.png"
+      />
+      <img
+        alt="prev thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
       <div
-        className="article css-k008qs"
+        className="article__title css-0"
       >
-        <img
-          alt="prev article"
-          className="article__arrow light css-4dsd3s"
-          src="/arrow2.png"
-        />
-        <img
-          alt="prev thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <div
-          className="article__title css-0"
-        >
-          記事タイトル
-        </div>
+        記事タイトル
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Domain Components/PrevArticle Long Title 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
+<div
+  style={
+    Object {
+      "maxWidth": "1000px",
     }
-  />,
-  <div
-    style={
-      Object {
-        "maxWidth": "1000px",
-      }
-    }
+  }
+>
+  <a
+    href="https://example.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
-    <a
-      href="https://example.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+    <div
+      className="article css-k008qs"
     >
+      <img
+        alt="prev article"
+        className="article__arrow css-4dsd3s"
+        src="/arrow2.png"
+      />
+      <img
+        alt="prev thumbnail"
+        className="article__thumbnail css-0"
+        src="https://placehold.jp/150x150.png"
+      />
       <div
-        className="article css-k008qs"
+        className="article__title css-0"
       >
-        <img
-          alt="prev article"
-          className="article__arrow css-4dsd3s"
-          src="/arrow2.png"
-        />
-        <img
-          alt="prev thumbnail"
-          className="article__thumbnail css-0"
-          src="https://placehold.jp/150x150.png"
-        />
-        <div
-          className="article__title css-0"
-        >
-          長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト
-        </div>
+        長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト長い記事タイトルのテスト
       </div>
-    </a>
-  </div>,
-  <span />,
-]
+    </div>
+  </a>
+</div>
 `;
 
 exports[`Storyshots Layout Components/Footer Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <footer
-    className="css-0"
+<footer
+  className="css-0"
+>
+  <div
+    className="css-6w1144"
   >
     <div
-      className="css-3thfti"
+      className="css-muqre7"
     >
-      <div
-        className="css-ij292a"
+      <ul
+        className="css-16zikmi"
+        role="list"
       >
-        <ul
-          className="css-16zikmi"
-          role="list"
+        <li
+          className="css-11xj29f"
         >
-          <li
-            className="css-12sewy"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              お問い合わせ
-            </a>
-          </li>
-          <li
-            className="css-12sewy"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              利用規約
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="css-1l4w6pd"
-      >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+            お問い合わせ
+          </a>
+        </li>
+        <li
+          className="css-11xj29f"
         >
-          ©
-          2000
-           
-          Hello World!
-        </a>
-      </div>
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            利用規約
+          </a>
+        </li>
+      </ul>
     </div>
-  </footer>,
-  <span />,
-]
+    <div
+      className="css-1l4w6pd"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        ©
+        2000
+         
+        Hello World!
+      </a>
+    </div>
+  </div>
+</footer>
 `;
 
 exports[`Storyshots Layout Components/Footer Long 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <footer
-    className="css-0"
+<footer
+  className="css-0"
+>
+  <div
+    className="css-6w1144"
   >
     <div
-      className="css-3thfti"
+      className="css-muqre7"
     >
-      <div
-        className="css-ij292a"
+      <ul
+        className="css-16zikmi"
+        role="list"
       >
-        <ul
-          className="css-16zikmi"
-          role="list"
+        <li
+          className="css-11xj29f"
         >
-          <li
-            className="css-12sewy"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              吾輩は猫である。名前はまだ無い
-            </a>
-          </li>
-          <li
-            className="css-12sewy"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              どこで生れたかとんと見当がつかぬ
-            </a>
-          </li>
-          <li
-            className="css-12sewy"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
-            </a>
-          </li>
-          <li
-            className="css-12sewy"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              吾輩はここで始めて人間というものを見た
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="css-1l4w6pd"
-      >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+            吾輩は猫である。名前はまだ無い
+          </a>
+        </li>
+        <li
+          className="css-11xj29f"
         >
-          ©
-          2000
-           
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
-        </a>
-      </div>
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            どこで生れたかとんと見当がつかぬ
+          </a>
+        </li>
+        <li
+          className="css-11xj29f"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+          </a>
+        </li>
+        <li
+          className="css-11xj29f"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            吾輩はここで始めて人間というものを見た
+          </a>
+        </li>
+      </ul>
     </div>
-  </footer>,
-  <span />,
-]
+    <div
+      className="css-1l4w6pd"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        ©
+        2000
+         
+        吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+      </a>
+    </div>
+  </div>
+</footer>
 `;
 
 exports[`Storyshots Layout Components/Footer No Pages 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <footer
-    className="css-0"
+<footer
+  className="css-0"
+>
+  <div
+    className="css-6w1144"
   >
     <div
-      className="css-3thfti"
+      className="css-1l4w6pd"
     >
-      <div
-        className="css-1l4w6pd"
+      <a
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
       >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          ©
-          2000
-           
-          Hello World!
-        </a>
-      </div>
+        ©
+        2000
+         
+        Hello World!
+      </a>
     </div>
-  </footer>,
-  <span />,
-]
+  </div>
+</footer>
 `;
 
 exports[`Storyshots Layout Components/Header Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <header
-    className="css-0"
+<header
+  className="css-0"
+>
+  <div
+    className="css-1t8jbvn"
   >
     <div
-      className="css-1gv1287"
+      className="css-6v1tcx"
     >
-      <div
-        className="css-o2383q"
+      <ul
+        className="css-6t1zpl"
+        role="list"
       >
-        <ul
-          className="css-10z17e"
-          role="list"
+        <li
+          className="css-mb6un6"
         >
-          <li
-            className="css-i4ntb9"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              お問い合わせ
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              利用規約
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="css-1m9wlgl"
-      >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+            お問い合わせ
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
         >
-          Hello World!
-        </a>
-      </div>
-      <div
-        className="css-1tqwu74"
-      >
-        <ul
-          className="css-10z17e"
-          role="list"
-        >
-          <li
-            className="css-i4ntb9"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              お問い合わせ
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              利用規約
-            </a>
-          </li>
-        </ul>
-      </div>
+            利用規約
+          </a>
+        </li>
+      </ul>
     </div>
-  </header>,
-  <span />,
-]
+    <div
+      className="css-1m9wlgl"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        Hello World!
+      </a>
+    </div>
+    <div
+      className="css-1a16ehn"
+    >
+      <ul
+        className="css-6t1zpl"
+        role="list"
+      >
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            お問い合わせ
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            利用規約
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
 `;
 
 exports[`Storyshots Layout Components/Header Long 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <header
-    className="css-0"
+<header
+  className="css-0"
+>
+  <div
+    className="css-1t8jbvn"
   >
     <div
-      className="css-1gv1287"
+      className="css-6v1tcx"
     >
-      <div
-        className="css-o2383q"
+      <ul
+        className="css-6t1zpl"
+        role="list"
       >
-        <ul
-          className="css-10z17e"
-          role="list"
+        <li
+          className="css-mb6un6"
         >
-          <li
-            className="css-i4ntb9"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              吾輩は猫である。名前はまだ無い
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              どこで生れたかとんと見当がつかぬ
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              吾輩はここで始めて人間というものを見た
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="css-1m9wlgl"
-      >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
+            吾輩は猫である。名前はまだ無い
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
         >
-          吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
-        </a>
-      </div>
-      <div
-        className="css-1tqwu74"
-      >
-        <ul
-          className="css-10z17e"
-          role="list"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            どこで生れたかとんと見当がつかぬ
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
         >
-          <li
-            className="css-i4ntb9"
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              吾輩は猫である。名前はまだ無い
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
+            何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              どこで生れたかとんと見当がつかぬ
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
-            </a>
-          </li>
-          <li
-            className="css-i4ntb9"
-          >
-            <a
-              href="https://example.com"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              吾輩はここで始めて人間というものを見た
-            </a>
-          </li>
-        </ul>
-      </div>
+            吾輩はここで始めて人間というものを見た
+          </a>
+        </li>
+      </ul>
     </div>
-  </header>,
-  <span />,
-]
+    <div
+      className="css-1m9wlgl"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
+      </a>
+    </div>
+    <div
+      className="css-1a16ehn"
+    >
+      <ul
+        className="css-6t1zpl"
+        role="list"
+      >
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            吾輩は猫である。名前はまだ無い
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            どこで生れたかとんと見当がつかぬ
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+          </a>
+        </li>
+        <li
+          className="css-mb6un6"
+        >
+          <a
+            href="https://example.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            吾輩はここで始めて人間というものを見た
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
 `;
 
 exports[`Storyshots Layout Components/Header No Pages 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <header
-    className="css-0"
+<header
+  className="css-0"
+>
+  <div
+    className="css-1t8jbvn"
   >
     <div
-      className="css-1gv1287"
+      className="css-1m9wlgl"
     >
-      <div
-        className="css-1m9wlgl"
+      <a
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
       >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          Hello World!
-        </a>
-      </div>
+        Hello World!
+      </a>
     </div>
-  </header>,
-  <span />,
-]
+  </div>
+</header>
 `;
 
 exports[`Storyshots Layout Components/Layout Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <div
-    className="css-0"
-  >
-    [[head]]
-    [[header]]
-    <main>
-      <div
-        className="css-jlhdae"
-      >
-        Hello World!
-      </div>
-    </main>
-    [[footer]]
-  </div>,
-  <span />,
-]
+<div
+  className="css-0"
+>
+  [[head]]
+  [[header]]
+  <main>
+    <div
+      className="css-jlhdae"
+    >
+      Hello World!
+    </div>
+  </main>
+  [[footer]]
+</div>
 `;
 
 exports[`Storyshots Library Components/BlogCard Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <html
-    lang="ja"
-  >
-    <head>
-      <meta
-        charSet="utf-8"
-      />
-      <title>
-        blog card
-      </title>
-      <style
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "
+<html
+  lang="ja"
+>
+  <head>
+    <meta
+      charSet="utf-8"
+    />
+    <title>
+      blog card
+    </title>
+    <style
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "
 .blog-card {
     position: relative;
 }
@@ -4989,120 +3460,86 @@ Array [
     }
 }
       ",
-          }
-        }
-      />
-    </head>
-    <body
-      style={
-        Object {
-          "margin": 0,
         }
       }
+    />
+  </head>
+  <body
+    style={
+      Object {
+        "margin": 0,
+      }
+    }
+  >
+    <div
+      className="blog-card"
     >
-      <div
-        className="blog-card"
+      <a
+        href="https://example.com"
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        <a
-          href="https://example.com"
-          rel="noopener noreferrer"
-          target="_blank"
+        <div
+          className="blog-card__image"
+          style={
+            Object {
+              "backgroundColor": "#ccc",
+              "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
+            }
+          }
+        />
+        <div
+          className="blog-card__details"
         >
           <div
-            className="blog-card__image"
-            style={
-              Object {
-                "backgroundColor": "#ccc",
-                "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
-              }
-            }
-          />
+            className="blog-card__details__title"
+          >
+            吾輩は猫である
+          </div>
           <div
-            className="blog-card__details"
+            className="blog-card__details__description"
+          >
+            吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+          </div>
+          <div
+            className="blog-card__details__source"
           >
             <div
-              className="blog-card__details__title"
-            >
-              吾輩は猫である
-            </div>
-            <div
-              className="blog-card__details__description"
-            >
-              吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
-            </div>
-            <div
-              className="blog-card__details__source"
-            >
-              <div
-                className="blog-card__details__source__favicon"
-                style={
-                  Object {
-                    "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
-                  }
+              className="blog-card__details__source__favicon"
+              style={
+                Object {
+                  "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
                 }
-              />
-              <div
-                className="blog-card__details__source__name"
-              >
-                example
-              </div>
+              }
+            />
+            <div
+              className="blog-card__details__source__name"
+            >
+              example
             </div>
           </div>
-        </a>
-      </div>
-    </body>
-  </html>,
-  <span />,
-]
+        </div>
+      </a>
+    </div>
+  </body>
+</html>
 `;
 
 exports[`Storyshots Library Components/BlogCard Minimum 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <html
-    lang="ja"
-  >
-    <head>
-      <meta
-        charSet="utf-8"
-      />
-      <title>
-        blog card
-      </title>
-      <style
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "
+<html
+  lang="ja"
+>
+  <head>
+    <meta
+      charSet="utf-8"
+    />
+    <title>
+      blog card
+    </title>
+    <style
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "
 .blog-card {
     position: relative;
 }
@@ -5233,525 +3670,283 @@ Array [
     }
 }
       ",
-          }
-        }
-      />
-    </head>
-    <body
-      style={
-        Object {
-          "margin": 0,
         }
       }
+    />
+  </head>
+  <body
+    style={
+      Object {
+        "margin": 0,
+      }
+    }
+  >
+    <div
+      className="blog-card"
     >
-      <div
-        className="blog-card"
+      <a
+        href="https://example.com"
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        <a
-          href="https://example.com"
-          rel="noopener noreferrer"
-          target="_blank"
+        <div
+          className="blog-card__image"
+          style={
+            Object {
+              "backgroundColor": "#ccc",
+              "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
+            }
+          }
+        />
+        <div
+          className="blog-card__details"
         >
           <div
-            className="blog-card__image"
-            style={
-              Object {
-                "backgroundColor": "#ccc",
-                "backgroundImage": "url(https://user-images.githubusercontent.com/39912269/134110725-899217f2-03bb-44b7-a3bd-910b5d19c1a9.png)",
-              }
-            }
+            className="blog-card__details__title"
+          >
+            https://example.com
+          </div>
+          <div
+            className="blog-card__details__description"
           />
           <div
-            className="blog-card__details"
+            className="blog-card__details__source"
           >
             <div
-              className="blog-card__details__title"
-            >
-              https://example.com
-            </div>
-            <div
-              className="blog-card__details__description"
-            >
-              
-            </div>
-            <div
-              className="blog-card__details__source"
-            >
-              <div
-                className="blog-card__details__source__favicon"
-                style={
-                  Object {
-                    "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
-                  }
+              className="blog-card__details__source__favicon"
+              style={
+                Object {
+                  "backgroundImage": "url(https://www.google.com/s2/favicons?domain=example.com)",
                 }
-              />
-              <div
-                className="blog-card__details__source__name"
-              >
-                example.com
-              </div>
+              }
+            />
+            <div
+              className="blog-card__details__source__name"
+            >
+              example.com
             </div>
           </div>
-        </a>
-      </div>
-    </body>
-  </html>,
-  <span />,
-]
+        </div>
+      </a>
+    </div>
+  </body>
+</html>
 `;
 
 exports[`Storyshots Library Components/CodePen Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
+<div
+  className="article"
+>
+  <div
+    className="embed-codepen"
+    style={
       Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
+        "height": 0,
+        "paddingBottom": "56.25%",
+        "position": "relative",
+        "width": "100%",
       }
     }
-  />,
-  <div
-    className="article"
   >
-    <div
-      className="embed-codepen"
+    <iframe
+      allowFullScreen={true}
+      allowTransparency={true}
+      frameBorder="no"
+      loading="lazy"
+      scrolling="no"
+      src="https://codepen.io/technote-space/embed/NWgLZRY?embed-version=2"
       style={
         Object {
-          "height": 0,
-          "paddingBottom": "56.25%",
-          "position": "relative",
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
           "width": "100%",
         }
       }
-    >
-      <iframe
-        allowFullScreen={true}
-        allowTransparency={true}
-        frameBorder="no"
-        loading="lazy"
-        scrolling="no"
-        src="https://codepen.io/technote-space/embed/NWgLZRY?embed-version=2"
-        style={
-          Object {
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-          }
-        }
-      />
-    </div>
-  </div>,
-  <span />,
-]
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Library Components/CodeSandbox Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
+<div
+  className="article"
+>
+  <div
+    className="embed-codesandbox"
+    style={
       Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
+        "height": 0,
+        "paddingBottom": "56.25%",
+        "position": "relative",
+        "width": "100%",
       }
     }
-  />,
-  <div
-    className="article"
   >
-    <div
-      className="embed-codesandbox"
+    <iframe
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      allowFullScreen={true}
+      allowTransparency={true}
+      frameBorder="no"
+      loading="lazy"
+      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      scrolling="no"
+      src="https://codesandbox.io/embed/keen-roman-kpz43?fontsize=14&hidenavigation=1&theme=dark"
       style={
         Object {
-          "height": 0,
-          "paddingBottom": "56.25%",
-          "position": "relative",
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
           "width": "100%",
         }
       }
-    >
-      <iframe
-        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-        allowFullScreen={true}
-        allowTransparency={true}
-        frameBorder="no"
-        loading="lazy"
-        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-        scrolling="no"
-        src="https://codesandbox.io/embed/keen-roman-kpz43?fontsize=14&hidenavigation=1&theme=dark"
-        style={
-          Object {
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-          }
-        }
-      />
-    </div>
-  </div>,
-  <span />,
-]
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Library Components/JsFiddle Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
+<div
+  className="article"
+>
+  <div
+    className="embed-jsfiddle"
+    style={
       Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
+        "height": 0,
+        "paddingBottom": "56.25%",
+        "position": "relative",
+        "width": "100%",
       }
     }
-  />,
-  <div
-    className="article"
   >
-    <div
-      className="embed-jsfiddle"
+    <iframe
+      allowFullScreen={true}
+      allowTransparency={true}
+      frameBorder="no"
+      loading="lazy"
+      scrolling="no"
+      src="https://jsfiddle.net/Technote/3upmsz2y/2/embedded/"
       style={
         Object {
-          "height": 0,
-          "paddingBottom": "56.25%",
-          "position": "relative",
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
           "width": "100%",
         }
       }
-    >
-      <iframe
-        allowFullScreen={true}
-        allowTransparency={true}
-        frameBorder="no"
-        loading="lazy"
-        scrolling="no"
-        src="https://jsfiddle.net/Technote/3upmsz2y/2/embedded/"
-        style={
-          Object {
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-          }
-        }
-      />
-    </div>
-  </div>,
-  <span />,
-]
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Library Components/StackBlitz Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
+<div
+  className="article"
+>
+  <div
+    className="embed-stackblitz"
+    style={
       Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
+        "height": 0,
+        "paddingBottom": "56.25%",
+        "position": "relative",
+        "width": "100%",
       }
     }
-  />,
-  <div
-    className="article"
   >
-    <div
-      className="embed-stackblitz"
+    <iframe
+      allowFullScreen={true}
+      allowTransparency={true}
+      frameBorder="no"
+      loading="lazy"
+      scrolling="no"
+      src="https://stackblitz.com/edit/js-fkebjy?file=index.js&embed=1"
       style={
         Object {
-          "height": 0,
-          "paddingBottom": "56.25%",
-          "position": "relative",
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
           "width": "100%",
         }
       }
-    >
-      <iframe
-        allowFullScreen={true}
-        allowTransparency={true}
-        frameBorder="no"
-        loading="lazy"
-        scrolling="no"
-        src="https://stackblitz.com/edit/js-fkebjy?file=index.js&embed=1"
-        style={
-          Object {
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-          }
-        }
-      />
-    </div>
-  </div>,
-  <span />,
-]
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Library Components/Tweet Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
+<div
+  className="article"
+>
   <div
-    className="article"
+    className="embed-tweet"
   >
-    <div
-      className="embed-tweet"
-    >
-      <iframe
-        allowFullScreen={true}
-        allowTransparency={true}
-        frameBorder="0"
-        id="twitter-widget-849813577770778624"
-        loading="lazy"
-        scrolling="no"
-        src="https://platform.twitter.com/embed/Tweet.html?embedId=twitter-widget-849813577770778624&frame=false&hideCard=false&hideThread=false&id=849813577770778624&theme=light&widgetsVersion=1890d59c%3A1627936082797&width=450px"
-        style={
-          Object {
-            "display": "block",
-            "flexGrow": 1,
-            "height": 660,
-            "maxHeight": "calc(100vw * 1.6)",
-            "maxWidth": "100%",
-            "position": "static",
-            "visibility": "visible",
-            "width": 450,
-          }
+    <iframe
+      allowFullScreen={true}
+      allowTransparency={true}
+      frameBorder="0"
+      id="twitter-widget-849813577770778624"
+      loading="lazy"
+      scrolling="no"
+      src="https://platform.twitter.com/embed/Tweet.html?embedId=twitter-widget-849813577770778624&frame=false&hideCard=false&hideThread=false&id=849813577770778624&theme=light&widgetsVersion=1890d59c%3A1627936082797&width=450px"
+      style={
+        Object {
+          "display": "block",
+          "flexGrow": 1,
+          "height": 660,
+          "maxHeight": "calc(100vw * 1.6)",
+          "maxWidth": "100%",
+          "position": "static",
+          "visibility": "visible",
+          "width": 450,
         }
-        title="Twitter Tweet"
-      />
-    </div>
-  </div>,
-  <span />,
-]
+      }
+      title="Twitter Tweet"
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Library Components/YouTube Default 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
+<div
+  className="article"
+>
+  <div
+    className="embed-youtube"
+    style={
       Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
+        "height": 0,
+        "paddingBottom": "56.25%",
+        "position": "relative",
+        "width": "100%",
       }
     }
-  />,
-  <div
-    className="article"
   >
-    <div
-      className="embed-youtube"
+    <iframe
+      allowFullScreen={true}
+      loading="lazy"
+      src="https://www.youtube.com/embed/dHXC_ahjtEE?loop=1&playlist=dHXC_ahjtEE"
       style={
         Object {
-          "height": 0,
-          "paddingBottom": "56.25%",
-          "position": "relative",
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
           "width": "100%",
         }
       }
-    >
-      <iframe
-        allowFullScreen={true}
-        loading="lazy"
-        src="https://www.youtube.com/embed/dHXC_ahjtEE?loop=1&playlist=dHXC_ahjtEE"
-        style={
-          Object {
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-          }
-        }
-      />
-    </div>
-  </div>,
-  <span />,
-]
+    />
+  </div>
+</div>
 `;
 
 exports[`Storyshots Library Components/YouTube Invalid Url 1`] = `
-Array [
-  <script
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "(function setScript(initialValue) {
-  var mql = window.matchMedia(\\"(prefers-color-scheme: dark)\\");
-  var systemPreference = mql.matches ? \\"dark\\" : \\"light\\";
-  var persistedPreference;
-
-  try {
-    persistedPreference = localStorage.getItem(\\"chakra-ui-color-mode\\");
-  } catch (error) {
-    console.log(\\"Chakra UI: localStorage is not available. Color mode persistence might not work as expected\\");
-  }
-
-  var isInStorage = typeof persistedPreference === \\"string\\";
-  var colorMode;
-
-  if (isInStorage) {
-    colorMode = persistedPreference;
-  } else {
-    colorMode = initialValue === \\"system\\" ? systemPreference : initialValue;
-  }
-
-  if (colorMode) {
-    var root = document.documentElement;
-    root.style.setProperty(\\"--chakra-ui-color-mode\\", colorMode);
-  }
-})('system')",
-      }
-    }
-  />,
-  <div
-    className="article"
-  />,
-  <span />,
-]
+<div
+  className="article"
+/>
 `;
