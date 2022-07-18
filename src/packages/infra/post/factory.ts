@@ -18,7 +18,7 @@ export class PostFactory implements IPostFactory {
   private readonly __postRepositories: { [source: string]: IPostRepository };
 
   public constructor(
-    @inject('postRepositories') postRepositories: { [source: string]: { sourceId: string; repository: string } },
+    @inject('postRepositories') postRepositories: { [source: string]: { source: string; sourceId: string; repository: string } },
     @inject('Settings') private settings: Settings,
     @inject('ICache') private cache: ICache,
   ) {
@@ -27,7 +27,9 @@ export class PostFactory implements IPostFactory {
       repository.setSourceId(postRepositories[source].sourceId);
       return { [source]: repository };
     }));
-    this.__sources = Object.keys(postRepositories).map(source => Source.create(source));
+
+    const sources = Object.values(postRepositories);
+    this.__sources = settings.targetSources.map(v => sources.find(source => source.source === v)).filter((v): v is { source: string; sourceId: string; repository: string } => !!v).map(v => Source.create(v.sourceId));
   }
 
   public async all(postType?: string, params?: SearchParams, sortByUpdatedAt?: boolean): Promise<Post[]> {

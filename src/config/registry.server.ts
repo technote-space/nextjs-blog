@@ -35,13 +35,14 @@ container.registerSingleton('MarkdownPostRepository', MarkdownPostRepository);
 container.registerSingleton('WordPressPostRepository', WordPressPostRepository);
 container.registerSingleton('WordPressExportPostRepository', WordPressExportPostRepository);
 const availablePostSources: Record<string, string> = {
-  'md': 'MarkdownPostRepository',
+  'markdown': 'MarkdownPostRepository',
   'wpdb': 'WordPressPostRepository',
   'wpxml': 'WordPressExportPostRepository',
 };
 container.registerInstance('postRepositories', Object.assign({},
   ...Object.keys(postSources).filter(source => source in availablePostSources).map(source => ({
     [postSources[source]]: {
+      source,
       sourceId: postSources[source],
       repository: availablePostSources[source],
     },
