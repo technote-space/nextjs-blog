@@ -74,6 +74,7 @@ export const settings: Settings = {
   //     },
   //   ],
   // },
+  perPage: Number(process.env.PER_PAGE),
   isIsr: !!process.env.IS_ISR,
   isrRevalidate: process.env.ISR_REVALIDATE ? Number(process.env.ISR_REVALIDATE) : undefined,
   wpdb: process.env.WP_DB_SOURCE ? {

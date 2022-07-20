@@ -11,8 +11,7 @@ export class ColorService implements IColorService {
 
   public async getDominantColor(imageUrl: string | undefined, siteUrl: string, retry?: number): Promise<DominantColor | undefined> {
     if (imageUrl) {
-      const url = imageUrl.startsWith('/') ? `${siteUrl.replace(/\/$/, '')}${imageUrl}` : imageUrl;
-      const imageBuffer = await loadImage(url, siteUrl);
+      const imageBuffer = await loadImage(imageUrl, siteUrl);
       for (let i = retry ?? 3; --i >= 0;) {
         try {
           const color = await (await import('fast-average-color-node')).getAverageColor(imageBuffer, {

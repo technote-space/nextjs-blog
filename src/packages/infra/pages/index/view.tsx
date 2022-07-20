@@ -12,7 +12,7 @@ const List = dynamic(() => import('@/components/layout/List'));
 const ListItem = dynamic(() => import('@/components/layout/ListItem'));
 const Link = dynamic(() => import('@/components/link/Link'));
 
-const View: FC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCount, handlePageChange, tag }) => <>
+const View: FC<HooksParams['viewProps']> = ({ posts, currentPage, totalCount, totalPage, handlePageChange, tag }) => <>
   {!!tag && <Tag
     name={tag.getDisplayValue()}
     fontSize={[15, 18, 25, 25]}
@@ -32,11 +32,10 @@ const View: FC<HooksParams> = ({ posts, perPage, currentPage, totalCount, pageCo
       </ListItem>
     ))}
   </List>
-  {pageCount > 1 && <Flex my={5}>
+  {totalPage > 1 && <Flex my={5}>
     <Pagination
-      perPage={perPage}
       page={currentPage}
-      totalCount={totalCount}
+      totalPage={totalPage}
       onPageChange={handlePageChange}
     />
   </Flex>}

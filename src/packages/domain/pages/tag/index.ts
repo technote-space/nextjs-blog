@@ -10,7 +10,7 @@ export type Props = PagesProps;
 export type ITagPage = IPage<Props>;
 
 export interface ITagPageProps {
-  getStaticPaths(): Promise<GetStaticPathsResult<Params>>;
+  getStaticPaths(postType: string | undefined): Promise<GetStaticPathsResult<Params>>;
 
-  getStaticProps(params?: Params): Promise<GetStaticPropsResult<Props>>;
+  getStaticProps(postType: string | undefined, params?: Params): Promise<GetStaticPropsResult<Props>>;
 }

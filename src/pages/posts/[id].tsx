@@ -4,6 +4,6 @@ import { container } from 'tsyringe';
 
 export default container.resolve<IPostPage>('IPostPage').create();
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<IPostPageProps>('IPostPageProps').getStaticPaths();
+export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<IPostPageProps>('IPostPageProps').getStaticPaths(undefined);
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<IPostPageProps>('IPostPageProps').getStaticProps(params);
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<IPostPageProps>('IPostPageProps').getStaticProps(undefined, params);

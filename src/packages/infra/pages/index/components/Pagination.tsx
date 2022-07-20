@@ -5,9 +5,8 @@ import ReactPaginate from 'react-paginate';
 import styles from './Pagination.module.scss';
 
 type Props = {
-  perPage?: number;
+  totalPage: number;
   page?: number;
-  totalCount: number;
   pageRangeDisplayed?: number;
   marginPagesDisplayed?: number;
   previousLabel?: React.ReactNode | undefined;
@@ -17,9 +16,8 @@ type Props = {
 }
 
 const Pagination: FC<Props> = ({
-  perPage,
+  totalPage,
   page,
-  totalCount,
   pageRangeDisplayed,
   marginPagesDisplayed,
   previousLabel,
@@ -27,11 +25,9 @@ const Pagination: FC<Props> = ({
   breakLabel,
   onPageChange,
 }) => {
-  const pageCount = Math.ceil(totalCount / (perPage || 10));
-
   return <ReactPaginate
-    pageCount={pageCount}
-    forcePage={page === undefined ? undefined : Math.min(Math.max(0, page), pageCount - 1)}
+    pageCount={totalPage}
+    forcePage={page === undefined ? undefined : Math.min(Math.max(0, page), totalPage - 1)}
     pageRangeDisplayed={pageRangeDisplayed ?? 3}
     marginPagesDisplayed={marginPagesDisplayed ?? 1}
     previousLabel={previousLabel ?? '<'}

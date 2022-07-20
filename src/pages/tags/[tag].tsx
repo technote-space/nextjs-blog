@@ -4,6 +4,6 @@ import { container } from 'tsyringe';
 
 export default container.resolve<ITagPage>('ITagPage').create();
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<ITagPageProps>('ITagPageProps').getStaticPaths();
+export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<ITagPageProps>('ITagPageProps').getStaticPaths(undefined);
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<ITagPageProps>('ITagPageProps').getStaticProps(params);
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<ITagPageProps>('ITagPageProps').getStaticProps(undefined, params);

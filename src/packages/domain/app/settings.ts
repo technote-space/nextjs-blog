@@ -29,6 +29,7 @@ type SEO = {
 };
 export type Settings = {
   targetSources: string[];
+  perPage: number;
   isIsr?: boolean;
   isrRevalidate?: number;
   siteUrl: string;

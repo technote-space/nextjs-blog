@@ -5,6 +5,7 @@ import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IHtmlService } from '$/domain/post/service/html';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { _PaginationParams } from '$/domain/post/service/pagination';
 import type { ITocService } from '$/domain/post/service/toc';
 import mysql from 'serverless-mysql';
 import { inject, singleton } from 'tsyringe';
@@ -54,7 +55,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     });
   }
 
-  private getWhere(postType?: string, params?: SearchParams) {
+  private getWhere(postType: string | undefined, params?: SearchParams) {
     const excludeIds = (this.settings.exclude ?? [])
       .filter(setting => !setting.type && this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId))
       .map(setting => Number(setting.id));
@@ -77,8 +78,17 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     };
   }
 
-  public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
-    const { whereParams, whereQuery } = this.getWhere(postType, params);
+  public async count(postType: string | undefined, searchParams?: SearchParams): Promise<number> {
+    const { whereParams, whereQuery } = this.getWhere(postType, searchParams);
+    return (await this.mysql.query<{ cnt: number }[]>(`
+      SELECT COUNT(*) as cnt
+      FROM wp_posts
+      WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
+    `, [this.getPostType(postType), 'publish', 'future', ...whereParams]))[0].cnt;
+  }
+
+  public async paginated(paginationParams: _PaginationParams, postType: string | undefined, searchParams?: SearchParams): Promise<Post[]> {
+    const { whereParams, whereQuery } = this.getWhere(postType, searchParams);
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.ID          as id,
              REPLACE(
@@ -97,6 +107,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              LEFT JOIN wp_postmeta permalink on wp_posts.ID = permalink.post_id AND permalink.meta_key = ?
              LEFT JOIN wp_postmeta thumbnail on wp_posts.ID = thumbnail.post_id AND thumbnail.meta_key = ?
       WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?)${whereQuery}
+      ORDER BY wp_posts.post_date DESC
+      LIMIT ${paginationParams.skip}, ${paginationParams.take}
     `, ['custom_permalink', '_thumbnail_id', this.getPostType(postType), 'publish', 'future', ...whereParams]);
 
     const thumbnailIds = results.map(result => result.thumbnail_id).filter(result => result).map(result => Number(result));
@@ -122,7 +134,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     )), Promise.resolve([] as Post[]));
   }
 
-  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
+  public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
     const { whereParams, whereQuery } = this.getWhere(postType);
     const results = await this.mysql.query<Array<PostData>>(`
       SELECT wp_posts.ID as id,
@@ -177,8 +189,8 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     );
   }
 
-  public async tags(): Promise<Tag[]> {
-    const { whereParams, whereQuery } = this.getWhere();
+  public async tags(postType: string | undefined): Promise<Tag[]> {
+    const { whereParams, whereQuery } = this.getWhere(postType);
     const results = await this.mysql.query<Array<{ slug: string; name: string }>>(`
       SELECT DISTINCT wp_terms.slug, wp_terms.name
       FROM wp_terms
@@ -186,7 +198,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
              INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
              INNER JOIN wp_posts on wp_posts.ID = rel.object_id
       WHERE wp_posts.post_type = ? && (wp_posts.post_status = ? OR wp_posts.post_status = ?) ${whereQuery}
-    `, ['post_tag', this.getPostType(), 'publish', 'future', ...whereParams]);
+    `, ['post_tag', this.getPostType(postType), 'publish', 'future', ...whereParams]);
 
     await this.mysql.end();
 

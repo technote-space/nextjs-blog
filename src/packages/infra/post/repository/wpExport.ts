@@ -5,6 +5,7 @@ import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IHtmlService } from '$/domain/post/service/html';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { _PaginationParams } from '$/domain/post/service/pagination';
 import type { ITocService } from '$/domain/post/service/toc';
 import type { IXmlService } from '$/domain/post/service/xml';
 import { promises, readdirSync } from 'fs';
@@ -141,7 +142,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     return postTags.includes(paramsTag);
   }
 
-  private collectPosts(data: WpXmlData, postType?: string | null, params?: SearchParams): PostData[] {
+  private collectPosts(data: WpXmlData, postType: string | undefined | null, params?: SearchParams): PostData[] {
     const _postType = postType === null ? undefined : this.getPostType(postType);
     return data.rss.channel[0].item
       .filter(item =>
@@ -175,8 +176,9 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     return data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._;
   }
 
-  private getExcludedPosts(posts: PostData[], postType?: string): PostData[] {
-    const exclude = (this.settings.exclude ?? []).filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId));
+  private getExcludedPosts(posts: PostData[], postType: string | undefined): PostData[] {
+    const _postType = this.getPostType(postType);
+    const exclude = (this.settings.exclude ?? []).filter(setting => _postType === this.getPostType(setting.postType) && setting.source.includes(this.sourceId));
     const excludeIds = exclude.filter(setting => !setting.type).map(setting => Number(setting.id));
     const excludeCategory = exclude.filter(setting => !!setting.type);
     return posts.filter(post => {
@@ -185,27 +187,31 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     });
   }
 
-  public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
-    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType, params)).reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
+  public async count(postType: string | undefined, searchParams?: SearchParams): Promise<number> {
+    return (this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType, searchParams), postType)).length;
+  }
+
+  public async paginated(paginationParams: _PaginationParams, postType: string | undefined, searchParams?: SearchParams): Promise<Post[]> {
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType, searchParams), postType).map(post => Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
-        id: result.post_name,
+        id: post.post_name,
       }),
-      Title.create(result.post_title),
-      Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
+      Title.create(post.post_title),
+      Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(post.post_content))),
       PostType.create(this.getPostType(postType)),
-      this.getThumbnail(result.thumbnail),
-      CreatedAt.create(result.post_date),
-    )), Promise.resolve([] as Post[]));
+      this.getThumbnail(post.thumbnail),
+      CreatedAt.create(post.post_date),
+    )).sort((a, b) => a.compare(b)).slice(paginationParams.skip, paginationParams.skip + paginationParams.take);
   }
 
   private static removeBaseSiteUrl(content: string, data: WpXmlData): string {
     return content.replace(new RegExp(`${pregQuote(`${data.rss.channel[0].base_site_url[0].replace(/\/$/, '')}`, '/')}`, 'g'), '');
   }
 
-  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
+  public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
     const data = await this.getExportXmlData();
-    const post = this.getExcludedPosts(this.collectPosts(data, postType)).find(post => post.post_name === id.postId);
+    const post = this.getExcludedPosts(this.collectPosts(data, postType), postType).find(post => post.post_name === id.postId);
     if (!post) {
       throw new NotFoundException;
     }
@@ -225,8 +231,8 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     );
   }
 
-  public async tags(): Promise<Tag[]> {
-    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData())).flatMap(post => (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.slug), Name.create(cat.name))));
+  public async tags(postType: string | undefined): Promise<Tag[]> {
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), postType), postType).flatMap(post => (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.slug), Name.create(cat.name))));
   }
 
   public async getUrlMaps(): Promise<UrlMap[]> {
@@ -234,7 +240,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       return [];
     }
 
-    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), null)).map(result => ({
+    return this.getExcludedPosts(this.collectPosts(await this.getExportXmlData(), null), undefined).map(result => ({
       source: result.link,
       destination: {
         source: this.sourceId,
