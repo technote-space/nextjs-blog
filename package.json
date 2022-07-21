@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "0.9.2",
+  "version": "0.10.1",
   "private": true,
   "scripts": {
     "dev": "run-p dev:*",
@@ -20,6 +20,9 @@
     "sb": "start-storybook -p 6006 -s ./public",
     "build-sb": "build-storybook -s public",
     "analyze": "pathpida && ANALYZE=true next build"
+  },
+  "resolutions": {
+    "react-test-renderer": "18.2.0"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
@@ -119,8 +122,5 @@
     "node": ">=14",
     "npm": "use_yarn_instead",
     "yarn": "^1"
-  },
-  "resolutions": {
-    "react-test-renderer": "18.2.0"
   }
 }
