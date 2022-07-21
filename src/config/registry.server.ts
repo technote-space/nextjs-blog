@@ -1,10 +1,12 @@
 import { container } from 'tsyringe';
-import { AnyPageProps } from '$/infra/pages/any';
+import { AnyPageProps } from '$/infra/pages/any/server';
 import { CardPageProps } from '$/infra/pages/card/server';
 import { IndexPageProps } from '$/infra/pages/index/server';
+import { PagedPageProps } from '$/infra/pages/paged/server';
 import { PostPageProps } from '$/infra/pages/post/server';
 import { RobotsPageProps } from '$/infra/pages/robots';
 import { SitemapPageProps } from '$/infra/pages/sitemap';
+import { TagPagedPageProps } from '$/infra/pages/tag/paged/server';
 import { TagPageProps } from '$/infra/pages/tag/server';
 import { PostFactory } from '$/infra/post/factory';
 import { MarkdownPostRepository } from '$/infra/post/repository/mdPost';
@@ -35,13 +37,14 @@ container.registerSingleton('MarkdownPostRepository', MarkdownPostRepository);
 container.registerSingleton('WordPressPostRepository', WordPressPostRepository);
 container.registerSingleton('WordPressExportPostRepository', WordPressExportPostRepository);
 const availablePostSources: Record<string, string> = {
-  'md': 'MarkdownPostRepository',
+  'markdown': 'MarkdownPostRepository',
   'wpdb': 'WordPressPostRepository',
   'wpxml': 'WordPressExportPostRepository',
 };
 container.registerInstance('postRepositories', Object.assign({},
   ...Object.keys(postSources).filter(source => source in availablePostSources).map(source => ({
     [postSources[source]]: {
+      source,
       sourceId: postSources[source],
       repository: availablePostSources[source],
     },
@@ -51,7 +54,9 @@ container.registerInstance('postRepositories', Object.assign({},
 // pages
 container.registerSingleton('IIndexPageProps', IndexPageProps);
 container.registerSingleton('IPostPageProps', PostPageProps);
+container.registerSingleton('IPagedPageProps', PagedPageProps);
 container.registerSingleton('ITagPageProps', TagPageProps);
+container.registerSingleton('ITagPagedPageProps', TagPagedPageProps);
 container.registerSingleton('IAnyPageProps', AnyPageProps);
 container.registerSingleton('ISitemapPageProps', SitemapPageProps);
 container.registerSingleton('IRobotsPageProps', RobotsPageProps);

@@ -1,17 +1,18 @@
 import type { Settings } from '$/domain/app/settings';
 
 // key => sourceId
-// 現在使用可能なkey: md, wpdb, wpxml
-const targetSources = (process.env.SOURCES ?? '').split(',').map(v => v.trim()).filter(v => v);
+// 現在使用可能なkey: markdown, wpdb, wpxml
+const targetSources = Array.from(new Set((process.env.SOURCES ?? '').split(',').map(v => v.trim()).filter(v => v)));
 export const postSources: Record<string, string> = {
   // posts ディレクトリに作成した markdown で記事作成
-  ...(process.env.MD_SOURCE && targetSources.includes('markdown') ? { 'md': process.env.MD_SOURCE } : {}),
+  ...(process.env.MD_SOURCE && targetSources.includes('markdown') ? { 'markdown': process.env.MD_SOURCE } : {}),
   // .env で接続した WordPress の wp_posts で記事作成
   ...(process.env.WP_DB_SOURCE && targetSources.includes('wpdb') ? { 'wpdb': process.env.WP_DB_SOURCE } : {}),
   // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
   ...(process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML && targetSources.includes('wpxml') ? { 'wpxml': process.env.WP_XML_SOURCE } : {}),
 };
 export const settings: Settings = {
+  targetSources,
   // 本文内で置換
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
@@ -73,6 +74,7 @@ export const settings: Settings = {
   //     },
   //   ],
   // },
+  perPage: Number(process.env.PER_PAGE),
   isIsr: !!process.env.IS_ISR,
   isrRevalidate: process.env.ISR_REVALIDATE ? Number(process.env.ISR_REVALIDATE) : undefined,
   wpdb: process.env.WP_DB_SOURCE ? {

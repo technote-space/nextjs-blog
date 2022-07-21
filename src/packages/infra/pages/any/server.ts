@@ -1,11 +1,10 @@
 import type { Settings, UrlMap } from '$/domain/app/settings';
 import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
+import type { IPostPageProps } from '$/domain/pages/post';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
-import pluralize from 'pluralize';
 import { singleton, inject } from 'tsyringe';
 import Id from '$/domain/post/valueObject/id';
-import PostType from '$/domain/post/valueObject/postType';
 import Source from '$/domain/post/valueObject/source';
 
 @singleton()
@@ -13,6 +12,7 @@ export class AnyPageProps implements IAnyPageProps {
   public constructor(
     @inject('Settings') private settings: Settings,
     @inject('IPostFactory') private postFactory: IPostFactory,
+    @inject('IPostPageProps') private postPageProps: IPostPageProps,
   ) {
   }
 
@@ -36,7 +36,7 @@ export class AnyPageProps implements IAnyPageProps {
       };
     }
 
-    const ids = Object.assign({}, ...(await this.postFactory.getIds()).map(id => ({ [id.value]: true })));
+    const ids = Object.assign({}, ...(await this.postFactory.all(undefined)).map(post => ({ [post.getId().value]: true })));
     return {
       paths: (await this.getUrlMaps())
         .map(urlMap => ({
@@ -69,14 +69,11 @@ export class AnyPageProps implements IAnyPageProps {
       };
     }
 
-    return {
-      redirect: {
-        permanent: true,
-        destination: `/${pluralize(destination.postType ?? this.settings.postType?.default ?? PostType.DEFAULT_POST_TYPE)}/${Id.create({
-          source: Source.create(destination.source),
-          id: destination.id,
-        }).value}`,
-      },
-    };
+    return this.postPageProps.getStaticProps(destination.postType, {
+      id: Id.create({
+        source: Source.create(destination.source),
+        id: destination.id,
+      }).value,
+    });
   }
 }

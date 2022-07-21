@@ -6,4 +6,4 @@ export default container.resolve<IPostPage>('IPostPage').create();
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => container.resolve<IPostPageProps>('IPostPageProps').getStaticPaths('page');
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<IPostPageProps>('IPostPageProps').getStaticProps(params, 'page');
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => container.resolve<IPostPageProps>('IPostPageProps').getStaticProps('page', params);

@@ -5,6 +5,7 @@ import type { IPostRepository, SearchParams } from '$/domain/post/repository/pos
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { _PaginationParams } from '$/domain/post/service/pagination';
 import type { ITocService } from '$/domain/post/service/toc';
 import type Id from '$/domain/post/valueObject/id';
 import { Post } from '$/domain/post/entity/post';
@@ -51,11 +52,11 @@ export abstract class BasePostRepository implements IPostRepository {
     return this.replace(excerpt);
   }
 
-  protected getPostType(postType?: string): string {
+  protected getPostType(postType: string | undefined): string {
     return Post.ensurePostType(postType, this.settings);
   }
 
-  protected getContentFilters(): Array<{ tag: string; filter: (content: string, postType?: string) => Promise<string> }> {
+  protected getContentFilters(): Array<{ tag: string; filter: (content: string, postType: string | undefined) => Promise<string> }> {
     return [
       { tag: 'pre-replace', filter: async content => this.replace(content) },
       { tag: 'processLinksInCode', filter: async content => processLinksInCode(content) },
@@ -74,7 +75,7 @@ export abstract class BasePostRepository implements IPostRepository {
     ];
   }
 
-  protected async processContent(content: string, postType?: string): Promise<string> {
+  protected async processContent(content: string, postType: string | undefined): Promise<string> {
     return this.getContentFilters().reduce(async (prev, { filter }) => {
       const acc = await prev;
       return await filter(acc, postType);
@@ -85,11 +86,13 @@ export abstract class BasePostRepository implements IPostRepository {
     this.__sourceId = sourceId;
   }
 
-  public abstract all(postType?: string, params?: SearchParams): Promise<Post[]>;
+  public abstract count(postType: string | undefined, searchParams?: SearchParams): Promise<number>;
 
-  public abstract fetch(id: Id, postType?: string): Promise<PostDetail>;
+  public abstract paginated(paginationParams: _PaginationParams, postType: string | undefined, searchParams?: SearchParams): Promise<Post[]>;
 
-  public abstract tags(): Promise<Tag[]>;
+  public abstract fetch(id: Id, postType: string | undefined): Promise<PostDetail>;
+
+  public abstract tags(postType: string | undefined): Promise<Tag[]>;
 
   public async getUrlMaps(): Promise<UrlMap[]> {
     return [];

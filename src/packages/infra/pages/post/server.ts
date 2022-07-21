@@ -17,7 +17,7 @@ export class PostPageProps implements IPostPageProps {
   ) {
   }
 
-  public async getStaticPaths(postType?: string): Promise<GetStaticPathsResult<Params>> {
+  public async getStaticPaths(postType: string | undefined): Promise<GetStaticPathsResult<Params>> {
     if (this.settings.isIsr) {
       return {
         paths: [],
@@ -26,14 +26,14 @@ export class PostPageProps implements IPostPageProps {
     }
 
     return {
-      paths: (await this.postFactory.getIds(postType)).map(id => ({
-        params: { id: id.value },
+      paths: (await this.postFactory.all(postType)).map(post => ({
+        params: { id: post.getId().value },
       })),
       fallback: false,
     };
   }
 
-  public async getStaticProps(params?: Params, postType?: string): Promise<GetStaticPropsResult<Props>> {
+  public async getStaticProps(postType: string | undefined, params?: Params): Promise<GetStaticPropsResult<Props>> {
     if (!params) {
       return {
         notFound: true,

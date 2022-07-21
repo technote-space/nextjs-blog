@@ -5,9 +5,8 @@ export default {
   title: 'Domain Components/Pagination',
   component: Pagination,
   argTypes: {
-    perPage: { control: { type: 'number' } },
+    totalPage: { control: { type: 'number' } },
     page: { control: { type: 'number' } },
-    totalCount: { control: { type: 'number' } },
     pageRangeDisplayed: { control: { type: 'number' } },
     marginPagesDisplayed: { control: { type: 'number' } },
     previousLabel: { control: { type: 'text' } },
@@ -20,7 +19,6 @@ const Template: ComponentStory<typeof Pagination> = (args) => <Pagination {...ar
 
 export const Default = Template.bind({});
 Default.args = {
-  perPage: 10,
   page: 3,
-  totalCount: 100,
+  totalPage: 10,
 };

@@ -4,4 +4,4 @@ import { container } from 'tsyringe';
 
 export default container.resolve<IIndexPage>('IIndexPage').create();
 
-export const getStaticProps: GetStaticProps<Props> = async () => container.resolve<IIndexPageProps>('IIndexPageProps').getStaticProps();
+export const getStaticProps: GetStaticProps<Props> = async () => container.resolve<IIndexPageProps>('IIndexPageProps').getStaticProps(undefined);

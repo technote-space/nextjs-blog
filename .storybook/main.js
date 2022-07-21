@@ -15,11 +15,9 @@ module.exports = {
   ],
   "addons": [
     "@chakra-ui/storybook-addon",
-    "storybook-addon-performance/register",
     "@storybook/addon-essentials",
     "@storybook/addon-actions",
     "@storybook/addon-links",
-    "storybook-addon-performance/register",
   ],
   features: {
     emotionAlias: false,

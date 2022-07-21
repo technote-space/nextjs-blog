@@ -1,5 +1,6 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
 import type { ITagPage, Props } from '$/domain/pages/tag';
+import type { HookProps } from '$/infra/pages/index/hooks';
 import type { FC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
@@ -13,8 +14,22 @@ export class TagPage implements ITagPage {
   ) {
   }
 
+  private static getPath(tag: string | undefined, page: number): string {
+    return `/tags/${tag}/${page}/`;
+  }
+
+  private static getProps(props: Props): HookProps {
+    return {
+      ...props,
+      path: page => TagPage.getPath(props.tag?.slug, page),
+    };
+  }
+
   public create(): FC<Props> {
-    const component = memo((props: Props) => this.layoutComponent.render(props, <View {...useHooks(props)} />));
+    const component = memo((props: Props) => {
+      const { layoutProps, viewProps } = useHooks(TagPage.getProps(props));
+      return this.layoutComponent.render(layoutProps, <View {...viewProps} />);
+    });
     component.displayName = 'TagPage';
 
     return component;
