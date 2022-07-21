@@ -24,7 +24,7 @@
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/styled": "11.6.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/bundle-analyzer": "^12.2.2",
     "@slack/webhook": "^6.1.0",
