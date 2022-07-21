@@ -1,6 +1,6 @@
 import type { Props } from '$/domain/pages';
 import { useRouter } from 'next/router';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { toEntity as postDtoToEntity } from '$/domain/post/dto/post';
 import { toEntity as tagDtoToEntity } from '$/domain/post/dto/tag';
 
@@ -16,6 +16,17 @@ export const useHooks = ({ headerPages, footerPages, items, tag, page, totalPage
     // selected は 0〜
     router.push({ pathname: path(selectedItem.selected + 1) }).then();
   }, [router, path]);
+
+  useEffect(() => {
+    const pages = [1, totalPage];
+    if (page > 1) pages.push(page);
+    if (page > 2) pages.push(page - 1);
+    if (page < totalPage - 1) pages.push(page + 2);
+    if (page < totalPage - 2) pages.push(page + 3);
+    [...new Set(pages)].forEach(p => {
+      router.prefetch(path(p)).then();
+    });
+  }, [router, path, page, tag, totalPage]);
 
   return {
     layoutProps: {
