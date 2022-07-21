@@ -121,6 +121,8 @@
     "yarn": "^1"
   },
   "resolutions": {
-    "react-test-renderer": "18.2.0"
+    "react-test-renderer": "18.2.0",
+    "@emotion/utils": "^1.1.0",
+    "@emotion/sheet": "^1.1.1"
   }
 }
