@@ -1,6 +1,6 @@
 import type { IHeadComponent, Props } from '$/domain/app/head';
 import type { Settings } from '$/domain/app/settings';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
 import { useHooks } from '$/infra/app/head/hooks';
@@ -15,7 +15,7 @@ export class HeadComponent extends BaseComponent<Props> implements IHeadComponen
     super();
   }
 
-  protected getComponent(): VFC<Props> {
+  protected getComponent(): FC<Props> {
     const component = memo((props: Props) => <View {...useHooks(props, this.settings)} />);
     component.displayName = 'Head';
 

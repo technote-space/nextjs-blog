@@ -1,5 +1,5 @@
 import type { StyleProps } from '@/components';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import type { IconType } from 'react-icons';
 import { memo } from 'react';
 import { Header as HeaderComponent } from '@/components';
@@ -47,7 +47,7 @@ const defaultPagesStyle: StyleProps = {
   maxWidth: ['none', 'none', '25%', '25%'],
 };
 
-const Header: VFC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorMode, ToggleIcon, ...props }) => {
+const Header: FC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorMode, ToggleIcon, ...props }) => {
   const createPagesComponent = (hide?: boolean) => pages?.length ?
     <Flex {...defaultPagesStyle} {...pagesStyle} {...(hide ? { visibility: 'hidden', maxHeight: '1.5em' } : {})}>
       <List display={['flex', 'flex', 'block', 'block']} flexWrap="wrap">

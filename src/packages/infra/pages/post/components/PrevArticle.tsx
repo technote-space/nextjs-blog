@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import clsx from 'clsx';
 import { memo } from 'react';
 import { Image } from '@/components';
@@ -14,7 +14,7 @@ type Props = {
   darkModeClass?: string;
 };
 
-const PrevArticle: VFC<Props> = ({ thumbnail, title, url, darkModeClass }) => {
+const PrevArticle: FC<Props> = ({ thumbnail, title, url, darkModeClass }) => {
   return <Link href={url}>
     <Flex className={styles.article}>
       <Image

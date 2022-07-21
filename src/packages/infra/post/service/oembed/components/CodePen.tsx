@@ -1,10 +1,10 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   url: string;
 };
 
-const CodePen: VFC<Props> = ({ url }) => {
+const CodePen: FC<Props> = ({ url }) => {
   const _url = new URL(url.replace('/pen/', '/embed/'));
   _url.searchParams.set('embed-version', '2');
   return <div className="embed-codepen" style={{

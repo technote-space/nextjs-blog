@@ -1,13 +1,12 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import * as React from 'react';
 import ReactPaginate from 'react-paginate';
 import styles from './Pagination.module.scss';
 
 type Props = {
-  perPage?: number;
+  totalPage: number;
   page?: number;
-  totalCount: number;
   pageRangeDisplayed?: number;
   marginPagesDisplayed?: number;
   previousLabel?: React.ReactNode | undefined;
@@ -16,10 +15,9 @@ type Props = {
   onPageChange?(selectedItem: { selected: number }): void;
 }
 
-const Pagination: VFC<Props> = ({
-  perPage,
+const Pagination: FC<Props> = ({
+  totalPage,
   page,
-  totalCount,
   pageRangeDisplayed,
   marginPagesDisplayed,
   previousLabel,
@@ -27,11 +25,9 @@ const Pagination: VFC<Props> = ({
   breakLabel,
   onPageChange,
 }) => {
-  const pageCount = Math.ceil(totalCount / (perPage || 10));
-
   return <ReactPaginate
-    pageCount={pageCount}
-    forcePage={page === undefined ? undefined : Math.min(Math.max(0, page), pageCount - 1)}
+    pageCount={totalPage}
+    forcePage={page === undefined ? undefined : Math.min(Math.max(0, page), totalPage - 1)}
     pageRangeDisplayed={pageRangeDisplayed ?? 3}
     marginPagesDisplayed={marginPagesDisplayed ?? 1}
     previousLabel={previousLabel ?? '<'}

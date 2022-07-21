@@ -11,7 +11,7 @@ type Replace = {
   to: string;
 };
 type Exclude = PostData<string[]> & {
-  type?: string;
+  type?: 'post_tag' | 'category';
 };
 export type UrlMap = {
   source: string;
@@ -28,6 +28,8 @@ type SEO = {
   twitter?: string;
 };
 export type Settings = {
+  targetSources: string[];
+  perPage: number;
   isIsr?: boolean;
   isrRevalidate?: number;
   siteUrl: string;

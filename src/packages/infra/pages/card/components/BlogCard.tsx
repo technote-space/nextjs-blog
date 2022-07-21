@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { escapeHtml } from '@/lib/helpers/string';
 import { getDomainName } from '@/lib/helpers/url';
 
@@ -12,7 +12,7 @@ type Props = {
   source?: string;
 };
 
-const BlogCard: VFC<Props> = ({ url, title, description, image, dominantColor, canonical, source }) => {
+const BlogCard: FC<Props> = ({ url, title, description, image, dominantColor, canonical, source }) => {
   return <html lang="ja">
   <head>
     <meta charSet="utf-8"/>

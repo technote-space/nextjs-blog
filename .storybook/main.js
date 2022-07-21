@@ -14,11 +14,14 @@ module.exports = {
     "../src/packages/infra/**/components/**/*.stories.tsx",
   ],
   "addons": [
-    "storybook-addon-performance/register",
+    "@chakra-ui/storybook-addon",
     "@storybook/addon-essentials",
     "@storybook/addon-actions",
     "@storybook/addon-links",
   ],
+  features: {
+    emotionAlias: false,
+  },
   webpackFinal: async (config) => {
     config.resolve.plugins = [
       new TsconfigPathsPlugin({

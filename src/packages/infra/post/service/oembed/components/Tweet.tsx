@@ -1,10 +1,10 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   url: string;
 };
 
-const Tweet: VFC<Props> = ({ url }) => {
+const Tweet: FC<Props> = ({ url }) => {
   const id = url.replace(/^https:\/\/twitter\.com\/[a-zA-Z0-9_-]+\/status\/([a-zA-Z0-9?=]+)$/, '$1');
   return <div className="embed-tweet">
     <iframe

@@ -1,10 +1,10 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   url: string;
 };
 
-const JsFiddle: VFC<Props> = ({ url }) => {
+const JsFiddle: FC<Props> = ({ url }) => {
   const _url = url.includes('embed') ? url : `${url.replace(/\/$/, '')}/embedded/`;
   return <div className="embed-jsfiddle" style={{
     width: '100%',

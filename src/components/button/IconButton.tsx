@@ -1,5 +1,5 @@
 import type { IconButtonProps } from '@/components/wrap';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { IconButton as IconButtonComponent } from '@/components/wrap';
 
@@ -9,7 +9,7 @@ const defaultProps: Props = {
   'aria-label': 'アイコンボタン',
 };
 
-const IconButton: VFC<Props> = (props) => {
+const IconButton: FC<Props> = (props) => {
   return <IconButtonComponent {...defaultProps} {...props} />;
 };
 

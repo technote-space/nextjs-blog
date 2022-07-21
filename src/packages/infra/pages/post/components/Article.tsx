@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import dayjs from 'dayjs';
 import { memo } from 'react';
 import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
@@ -31,7 +31,7 @@ type Props = {
   darkModeClass?: string;
 };
 
-const Article: VFC<Props> = ({
+const Article: FC<Props> = ({
   id,
   thumbnail,
   backgroundColor,

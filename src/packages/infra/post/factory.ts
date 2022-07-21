@@ -5,6 +5,7 @@ import type { Tag } from '$/domain/post/entity/tag';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { IPostRepository } from '$/domain/post/repository/post';
 import type { SearchParams } from '$/domain/post/repository/post';
+import type { PaginationParams, PaginatedResponse } from '$/domain/post/service/pagination';
 import type Id from '$/domain/post/valueObject/id';
 import type { ICache } from '$/domain/shared/library/cache';
 import { singleton, inject, container } from 'tsyringe';
@@ -18,7 +19,7 @@ export class PostFactory implements IPostFactory {
   private readonly __postRepositories: { [source: string]: IPostRepository };
 
   public constructor(
-    @inject('postRepositories') postRepositories: { [source: string]: { sourceId: string; repository: string } },
+    @inject('postRepositories') postRepositories: { [source: string]: { source: string; sourceId: string; repository: string } },
     @inject('Settings') private settings: Settings,
     @inject('ICache') private cache: ICache,
   ) {
@@ -27,22 +28,68 @@ export class PostFactory implements IPostFactory {
       repository.setSourceId(postRepositories[source].sourceId);
       return { [source]: repository };
     }));
-    this.__sources = Object.keys(postRepositories).map(source => Source.create(source));
+
+    const sources = Object.values(postRepositories);
+    this.__sources = settings.targetSources.map(v => sources.find(source => source.source === v)).filter((v): v is { source: string; sourceId: string; repository: string } => !!v).map(v => Source.create(v.sourceId));
   }
 
-  public async all(postType?: string, params?: SearchParams, sortByUpdatedAt?: boolean): Promise<Post[]> {
-    const key = `PostFactory::all::${Post.ensurePostType(postType, this.settings)}::${params?.tag}::${sortByUpdatedAt ? 1 : 0}`;
-    return this.cache.getOrGenerate(key, async () => (await this.__sources.reduce(async (prev, source) => {
+  public async all(postType: string | undefined, searchParams?: SearchParams, sortByUpdatedAt?: boolean): Promise<Post[]> {
+    const key = `PostFactory::all::${Post.ensurePostType(postType, this.settings)}::${searchParams?.tag}`;
+    return this.cache.getOrGenerate(key, async () => {
+      const result = await this.paginated({ page: 0 }, postType, searchParams);
+      const posts = result.items;
+
+      let page = 1;
+      while (page <= result.totalPage) {
+        const result = await this.paginated({ page: page++ }, postType, searchParams);
+        posts.push(...result.items);
+      }
+
+      if (sortByUpdatedAt) {
+        return posts.sort((a, b) => a.compareUpdatedAt(b));
+      }
+
+      return posts;
+    }, 60 * 10);
+  }
+
+  public async count(postType: string | undefined, searchParams?: SearchParams): Promise<number> {
+    return this.__sources.reduce(async (prev, source) => {
       const acc = await prev;
-      return acc.concat(...await this.__postRepositories[source.value].all(postType, params));
-    }, Promise.resolve([] as Post[]))).sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b)), 60 * 10);
+      return acc + await this.__postRepositories[source.value].count(postType, searchParams);
+    }, Promise.resolve(0));
   }
 
-  public async getIds(postType?: string, params?: SearchParams): Promise<Id[]> {
-    return (await this.all(postType, params)).map(post => post.getId());
+  public async paginated(paginationParams: PaginationParams, postType: string | undefined, searchParams?: SearchParams): Promise<PaginatedResponse<Post>> {
+    const totalCount = await this.count(postType, searchParams);
+    const totalPage = Math.ceil(totalCount / this.settings.perPage);
+    const page = Math.min(totalPage - 1, paginationParams.page);
+    let skip = this.settings.perPage * page;
+    let take = this.settings.perPage;
+
+    return {
+      totalPage,
+      page,
+      items: await this.__sources.reduce(async (prev, source) => {
+        const acc = await prev;
+        if (take <= 0) return acc;
+
+        const count = await this.__postRepositories[source.value].count(postType, searchParams);
+        if (skip >= count) {
+          skip -= count;
+          return acc;
+        }
+
+        const posts = await this.__postRepositories[source.value].paginated({ skip, take }, postType, searchParams);
+        skip = 0;
+        take -= posts.length;
+
+        return acc.concat(posts);
+      }, Promise.resolve([] as Post[])),
+    };
   }
 
-  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
+  public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
     if (!(id.source.value in this.__postRepositories)) {
       throw new NotFoundException;
     }
@@ -50,10 +97,10 @@ export class PostFactory implements IPostFactory {
     return this.__postRepositories[id.source.value].fetch(id, postType);
   }
 
-  public async tags(): Promise<Tag[]> {
+  public async tags(postType: string | undefined): Promise<Tag[]> {
     return this.__sources.reduce(async (prev, source) => {
       const acc = await prev;
-      return acc.concat(...await this.__postRepositories[source.value].tags());
+      return acc.concat(...await this.__postRepositories[source.value].tags(postType));
     }, Promise.resolve([] as Tag[]));
   }
 

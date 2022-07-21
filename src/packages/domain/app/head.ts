@@ -5,7 +5,6 @@ export type Props = {
   description?: string;
   image?: string;
   canonical?: string;
-  type?: string;
 }
 
 export type IHeadComponent = IComponent<Props>;

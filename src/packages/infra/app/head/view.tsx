@@ -1,8 +1,8 @@
 import type { HooksParams } from '$/infra/app/head/hooks';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import NextHead from 'next/head';
 
-const View: VFC<HooksParams> = ({ title, description, image, url, type, twitter }) => <NextHead>
+const View: FC<HooksParams> = ({ title, description, image, url, type, twitter }) => <NextHead>
   <meta name="viewport" content="initial-scale=1, width=device-width"/>
   <link rel="icon" href="/favicon.ico"/>
   <title>{title}</title>

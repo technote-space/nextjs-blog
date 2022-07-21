@@ -1,6 +1,7 @@
 import type { ILayoutComponent } from '$/domain/app/layout';
 import type { IIndexPage, Props } from '$/domain/pages';
-import type { VFC } from 'react';
+import type { HookProps } from '$/infra/pages/index/hooks';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { singleton, inject } from 'tsyringe';
 import { useHooks } from '$/infra/pages/index/hooks';
@@ -13,8 +14,22 @@ export class IndexPage implements IIndexPage {
   ) {
   }
 
-  public create(): VFC<Props> {
-    const component = memo((props: Props) => this.layoutComponent.render(props, <View {...useHooks(props)} />));
+  private static getPath(page: number): string {
+    return `/page/${page}/`;
+  }
+
+  private static getProps(props: Props): HookProps {
+    return {
+      ...props,
+      path: IndexPage.getPath,
+    };
+  }
+
+  public create(): FC<Props> {
+    const component = memo((props: Props) => {
+      const { layoutProps, viewProps } = useHooks(IndexPage.getProps(props));
+      return this.layoutComponent.render(layoutProps, <View {...viewProps} />);
+    });
     component.displayName = 'IndexPage';
 
     return component;

@@ -4,6 +4,7 @@ import type { SearchParams } from '$/domain/post/repository/post';
 import type { ICodeService } from '$/domain/post/service/code';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
+import type { _PaginationParams } from '$/domain/post/service/pagination';
 import type { ITocService } from '$/domain/post/service/toc';
 import { promises, existsSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
@@ -61,7 +62,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     super(settings, color, oembed, toc, code);
   }
 
-  private getExcludeIds(postType?: string) {
+  private getExcludeIds(postType: string | undefined) {
     return (this.settings.exclude ?? [])
       .filter(setting => this.getPostType(postType) === this.getPostType(setting.postType) && setting.source.includes(this.sourceId))
       .map(setting => `${setting.id}`);
@@ -81,7 +82,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return postTags.includes(paramsTag);
   }
 
-  private filterPost(postType?: string, params?: SearchParams): (post?: MaybePost) => post is PostData {
+  private filterPost(postType: string | undefined, params?: SearchParams): (post?: MaybePost) => post is PostData {
     return (post?: MaybePost): post is PostData =>
       !!post && !!post.title && !!post.createdAt && post.published === true &&
       this.getPostType(postType) === this.getPostType(post.postType) &&
@@ -116,7 +117,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return filePaths;
   }
 
-  private async getPostDataList(postType?: string, params?: SearchParams): Promise<PostData[]> {
+  private async getPostDataList(postType: string | undefined, params?: SearchParams): Promise<PostData[]> {
     const exclude = this.getExcludeIds(postType);
     const filePaths = this.readdirRecursively();
     const posts = await filePaths.reduce(async (prev, filePath) => {
@@ -139,8 +140,12 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return posts.filter(this.filterPost(postType, params));
   }
 
-  public async all(postType?: string, params?: SearchParams): Promise<Post[]> {
-    return (await this.getPostDataList(postType, params)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).reduce(async (prev, post) => (await prev).concat(Post.reconstruct(
+  public async count(postType: string | undefined, searchParams?: SearchParams): Promise<number> {
+    return (await this.getPostDataList(postType, searchParams)).length;
+  }
+
+  public async paginated(paginationParams: _PaginationParams, postType: string | undefined, searchParams?: SearchParams): Promise<Post[]> {
+    return (await this.getPostDataList(postType, searchParams)).sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).slice(paginationParams.skip, paginationParams.skip + paginationParams.take).map(post => Post.reconstruct(
       Id.create({
         source: Source.create(this.sourceId),
         id: post.id,
@@ -151,7 +156,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       this.getThumbnail(post.thumbnail),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,
-    )), Promise.resolve([] as Post[]));
+    ));
   }
 
   private static searchPost(postId: string): string | never {
@@ -168,7 +173,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     throw new NotFoundException;
   }
 
-  public async fetch(id: Id, postType?: string): Promise<PostDetail> {
+  public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
     const exclude = this.getExcludeIds(postType);
     if (exclude.includes(id.postId)) {
       throw new NotFoundException;
@@ -203,7 +208,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     );
   }
 
-  public async tags(): Promise<Tag[]> {
-    return (await this.getPostDataList()).flatMap(post => post.tags.map(tag => Tag.reconstruct(Slug.create(tag))));
+  public async tags(postType: string | undefined): Promise<Tag[]> {
+    return (await this.getPostDataList(postType)).flatMap(post => post.tags.map(tag => Tag.reconstruct(Slug.create(tag))));
   }
 }

@@ -1,6 +1,6 @@
 import type { IAdvertising } from '$/domain/advertising';
 import type { Settings } from '$/domain/app/settings';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { memo } from 'react';
 import { inject, singleton } from 'tsyringe';
 import View from '$/infra/advertising/google/view';
@@ -18,7 +18,7 @@ export class GoogleAdsense extends BaseComponent implements IAdvertising {
     this.__googleAdsenseClientId = settings.advertising?.googleAdsenseClientId ?? '';
   }
 
-  protected getComponent(): VFC {
+  protected getComponent(): FC {
     const component = memo(() => <View googleAdsenseClientId={this.__googleAdsenseClientId}/>);
     component.displayName = 'GoogleAdsense';
 

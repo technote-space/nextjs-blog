@@ -1,10 +1,10 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 
 type Props = {
   url: string;
 };
 
-const CodeSandbox: VFC<Props> = ({ url }) => {
+const CodeSandbox: FC<Props> = ({ url }) => {
   return <div className="embed-codesandbox" style={{
     width: '100%',
     paddingBottom: '56.25%',

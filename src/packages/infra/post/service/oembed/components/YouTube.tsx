@@ -1,4 +1,4 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { escapeHtml } from '@/lib/helpers/string';
 import { extractYoutubeVideoParameters } from '@/lib/helpers/url';
 
@@ -6,7 +6,7 @@ type Props = {
   url: string;
 };
 
-const YouTube: VFC<Props> = ({ url }) => {
+const YouTube: FC<Props> = ({ url }) => {
   const params = extractYoutubeVideoParameters(url);
   if (!params) {
     return null;

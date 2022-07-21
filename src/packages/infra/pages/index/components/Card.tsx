@@ -1,5 +1,5 @@
 import type { StyleProps } from '@/components';
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import dayjs from 'dayjs';
 import { memo } from 'react';
 import Date from '@/components/date/Date';
@@ -30,7 +30,7 @@ const defaultProps: StyleProps = {
   },
 };
 
-const Card: VFC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) =>
+const Card: FC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) =>
   <Flex className="article-card" {...defaultProps} {...props}>
     <Flex flexDir="row" display={['none', 'none', 'flex', 'flex']} flexGrow={1} p={3}>
       <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]} alignSelf="center"/>

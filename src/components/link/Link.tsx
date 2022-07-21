@@ -1,8 +1,8 @@
 import type { LinkProps } from 'next/link';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import NextLink from 'next/link';
 
-const Link: FC<LinkProps> = ({ children, ...props }) => {
+const Link: FC<PropsWithChildren<LinkProps>> = ({ children, ...props }) => {
   return <NextLink {...props}>
     <a>
       {children}
