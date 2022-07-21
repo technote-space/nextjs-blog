@@ -45,7 +45,11 @@ export class PostFactory implements IPostFactory {
         posts.push(...result.items);
       }
 
-      return posts.sort((a, b) => sortByUpdatedAt ? a.compareUpdatedAt(b) : a.compare(b));
+      if (sortByUpdatedAt) {
+        return posts.sort((a, b) => a.compareUpdatedAt(b));
+      }
+
+      return posts;
     }, 60 * 10);
   }
 
