@@ -96,6 +96,7 @@ type PostData = {
   link: string;
   post_type: string;
 };
+export type MaybeUndefined<T> = undefined extends T ? undefined : never;
 
 // FIXME: 1度読まないと Vercel で消える
 const path = process.cwd();
@@ -121,10 +122,14 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     );
   }
 
+  private static getBaseSiteUrl(data: WpXmlData): string {
+    return data.rss.channel[0].base_site_url[0];
+  }
+
   private static getPostName(baseSiteUrl: string, item: WpXmlPostItem): string {
     const customPermalink = item.postmeta?.find(meta => meta.meta_key[0] === 'custom_permalink')?.meta_value[0];
     return (customPermalink || item.post_name[0])
-      .replace(new RegExp(`^${pregQuote(`${baseSiteUrl.replace(/\/$/, '')}/`, '/')}`), '')
+      .replace(new RegExp(`^${pregQuote(`${baseSiteUrl.replace(/\/$/, '')}/`, '/')}`, 'g'), '')
       .replace('/', '-');
   }
 
@@ -152,7 +157,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       )
       .map(item => ({
         id: Number(item.post_id[0]),
-        post_name: WordPressExportPostRepository.getPostName(data.rss.channel[0].base_site_url[0], item),
+        post_name: WordPressExportPostRepository.getPostName(WordPressExportPostRepository.getBaseSiteUrl(data), item),
         post_date: item.post_date[0],
         post_title: item.title[0],
         post_content: item.encoded[0],
@@ -173,7 +178,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       return undefined;
     }
 
-    return data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._;
+    return WordPressExportPostRepository.removeBaseSiteUrl(data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._, data);
   }
 
   private getExcludedPosts(posts: PostData[], postType: string | undefined): PostData[] {
@@ -205,8 +210,12 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     )).sort((a, b) => a.compare(b)).slice(paginationParams.skip, paginationParams.skip + paginationParams.take);
   }
 
-  private static removeBaseSiteUrl(content: string, data: WpXmlData): string {
-    return content.replace(new RegExp(`${pregQuote(`${data.rss.channel[0].base_site_url[0].replace(/\/$/, '')}`, '/')}`, 'g'), '');
+  private static removeBaseSiteUrl<T extends string | undefined>(content: T, data: WpXmlData): string | MaybeUndefined<T> {
+    if (content === undefined) {
+      return undefined as MaybeUndefined<T>;
+    }
+
+    return content.replace(new RegExp(`${pregQuote(`${WordPressExportPostRepository.getBaseSiteUrl(data).replace(/\/$/, '')}`, '/')}`, 'g'), '');
   }
 
   public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
