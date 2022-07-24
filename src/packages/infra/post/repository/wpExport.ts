@@ -123,7 +123,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
   }
 
   private static getBaseSiteUrl(data: WpXmlData): string {
-    return data.rss.channel[0].base_site_url[0];
+    return data.rss.channel[0].base_site_url[0].replace(/\/$/, '');
   }
 
   private static getPostName(baseSiteUrl: string, item: WpXmlPostItem): string {
@@ -168,7 +168,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
           slug: item.$.nicename,
           name: item._,
         })),
-        link: WordPressExportPostRepository.removeBaseSiteUrl(item.link[0], data),
+        link: this.manageBaseSiteUrl(item.link[0], data),
         post_type: item.post_type[0],
       }));
   }
@@ -178,7 +178,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       return undefined;
     }
 
-    return WordPressExportPostRepository.removeBaseSiteUrl(data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._, data);
+    return this.manageBaseSiteUrl(data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._, data);
   }
 
   private getExcludedPosts(posts: PostData[], postType: string | undefined): PostData[] {
@@ -210,12 +210,19 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     )).sort((a, b) => a.compare(b)).slice(paginationParams.skip, paginationParams.skip + paginationParams.take);
   }
 
-  private static removeBaseSiteUrl<T extends string | undefined>(content: T, data: WpXmlData): string | MaybeUndefined<T> {
+  private manageBaseSiteUrl<T extends string | undefined>(content: T, data: WpXmlData): string | MaybeUndefined<T> {
     if (content === undefined) {
       return undefined as MaybeUndefined<T>;
     }
 
-    return content.replace(new RegExp(`${pregQuote(`${WordPressExportPostRepository.getBaseSiteUrl(data).replace(/\/$/, '')}`, '/')}`, 'g'), '');
+    const assetsSiteUrl = this.settings.wpExportXml?.assetsSiteUrl;
+    return content.replace(new RegExp(`(${pregQuote(WordPressExportPostRepository.getBaseSiteUrl(data), '/')})(/wp-content)?([\\w!?/+\\-_~=;.,*&@#$%()'\\[\\]]+)?`, 'g'), (match, p1, p2, p3) => {
+      if (assetsSiteUrl && p2) {
+        return `${assetsSiteUrl.replace(/\/$/, '')}${p3}`
+      }
+
+      return p3;
+    });
   }
 
   public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
@@ -226,7 +233,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }
 
     const isClassicEditor = !/<!-- wp:/.test(post.post_content);
-    const processedContent = WordPressExportPostRepository.removeBaseSiteUrl(await this.processContent(post.post_content, postType), data);
+    const processedContent = this.manageBaseSiteUrl(await this.processContent(post.post_content, postType), data);
     return PostDetail.reconstruct(
       id,
       Title.create(post.post_title),

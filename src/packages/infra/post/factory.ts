@@ -34,59 +34,62 @@ export class PostFactory implements IPostFactory {
   }
 
   public async all(postType: string | undefined, searchParams?: SearchParams, sortByUpdatedAt?: boolean): Promise<Post[]> {
-    const key = `PostFactory::all::${Post.ensurePostType(postType, this.settings)}::${searchParams?.tag}`;
-    return this.cache.getOrGenerate(key, async () => {
-      const result = await this.paginated({ page: 0 }, postType, searchParams);
-      const posts = result.items;
+    const result = await this.paginated({ page: 0 }, postType, searchParams);
+    const posts = result.items;
 
-      let page = 1;
-      while (page <= result.totalPage) {
-        const result = await this.paginated({ page: page++ }, postType, searchParams);
-        posts.push(...result.items);
-      }
+    let page = 1;
+    while (page <= result.totalPage) {
+      const result = await this.paginated({ page: page++ }, postType, searchParams);
+      posts.push(...result.items);
+    }
 
-      if (sortByUpdatedAt) {
-        return posts.sort((a, b) => a.compareUpdatedAt(b));
-      }
+    if (sortByUpdatedAt) {
+      return posts.sort((a, b) => a.compareUpdatedAt(b));
+    }
 
-      return posts;
-    }, 60 * 10);
+    return posts;
   }
 
   public async count(postType: string | undefined, searchParams?: SearchParams): Promise<number> {
-    return this.__sources.reduce(async (prev, source) => {
-      const acc = await prev;
-      return acc + await this.__postRepositories[source.value].count(postType, searchParams);
-    }, Promise.resolve(0));
+    const key = `PostFactory::count::${Post.ensurePostType(postType, this.settings)}::${searchParams?.tag}`;
+    return this.cache.getOrGenerate(key, async () => {
+      return this.__sources.reduce(async (prev, source) => {
+        const acc = await prev;
+        return acc + await this.__postRepositories[source.value].count(postType, searchParams);
+      }, Promise.resolve(0));
+    }, 60 * 10);
   }
 
   public async paginated(paginationParams: PaginationParams, postType: string | undefined, searchParams?: SearchParams): Promise<PaginatedResponse<Post>> {
-    const totalCount = await this.count(postType, searchParams);
-    const totalPage = Math.ceil(totalCount / this.settings.perPage);
-    const page = Math.min(totalPage - 1, paginationParams.page);
-    let skip = this.settings.perPage * page;
-    let take = this.settings.perPage;
+    const key = `PostFactory::paginated::${paginationParams.page}::${Post.ensurePostType(postType, this.settings)}::${searchParams?.tag}`;
+    return this.cache.getOrGenerate(key, async () => {
+      const totalCount = await this.count(postType, searchParams);
+      const totalPage = Math.ceil(totalCount / this.settings.perPage);
+      const page = Math.min(totalPage - 1, paginationParams.page);
+      let skip = this.settings.perPage * page;
+      let take = this.settings.perPage;
 
-    return {
-      totalPage,
-      page,
-      items: await this.__sources.reduce(async (prev, source) => {
-        const acc = await prev;
-        if (take <= 0) return acc;
+      return {
+        totalPage,
+        page,
+        items: await this.__sources.reduce(async (prev, source) => {
+          const acc = await prev;
+          if (take <= 0) return acc;
 
-        const count = await this.__postRepositories[source.value].count(postType, searchParams);
-        if (skip >= count) {
-          skip -= count;
-          return acc;
-        }
+          const count = await this.__postRepositories[source.value].count(postType, searchParams);
+          if (skip >= count) {
+            skip -= count;
+            return acc;
+          }
 
-        const posts = await this.__postRepositories[source.value].paginated({ skip, take }, postType, searchParams);
-        skip = 0;
-        take -= posts.length;
+          const posts = await this.__postRepositories[source.value].paginated({ skip, take }, postType, searchParams);
+          skip = 0;
+          take -= posts.length;
 
-        return acc.concat(posts);
-      }, Promise.resolve([] as Post[])),
-    };
+          return acc.concat(posts);
+        }, Promise.resolve([] as Post[])),
+      };
+    }, 60 * 10);
   }
 
   public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {

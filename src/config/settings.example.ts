@@ -87,6 +87,7 @@ export const settings: Settings = {
   wpExportXml: process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML ? {
     path: process.env.WP_EXPORT_XML,
     urlMaps: !!process.env.WP_EXPORT_XML_URL_MAPS,
+    assetsSiteUrl: process.env.WP_EXPORT_XML_ASSETS_SITE_URL,
   } : undefined,
   slack: {
     webhookUrl: process.env.SLACK_WEBHOOK_URL,
