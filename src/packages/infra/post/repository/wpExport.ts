@@ -96,6 +96,7 @@ type PostData = {
   link: string;
   post_type: string;
 };
+export type MaybeUndefined<T> = undefined extends T ? undefined : never;
 
 // FIXME: 1度読まないと Vercel で消える
 const path = process.cwd();
@@ -121,10 +122,14 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     );
   }
 
+  private static getBaseSiteUrl(data: WpXmlData): string {
+    return data.rss.channel[0].base_site_url[0].replace(/\/$/, '');
+  }
+
   private static getPostName(baseSiteUrl: string, item: WpXmlPostItem): string {
     const customPermalink = item.postmeta?.find(meta => meta.meta_key[0] === 'custom_permalink')?.meta_value[0];
     return (customPermalink || item.post_name[0])
-      .replace(new RegExp(`^${pregQuote(`${baseSiteUrl.replace(/\/$/, '')}/`, '/')}`), '')
+      .replace(new RegExp(`^${pregQuote(`${baseSiteUrl.replace(/\/$/, '')}/`, '/')}`, 'g'), '')
       .replace('/', '-');
   }
 
@@ -152,7 +157,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       )
       .map(item => ({
         id: Number(item.post_id[0]),
-        post_name: WordPressExportPostRepository.getPostName(data.rss.channel[0].base_site_url[0], item),
+        post_name: WordPressExportPostRepository.getPostName(WordPressExportPostRepository.getBaseSiteUrl(data), item),
         post_date: item.post_date[0],
         post_title: item.title[0],
         post_content: item.encoded[0],
@@ -163,7 +168,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
           slug: item.$.nicename,
           name: item._,
         })),
-        link: WordPressExportPostRepository.removeBaseSiteUrl(item.link[0], data),
+        link: this.manageBaseSiteUrl(item.link[0], data),
         post_type: item.post_type[0],
       }));
   }
@@ -173,7 +178,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       return undefined;
     }
 
-    return data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._;
+    return this.manageBaseSiteUrl(data.rss.channel[0].item.find(item => item.post_id[0] === thumbnailId)?.guid[0]._, data);
   }
 
   private getExcludedPosts(posts: PostData[], postType: string | undefined): PostData[] {
@@ -205,8 +210,19 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     )).sort((a, b) => a.compare(b)).slice(paginationParams.skip, paginationParams.skip + paginationParams.take);
   }
 
-  private static removeBaseSiteUrl(content: string, data: WpXmlData): string {
-    return content.replace(new RegExp(`${pregQuote(`${data.rss.channel[0].base_site_url[0].replace(/\/$/, '')}`, '/')}`, 'g'), '');
+  private manageBaseSiteUrl<T extends string | undefined>(content: T, data: WpXmlData): string | MaybeUndefined<T> {
+    if (content === undefined) {
+      return undefined as MaybeUndefined<T>;
+    }
+
+    const assetsSiteUrl = this.settings.wpExportXml?.assetsSiteUrl;
+    return content.replace(new RegExp(`(${pregQuote(WordPressExportPostRepository.getBaseSiteUrl(data), '/')})(/wp-content)?([\\w!?/+\\-_~=;.,*&@#$%()'\\[\\]]+)?`, 'g'), (match, p1, p2, p3) => {
+      if (assetsSiteUrl && p2) {
+        return `${assetsSiteUrl.replace(/\/$/, '')}${p3}`
+      }
+
+      return p3;
+    });
   }
 
   public async fetch(id: Id, postType: string | undefined): Promise<PostDetail> {
@@ -217,7 +233,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }
 
     const isClassicEditor = !/<!-- wp:/.test(post.post_content);
-    const processedContent = WordPressExportPostRepository.removeBaseSiteUrl(await this.processContent(post.post_content, postType), data);
+    const processedContent = this.manageBaseSiteUrl(await this.processContent(post.post_content, postType), data);
     return PostDetail.reconstruct(
       id,
       Title.create(post.post_title),
