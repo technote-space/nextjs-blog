@@ -64,7 +64,7 @@ export type Settings = {
   };
   wpExportXml?: {
     path: string;
-    urlMaps?: boolean;
+    urlMaps: boolean;
   };
   slack?: {
     webhookUrl?: string;

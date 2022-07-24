@@ -15,7 +15,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 module.exports = withBundleAnalyzer({
-  webpack5: true,
   reactStrictMode: true,
   trailingSlash: true,
   distDir: !process.env.VERCEL && process.env.NODE_ENV === 'production' ? 'build' : '.next',
