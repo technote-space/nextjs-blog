@@ -233,7 +233,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }
 
     const isClassicEditor = !/<!-- wp:/.test(post.post_content);
-    const processedContent = this.manageBaseSiteUrl(await this.processContent(post.post_content, postType), data);
+    const processedContent = this.manageBaseSiteUrl(await this.processContent(id, post.post_content, PostType.create(this.getPostType(postType))), data);
     return PostDetail.reconstruct(
       id,
       Title.create(post.post_title),

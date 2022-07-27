@@ -106,4 +106,7 @@ export const settings: Settings = {
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
   },
+  // oembed: {
+  //   getUrl: (encodedUrl: string, id: string, referrer: string): string | undefined => `https://example.com?url=${encodedUrl}?id=${id}&referrer=${referrer}`,
+  // },
 };

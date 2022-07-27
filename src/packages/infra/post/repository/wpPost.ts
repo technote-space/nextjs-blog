@@ -174,7 +174,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
     }
 
     const isClassicEditor = !/<!-- wp:/.test(results[0].post_content);
-    const processedContent = await this.processContent(results[0].post_content, postType);
+    const processedContent = await this.processContent(id, results[0].post_content, PostType.create(this.getPostType(postType)));
     return PostDetail.reconstruct(
       id,
       Title.create(results[0].post_title),

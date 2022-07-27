@@ -1,6 +1,7 @@
 // License MIT @zenn-dev/zenn-editor, Technote
 // @see https://github.com/zenn-dev/zenn-editor
 
+import type { Settings } from '$/domain/app/settings';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import type { ISlack } from '$/domain/shared/library/slack';
@@ -16,6 +17,7 @@ import {
   isYoutubeUrl,
   isValidHttpUrl,
 } from '@/lib/helpers/url';
+import { getRandomString } from '^/lib/helpers/random';
 import CodePen from './components/CodePen';
 import CodeSandbox from './components/CodeSandbox';
 import JsFiddle from './components/JsFiddle';
@@ -28,12 +30,13 @@ export class OembedService implements IOembedService {
   private static __cache: Record<string, string> = {};
 
   public constructor(
+    @inject('Settings') private settings: Settings,
     @inject('IColorService') private color: IColorService,
     @inject('ISlack') private slack: ISlack,
   ) {
   }
 
-  private static async __process(str: string): Promise<string> {
+  private async __process(str: string, referrer: string): Promise<string> {
     if (isJsfiddleUrl(str)) {
       return ReactDOMServer.renderToString(<JsFiddle url={str}/>);
     }
@@ -62,18 +65,25 @@ export class OembedService implements IOembedService {
     }
 
     if (isValidHttpUrl(str)) {
-      return `<div class="blog-card"><iframe src="/card/${encodeURIComponent(str)}" frameborder="0" scrolling="no" loading="lazy"></iframe></div>`;
+      const id = `blog-card-${getRandomString()}`;
+      const iframeUrl = this.settings.oembed?.getUrl ? this.settings.oembed.getUrl(encodeURIComponent(str), id, encodeURIComponent(referrer), str) : undefined;
+      if (iframeUrl) {
+        return `<div class="blog-card"><iframe src="${iframeUrl}" frameborder="0" scrolling="no" loading="lazy" data-id="${id}"></iframe></div>`;
+      }
+
+      return `<div><a href="${str}" target="_blank" rel="noreferrer noopener">${str}</a></div>`;
     }
 
     return str;
   }
 
   // TODO: Add test
-  public async process(str: string): Promise<string> {
-    if (!(str in OembedService.__cache)) {
-      OembedService.__cache[str] = await OembedService.__process(decodeUrlHtmlEntity(str));
+  public async process(str: string, referrer: string): Promise<string> {
+    const key = `${str}::${referrer}`;
+    if (!(key in OembedService.__cache)) {
+      OembedService.__cache[key] = await this.__process(decodeUrlHtmlEntity(str), referrer);
     }
 
-    return OembedService.__cache[str];
+    return OembedService.__cache[key];
   }
 }

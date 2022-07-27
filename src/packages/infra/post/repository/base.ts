@@ -8,11 +8,12 @@ import type { IOembedService } from '$/domain/post/service/oembed';
 import type { _PaginationParams } from '$/domain/post/service/pagination';
 import type { ITocService } from '$/domain/post/service/toc';
 import type Id from '$/domain/post/valueObject/id';
+import type PostType from '$/domain/post/valueObject/postType';
 import { Post } from '$/domain/post/entity/post';
 import DominantColor from '$/domain/post/valueObject/dominantColor';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import { replaceAll } from '@/lib/helpers/string';
-import { processExternalLinks, processLinksInCode, processOneLineLinks } from '@/lib/helpers/url';
+import { getAbsoluteUrl, processExternalLinks, processLinksInCode, processOneLineLinks } from '@/lib/helpers/url';
 
 export abstract class BasePostRepository implements IPostRepository {
   protected constructor(
@@ -56,27 +57,27 @@ export abstract class BasePostRepository implements IPostRepository {
     return Post.ensurePostType(postType, this.settings);
   }
 
-  protected getContentFilters(): Array<{ tag: string; filter: (content: string, postType: string | undefined) => Promise<string> }> {
+  protected getContentFilters(id: Id): Array<{ tag: string; filter: (content: string, postType: PostType) => Promise<string> }> {
     return [
       { tag: 'pre-replace', filter: async content => this.replace(content) },
       { tag: 'processLinksInCode', filter: async content => processLinksInCode(content) },
       {
         tag: 'processOneLineLinks',
-        filter: async content => processOneLineLinks(content, url => this.oembed.process(url)),
+        filter: async (content, postType) => processOneLineLinks(content, url => this.oembed.process(url, getAbsoluteUrl(Post.createUrl(id, postType), this.settings))),
       },
       { tag: 'processExternalLinks', filter: async content => processExternalLinks(content) },
       { tag: 'replace-h1', filter: async content => replaceAll(content, /(<\/?)h1([^>]*?>)/, '$1h2$2') },
       { tag: 'code', filter: async content => this.code.process(content) },
       {
         tag: 'toc',
-        filter: async (content, postType) => this.toc.process(content, !this.settings.toc?.postTypes || this.settings.toc.postTypes.includes(this.getPostType(postType)) ? this.settings.toc?.headings : []),
+        filter: async (content, postType) => this.toc.process(content, !this.settings.toc?.postTypes || this.settings.toc.postTypes.includes(postType.value) ? this.settings.toc?.headings : []),
       },
       { tag: 'replace', filter: async content => this.replace(content) },
     ];
   }
 
-  protected async processContent(content: string, postType: string | undefined): Promise<string> {
-    return this.getContentFilters().reduce(async (prev, { filter }) => {
+  protected async processContent(id: Id, content: string, postType: PostType): Promise<string> {
+    return this.getContentFilters(id).reduce(async (prev, { filter }) => {
       const acc = await prev;
       return await filter(acc, postType);
     }, Promise.resolve(content));

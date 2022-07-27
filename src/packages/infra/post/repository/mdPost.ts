@@ -197,7 +197,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
     return PostDetail.reconstruct(
       id,
       Title.create(post.title),
-      Content.create(await this.processContent(post.contentHtml, postType)),
+      Content.create(await this.processContent(id, post.contentHtml, PostType.create(this.getPostType(postType)))),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
       post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),

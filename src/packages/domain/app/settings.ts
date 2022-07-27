@@ -70,4 +70,7 @@ export type Settings = {
   slack?: {
     webhookUrl?: string;
   };
+  oembed?: {
+    getUrl?: (encodedUrl: string, id: string, referrer: string, url: string) => string | undefined;
+  };
 };
