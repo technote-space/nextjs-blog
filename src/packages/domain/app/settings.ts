@@ -69,6 +69,6 @@ export type Settings = {
     assetsSiteUrl?: string;
   };
   oembed?: {
-    getUrl?: (encodedUrl: string, id: string, referrer: string, url: string) => string | undefined;
+    blogCardUrlPattern?: string;
   };
 };

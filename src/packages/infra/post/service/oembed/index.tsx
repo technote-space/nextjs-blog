@@ -6,7 +6,7 @@ import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
 import ReactDOMServer from 'react-dom/server';
 import { singleton, inject } from 'tsyringe';
-import { decodeUrlHtmlEntity } from '@/lib/helpers/string';
+import { decodeUrlHtmlEntity, replaceAll } from '@/lib/helpers/string';
 import {
   isJsfiddleUrl,
   isCodepenUrl,
@@ -63,9 +63,14 @@ export class OembedService implements IOembedService {
     }
 
     if (isValidHttpUrl(str)) {
-      const id = `blog-card-${getRandomString()}`;
-      const iframeUrl = this.settings.oembed?.getUrl ? this.settings.oembed.getUrl(encodeURIComponent(str), id, encodeURIComponent(referrer), str) : undefined;
-      if (iframeUrl) {
+      const blogCardUrlPattern = this.settings.oembed?.blogCardUrlPattern;
+      if (blogCardUrlPattern) {
+        const id = `blog-card-${getRandomString()}`;
+        const iframeUrl = [
+          { from: '${encodedUrl}', to: encodeURIComponent(str) },
+          { from: '${id}', to: id },
+          { from: '${referrer}', to: encodeURIComponent(referrer) },
+        ].reduce((acc, setting) => replaceAll(acc, setting.from, setting.to), blogCardUrlPattern);
         return `<div class="blog-card"><iframe src="${iframeUrl}" frameborder="0" scrolling="no" loading="lazy" data-id="${id}"></iframe></div>`;
       }
 
