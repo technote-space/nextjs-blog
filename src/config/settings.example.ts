@@ -89,9 +89,6 @@ export const settings: Settings = {
     urlMaps: !!process.env.WP_EXPORT_XML_URL_MAPS,
     assetsSiteUrl: process.env.WP_EXPORT_XML_ASSETS_SITE_URL,
   } : undefined,
-  slack: {
-    webhookUrl: process.env.SLACK_WEBHOOK_URL,
-  },
   siteUrl: (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : undefined) || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,

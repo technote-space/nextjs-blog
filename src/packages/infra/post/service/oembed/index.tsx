@@ -4,7 +4,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IColorService } from '$/domain/post/service/color';
 import type { IOembedService } from '$/domain/post/service/oembed';
-import type { ISlack } from '$/domain/shared/library/slack';
 import ReactDOMServer from 'react-dom/server';
 import { singleton, inject } from 'tsyringe';
 import { decodeUrlHtmlEntity } from '@/lib/helpers/string';
@@ -32,7 +31,6 @@ export class OembedService implements IOembedService {
   public constructor(
     @inject('Settings') private settings: Settings,
     @inject('IColorService') private color: IColorService,
-    @inject('ISlack') private slack: ISlack,
   ) {
   }
 

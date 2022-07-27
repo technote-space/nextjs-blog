@@ -67,9 +67,6 @@ export type Settings = {
     urlMaps: boolean;
     assetsSiteUrl?: string;
   };
-  slack?: {
-    webhookUrl?: string;
-  };
   oembed?: {
     getUrl?: (encodedUrl: string, id: string, referrer: string, url: string) => string | undefined;
   };

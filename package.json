@@ -30,7 +30,6 @@
     "@emotion/styled": "11.6.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/bundle-analyzer": "^12.2.3",
-    "@slack/webhook": "^6.1.0",
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.4",
@@ -61,7 +60,6 @@
     "sharp": "^0.30.7",
     "simple-react-lightbox": "^3.6.9-0",
     "tsyringe": "^4.7.0",
-    "url-metadata": "^2.5.0",
     "validator": "^13.7.0",
     "xml2js": "^0.4.23"
   },

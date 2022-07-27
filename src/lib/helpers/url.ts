@@ -102,15 +102,6 @@ const processExternalLinksWith = (
 ): string => extractor(text).reduce(processExternalLink, text);
 export const processExternalLinks = (text: string): string => processExternalLinksWith(text, extractExternalLinks);
 
-export const getDomainName = (url: string): string => {
-  return new URL(url).hostname;
-};
-
-export const getSiteUrl = (url: string): string => {
-  const urlInstance = new URL(url);
-  return `${urlInstance.protocol}//${urlInstance.username ? `${urlInstance.username}${urlInstance.password ? `:${urlInstance.password}` : ''}@` : ''}${urlInstance.host}`;
-};
-
 export const getAbsoluteUrl = (url: string, settings: { siteUrl: string }): string => {
   if (/^https?/.test(url)) {
     return url;
