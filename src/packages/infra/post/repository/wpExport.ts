@@ -218,7 +218,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     const assetsSiteUrl = this.settings.wpExportXml?.assetsSiteUrl;
     return content.replace(new RegExp(`(${pregQuote(WordPressExportPostRepository.getBaseSiteUrl(data), '/')})(/wp-content)?([\\w!?/+\\-_~=;.,*&@#$%()'\\[\\]]+)?`, 'g'), (match, p1, p2, p3) => {
       if (assetsSiteUrl && p2) {
-        return `${assetsSiteUrl.replace(/\/$/, '')}${p3}`
+        return `${assetsSiteUrl.replace(/\/$/, '')}${p3}`;
       }
 
       return p3;

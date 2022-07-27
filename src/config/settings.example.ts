@@ -11,8 +11,14 @@ export const postSources: Record<string, string> = {
   // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
   ...(process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML && targetSources.includes('wpxml') ? { 'wpxml': process.env.WP_XML_SOURCE } : {}),
 };
+const derivedSources = {
+  ...('markdown' in postSources ? { [process.env.MD_SOURCE!]: (process.env.MD_SOURCE_DERIVED_SOURCES ?? '').split(',') } : {}),
+  ...('wpdb' in postSources ? { [process.env.WP_DB_SOURCE!]: (process.env.WP_DB_DERIVED_SOURCES ?? '').split(',') } : {}),
+  ...('wpxml' in postSources ? { [process.env.WP_XML_SOURCE!]: (process.env.WP_XML_DERIVED_SOURCES ?? '').split(',') } : {}),
+};
 export const settings: Settings = {
   targetSources,
+  derivedSources,
   // 本文内で置換
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
