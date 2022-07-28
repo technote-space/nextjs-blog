@@ -1,5 +1,6 @@
 import type { Settings } from '$/domain/app/settings';
 import type { Props, Params, IPostPageProps } from '$/domain/pages/post';
+import type { PostDetail } from '$/domain/post/entity/postDetail';
 import type { IPostFactory } from '$/domain/post/factory';
 import type { GetStaticPathsResult, GetStaticPropsResult } from 'next';
 import { singleton, inject } from 'tsyringe';
@@ -7,6 +8,7 @@ import { fromEntity as fromPostEntity } from '$/domain/post/dto/post';
 import { fromEntity as fromPostDetailEntity } from '$/domain/post/dto/postDetail';
 import { Post } from '$/domain/post/entity/post';
 import Id from '$/domain/post/valueObject/id';
+import Source from '$/domain/post/valueObject/source';
 import NotFoundException from '$/domain/shared/exceptions/notFound';
 
 @singleton()
@@ -26,9 +28,16 @@ export class PostPageProps implements IPostPageProps {
     }
 
     return {
-      paths: (await this.postFactory.all(postType)).map(post => ({
-        params: { id: post.getId().value },
-      })),
+      paths: (await this.postFactory.all(postType)).flatMap(post => {
+        const sources = [...new Set([
+          post.getId().source.value,
+          ...(this.settings.derivedSources && this.settings.derivedSources[post.getId().source.value] ? this.settings.derivedSources[post.getId().source.value] : []),
+        ])];
+
+        return sources.map(source => ({
+          params: { id: Id.create({ source: Source.create(source), id: post.getId().postId }).value },
+        }));
+      }),
       fallback: false,
     };
   }
@@ -40,9 +49,23 @@ export class PostPageProps implements IPostPageProps {
       };
     }
 
+    const id = Id.create(params.id);
+    const sources = [...new Set([
+      id.source.value,
+      ...(this.settings.derivedSources ? Object.keys(this.settings.derivedSources).filter(key => this.settings.derivedSources![key].includes(id.source.value)) : []),
+    ])];
+    const fetch = async (id: Id, index = 0): Promise<PostDetail> => {
+      try {
+        const _id = Id.create({ source: Source.create(sources[index]), id: id.postId });
+        return await this.postFactory.fetch(_id, postType);
+      } catch (e) {
+        if (index < sources.length - 1) return await fetch(id, index + 1);
+        throw e;
+      }
+    };
+
     try {
-      const id = Id.create(params.id);
-      const post = await this.postFactory.fetch(Id.create(params.id), postType);
+      const post = await fetch(id);
       const all = Post.isDefaultPostType(postType, this.settings) ? await this.postFactory.all(postType) : [];
       const index = all.findIndex(post => post.getId().equals(id));
       return {

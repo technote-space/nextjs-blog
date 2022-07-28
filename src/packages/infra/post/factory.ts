@@ -38,7 +38,7 @@ export class PostFactory implements IPostFactory {
     const posts = result.items;
 
     let page = 1;
-    while (page <= result.totalPage) {
+    while (page < result.totalPage) {
       const result = await this.paginated({ page: page++ }, postType, searchParams);
       posts.push(...result.items);
     }

@@ -1,3 +1,3 @@
 export interface IOembedService {
-  process(str: string): Promise<string>;
+  process(str: string, referrer: string): Promise<string>;
 }

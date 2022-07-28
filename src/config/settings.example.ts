@@ -11,8 +11,14 @@ export const postSources: Record<string, string> = {
   // WordPress の エクスポート機能で出力されたXMLファイルで記事作成
   ...(process.env.WP_XML_SOURCE && process.env.WP_EXPORT_XML && targetSources.includes('wpxml') ? { 'wpxml': process.env.WP_XML_SOURCE } : {}),
 };
+const derivedSources = {
+  ...('markdown' in postSources ? { [process.env.MD_SOURCE!]: (process.env.MD_SOURCE_DERIVED_SOURCES ?? '').split(',').filter(s => s) } : {}),
+  ...('wpdb' in postSources ? { [process.env.WP_DB_SOURCE!]: (process.env.WP_DB_DERIVED_SOURCES ?? '').split(',').filter(s => s) } : {}),
+  ...('wpxml' in postSources ? { [process.env.WP_XML_SOURCE!]: (process.env.WP_XML_DERIVED_SOURCES ?? '').split(',').filter(s => s) } : {}),
+};
 export const settings: Settings = {
   targetSources,
+  derivedSources,
   // 本文内で置換
   // WordPressで使用していたショートコードなどはここで置換処理を記述
   replace: [
@@ -89,9 +95,6 @@ export const settings: Settings = {
     urlMaps: !!process.env.WP_EXPORT_XML_URL_MAPS,
     assetsSiteUrl: process.env.WP_EXPORT_XML_ASSETS_SITE_URL,
   } : undefined,
-  slack: {
-    webhookUrl: process.env.SLACK_WEBHOOK_URL,
-  },
   siteUrl: (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : undefined) || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
@@ -105,5 +108,8 @@ export const settings: Settings = {
     description: process.env.NEXT_PUBLIC_BLOG_DESCRIPTION || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_MESSAGE || 'Hello World!',
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
+  },
+  oembed: {
+    blogCardUrlPattern: process.env.BLOG_CARD_URL_PATTERN,
   },
 };

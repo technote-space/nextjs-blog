@@ -218,7 +218,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     const assetsSiteUrl = this.settings.wpExportXml?.assetsSiteUrl;
     return content.replace(new RegExp(`(${pregQuote(WordPressExportPostRepository.getBaseSiteUrl(data), '/')})(/wp-content)?([\\w!?/+\\-_~=;.,*&@#$%()'\\[\\]]+)?`, 'g'), (match, p1, p2, p3) => {
       if (assetsSiteUrl && p2) {
-        return `${assetsSiteUrl.replace(/\/$/, '')}${p3}`
+        return `${assetsSiteUrl.replace(/\/$/, '')}${p3}`;
       }
 
       return p3;
@@ -233,7 +233,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
     }
 
     const isClassicEditor = !/<!-- wp:/.test(post.post_content);
-    const processedContent = this.manageBaseSiteUrl(await this.processContent(post.post_content, postType), data);
+    const processedContent = this.manageBaseSiteUrl(await this.processContent(id, post.post_content, PostType.create(this.getPostType(postType))), data);
     return PostDetail.reconstruct(
       id,
       Title.create(post.post_title),

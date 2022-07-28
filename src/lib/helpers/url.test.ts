@@ -10,8 +10,6 @@ import {
   processLinksInCode,
   processOneLineLinks,
   processExternalLinks,
-  getDomainName,
-  getSiteUrl,
   getAbsoluteUrl,
 } from './url';
 
@@ -160,21 +158,6 @@ describe('processExternalLinks', () => {
     expect(processExternalLinks('<a href="https://example.com" target="_blank" rel="">test</a>')).toBe('<a href="https://example.com" rel="noreferrer noopener" target="_blank">test</a>');
     expect(processExternalLinks('<a href="https://example.com" target="_blank" rel="noreferrer">test</a>')).toBe('<a href="https://example.com" rel="noreferrer noopener" target="_blank">test</a>');
     expect(processExternalLinks('<a href="https://example.com" target="_blank" rel="noopener">test</a>')).toBe('<a href="https://example.com" rel="noreferrer noopener" target="_blank">test</a>');
-  });
-});
-
-describe('getDomainName', () => {
-  it('should return hostname', () => {
-    expect(getDomainName('https://example.com/test/123?test=456')).toBe('example.com');
-  });
-});
-
-describe('getSiteUrl', () => {
-  it('should get site url', () => {
-    expect(getSiteUrl('https://example.com')).toBe('https://example.com');
-    expect(getSiteUrl('https://example.com/test')).toBe('https://example.com');
-    expect(getSiteUrl('https://user@example.com')).toBe('https://user@example.com');
-    expect(getSiteUrl('https://user:password@example.com')).toBe('https://user:password@example.com');
   });
 });
 
