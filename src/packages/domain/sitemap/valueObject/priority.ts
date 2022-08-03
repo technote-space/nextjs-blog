@@ -1,7 +1,11 @@
-import Float from '$/domain/shared/valueObject/float';
+import Float from '@technote-space/vo-entity-ts/dist/valueObject/float';
 
 export default class Priority extends Float {
-  public getName(): string {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return '優先度';
   }
 

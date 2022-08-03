@@ -1,7 +1,11 @@
-import StringId from '$/domain/shared/valueObject/stringId';
+import StringId from '@technote-space/vo-entity-ts/dist/valueObject/stringId';
 
 export default class Slug extends StringId {
-  public getName(): string {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return 'Slug';
   }
 }

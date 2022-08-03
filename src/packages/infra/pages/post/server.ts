@@ -30,12 +30,12 @@ export class PostPageProps implements IPostPageProps {
     return {
       paths: (await this.postFactory.all(postType)).flatMap(post => {
         const sources = [...new Set([
-          post.getId().source.value,
-          ...(this.settings.derivedSources && this.settings.derivedSources[post.getId().source.value] ? this.settings.derivedSources[post.getId().source.value] : []),
+          post.id.source.value,
+          ...(this.settings.derivedSources && this.settings.derivedSources[post.id.source.value] ? this.settings.derivedSources[post.id.source.value] : []),
         ])];
 
         return sources.map(source => ({
-          params: { id: Id.create({ source: Source.create(source), id: post.getId().postId }).value },
+          params: { id: Id.create({ source: Source.create(source), id: post.id.postId }).value },
         }));
       }),
       fallback: false,
@@ -67,7 +67,7 @@ export class PostPageProps implements IPostPageProps {
     try {
       const post = await fetch(id);
       const all = Post.isDefaultPostType(postType, this.settings) ? await this.postFactory.all(postType) : [];
-      const index = all.findIndex(post => post.getId().equals(id));
+      const index = all.findIndex(post => post.id.equals(id));
       return {
         props: {
           post: fromPostDetailEntity(post),

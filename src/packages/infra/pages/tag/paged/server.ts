@@ -26,10 +26,10 @@ export class TagPagedPageProps implements ITagPagedPageProps {
     return {
       paths: await (await this.postFactory.tags(postType)).reduce(async (prev, tag) => {
         const acc = await prev;
-        const totalCount = await this.postFactory.count(postType, { tag: tag.getSlug().value });
+        const totalCount = await this.postFactory.count(postType, { tag: tag.slug.value });
         const totalPage = Math.ceil(totalCount / this.settings.perPage);
         return acc.concat([...Array(totalPage).keys()].map(page => ({
-          params: { tag: tag.getSlug().value, page: String(page + 1) },
+          params: { tag: tag.slug.value, page: String(page + 1) },
         })));
       }, Promise.resolve([] as { params: { tag: string; page: string } }[])),
       fallback: false,
@@ -37,7 +37,7 @@ export class TagPagedPageProps implements ITagPagedPageProps {
   }
 
   public async getStaticProps(postType: string | undefined, params?: Params): Promise<GetStaticPropsResult<Props>> {
-    const tag = params?.tag ? (await this.postFactory.tags(postType)).find(tag => tag.getSlug().value === params.tag) : undefined;
+    const tag = params?.tag ? (await this.postFactory.tags(postType)).find(tag => tag.slug.value === params.tag) : undefined;
     if (!tag) {
       return {
         notFound: true,

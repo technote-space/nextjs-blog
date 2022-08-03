@@ -1,5 +1,6 @@
+import type { ValidationError } from '@technote-space/vo-entity-ts/dist/valueObject';
+import valueObject from '@technote-space/vo-entity-ts/dist/valueObject';
 import Source from '$/domain/post/valueObject/source';
-import Base from '$/domain/shared/valueObject/base';
 
 export type IdProps = string | {
   source: Source;
@@ -10,8 +11,12 @@ type IdPropsInner = {
   id: string;
 }
 
-export default class Id extends Base<IdProps, string, IdPropsInner>() {
-  public getName(): string {
+export default class Id extends valueObject<IdProps, string, IdPropsInner> {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return '記事ID';
   }
 
@@ -35,11 +40,11 @@ export default class Id extends Base<IdProps, string, IdPropsInner>() {
     return `${this.inner.source.value}-${this.inner.id}`;
   }
 
-  public validate(): string[] | undefined {
+  public getErrors(name: string): ValidationError[] | undefined {
     if (typeof this.input === 'string') {
       const split = this.input.split('-');
       if (split.length < 2) {
-        return ['記事IDの形式が正しくありません'];
+        return [{ name, error: '記事IDの形式が正しくありません' }];
       }
     }
 

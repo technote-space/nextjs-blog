@@ -1,7 +1,11 @@
-import Text from '$/domain/shared/valueObject/text';
+import Text from '@technote-space/vo-entity-ts/dist/valueObject/text';
 
 export default class Content extends Text {
-  public getName(): string {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return '内容';
   }
 

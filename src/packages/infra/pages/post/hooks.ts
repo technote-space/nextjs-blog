@@ -20,9 +20,9 @@ export const useHooks = ({
       headerPages,
       footerPages,
       seo: {
-        title: entity.getTitle().value,
-        description: entity.getExcerpt().value,
-        image: entity.getThumbnail()?.value,
+        title: entity.title.value,
+        description: entity.excerpt.value,
+        image: entity.thumbnail?.value,
         canonical: entity.getUrl(),
       },
     },
@@ -30,7 +30,7 @@ export const useHooks = ({
       post: entity,
       prev: prev ? toPostEntity(prev) : undefined,
       next: next ? toPostEntity(next) : undefined,
-      hideDate: (settings.postType?.hideDate ?? []).includes(entity.getPostType().value),
+      hideDate: (settings.postType?.hideDate ?? []).includes(entity.postType.value),
       darkModeClass,
     },
   };

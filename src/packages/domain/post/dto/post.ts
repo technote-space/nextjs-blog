@@ -18,13 +18,13 @@ export type PostDTO = {
 }
 
 export const fromEntity = (post: Post): PostDTO => ({
-  id: post.getId().value,
-  title: post.getTitle().value,
-  excerpt: post.getExcerpt().value,
-  postType: post.getPostType().value,
-  thumbnail: post.getThumbnail()?.value ?? null,
-  createdAt: post.getCreatedAt().value.toISOString(),
-  updatedAt: post.getUpdatedAt()?.value.toISOString() ?? null,
+  id: post.id.value,
+  title: post.title.value,
+  excerpt: post.excerpt.value,
+  postType: post.postType.value,
+  thumbnail: post.thumbnail?.value ?? null,
+  createdAt: post.createdAt.value.toISOString(),
+  updatedAt: post.updatedAt?.value.toISOString() ?? null,
 });
 
 export const toEntity = (post: PostDTO): Post => Post.reconstruct(

@@ -19,13 +19,13 @@ const View: FC<HooksParams['viewProps']> = ({ posts, currentPage, totalCount, to
   />}
   <List>
     {posts.map((post) => (
-      <ListItem key={post.getId().value}>
-        <Link href={pagesPath.posts._id(post.getId().value).$url()}>
+      <ListItem key={post.id.value}>
+        <Link href={pagesPath.posts._id(post.id.value).$url()}>
           <Card
-            thumbnail={post.getThumbnail()?.value}
-            title={post.getTitle().value}
-            excerpt={post.getExcerpt().value}
-            createdAt={post.getCreatedAt().value}
+            thumbnail={post.thumbnail?.value}
+            title={post.title.value}
+            excerpt={post.excerpt.value}
+            createdAt={post.createdAt.value}
             my={4}
           />
         </Link>

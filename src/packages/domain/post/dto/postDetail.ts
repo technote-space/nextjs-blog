@@ -21,16 +21,16 @@ export type PostDetailDTO = PostDTO & {
 
 export const fromEntity = (post: PostDetail): PostDetailDTO => {
   return {
-    id: post.getId().value,
-    title: post.getTitle().value,
-    content: post.getContent().value,
-    excerpt: post.getExcerpt().value,
-    postType: post.getPostType().value,
-    tags: post.getTags().map(tag => ({ slug: tag.getSlug().value, name: tag.getDisplayValue() })),
-    thumbnail: post.getThumbnail()?.value ?? null,
-    dominantColor: post.getDominantColor()?.value ?? null,
-    createdAt: post.getCreatedAt().value.toISOString(),
-    updatedAt: post.getUpdatedAt()?.value.toISOString() ?? null,
+    id: post.id.value,
+    title: post.title.value,
+    content: post.content.value,
+    excerpt: post.excerpt.value,
+    postType: post.postType.value,
+    tags: post.tags.map(tag => ({ slug: tag.slug.value, name: tag.getDisplayValue() })),
+    thumbnail: post.thumbnail?.value ?? null,
+    dominantColor: post.dominantColor?.value ?? null,
+    createdAt: post.createdAt.value.toISOString(),
+    updatedAt: post.updatedAt?.value.toISOString() ?? null,
   };
 };
 

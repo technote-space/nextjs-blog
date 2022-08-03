@@ -3557,6 +3557,14 @@
   dependencies:
     tslib "^2.4.0"
 
+"@technote-space/vo-entity-ts@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@technote-space/vo-entity-ts/-/vo-entity-ts-0.6.0.tgz#07403cffac6357dc4c0c88cd695c8ea4ec8664e1"
+  integrity sha512-X4oNrzBIEQeVjcJrn4U1g59OWeCGY54mOScK+5Irc3y1SbYP1ia69WtwC6mWeWaTWNwlOHbYkv/bY0Rfh/1sJw==
+  dependencies:
+    dayjs "^1.11.4"
+    validator "^13.7.0"
+
 "@testing-library/dom@^8.5.0":
   version "8.16.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.16.0.tgz#d6fc50250aed17b1035ca1bd64655e342db3936a"

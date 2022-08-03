@@ -1,8 +1,12 @@
+import StringId from '@technote-space/vo-entity-ts/dist/valueObject/stringId';
 import pluralize from 'pluralize';
-import StringId from '$/domain/shared/valueObject/stringId';
 
 export default class PostType extends StringId {
-  public getName(): string {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return '投稿タイプ';
   }
 

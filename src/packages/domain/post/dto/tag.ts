@@ -8,8 +8,8 @@ export type TagDTO = {
 }
 
 export const fromEntity = (tag: Tag): TagDTO => ({
-  slug: tag.getSlug().value,
-  name: tag.getName()?.value ?? null,
+  slug: tag.slug.value,
+  name: tag.name?.value ?? null,
 });
 
 export const toEntity = (tag: TagDTO): Tag => Tag.reconstruct(

@@ -30,6 +30,7 @@
     "@emotion/styled": "11.6.0",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@next/bundle-analyzer": "^12.2.3",
+    "@technote-space/vo-entity-ts": "^0.6.0",
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.4",
