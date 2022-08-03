@@ -2,7 +2,7 @@ import type { HooksParams } from '$/infra/app/head/hooks';
 import type { FC } from 'react';
 import NextHead from 'next/head';
 
-const View: FC<HooksParams> = ({ title, description, image, url, type, twitter }) => <NextHead>
+const View: FC<HooksParams> = ({ title, description, image, url, type, twitter, noindex }) => <NextHead>
   <meta name="viewport" content="initial-scale=1, width=device-width"/>
   <link rel="icon" href="/favicon.ico"/>
   <title>{title}</title>
@@ -21,6 +21,7 @@ const View: FC<HooksParams> = ({ title, description, image, url, type, twitter }
   <meta property="og:description" content={description}/>
   <meta property="og:image" content={image}/>
   <meta property="og:ttl" content="604800"/>
+  {noindex && <meta name="robots" content="noindex"/>}
 </NextHead>;
 
 View.displayName = 'HeadView';

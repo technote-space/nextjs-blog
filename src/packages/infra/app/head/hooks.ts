@@ -18,6 +18,7 @@ export const useHooks = (props: Props, settings: Settings) => {
   const url = getUrl(props, settings);
   const type = props.title ? 'article' : 'website';
   const twitter = settings.seo.twitter ? `@${settings.seo.twitter.replace(/^@/, '')}` : undefined;
+  const noindex = settings.seo.noindex;
 
   return {
     title,
@@ -26,6 +27,7 @@ export const useHooks = (props: Props, settings: Settings) => {
     url,
     type,
     twitter,
+    noindex,
   };
 };
 export type HooksParams = ReturnType<typeof useHooks>;

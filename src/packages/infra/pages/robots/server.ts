@@ -1,7 +1,7 @@
 import type { Settings } from '$/domain/app/settings';
 import type { IRobotsPageProps } from '$/domain/pages/robots';
 import type { GetStaticPropsResult } from 'next';
-import fs from 'fs'
+import fs from 'fs';
 import { singleton, inject } from 'tsyringe';
 
 @singleton()
@@ -13,7 +13,10 @@ export class RobotsPageProps implements IRobotsPageProps {
 
   // eslint-disable-next-line @typescript-eslint/ban-types
   public async getStaticProps(): Promise<GetStaticPropsResult<{}>> {
-    const robotsTxt = `# *
+    const robotsTxt = this.settings.seo.noindex ? `# *
+User-agent: *
+Disallow: /
+` : `# *
 User-agent: *
 Allow: /
 
@@ -25,6 +28,6 @@ Sitemap: ${this.settings.siteUrl.replace(/\/$/, '')}/sitemap.xml
 `;
     fs.writeFileSync('public/robots.txt', robotsTxt);
 
-    return { props: {} }
+    return { props: {} };
   }
 }
