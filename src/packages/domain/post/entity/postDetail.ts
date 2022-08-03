@@ -18,8 +18,8 @@ export class PostDetail extends Entity {
     public readonly content: Content,
     public readonly excerpt: Excerpt,
     public readonly postType: PostType,
-    public readonly thumbnail: Thumbnail | undefined,
     public readonly tags: Tag[],
+    public readonly thumbnail: Thumbnail | undefined,
     public readonly dominantColor: DominantColor | undefined,
     public readonly createdAt: CreatedAt,
     public readonly updatedAt: UpdatedAt | undefined,
@@ -43,7 +43,7 @@ export class PostDetail extends Entity {
     createdAt: CreatedAt,
     updatedAt?: UpdatedAt,
   ): PostDetail {
-    return PostDetail.reconstruct(id, title, content, excerpt, postType, tags, thumbnail, dominantColor, createdAt, updatedAt);
+    return PostDetail._reconstruct(id, title, content, excerpt, postType, tags, thumbnail, dominantColor, createdAt, updatedAt);
   }
 
   public compare(other: this): number {
