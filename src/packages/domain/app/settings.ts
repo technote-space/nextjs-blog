@@ -26,6 +26,7 @@ type SEO = {
   description: string;
   blogImage?: string;
   twitter?: string;
+  noindex: boolean;
 };
 export type Settings = {
   targetSources: string[];

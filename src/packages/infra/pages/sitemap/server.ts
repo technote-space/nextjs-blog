@@ -17,11 +17,12 @@ export class SitemapPageProps implements ISitemapPageProps {
   // eslint-disable-next-line @typescript-eslint/ban-types
   public async getStaticProps(): Promise<GetStaticPropsResult<{}>> {
     const sitemapXml = new SitemapBuilder().buildSitemapXml((await this.sitemap.getFields()).map(field => ({
-      loc: field.getLoc().value,
-      lastmod: field.getLastMod()?.value.format('YYYY-MM-DD'),
-      changefreq: field.getChangefreq()?.value,
-      priority: field.getPriority()?.value,
+      loc: field.loc.value,
+      lastmod: field.lastmod?.value.format('YYYY-MM-DD'),
+      changefreq: field.changefreq?.value,
+      priority: field.priority?.value,
     })));
+    console.log(fs.readdirSync('.'));
     fs.writeFileSync('public/sitemap.xml', sitemapXml);
 
     return { props: {} };

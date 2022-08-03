@@ -5,19 +5,19 @@ import dynamic from 'next/dynamic';
 const Article = dynamic(() => import('$/infra/pages/post/components/Article'));
 
 const View: FC<HooksParams['viewProps']> = ({ post, hideDate, prev, next, darkModeClass }) => <Article
-  id={post.getId().value}
-  thumbnail={post.getThumbnail()?.value}
-  backgroundColor={post.getDominantColor()?.value}
-  title={post.getTitle().value}
-  createdAt={post.getCreatedAt().value}
-  content={post.getContent().value}
+  id={post.id.value}
+  thumbnail={post.thumbnail?.value}
+  backgroundColor={post.dominantColor?.value}
+  title={post.title.value}
+  createdAt={post.createdAt.value}
+  content={post.content.value}
   hideDate={hideDate}
-  tags={post.getTags().map(tag => ({ slug: tag.getSlug().value, name: tag.getDisplayValue() }))}
-  prevTitle={prev?.getTitle().value}
-  prevThumbnail={prev?.getThumbnail()?.value}
+  tags={post.tags.map(tag => ({ slug: tag.slug.value, name: tag.getDisplayValue() }))}
+  prevTitle={prev?.title.value}
+  prevThumbnail={prev?.thumbnail?.value}
   prevUrl={prev?.getUrl()}
-  nextTitle={next?.getTitle().value}
-  nextThumbnail={next?.getThumbnail()?.value}
+  nextTitle={next?.title.value}
+  nextThumbnail={next?.thumbnail?.value}
   nextUrl={next?.getUrl()}
   darkModeClass={darkModeClass}
 />;

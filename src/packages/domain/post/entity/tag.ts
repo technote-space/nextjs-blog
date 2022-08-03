@@ -1,25 +1,21 @@
+import Entity from '@technote-space/vo-entity-ts/dist/entity';
 import Name from '$/domain/post/valueObject/name';
 import Slug from '$/domain/post/valueObject/slug';
-import Base from '$/domain/shared/entity/base';
 
-export class Tag extends Base {
-  private slug!: Slug;
-  private name?: Name;
+export class Tag extends Entity {
+  public constructor(
+    public readonly slug: Slug,
+    public readonly name?: Name,
+  ) {
+    super();
+  }
+
+  public equals(other: Tag): boolean {
+    return this.slug.equals(other.slug);
+  }
 
   public static reconstruct(slug: Slug, name?: Name): Tag {
-    const instance = new this();
-    instance.slug = slug;
-    instance.name = name;
-
-    return instance;
-  }
-
-  public getSlug(): Slug {
-    return this.slug;
-  }
-
-  public getName(): Name | undefined {
-    return this.name;
+    return Tag._reconstruct(slug, name);
   }
 
   public getDisplayValue(): string {

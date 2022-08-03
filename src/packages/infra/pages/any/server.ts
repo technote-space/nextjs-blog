@@ -36,7 +36,7 @@ export class AnyPageProps implements IAnyPageProps {
       };
     }
 
-    const ids = Object.assign({}, ...(await this.postFactory.all(undefined)).map(post => ({ [post.getId().value]: true })));
+    const ids = Object.assign({}, ...(await this.postFactory.all(undefined)).map(post => ({ [post.id.value]: true })));
     return {
       paths: (await this.getUrlMaps())
         .map(urlMap => ({

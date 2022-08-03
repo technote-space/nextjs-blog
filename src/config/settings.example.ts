@@ -108,6 +108,7 @@ export const settings: Settings = {
     description: process.env.NEXT_PUBLIC_BLOG_DESCRIPTION || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_MESSAGE || 'Hello World!',
     blogImage: process.env.NEXT_PUBLIC_BLOG_IMAGE,
     twitter: process.env.NEXT_PUBLIC_TWITTER_ID,
+    noindex: !!process.env.NEXT_PUBLIC_NOINDEX,
   },
   oembed: {
     blogCardUrlPattern: process.env.BLOG_CARD_URL_PATTERN,

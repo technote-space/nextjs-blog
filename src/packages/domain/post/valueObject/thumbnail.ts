@@ -1,7 +1,11 @@
-import Url from '$/domain/shared/valueObject/url';
+import Url from '@technote-space/vo-entity-ts/dist/valueObject/url';
 
 export default class Thumbnail extends Url {
-  public getName(): string {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return 'サムネイル';
   }
 }

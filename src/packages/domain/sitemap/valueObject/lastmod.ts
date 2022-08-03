@@ -1,7 +1,11 @@
-import Date from '$/domain/shared/valueObject/date';
+import Date from '@technote-space/vo-entity-ts/dist/valueObject/date';
 
 export default class Lastmod extends Date {
-  public getName(): string {
+  protected get symbol() {
+    return Symbol();
+  }
+
+  public static getName(): string {
     return '最終更新日';
   }
 }

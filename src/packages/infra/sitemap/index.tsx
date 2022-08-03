@@ -21,21 +21,21 @@ export class Sitemap implements ISitemap {
   public async getFields(): Promise<Field[]> {
     const posts = (await this.postFactory.all('post', undefined, true)).map(post => Field.reconstruct(
       Loc.create(getAbsoluteUrl(post.getUrl(), this.settings)),
-      Lastmod.create((post.getUpdatedAt() ?? post.getCreatedAt()).value),
+      Lastmod.create((post.updatedAt ?? post.createdAt).value),
       Changefreq.create('monthly'),
       Priority.create(1),
     ));
     const pages = (await this.postFactory.all('page', undefined, true)).map(page => Field.reconstruct(
       Loc.create(getAbsoluteUrl(page.getUrl(), this.settings)),
-      Lastmod.create((page.getUpdatedAt() ?? page.getCreatedAt()).value),
+      Lastmod.create((page.updatedAt ?? page.createdAt).value),
       Changefreq.create('yearly'),
       Priority.create(0.3),
     ));
     const lastmod =
       posts.length && pages.length ?
-        (posts[0].getLastMod()!.compare(pages[0].getLastMod()!) < 0 ? pages[0].getLastMod()! : posts[0].getLastMod()!).value :
-        posts.length ? posts[0].getLastMod()!.value :
-          pages.length ? pages[0].getLastMod()!.value :
+        (posts[0].lastmod!.compare(pages[0].lastmod!) < 0 ? pages[0].lastmod! : posts[0].lastmod!).value :
+        posts.length ? posts[0].lastmod!.value :
+          pages.length ? pages[0].lastmod!.value :
             dayjs();
 
     return [

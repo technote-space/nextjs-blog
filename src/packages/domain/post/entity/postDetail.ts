@@ -1,3 +1,4 @@
+import Entity from '@technote-space/vo-entity-ts/dist/entity';
 import { Post } from '$/domain/post/entity/post';
 import { Tag } from '$/domain/post/entity/tag';
 import Content from '$/domain/post/valueObject/content';
@@ -9,42 +10,25 @@ import PostType from '$/domain/post/valueObject/postType';
 import Thumbnail from '$/domain/post/valueObject/thumbnail';
 import Title from '$/domain/post/valueObject/title';
 import UpdatedAt from '$/domain/post/valueObject/updatedAt';
-import Base from '$/domain/shared/entity/base';
 
-export class PostDetail extends Base {
-  private id?: Id;
-  private title!: Title;
-  private content!: Content;
-  private excerpt!: Excerpt;
-  private postType!: PostType;
-  private thumbnail?: Thumbnail;
-  private tags!: Tag[];
-  private dominantColor?: DominantColor;
-  private createdAt!: CreatedAt;
-  private updatedAt?: UpdatedAt;
+export class PostDetail extends Entity {
+  public constructor(
+    public readonly id: Id,
+    public readonly title: Title,
+    public readonly content: Content,
+    public readonly excerpt: Excerpt,
+    public readonly postType: PostType,
+    public readonly tags: Tag[],
+    public readonly thumbnail: Thumbnail | undefined,
+    public readonly dominantColor: DominantColor | undefined,
+    public readonly createdAt: CreatedAt,
+    public readonly updatedAt: UpdatedAt | undefined,
+  ) {
+    super();
+  }
 
-  public static create(
-    title: Title,
-    content: Content,
-    excerpt: Excerpt,
-    postType: PostType,
-    tags: Tag[],
-    thumbnail?: Thumbnail,
-    dominantColor?: DominantColor,
-  ): PostDetail | never {
-    const instance = new this();
-    instance.title = title;
-    instance.content = content;
-    instance.excerpt = excerpt;
-    instance.postType = postType;
-    instance.tags = tags;
-    instance.thumbnail = thumbnail;
-    instance.dominantColor = dominantColor;
-    instance.createdAt = CreatedAt.create(undefined);
-    instance.updatedAt = UpdatedAt.create(undefined);
-    instance.validate();
-
-    return instance;
+  public equals(other: PostDetail): boolean {
+    return this.id.equals(other.id);
   }
 
   public static reconstruct(
@@ -59,60 +43,7 @@ export class PostDetail extends Base {
     createdAt: CreatedAt,
     updatedAt?: UpdatedAt,
   ): PostDetail {
-    const instance = new this();
-    instance.id = id;
-    instance.title = title;
-    instance.content = content;
-    instance.excerpt = excerpt;
-    instance.postType = postType;
-    instance.tags = tags;
-    instance.thumbnail = thumbnail;
-    instance.dominantColor = dominantColor;
-    instance.createdAt = createdAt;
-    instance.updatedAt = updatedAt;
-
-    return instance;
-  }
-
-  public getId(): Id {
-    this.checkNotEmpty('id');
-    return this.id!;
-  }
-
-  public getTitle(): Title {
-    return this.title;
-  }
-
-  public getContent(): Content {
-    return this.content;
-  }
-
-  public getExcerpt(): Excerpt {
-    return this.excerpt;
-  }
-
-  public getPostType(): PostType {
-    return this.postType;
-  }
-
-  public getTags(): Tag[] {
-    return this.tags;
-  }
-
-  public getThumbnail(): Thumbnail | undefined {
-    return this.thumbnail;
-  }
-
-  public getDominantColor(): DominantColor | undefined {
-    return this.dominantColor;
-  }
-
-  public getCreatedAt(): CreatedAt {
-    return this.createdAt;
-  }
-
-  public getUpdatedAt(): UpdatedAt | undefined {
-    return this.updatedAt;
+    return PostDetail._reconstruct(id, title, content, excerpt, postType, tags, thumbnail, dominantColor, createdAt, updatedAt);
   }
 
   public compare(other: this): number {
@@ -120,6 +51,6 @@ export class PostDetail extends Base {
   }
 
   public getUrl(): string {
-    return Post.createUrl(this.getId(), this.getPostType());
+    return Post.createUrl(this.id, this.postType);
   }
 }

@@ -24,7 +24,7 @@ export class TagPageProps implements ITagPageProps {
 
     return {
       paths: (await this.postFactory.tags(postType)).map(tag => ({
-        params: { tag: tag.getSlug().value },
+        params: { tag: tag.slug.value },
       })),
       fallback: false,
     };
