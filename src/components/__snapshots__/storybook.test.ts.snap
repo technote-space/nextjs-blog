@@ -199,6 +199,7 @@ exports[`Storyshots Common Components/Tag Default 1`] = `
   href="/tags/hello-world"
   onClick={[Function]}
   onMouseEnter={[Function]}
+  onTouchStart={[Function]}
 >
   <li
     className="chakra-wrap__listitem css-1r5d00a"
@@ -339,6 +340,7 @@ exports[`Storyshots Domain Components/Article Default 1`] = `
           href="/tags/hello"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -378,6 +380,7 @@ exports[`Storyshots Domain Components/Article Default 1`] = `
           href="/tags/world"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -663,6 +666,7 @@ exports[`Storyshots Domain Components/Article Hide Date 1`] = `
           href="/tags/hello"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -702,6 +706,7 @@ exports[`Storyshots Domain Components/Article Hide Date 1`] = `
           href="/tags/world"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -997,6 +1002,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/hello"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1036,6 +1042,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1075,6 +1082,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world2"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1114,6 +1122,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world3"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1153,6 +1162,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world4"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1192,6 +1202,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world5"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1231,6 +1242,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world6"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1270,6 +1282,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world7"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1309,6 +1322,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world8"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1348,6 +1362,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world9"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1387,6 +1402,7 @@ exports[`Storyshots Domain Components/Article Many Tags 1`] = `
           href="/tags/world10"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1930,6 +1946,7 @@ exports[`Storyshots Domain Components/Article No Thumbnail 1`] = `
           href="/tags/hello"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -1969,6 +1986,7 @@ exports[`Storyshots Domain Components/Article No Thumbnail 1`] = `
           href="/tags/world"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <li
             className="chakra-wrap__listitem css-1r5d00a"
@@ -2501,6 +2519,7 @@ exports[`Storyshots Domain Components/NextArticle Dark 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-1uwjw6e"
@@ -2537,6 +2556,7 @@ exports[`Storyshots Domain Components/NextArticle Default 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-1uwjw6e"
@@ -2573,6 +2593,7 @@ exports[`Storyshots Domain Components/NextArticle Light 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-1uwjw6e"
@@ -2609,6 +2630,7 @@ exports[`Storyshots Domain Components/NextArticle Long Title 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-1uwjw6e"
@@ -2773,6 +2795,7 @@ exports[`Storyshots Domain Components/PrevArticle Dark 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-k008qs"
@@ -2809,6 +2832,7 @@ exports[`Storyshots Domain Components/PrevArticle Default 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-k008qs"
@@ -2845,6 +2869,7 @@ exports[`Storyshots Domain Components/PrevArticle Light 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-k008qs"
@@ -2881,6 +2906,7 @@ exports[`Storyshots Domain Components/PrevArticle Long Title 1`] = `
     href="https://example.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="article css-k008qs"
@@ -2926,6 +2952,7 @@ exports[`Storyshots Layout Components/Footer Default 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             お問い合わせ
           </a>
@@ -2937,6 +2964,7 @@ exports[`Storyshots Layout Components/Footer Default 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             利用規約
           </a>
@@ -2950,6 +2978,7 @@ exports[`Storyshots Layout Components/Footer Default 1`] = `
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         ©
         2000
@@ -2982,6 +3011,7 @@ exports[`Storyshots Layout Components/Footer Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             吾輩は猫である。名前はまだ無い
           </a>
@@ -2993,6 +3023,7 @@ exports[`Storyshots Layout Components/Footer Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             どこで生れたかとんと見当がつかぬ
           </a>
@@ -3004,6 +3035,7 @@ exports[`Storyshots Layout Components/Footer Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
           </a>
@@ -3015,6 +3047,7 @@ exports[`Storyshots Layout Components/Footer Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             吾輩はここで始めて人間というものを見た
           </a>
@@ -3028,6 +3061,7 @@ exports[`Storyshots Layout Components/Footer Long 1`] = `
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         ©
         2000
@@ -3053,6 +3087,7 @@ exports[`Storyshots Layout Components/Footer No Pages 1`] = `
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         ©
         2000
@@ -3085,6 +3120,7 @@ exports[`Storyshots Layout Components/Header Default 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             お問い合わせ
           </a>
@@ -3096,6 +3132,7 @@ exports[`Storyshots Layout Components/Header Default 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             利用規約
           </a>
@@ -3109,6 +3146,7 @@ exports[`Storyshots Layout Components/Header Default 1`] = `
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         Hello World!
       </a>
@@ -3127,6 +3165,7 @@ exports[`Storyshots Layout Components/Header Default 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             お問い合わせ
           </a>
@@ -3138,6 +3177,7 @@ exports[`Storyshots Layout Components/Header Default 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             利用規約
           </a>
@@ -3169,6 +3209,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             吾輩は猫である。名前はまだ無い
           </a>
@@ -3180,6 +3221,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             どこで生れたかとんと見当がつかぬ
           </a>
@@ -3191,6 +3233,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
           </a>
@@ -3202,6 +3245,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             吾輩はここで始めて人間というものを見た
           </a>
@@ -3215,6 +3259,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ
       </a>
@@ -3233,6 +3278,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             吾輩は猫である。名前はまだ無い
           </a>
@@ -3244,6 +3290,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             どこで生れたかとんと見当がつかぬ
           </a>
@@ -3255,6 +3302,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
           </a>
@@ -3266,6 +3314,7 @@ exports[`Storyshots Layout Components/Header Long 1`] = `
             href="https://example.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             吾輩はここで始めて人間というものを見た
           </a>
@@ -3290,6 +3339,7 @@ exports[`Storyshots Layout Components/Header No Pages 1`] = `
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         Hello World!
       </a>

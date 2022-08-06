@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import '^/config/registry.theme';
+import '@/config/registry.theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
