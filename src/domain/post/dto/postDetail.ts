@@ -16,7 +16,6 @@ import UpdatedAt from '@/domain/post/valueObject/updatedAt';
 export type PostDetailDTO = PostDTO & {
   content: string;
   dominantColor: string | null;
-  tags: { slug: string; name: string }[];
 }
 
 export const fromEntity = (post: PostDetail): PostDetailDTO => {

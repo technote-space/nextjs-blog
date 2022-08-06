@@ -153,6 +153,7 @@ export class MarkdownPostRepository extends BasePostRepository implements IPostR
       Title.create(post.title),
       Excerpt.create(this.processExcerpt(removeMd(post.contentHtml))),
       PostType.create(this.getPostType(postType)),
+      post.tags.map(tag => Tag.reconstruct(Slug.create(tag))),
       this.getThumbnail(post.thumbnail),
       CreatedAt.create(post.createdAt),
       post.updatedAt ? UpdatedAt.create(post.updatedAt) : undefined,

@@ -1,6 +1,7 @@
 import type { PostData, Settings } from '@/domain/app/settings';
 import type Date from '@technote-space/vo-entity-ts/dist/valueObject/date';
 import Entity from '@technote-space/vo-entity-ts/dist/entity';
+import { Tag } from '@/domain/post/entity/tag';
 import CreatedAt from '@/domain/post/valueObject/createdAt';
 import Excerpt from '@/domain/post/valueObject/excerpt';
 import Id from '@/domain/post/valueObject/id';
@@ -16,6 +17,7 @@ export class Post extends Entity {
     public readonly title: Title,
     public readonly excerpt: Excerpt,
     public readonly postType: PostType,
+    public readonly tags: Tag[],
     public readonly thumbnail: Thumbnail | undefined,
     public readonly createdAt: CreatedAt,
     public readonly updatedAt: UpdatedAt | undefined,
@@ -32,11 +34,12 @@ export class Post extends Entity {
     title: Title,
     excerpt: Excerpt,
     postType: PostType,
+    tags: Tag[],
     thumbnail: Thumbnail | undefined,
     createdAt: CreatedAt,
     updatedAt?: UpdatedAt,
   ): Post {
-    return Post._reconstruct(id, title, excerpt, postType, thumbnail, createdAt, updatedAt);
+    return Post._reconstruct(id, title, excerpt, postType, tags, thumbnail, createdAt, updatedAt);
   }
 
   public compare(other: this): number {
