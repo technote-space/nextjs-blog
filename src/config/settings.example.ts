@@ -1,4 +1,4 @@
-import type { Settings } from '$/domain/app/settings';
+import type { Settings } from '@/domain/app/settings';
 
 // key => sourceId
 // 現在使用可能なkey: markdown, wpdb, wpxml

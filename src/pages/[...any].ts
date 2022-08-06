@@ -1,5 +1,5 @@
-import type { IAnyPageProps, Props, Params } from '$/domain/pages/any';
-import type { IPostPage } from '$/domain/pages/post';
+import type { IAnyPageProps, Props, Params } from '@/domain/pages/any';
+import type { IPostPage } from '@/domain/pages/post';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { container } from 'tsyringe';
 

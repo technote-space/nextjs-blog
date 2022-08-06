@@ -64,7 +64,7 @@
         },
         {
           "module": "src/components",
-          "allowReferenceFrom": ["src/packages/infra/**/components/*.tsx", "src/packages/infra/**/view.tsx"],
+          "allowReferenceFrom": ["src/infra/**/components/*.tsx", "src/infra/**/view.tsx"],
           "allowSameModule": true
         },
         {
@@ -73,17 +73,17 @@
           "allowSameModule": true
         },
         {
-          "module": "src/packages/domain",
-          "allowReferenceFrom": ["src/packages/infra/**", "src/pages/**", "src/config/settings.*"],
+          "module": "src/domain",
+          "allowReferenceFrom": ["src/infra/**", "src/pages/**", "src/config/settings.*"],
           "allowSameModule": true
         },
         {
           "module": "src/lib/helpers",
-          "allowReferenceFrom": ["src/packages/infra/**"],
+          "allowReferenceFrom": ["src/infra/**"],
           "allowSameModule": true
         },
         {
-          "module": "src/packages/infra",
+          "module": "src/infra",
           "allowReferenceFrom": ["src/pages/**", "src/config/registry.*"],
           "allowSameModule": true
         }

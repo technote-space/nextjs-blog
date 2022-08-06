@@ -1,4 +1,4 @@
-import type { IIndexPage, IIndexPageProps, Props } from '$/domain/pages';
+import type { IIndexPage, IIndexPageProps, Props } from '@/domain/pages';
 import type { GetStaticProps } from 'next';
 import { container } from 'tsyringe';
 
