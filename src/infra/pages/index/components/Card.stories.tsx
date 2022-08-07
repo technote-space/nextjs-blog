@@ -10,6 +10,7 @@ export default {
     thumbnail: { control: { type: 'text' } },
     title: { control: { type: 'text' } },
     excerpt: { control: { type: 'text' } },
+    tags: { control: { type: 'object' } },
     createdAt: { control: { type: 'date' } },
     ...storybookArgTypes,
   },
@@ -22,10 +23,25 @@ Default.args = {
   thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩は猫である',
   excerpt: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...',
+  tags: [
+    {slug: 'hello', name: 'Hello'},
+    {slug: 'world', name: 'World'},
+  ],
 };
 
 export const NoThumbnail = Template.bind({});
 NoThumbnail.args = {
+  title: '吾輩は猫である',
+  excerpt: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...',
+  tags: [
+    {slug: 'hello', name: 'Hello'},
+    {slug: 'world', name: 'World'},
+  ],
+};
+
+export const NoTags = Template.bind({});
+NoTags.args = {
+  thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩は猫である',
   excerpt: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...',
 };
@@ -35,6 +51,10 @@ Short.args = {
   thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩は猫である',
   excerpt: '吾輩は猫である。',
+  tags: [
+    {slug: 'hello', name: 'Hello'},
+    {slug: 'world', name: 'World'},
+  ],
 };
 
 export const Long = Template.bind({});
@@ -42,4 +62,8 @@ Long.args = {
   thumbnail: 'https://placehold.jp/150x150.png',
   title: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ',
   excerpt: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...',
+  tags: [
+    {slug: 'hello', name: 'Hello'},
+    {slug: 'world', name: 'World'},
+  ],
 };

@@ -2267,12 +2267,104 @@ exports[`Storyshots Domain Components/Card Default 1`] = `
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
-      <time
-        className="css-1eu3ubf"
-        dateTime="2000-11-22T00:00:00.000Z"
+      <div
+        className="css-1xhj18k"
       >
-        2000.11.22
-      </time>
+        <div
+          className="css-go1d2f"
+        >
+          <object>
+            <a
+              href="/tags/hello"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    Hello
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+          <object>
+            <a
+              href="/tags/world"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    World
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+        </div>
+        <time
+          className="css-1eu3ubf"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>
   <div
@@ -2338,12 +2430,104 @@ exports[`Storyshots Domain Components/Card Long 1`] = `
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
-      <time
-        className="css-1eu3ubf"
-        dateTime="2000-11-22T00:00:00.000Z"
+      <div
+        className="css-1xhj18k"
       >
-        2000.11.22
-      </time>
+        <div
+          className="css-go1d2f"
+        >
+          <object>
+            <a
+              href="/tags/hello"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    Hello
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+          <object>
+            <a
+              href="/tags/world"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    World
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+        </div>
+        <time
+          className="css-1eu3ubf"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>
   <div
@@ -2381,6 +2565,81 @@ exports[`Storyshots Domain Components/Card Long 1`] = `
 </div>
 `;
 
+exports[`Storyshots Domain Components/Card No Tags 1`] = `
+<div
+  className="article-card css-121lm1p"
+>
+  <div
+    className="css-1awfsko"
+  >
+    <img
+      alt="thumbnail"
+      className="chakra-image css-pvuh9h"
+      height={70}
+      loading="lazy"
+      src="https://placehold.jp/150x150.png"
+      width={120}
+    />
+    <div
+      className="css-sb96v"
+    >
+      <h2
+        className="css-j6h8mr"
+      >
+        吾輩は猫である
+      </h2>
+      <h3
+        className="css-1im3ft0"
+      >
+        吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+      </h3>
+      <div
+        className="css-1xhj18k"
+      >
+        <time
+          className="css-1eu3ubf"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-cetvc6"
+  >
+    <div
+      className="css-xlxwlu"
+    >
+      <img
+        alt="thumbnail"
+        className="chakra-image css-82oyji"
+        height={70}
+        loading="lazy"
+        src="https://placehold.jp/150x150.png"
+        width={120}
+      />
+      <h2
+        className="css-7db157"
+      >
+        吾輩は猫である
+      </h2>
+    </div>
+    <h3
+      className="css-1llq162"
+    >
+      吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
+    </h3>
+    <time
+      className="css-1eu3ubf"
+      dateTime="2000-11-22T00:00:00.000Z"
+    >
+      2000.11.22
+    </time>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
 <div
   className="article-card css-121lm1p"
@@ -2401,12 +2660,104 @@ exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
       >
         吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...
       </h3>
-      <time
-        className="css-1eu3ubf"
-        dateTime="2000-11-22T00:00:00.000Z"
+      <div
+        className="css-1xhj18k"
       >
-        2000.11.22
-      </time>
+        <div
+          className="css-go1d2f"
+        >
+          <object>
+            <a
+              href="/tags/hello"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    Hello
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+          <object>
+            <a
+              href="/tags/world"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    World
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+        </div>
+        <time
+          className="css-1eu3ubf"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>
   <div
@@ -2464,12 +2815,104 @@ exports[`Storyshots Domain Components/Card Short 1`] = `
       >
         吾輩は猫である。
       </h3>
-      <time
-        className="css-1eu3ubf"
-        dateTime="2000-11-22T00:00:00.000Z"
+      <div
+        className="css-1xhj18k"
       >
-        2000.11.22
-      </time>
+        <div
+          className="css-go1d2f"
+        >
+          <object>
+            <a
+              href="/tags/hello"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    Hello
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+          <object>
+            <a
+              href="/tags/world"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              <li
+                className="chakra-wrap__listitem css-1r5d00a"
+              >
+                <div
+                  className="chakra-stack css-84zodg"
+                >
+                  <svg
+                    className="chakra-icon css-13otjrl"
+                    fill="currentColor"
+                    focusable={false}
+                    height="1em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"
+                    />
+                  </svg>
+                  <p
+                    className="chakra-text css-0"
+                  >
+                    World
+                  </p>
+                </div>
+              </li>
+            </a>
+          </object>
+        </div>
+        <time
+          className="css-1eu3ubf"
+          dateTime="2000-11-22T00:00:00.000Z"
+        >
+          2000.11.22
+        </time>
+      </div>
     </div>
   </div>
   <div

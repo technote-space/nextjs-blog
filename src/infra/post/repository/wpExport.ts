@@ -205,6 +205,7 @@ export class WordPressExportPostRepository extends BasePostRepository implements
       Title.create(post.post_title),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(post.post_content))),
       PostType.create(this.getPostType(postType)),
+      (post.category ?? []).filter(cat => cat.domain === 'post_tag').map(cat => Tag.reconstruct(Slug.create(cat.slug), Name.create(cat.name))),
       this.getThumbnail(post.thumbnail),
       CreatedAt.create(post.post_date),
     )).sort((a, b) => a.compare(b)).slice(paginationParams.skip, paginationParams.skip + paginationParams.take);

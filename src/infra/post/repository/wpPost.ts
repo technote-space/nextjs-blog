@@ -118,6 +118,15 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       WHERE ID in (${(new Array<string>(thumbnailIds.length)).fill('?').join(',')})
     `, thumbnailIds)).map(({ ID, guid }) => ({ [ID]: guid }))) : {};
 
+    const tags = await this.mysql.query<Array<{ slug: string; name: string }>>(`
+      SELECT wp_terms.slug, wp_terms.name
+      FROM wp_terms
+             INNER JOIN wp_term_taxonomy tax on tax.term_id = wp_terms.term_id AND tax.taxonomy = ?
+             INNER JOIN wp_term_relationships rel on rel.term_taxonomy_id = tax.term_taxonomy_id
+             INNER JOIN wp_posts on wp_posts.ID = rel.object_id
+      WHERE wp_posts.id = ?
+    `, ['post_tag', results[0].id]);
+
     await this.mysql.end();
 
     return results.reduce(async (prev, result) => (await prev).concat(Post.reconstruct(
@@ -128,6 +137,7 @@ export class WordPressPostRepository extends BasePostRepository implements IPost
       Title.create(result.post_title),
       Excerpt.create(this.processExcerpt(this.html.htmlToExcerpt(result.post_content))),
       PostType.create(this.getPostType(postType)),
+      tags.map(tag => Tag.reconstruct(Slug.create(tag.slug), Name.create(tag.name))),
       this.getThumbnail(result.thumbnail_id ? thumbnails[result.thumbnail_id] : undefined),
       CreatedAt.create(result.post_date),
       UpdatedAt.create(result.post_modified),
