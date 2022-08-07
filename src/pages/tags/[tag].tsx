@@ -1,4 +1,4 @@
-import type { ITagPage, ITagPageProps, Props, Params } from '$/domain/pages/tag';
+import type { ITagPage, ITagPageProps, Props, Params } from '@/domain/pages/tag';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { container } from 'tsyringe';
 

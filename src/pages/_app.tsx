@@ -1,6 +1,6 @@
-import type { IAppService } from '$/domain/app';
+import type { IAppService } from '@/domain/app';
 import 'reflect-metadata';
-import '^/config/registry';
+import '@/config/registry';
 import { container } from 'tsyringe';
 import '../../public/nprogress.css';
 

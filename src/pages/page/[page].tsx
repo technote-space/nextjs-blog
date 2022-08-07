@@ -1,5 +1,5 @@
-import type { IIndexPage } from '$/domain/pages';
-import type { IPagedPageProps, Props, Params } from '$/domain/pages/paged';
+import type { IIndexPage } from '@/domain/pages';
+import type { IPagedPageProps, Props, Params } from '@/domain/pages/paged';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { container } from 'tsyringe';
 

@@ -1,4 +1,4 @@
-import type { IPostPage, IPostPageProps, Props, Params } from '$/domain/pages/post';
+import type { IPostPage, IPostPageProps, Props, Params } from '@/domain/pages/post';
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import { container } from 'tsyringe';
 

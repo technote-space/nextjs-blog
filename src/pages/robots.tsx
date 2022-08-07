@@ -1,4 +1,4 @@
-import type { IRobotsPageProps } from '$/domain/pages/robots';
+import type { IRobotsPageProps } from '@/domain/pages/robots';
 import type { GetStaticProps } from 'next';
 import DefaultErrorPage from 'next/error';
 import Head from 'next/head';

@@ -11,7 +11,7 @@ module.exports = {
     "../src/**/*.stories.mdx",
     "../src/components/**/*.stories.tsx",
     "../src/lib/**/components/**/*.stories.tsx",
-    "../src/packages/infra/**/components/**/*.stories.tsx",
+    "../src/infra/**/components/**/*.stories.tsx",
   ],
   "addons": [
     "@chakra-ui/storybook-addon",

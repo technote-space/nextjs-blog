@@ -1,4 +1,4 @@
-import type { ISitemapPageProps } from '$/domain/pages/sitemap';
+import type { ISitemapPageProps } from '@/domain/pages/sitemap';
 import type { GetStaticProps } from 'next';
 import DefaultErrorPage from 'next/error';
 import Head from 'next/head';
