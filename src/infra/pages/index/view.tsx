@@ -25,6 +25,7 @@ const View: FC<HooksParams['viewProps']> = ({ posts, currentPage, totalCount, to
             thumbnail={post.thumbnail?.value}
             title={post.title.value}
             excerpt={post.excerpt.value}
+            tags={post.tags.map(tag => ({ slug: tag.slug.value, name: tag.getDisplayValue() }))}
             createdAt={post.createdAt.value}
             my={4}
           />

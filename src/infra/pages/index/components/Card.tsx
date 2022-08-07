@@ -2,6 +2,7 @@ import type { StyleProps } from '@/components';
 import type { FC } from 'react';
 import dayjs from 'dayjs';
 import { memo } from 'react';
+import Tag from '@/components/chip/Tag';
 import Date from '@/components/date/Date';
 import MainHeading from '@/components/heading/MainHeading';
 import SubHeading from '@/components/heading/SubHeading';
@@ -12,6 +13,7 @@ type Props = StyleProps & {
   thumbnail?: string;
   title: string;
   excerpt: string;
+  tags?: { slug: string; name: string }[];
   createdAt: dayjs.ConfigType;
   dateFormat?: string;
 };
@@ -30,7 +32,7 @@ const defaultProps: StyleProps = {
   },
 };
 
-const Card: FC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...props }) =>
+const Card: FC<Props> = ({ thumbnail, title, excerpt, tags, createdAt, dateFormat, ...props }) =>
   <Flex className="article-card" {...defaultProps} {...props}>
     <Flex flexDir="row" display={['none', 'none', 'flex', 'flex']} flexGrow={1} p={3}>
       <Thumbnail src={thumbnail} width={[120, 200, 200, 300]} height={[70, 120, 120, 180]} alignSelf="center"/>
@@ -41,14 +43,19 @@ const Card: FC<Props> = ({ thumbnail, title, excerpt, createdAt, dateFormat, ...
         <SubHeading>
           {excerpt}
         </SubHeading>
-        <Date
-          date={createdAt}
-          format={dateFormat ?? 'YYYY.MM.DD'}
-          display="flex"
-          flexGrow={1}
-          justifyContent="end"
-          alignItems="end"
-        />
+        <Flex flexDirection="row">
+          {!!tags?.length && <Flex mt={3} flexWrap="wrap">
+            {tags.map(tag => <object key={tag.slug}><Tag slug={tag.slug} name={tag.name}/></object>)}
+          </Flex>}
+          <Date
+            date={createdAt}
+            format={dateFormat ?? 'YYYY.MM.DD'}
+            display="flex"
+            flexGrow={1}
+            justifyContent="end"
+            alignItems="end"
+          />
+        </Flex>
       </Flex>
     </Flex>
     <Flex flexDir="column" display={['flex', 'flex', 'none', 'none']} flexGrow={1} p={2}>
