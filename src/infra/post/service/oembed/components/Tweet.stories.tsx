@@ -8,6 +8,14 @@ export default {
   argTypes: {
     url: { control: { type: 'text' } },
   },
+  decorators: [(Story) => {
+    const widgets = (window as { twttr?: { widgets: { load: () => void } } })?.twttr?.widgets;
+    if (widgets) {
+      widgets.load();
+    }
+
+    return <Story/>;
+  }],
 } as ComponentMeta<typeof Tweet>;
 
 const Template: ComponentStory<typeof Tweet> = (args) => <div className={styles.article}>

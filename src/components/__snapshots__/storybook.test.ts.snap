@@ -4973,28 +4973,13 @@ exports[`Storyshots Library Components/Tweet Default 1`] = `
   <div
     className="embed-tweet"
   >
-    <iframe
-      allowFullScreen={true}
-      allowTransparency={true}
-      frameBorder="0"
-      id="twitter-widget-849813577770778624"
-      loading="lazy"
-      scrolling="no"
-      src="https://platform.twitter.com/embed/Tweet.html?embedId=twitter-widget-849813577770778624&frame=false&hideCard=false&hideThread=false&id=849813577770778624&theme=light&widgetsVersion=1890d59c%3A1627936082797&width=450px"
-      style={
-        Object {
-          "display": "block",
-          "flexGrow": 1,
-          "height": 660,
-          "maxHeight": "calc(100vw * 1.6)",
-          "maxWidth": "100%",
-          "position": "static",
-          "visibility": "visible",
-          "width": 450,
-        }
-      }
-      title="Twitter Tweet"
-    />
+    <blockquote
+      className="twitter-tweet"
+    >
+      <a
+        href="https://twitter.com/nishishi/status/849813577770778624"
+      />
+    </blockquote>
   </div>
 </div>
 `;
