@@ -63,7 +63,15 @@ Long.args = {
   title: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ',
   excerpt: '吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれ...',
   tags: [
-    {slug: 'hello', name: 'Hello'},
-    {slug: 'world', name: 'World'},
+    {slug: 'hello1', name: 'Hello1'},
+    {slug: 'hello2', name: 'Hello2'},
+    {slug: 'hello3', name: 'Hello3'},
+    {slug: 'hello4', name: 'Hello4'},
+    {slug: 'hello5', name: 'Hello5'},
+    {slug: 'hello6', name: 'Hello6'},
+    {slug: 'hello7', name: 'Hello7'},
+    {slug: 'hello8', name: 'Hello8'},
+    {slug: 'hello9', name: 'Hello9'},
+    {slug: 'hello10', name: 'Hello10'},
   ],
 };
