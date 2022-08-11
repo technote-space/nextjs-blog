@@ -11,6 +11,7 @@ import Flex from '@/components/layout/Flex';
 import NextArticle from '@/infra/pages/post/components/NextArticle';
 import PrevArticle from '@/infra/pages/post/components/PrevArticle';
 import useAutoResizeIframe from '@/infra/pages/post/hooks/useAutoResizeIframe';
+import useTwitterWidget from '@/infra/pages/post/hooks/useTwitterWidget';
 import styles from './Article.module.scss';
 
 type Props = {
@@ -49,6 +50,7 @@ const Article: FC<Props> = ({
   darkModeClass,
 }) => {
   useAutoResizeIframe(id);
+  useTwitterWidget(id);
 
   return <SimpleReactLightbox>
     <ArticleComponent p={[3, 3, 7, 7]} mx="auto" boxShadow="0 0 8px #ccc">

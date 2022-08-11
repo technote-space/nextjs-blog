@@ -11,7 +11,9 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="ja">
-        <Head/>
+        <Head>
+          <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"/>
+        </Head>
         <body style={{ margin: 0 }}>
         <Main/>
         <NextScript/>
