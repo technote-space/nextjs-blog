@@ -43,17 +43,14 @@ const Card: FC<Props> = ({ thumbnail, title, excerpt, tags, createdAt, dateForma
         <SubHeading>
           {excerpt}
         </SubHeading>
-        <Flex flexDirection="row">
-          {!!tags?.length && <Flex mt={3} flexWrap="wrap">
-            {tags.map(tag => <object key={tag.slug}><Tag slug={tag.slug} name={tag.name}/></object>)}
-          </Flex>}
+        <Flex mt={3} flexWrap="wrap" flexGrow={1} alignItems="end">
+          {(tags ?? []).map(tag => <object key={tag.slug}><Tag slug={tag.slug} name={tag.name}/></object>)}
           <Date
             date={createdAt}
             format={dateFormat ?? 'YYYY.MM.DD'}
             display="flex"
             flexGrow={1}
             justifyContent="end"
-            alignItems="end"
           />
         </Flex>
       </Flex>
@@ -68,14 +65,16 @@ const Card: FC<Props> = ({ thumbnail, title, excerpt, tags, createdAt, dateForma
       <SubHeading display={['flex', 'flex', 'none', 'none']}>
         {excerpt}
       </SubHeading>
-      <Date
-        date={createdAt}
-        format={dateFormat ?? 'YYYY.MM.DD'}
-        display="flex"
-        flexGrow={1}
-        justifyContent="end"
-        alignItems="end"
-      />
+      <Flex mt={3} flexWrap="wrap" flexGrow={1} alignItems="end">
+        {(tags ?? []).map(tag => <object key={tag.slug}><Tag slug={tag.slug} name={tag.name}/></object>)}
+        <Date
+          date={createdAt}
+          format={dateFormat ?? 'YYYY.MM.DD'}
+          display="flex"
+          flexGrow={1}
+          justifyContent="end"
+        />
+      </Flex>
     </Flex>
   </Flex>;
 
