@@ -20,7 +20,7 @@ const NextArticle: FC<Props> = ({ thumbnail, title, url, darkModeClass }) => {
       <Box className={styles.article__title}>{title}</Box>
       {thumbnail && <Image src={thumbnail} alt="next thumbnail" className={styles.article__thumbnail}/>}
       <Image
-        src="/arrow2.png"
+        src="/images/arrow2.png"
         alt="next article"
         transform="rotate(90deg)"
         className={clsx(styles.article__arrow, darkModeClass)}

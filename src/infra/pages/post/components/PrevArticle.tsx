@@ -18,7 +18,7 @@ const PrevArticle: FC<Props> = ({ thumbnail, title, url, darkModeClass }) => {
   return <Link href={url}>
     <Flex className={styles.article}>
       <Image
-        src="/arrow2.png"
+        src="/images/arrow2.png"
         alt="prev article"
         transform="rotate(-90deg)"
         className={clsx(styles.article__arrow, darkModeClass)}

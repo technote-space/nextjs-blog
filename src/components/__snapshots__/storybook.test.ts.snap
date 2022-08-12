@@ -3992,7 +3992,7 @@ exports[`Storyshots Domain Components/NextArticle Dark 1`] = `
       <img
         alt="next article"
         className="article__arrow dark css-1qx34im"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
     </div>
   </a>
@@ -4029,7 +4029,7 @@ exports[`Storyshots Domain Components/NextArticle Default 1`] = `
       <img
         alt="next article"
         className="article__arrow css-1qx34im"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
     </div>
   </a>
@@ -4066,7 +4066,7 @@ exports[`Storyshots Domain Components/NextArticle Light 1`] = `
       <img
         alt="next article"
         className="article__arrow light css-1qx34im"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
     </div>
   </a>
@@ -4103,7 +4103,7 @@ exports[`Storyshots Domain Components/NextArticle Long Title 1`] = `
       <img
         alt="next article"
         className="article__arrow css-1qx34im"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
     </div>
   </a>
@@ -4258,7 +4258,7 @@ exports[`Storyshots Domain Components/PrevArticle Dark 1`] = `
       <img
         alt="prev article"
         className="article__arrow dark css-4dsd3s"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
       <img
         alt="prev thumbnail"
@@ -4295,7 +4295,7 @@ exports[`Storyshots Domain Components/PrevArticle Default 1`] = `
       <img
         alt="prev article"
         className="article__arrow css-4dsd3s"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
       <img
         alt="prev thumbnail"
@@ -4332,7 +4332,7 @@ exports[`Storyshots Domain Components/PrevArticle Light 1`] = `
       <img
         alt="prev article"
         className="article__arrow light css-4dsd3s"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
       <img
         alt="prev thumbnail"
@@ -4369,7 +4369,7 @@ exports[`Storyshots Domain Components/PrevArticle Long Title 1`] = `
       <img
         alt="prev article"
         className="article__arrow css-4dsd3s"
-        src="/arrow2.png"
+        src="/images/arrow2.png"
       />
       <img
         alt="prev thumbnail"
