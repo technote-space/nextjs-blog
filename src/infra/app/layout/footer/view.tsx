@@ -8,7 +8,7 @@ import styles from './footer.module.scss';
 
 const View: FC<HooksParams> = ({ author, pages, scrollButtonClass, scrollToTop, darkModeClass }) => <>
   <span className={styles.scroll}>
-      <Image src="/arrow.png" alt="arrow" className={clsx(scrollButtonClass, darkModeClass)} onClick={scrollToTop}/>
+      <Image src="/images/arrow.png" alt="arrow" className={clsx(scrollButtonClass, darkModeClass)} onClick={scrollToTop}/>
   </span>
   <Footer
     author={author}
