@@ -16,7 +16,7 @@ type Props = {
 
 const NextArticle: FC<Props> = ({ thumbnail, title, url, darkModeClass }) => {
   return <Link href={url}>
-    <Flex justifyContent="right" className={styles.article}>
+    <Flex justifyContent="flex-end" className={styles.article}>
       <Box className={styles.article__title}>{title}</Box>
       {thumbnail && <Image src={thumbnail} alt="next thumbnail" className={styles.article__thumbnail}/>}
       <Image
