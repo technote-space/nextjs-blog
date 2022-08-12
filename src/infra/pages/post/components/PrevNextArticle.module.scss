@@ -5,10 +5,12 @@
 
   &__thumbnail {
     height: 100px;
+    max-width: 25%;
+    object-fit: cover;
   }
 
   &__title {
-    margin: 0 20px;
+    margin: 0 10px;
   }
 
   &__arrow {
