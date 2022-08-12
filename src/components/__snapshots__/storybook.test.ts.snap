@@ -2355,7 +2355,7 @@ exports[`Storyshots Domain Components/Card Default 1`] = `
           </a>
         </object>
         <time
-          className="css-13nz72j"
+          className="css-4kyr0n"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -2476,7 +2476,7 @@ exports[`Storyshots Domain Components/Card Default 1`] = `
         </a>
       </object>
       <time
-        className="css-13nz72j"
+        className="css-4kyr0n"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -2938,7 +2938,7 @@ exports[`Storyshots Domain Components/Card Long 1`] = `
           </a>
         </object>
         <time
-          className="css-13nz72j"
+          className="css-4kyr0n"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -3395,7 +3395,7 @@ exports[`Storyshots Domain Components/Card Long 1`] = `
         </a>
       </object>
       <time
-        className="css-13nz72j"
+        className="css-4kyr0n"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -3437,7 +3437,7 @@ exports[`Storyshots Domain Components/Card No Tags 1`] = `
         className="css-2mj6yf"
       >
         <time
-          className="css-13nz72j"
+          className="css-4kyr0n"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -3474,7 +3474,7 @@ exports[`Storyshots Domain Components/Card No Tags 1`] = `
       className="css-2mj6yf"
     >
       <time
-        className="css-13nz72j"
+        className="css-4kyr0n"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -3592,7 +3592,7 @@ exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
           </a>
         </object>
         <time
-          className="css-13nz72j"
+          className="css-4kyr0n"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -3705,7 +3705,7 @@ exports[`Storyshots Domain Components/Card No Thumbnail 1`] = `
         </a>
       </object>
       <time
-        className="css-13nz72j"
+        className="css-4kyr0n"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
@@ -3831,7 +3831,7 @@ exports[`Storyshots Domain Components/Card Short 1`] = `
           </a>
         </object>
         <time
-          className="css-13nz72j"
+          className="css-4kyr0n"
           dateTime="2000-11-22T00:00:00.000Z"
         >
           2000.11.22
@@ -3952,7 +3952,7 @@ exports[`Storyshots Domain Components/Card Short 1`] = `
         </a>
       </object>
       <time
-        className="css-13nz72j"
+        className="css-4kyr0n"
         dateTime="2000-11-22T00:00:00.000Z"
       >
         2000.11.22
