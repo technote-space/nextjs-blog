@@ -50,7 +50,8 @@ const Card: FC<Props> = ({ thumbnail, title, excerpt, tags, createdAt, dateForma
             format={dateFormat ?? 'YYYY.MM.DD'}
             display="flex"
             flexGrow={1}
-            justifyContent="end"
+            justifyContent="flex-end"
+            alignSelf="flex-end"
           />
         </Flex>
       </Flex>
@@ -72,7 +73,8 @@ const Card: FC<Props> = ({ thumbnail, title, excerpt, tags, createdAt, dateForma
           format={dateFormat ?? 'YYYY.MM.DD'}
           display="flex"
           flexGrow={1}
-          justifyContent="end"
+          justifyContent="flex-end"
+          alignSelf="flex-end"
         />
       </Flex>
     </Flex>
