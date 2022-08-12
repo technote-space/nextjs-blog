@@ -3977,7 +3977,7 @@ exports[`Storyshots Domain Components/NextArticle Dark 1`] = `
     onTouchStart={[Function]}
   >
     <div
-      className="article css-1uwjw6e"
+      className="article css-1bvc4cc"
     >
       <div
         className="article__title css-0"
@@ -4014,7 +4014,7 @@ exports[`Storyshots Domain Components/NextArticle Default 1`] = `
     onTouchStart={[Function]}
   >
     <div
-      className="article css-1uwjw6e"
+      className="article css-1bvc4cc"
     >
       <div
         className="article__title css-0"
@@ -4051,7 +4051,7 @@ exports[`Storyshots Domain Components/NextArticle Light 1`] = `
     onTouchStart={[Function]}
   >
     <div
-      className="article css-1uwjw6e"
+      className="article css-1bvc4cc"
     >
       <div
         className="article__title css-0"
@@ -4088,7 +4088,7 @@ exports[`Storyshots Domain Components/NextArticle Long Title 1`] = `
     onTouchStart={[Function]}
   >
     <div
-      className="article css-1uwjw6e"
+      className="article css-1bvc4cc"
     >
       <div
         className="article__title css-0"
