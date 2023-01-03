@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
 import { pagesPath } from '@/lib/$path';
+import { asPath } from '@/lib/helpers/url';
 
 const Card = dynamic(() => import('@/infra/pages/index/components/Card'));
 const Pagination = dynamic(() => import('@/infra/pages/index/components/Pagination'), { ssr: false });
@@ -20,7 +21,7 @@ const View: FC<HooksParams['viewProps']> = ({ posts, currentPage, totalCount, to
   <List>
     {posts.map((post) => (
       <ListItem key={post.id.value}>
-        <Link href={pagesPath.posts._id(post.id.value).$url()}>
+        <Link href={asPath(pagesPath.posts._id(post.id.value).$url())}>
           <Card
             thumbnail={post.thumbnail?.value}
             title={post.title.value}

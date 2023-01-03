@@ -79,7 +79,7 @@
         },
         {
           "module": "src/lib/helpers",
-          "allowReferenceFrom": ["src/infra/**"],
+          "allowReferenceFrom": ["src/infra/**", "src/components/**/*.tsx"],
           "allowSameModule": true
         },
         {

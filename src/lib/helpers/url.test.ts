@@ -11,6 +11,7 @@ import {
   processOneLineLinks,
   processExternalLinks,
   getAbsoluteUrl,
+  asPath,
 } from './url';
 
 describe('isTweetUrl', () => {
@@ -166,5 +167,12 @@ describe('getAbsoluteUrl', () => {
     expect(getAbsoluteUrl('https://example.com', { siteUrl: 'http://localhost:3000' })).toBe('https://example.com');
     expect(getAbsoluteUrl('https://example.com/test.png', { siteUrl: 'http://localhost:3000' })).toBe('https://example.com/test.png');
     expect(getAbsoluteUrl('/test.png', { siteUrl: 'http://localhost:3000' })).toBe('http://localhost:3000/test.png');
+  });
+});
+
+describe('asPath', () => {
+  it('should', () => {
+    expect(asPath({ pathname: '/page/[page]', query: { page: 1 } })).toBe('/page/1');
+    expect(asPath({ pathname: '/tags/[tag]/[page]', query: { tag: 'test', page: 1 } })).toBe('/tags/test/1');
   });
 });

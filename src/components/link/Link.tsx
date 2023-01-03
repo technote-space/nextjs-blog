@@ -4,9 +4,7 @@ import NextLink from 'next/link';
 
 const Link: FC<PropsWithChildren<LinkProps>> = ({ children, ...props }) => {
   return <NextLink {...props}>
-    <a>
-      {children}
-    </a>
+    {children}
   </NextLink>;
 };
 

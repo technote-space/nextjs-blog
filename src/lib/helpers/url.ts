@@ -2,6 +2,9 @@
 // @see https://github.com/zenn-dev/zenn-editor
 // @see https://github.com/zenn-dev/zenn-editor/blob/main/packages/zenn-markdown-html/src/utils/url-matcher.ts
 
+import type { UrlObject } from 'url';
+import { resolveHref } from 'next/dist/shared/lib/router/router';
+import Router from 'next/router';
 import { pregQuote } from './string';
 
 export const isTweetUrl = (url: string): boolean => /^https:\/\/twitter\.com\/[a-zA-Z0-9_-]+\/status\/[a-zA-Z0-9?=]+$/.test(url);
@@ -109,3 +112,5 @@ export const getAbsoluteUrl = (url: string, settings: { siteUrl: string }): stri
 
   return `${settings.siteUrl.replace(/\/$/, '')}/${url.replace(/^\//, '')}`;
 };
+
+export const asPath = (href: UrlObject): string => resolveHref(Router, href, true)[1] as string;

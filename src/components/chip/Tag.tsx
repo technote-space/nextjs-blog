@@ -5,6 +5,7 @@ import { FaTag } from 'react-icons/fa';
 import Link from '@/components/link/Link';
 import { Icon, WrapItem, HStack, Text } from '@/components/wrap';
 import { pagesPath } from '@/lib/$path';
+import { asPath } from '@/lib/helpers/url';
 
 type Props = StyleProps & {
   slug?: string;
@@ -42,7 +43,7 @@ const TagChip: FC<Props> = ({ slug, name, iconColor, ...props }) => {
   }
 
   return <Link
-    href={pagesPath.tags._tag(slug).$url()}
+    href={asPath(pagesPath.tags._tag(slug).$url())}
   >
     <WrapItem
       {...defaultProps}
