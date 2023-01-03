@@ -7,6 +7,7 @@ import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
 import { pagesPath } from '@/lib/$path';
+import { asPath } from '@/lib/helpers/url';
 
 type PostData = {
   label: string;
@@ -45,7 +46,7 @@ const Footer: FC<Props> = ({ author, authorStyle, pages, pagesStyle, ...props })
       </List>
     </Flex>}
     <Flex {...defaultAuthorStyle} {...authorStyle}>
-      <Link href={pagesPath.$url()}>
+      <Link href={asPath(pagesPath.$url())}>
         ©{(new Date()).getFullYear()} {author}
       </Link>
     </Flex>

@@ -1,6 +1,6 @@
 import type { extendTheme } from '@chakra-ui/react';
 import type { GlobalStyleProps } from '@chakra-ui/theme-tools';
-import { createBreakpoints, mode } from '@chakra-ui/theme-tools';
+import { mode } from '@chakra-ui/theme-tools';
 
 export default {
   styles: {
@@ -109,13 +109,13 @@ export default {
       },
     }),
   },
-  breakpoints: createBreakpoints({
+  breakpoints: {
     sm: '30em',
     md: '48em',
     lg: '62em',
     xl: '80em',
     '2xl': '96em',
-  }),
+  },
   fonts: {
     body: '"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
   },

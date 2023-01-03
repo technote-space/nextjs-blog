@@ -9,6 +9,7 @@ import List from '@/components/layout/List';
 import ListItem from '@/components/layout/ListItem';
 import Link from '@/components/link/Link';
 import { pagesPath } from '@/lib/$path';
+import { asPath } from '@/lib/helpers/url';
 
 type PostData = {
   label: string;
@@ -60,7 +61,7 @@ const Header: FC<Props> = ({ title, titleStyle, pages, pagesStyle, toggleColorMo
     <Flex {...defaultProps} {...props}>
       {createPagesComponent(true)}
       <Flex {...defaultTitleStyle} {...titleStyle}>
-        <Link href={pagesPath.$url()}>
+        <Link href={asPath(pagesPath.$url())}>
           {title}
         </Link>
       </Flex>
